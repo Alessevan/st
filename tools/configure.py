@@ -195,6 +195,7 @@ config.libs = [
     GameLib(
         "Overlay 31",
         [
+            Object("031_Land/Actor/ActorHeart.cpp"),
             Object("031_Land/Actor/ActorRupee.cpp"),
         ]
     ),
