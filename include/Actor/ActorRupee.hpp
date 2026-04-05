@@ -69,6 +69,11 @@ public:
     void func_ov031_020f6374();
     void func_ov031_020f6384(unk32 param1);
     unk32 func_ov031_020f62e4(unk32 param1, unk32 param2);
+
+    void func_ov031_020ef730(unk32 param_2, int param_3);
+    void func_ov031_020ef774();
+    void func_ov031_020ef7bc();
+    void func_ov031_020ef794(unk32 param_2);
 };
 
 class ActorRupee : public Actor {

@@ -1,11 +1,7 @@
 #pragma once
 
 #include "Actor/Actor.hpp"
-#include "Actor/ActorManager.hpp"
-#include "Actor/ActorRupee.hpp"
 #include "Actor/ActorType.hpp"
-#include "Actor/ActorUnk_ov000_020a8bb0.hpp"
-#include "Player/PlayerGet.hpp"
 #include "types.h"
 
 class ActorHeart : public Actor {
@@ -13,7 +9,9 @@ public:
     STRUCT_PAD(0x94, 0x98);
     /* 98 */ unk32 mUnk_98;
     /* 9c */ unk32 mUnk_9c;
-    STRUCT_PAD(0xA0, 0xBC);
+    STRUCT_PAD(0xA0, 0xB8);
+    /* b8 */ u16 mUnk_b8;
+    STRUCT_PAD(0xBA, 0xBC);
     /* be */ u16 mUnk_bc;
     /* be */ u8 mUnk_be;
     STRUCT_PAD(0xBF, 0xC0);
@@ -25,7 +23,7 @@ public:
     virtual bool func_ov031_020eeed8(unk32 param_2, unk32 param_3, unk32 param_4) override; // func_ov031_020eeed8
     virtual void func_ov031_020eeee8() override; // func_ov031_020eeee8
     virtual void func_ov031_020ef5e8() override; // func_ov031_020ef5e8
-    virtual ~ActorHeart() override; // func_ov031_020ef7d4 ? func_ov031_020ef7d8
+    virtual ~ActorHeart(); // func_ov031_020ef7d4 ? func_ov031_020ef7d8
 
     void func_ov031_020eed64(unk32 *param_2, unk32 param_3, unk32 param_4);
     void func_ov031_020ef1b4(unk16 param_2);
@@ -47,11 +45,6 @@ public:
     void func_ov031_020ef570();
     void func_ov031_020ef5e8(unk32 param_2, unk32 param_3, unk32 param_4);
     void func_ov031_020ef698();
-    Actor_c4_Base *func_ov031_020ef6f8(Actor_c4_Base *param_1, int param_2);
-    void func_ov031_020ef730(unk32 param_2, int param_3);
-    void func_ov031_020ef774();
-    void func_ov031_020ef794(unk32 param_2, unk32 param_3, unk32 param_4);
-    void func_ov031_020ef7bc();
 };
 
 class ActorTypeHeart : public ActorType {

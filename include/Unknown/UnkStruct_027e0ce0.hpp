@@ -56,6 +56,7 @@ public:
     void func_01fff148();
 
     void func_ov000_0208a318(unk32 param1, unk32 param2, unk32 param3);
+    void func_0208bc9c(unk32 param1, unk32 param2);
 };
 
 extern UnkStruct_027e0ce0 *data_027e0ce0;
