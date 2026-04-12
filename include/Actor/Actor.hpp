@@ -47,16 +47,6 @@ public:
     ActorProfile *func_ov000_020974dc(u32 id);
 };
 
-struct Actor_c4_stack {
-    unk32 param1;
-    unk32 param2;
-};
-
-class Actor_c4_Base {
-public:
-    Actor_c4_Base(void *param1, unk32 param2);
-};
-
 class Actor_c4;
 
 typedef u32 ActorFlags;
@@ -94,6 +84,8 @@ enum ActorFlag_ {
     ActorFlag_30          = FLAG(0, 30),
     ActorFlag_31          = FLAG(0, 31),
 };
+
+class Actor_c4;
 
 class Actor : public SysObject {
 public:
@@ -197,6 +189,16 @@ public:
     unk32 func_ov000_02098a60(unk32 param1);
 
     void func_ov017_020bf5c4(Vec3p *param1, unk32 param2, unk32 param3, unk32 param4, unk32 param5);
+};
+
+struct Actor_c4_stack {
+    unk32 param1;
+    unk32 param2;
+};
+
+class Actor_c4_Base {
+public:
+    Actor_c4_Base(void *param1, unk32 param2);
 };
 
 class Actor_c4 : public Actor_c4_Base {

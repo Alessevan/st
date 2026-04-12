@@ -18,12 +18,7 @@ public:
 };
 const UnkStruct_ov031_02113d64 data_ov031_02113d64(0, 0x800, 0, 0x800);
 
-static ActorProfileHeart sActorProfileHeart;
-
-// func_ov031_020eecf4
-ARM ActorProfileHeart *ActorProfileHeart::GetProfile() {
-    return &sActorProfileHeart;
-}
+ARM DECL_PROFILE(ActorProfileHeart);
 
 // func_ov031_020eed00
 ARM Actor *ActorProfileHeart::Create() {
