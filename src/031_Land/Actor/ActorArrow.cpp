@@ -1,5 +1,3 @@
-//! TODO: This file was generated automatically and might contain errors
-
 #include "Actor/ActorArrow.hpp"
 #include "System/SysNew.hpp"
 
