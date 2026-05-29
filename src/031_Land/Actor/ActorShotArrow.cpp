@@ -12,6 +12,7 @@ extern UnkStruct_027e0ce0 *data_027e0ce0;
 extern UnkStruct_027e09a8 *data_027e09a8;
 extern UnkStruct_ov060_02163ff4 data_ov060_02163ff4;
 
+extern "C" void func_0200eab0(unk32, unk16, bool);
 extern "C" void func_ov000_0207b6c0();
 extern "C" void func_ov000_02098838(Actor *);
 
@@ -209,8 +210,6 @@ ARM void ActorShotArrow::func_ov031_020f2280() {
 ARM void ActorShotArrow::func_ov031_020f229c() {
     this->mUnk_168 = MUL_Q20(this->mUnk_168 + this->mUnk_16C, 0xccd);
 }
-
-extern "C" void func_0200eab0(unk32, unk16, bool);
 
 ARM void ActorShotArrow::func_ov031_020f22d4(Mat3p *param_1, VecFx32 *param_2) {
     func_0200eab0(this->mUnk_A0.mUnk_04, 0x0, this->mUnk_25E);
