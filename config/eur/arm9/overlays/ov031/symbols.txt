@@ -2567,9 +2567,9 @@ _ZN15ProfileInstanceI19ActorProfileUnkNTUBE8sProfileE kind:bss addr:0x021169e8
 _ZGVN15ProfileInstanceI19ActorProfileUnkNITFE8sProfileE kind:bss addr:0x02116a24
 @10854 kind:bss addr:0x02116a28
 _ZN15ProfileInstanceI19ActorProfileUnkNITFE8sProfileE kind:bss addr:0x02116a34
-_ZGVN15ProfileInstanceI19ActorProfileArrowE8sProfileE kind:bss addr:0x02116a70
+_ZGVN15ProfileInstanceI21ActorProfileShotArrowE8sProfileE kind:bss addr:0x02116a70
 @10860 kind:bss addr:0x02116a74
-_ZN15ProfileInstanceI19ActorProfileArrowE8sProfileE kind:bss addr:0x02116a80
+_ZN15ProfileInstanceI21ActorProfileShotArrowE8sProfileE kind:bss addr:0x02116a80
 _ZGVN15ProfileInstanceI19ActorProfileUnkATTGE8sProfileE kind:bss addr:0x02116abc
 @10866 kind:bss addr:0x02116ac0
 _ZN15ProfileInstanceI19ActorProfileUnkATTGE8sProfileE kind:bss addr:0x02116acc
