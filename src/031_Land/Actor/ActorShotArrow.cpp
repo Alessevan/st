@@ -234,8 +234,14 @@ ARM void ActorShotArrow::func_ov031_020f2b8c() {
     this->func_ov031_020f1878(0x3);
 }
 
-// non-matching
-ARM void ActorShotArrow::func_ov031_020f2bbc() {}
+ARM void ActorShotArrow::func_ov031_020f2bbc() {
+    if (!(this->mUnk_4C == 0x0 || this->mUnk_4C == 0x5)) {
+        return;
+    }
+    this->mUnk_190 |= 2;
+    this->func_ov031_020f1878(0x1);
+}
+
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f2bec() {}
 // non-matching
