@@ -91,7 +91,7 @@ public:
     unk16 func_ov031_020f3210(unk16);
     bool func_ov031_020f3258(u16 param_1);
     void func_ov031_020f3288();
-    void func_ov031_020f32c4();
+    ActorShotArrow *func_ov031_020f32c4();
     void func_ov031_020f32e0();
     void func_ov031_020f3304();
     void func_ov031_020f3310();

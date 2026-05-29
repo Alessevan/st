@@ -14,6 +14,7 @@ extern UnkStruct_ov060_02163ff4 data_ov060_02163ff4;
 
 extern "C" void func_0200eab0(unk32, unk16, bool);
 extern "C" void func_ov000_0207b6c0();
+extern "C" void func_ov000_0207bffc(Actor *);
 extern "C" void func_ov000_02098838(Actor *);
 
 ARM DECL_PROFILE(ActorProfileShotArrow);
@@ -281,8 +282,13 @@ ARM bool ActorShotArrow::func_ov031_020f3258(u16 param_1) {
 
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f3288() {}
-// non-matching
-ARM void ActorShotArrow::func_ov031_020f32c4() {}
+
+ARM ActorShotArrow *ActorShotArrow::func_ov031_020f32c4() {
+    this->mPos.y = FLOAT_TO_Q20(0.0f);
+    func_ov000_0207bffc(this);
+    return this;
+}
+
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f32e0() {}
 
