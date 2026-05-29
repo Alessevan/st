@@ -26,7 +26,7 @@ public:
     /* 168 */ unk32 mUnk_168;
     /* 16C */ unk32 mUnk_16C;
     /* 170 */ unk16 mUnk_170;
-    /* 172 */ unk16 mUnk_172;
+    /* 172 */ u16 mUnk_172;
     /* 174 */ unk16 mUnk_174;
     /* 176 */ unk16 mUnk_176;
     /* 178 */ STRUCT_PAD(0x178, 0x190);
@@ -89,7 +89,7 @@ public:
     void func_ov031_020f3000();
     void func_ov031_020f311c();
     unk16 func_ov031_020f3210(unk16);
-    void func_ov031_020f3258();
+    bool func_ov031_020f3258(u16 param_1);
     void func_ov031_020f3288();
     void func_ov031_020f32c4();
     void func_ov031_020f32e0();

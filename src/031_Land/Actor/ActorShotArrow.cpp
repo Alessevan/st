@@ -264,8 +264,21 @@ ARM void ActorShotArrow::func_ov031_020f3000() {}
 ARM void ActorShotArrow::func_ov031_020f311c() {}
 // non-matching
 ARM unk16 ActorShotArrow::func_ov031_020f3210(unk16) {}
+
 // non-matching
-ARM void ActorShotArrow::func_ov031_020f3258() {}
+ARM bool ActorShotArrow::func_ov031_020f3258(u16 param_1) {
+    u16 value = this->mUnk_172;
+    if (value == 0x0) {
+        return true;
+    }
+    if (value > param_1) {
+        this->mUnk_172 -= param_1;
+    } else {
+        this->mUnk_172 = 0;
+    }
+    return false;
+}
+
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f3288() {}
 // non-matching
