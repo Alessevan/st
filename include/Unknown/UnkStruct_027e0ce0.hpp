@@ -51,10 +51,16 @@ public:
     // data_ov026_0213562c
 };
 
+class UnkStruct_027e0ce0_1C_0C {
+public:
+    /* 00 */ STRUCT_PAD(0x00, 0x50);
+    /* 50 */ unk32 mUnk_50;
+};
+
 class UnkStruct_027e0ce0_1C {
 public:
     /* 00 */ STRUCT_PAD(0x00, 0x0C);
-    /* 0C */ unk32 mUnk_0C;
+    /* 0C */ UnkStruct_027e0ce0_1C_0C *mUnk_0C;
 };
 
 // PlayerManager?

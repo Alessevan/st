@@ -8,6 +8,9 @@ typedef struct {
     /* 25B */ bool mUnk_25B;
 } UnkStruct_ov060_02163ff4;
 
+char data_ov031_02110b3c[0xF]  = "arrow";
+char data_ov031_02110b4c[0x13] = "arrow_s";
+
 extern UnkStruct_027e0ce0 *data_027e0ce0;
 extern UnkStruct_027e09a8 *data_027e09a8;
 extern UnkStruct_ov060_02163ff4 data_ov060_02163ff4;
@@ -16,6 +19,8 @@ extern "C" void func_01ff9638(VecFx32 *, s16);
 extern "C" void func_01ff95a0(VecFx32 *, unk16);
 extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
 extern "C" void func_0200eab0(unk32, unk16, bool);
+extern "C" unk32 *func_0200f05c(u32, char *);
+extern "C" void func_ov000_02057c98(UnkSystem4 *param1, UnkSystem5 *param2);
 extern "C" void func_ov000_0207b6c0();
 extern "C" void func_ov000_0207bffc(Actor *);
 extern "C" void func_ov000_02098838(Actor *);
@@ -36,7 +41,7 @@ ARM ActorShotArrow::ActorShotArrow() :
     mUnk_A0(UnkSystem4(0x0)),
     mUnk_100(UnkSystem5(0x0, 0)) {}
 
-ARM unk32 ActorShotArrow::func_ov031_020f1404() {
+ARM UnkStruct_027e0ce0_1C_0C *ActorShotArrow::func_ov031_020f1404() {
     return data_027e0ce0->mUnk_1C->mUnk_0C;
 }
 
@@ -234,8 +239,46 @@ ARM void ActorShotArrow::func_ov031_020f22d4(Mat3p *param_1, VecFx32 *param_2) {
 ARM void ActorShotArrow::func_ov031_020f2310() {}
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f2654() {}
-// non-matching
-ARM unk16 ActorShotArrow::func_ov031_020f2794(unk16 param_1) {}
+
+ARM unk16 ActorShotArrow::func_ov031_020f2794(unk16 param_1) {
+    unk32 mUnk_50;
+    unk32 arg;
+    unk32 *var1;
+    switch (param_1) {
+        case 0x0:
+            mUnk_50 = this->func_ov031_020f1404()->mUnk_50;
+            if (mUnk_50 != 0 && (var1 = func_0200f05c(mUnk_50 + 8, data_ov031_02110b3c))) {
+                arg = mUnk_50 + *var1;
+            } else {
+                arg = 0;
+            }
+            this->mUnk_94.vfunc_08(arg);
+            this->mUnk_25A = false;
+            break;
+        case 0x1:
+            mUnk_50 = this->func_ov031_020f1404()->mUnk_50;
+            if (mUnk_50 != 0 && (var1 = func_0200f05c(mUnk_50 + 8, data_ov031_02110b4c))) {
+                arg = mUnk_50 + *var1;
+            } else {
+                arg = 0;
+            }
+            this->mUnk_94.vfunc_08(arg);
+            this->mUnk_25A = false;
+            break;
+        case 0x2:
+            mUnk_50 = this->func_ov031_020f1404()->mUnk_50;
+            if (mUnk_50 != 0 && (var1 = func_0200f05c(mUnk_50 + 8, data_ov031_02110b4c))) {
+                arg = mUnk_50 + *var1;
+            } else {
+                arg = 0;
+            }
+            this->mUnk_94.vfunc_08(arg);
+            this->mUnk_25A = true;
+            func_ov000_02057c98(&this->mUnk_A0, &this->mUnk_100);
+            break;
+    }
+}
+
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f28ac() {}
 

@@ -3,6 +3,7 @@
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
 #include "Unknown/Common.hpp"
+#include "Unknown/UnkStruct_027e0ce0.hpp"
 #include "global.h"
 #include "types.h"
 
@@ -16,10 +17,18 @@ public:
     /* 0C */ virtual void vfunc_0c(unk32 param1) override;
 };
 
+class UnkClass_ActorShotArrow_94 {
+public:
+    /* 00 */ virtual void vfunc_00() override;
+    /* 04 */ virtual void vfunc_04() override;
+    /* 04 */ virtual void vfunc_08(unk32) override;
+};
+
 class ActorShotArrow : public Actor {
 public:
     /* 000 (base) */
-    /* 094 */ STRUCT_PAD(0x94, 0xA0);
+    /* 094 */ UnkClass_ActorShotArrow_94 mUnk_94;
+    /* 09C */ STRUCT_PAD(0x98, 0xA0);
     /* 0A0 */ UnkSystem4 mUnk_A0;
     /* 100 */ UnkSystem5 mUnk_100;
     /* 140 */ STRUCT_PAD(0x120, 0x168);
@@ -38,7 +47,7 @@ public:
     /* 252 */ unk16 mUnk_252;
     /* 254 */ STRUCT_PAD(0x254, 0x258);
     /* 258 */ u16 mUnk_258;
-    /* 25A */ STRUCT_PAD(0x25A, 0x25B);
+    /* 25A */ bool mUnk_25A;
     /* 25B */ bool mUnk_25B;
     /* 25C */ bool mUnk_25C;
     /* 25D */ bool mUnk_25D;
@@ -49,7 +58,7 @@ public:
     /* 00 */ virtual void func_ov000_0207b71c() override;
     /* 4C */ virtual ~ActorShotArrow() override;
 
-    unk32 func_ov031_020f1404();
+    UnkStruct_027e0ce0_1C_0C *func_ov031_020f1404();
     ActorShotArrow *func_ov031_020f1608();
     void func_ov031_020f173c();
     void func_ov031_020f1868();
