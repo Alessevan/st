@@ -46,6 +46,7 @@ public:
 
     ActorShotArrow();
 
+    /* 00 */ virtual void func_ov000_0207b71c() override;
     /* 4C */ virtual ~ActorShotArrow() override;
 
     unk32 func_ov031_020f1404();
@@ -85,7 +86,7 @@ public:
     void func_ov031_020f2c08(unk16);
     void func_ov031_020f2cac();
     void func_ov031_020f2ef0();
-    void func_ov031_020f2f5c();
+    void func_ov031_020f2f5c(VecFx32 *param_1);
     void func_ov031_020f2f9c();
     void func_ov031_020f3000();
     void func_ov031_020f311c();
@@ -97,7 +98,7 @@ public:
     void func_ov031_020f3304();
     void func_ov031_020f3310();
     void func_ov031_020f33bc();
-    void func_ov031_020f370c();
+    void func_ov031_020f370c(unk32 param_1);
     void func_ov031_020f374c();
     void func_ov031_020f38b0();
     void func_ov031_020f3c38();

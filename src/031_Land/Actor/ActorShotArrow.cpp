@@ -14,6 +14,7 @@ extern UnkStruct_ov060_02163ff4 data_ov060_02163ff4;
 
 extern "C" void func_01ff9638(VecFx32 *, s16);
 extern "C" void func_01ff95a0(VecFx32 *, unk16);
+extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
 extern "C" void func_0200eab0(unk32, unk16, bool);
 extern "C" void func_ov000_0207b6c0();
 extern "C" void func_ov000_0207bffc(Actor *);
@@ -267,8 +268,13 @@ ARM void ActorShotArrow::func_ov031_020f2c08(unk16) {}
 ARM void ActorShotArrow::func_ov031_020f2cac() {}
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f2ef0() {}
-// non-matching
-ARM void ActorShotArrow::func_ov031_020f2f5c() {}
+
+void ActorShotArrow::func_ov031_020f2f5c(VecFx32 *param_1) {
+    VecFx32_Copy(&this->mPos, &this->mPrevPos);
+    VecFx32_Add(&this->mPos, param_1, &this->mPos);
+    func_01ffb714(&this->mPos, &this->mVel, &this->mPos);
+}
+
 // non-matching
 ARM void ActorShotArrow::func_ov031_020f2f9c() {}
 // non-matching
@@ -332,7 +338,7 @@ ARM void ActorShotArrow::func_ov031_020f3310() {}
 ARM void ActorShotArrow::func_ov031_020f33bc() {}
 
 // non-matching
-ARM void ActorShotArrow::func_ov031_020f370c() {
+ARM void ActorShotArrow::func_ov031_020f370c(unk32 param_1) {
     this->mPos.y     = FLOAT_TO_Q20(0.0f);
     this->mPos.z     = FLOAT_TO_Q20(0.0f);
     this->mPrevPos.x = FLOAT_TO_Q20(0.0f);
@@ -341,6 +347,9 @@ ARM void ActorShotArrow::func_ov031_020f370c() {
     this->mVel.x     = FLOAT_TO_Q20(0.0f);
     this->mVel.y     = FLOAT_TO_Q20(0.0f);
     this->mVel.z     = FLOAT_TO_Q20(0.0f);
+    this->mAngle     = 0;
+    this->mUnk_2C    = param_1;
+    this->mUnk_30    = nullptr;
 }
 
 // non-matching
