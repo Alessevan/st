@@ -2256,10 +2256,10 @@ _ZTV19data_ov031_02112d84 kind:data(any) addr:0x02112d84
 _ZTV19data_ov031_02112de0 kind:data(any) addr:0x02112de0
 _ZTV19data_ov031_02112e4c kind:data(any) addr:0x02112e4c
 _ZTV19data_ov031_02112e70 kind:data(any) addr:0x02112e70
-data_ov031_02112eec kind:data(any) addr:0x02112eec
-data_ov031_02112f04 kind:data(any) addr:0x02112f04
-data_ov031_02112f20 kind:data(any) addr:0x02112f20
-data_ov031_02112f3c kind:data(any) addr:0x02112f3c
+_ZTV19data_ov031_02112eec kind:data(any) addr:0x02112ee4
+_ZTV19data_ov031_02112f04 kind:data(any) addr:0x02112efc
+_ZTV19data_ov031_02112f20 kind:data(any) addr:0x02112f18
+_ZTV19data_ov031_02112f3c kind:data(any) addr:0x02112f34
 _ZTV25ActorProfileItemBoomerang kind:data(any) addr:0x02112f50
 _ZTV18ActorItemBoomerang kind:data(any) addr:0x02112f74
 _ZTV19data_ov031_02112fd8 kind:data(any) addr:0x02112fd0
