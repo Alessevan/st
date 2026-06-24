@@ -15,14 +15,19 @@ Actor *ActorProfileItemBoomerang::Create() {
 ActorProfileItemBoomerang::ActorProfileItemBoomerang() :
     ActorProfile(ActorId_ITBM) {}
 
-ActorItemBoomerang::ActorItemBoomerang() {}
+ActorItemBoomerang::ActorItemBoomerang() :
+    mUnk_94(data_027e0ce0->func_ov000_0208ed30(0x0, 0x1, ItemManager::func_ov000_020a8974(0x1)->mUnk_10)) {
+    this->mState  = ActorItemBoomerangState_0;
+    this->mUnk_52 = 0xFFFF;
+    this->mUnk_50 = 0x0;
+}
 
 // non-matching
 void ActorItemBoomerang::func_ov031_020e45fc() {}
 // non-matching
-void ActorItemBoomerang::func_ov031_020e4760() {}
+ActorItemBoomerang_A0::~ActorItemBoomerang_A0() {}
 // non-matching
-void ActorItemBoomerang::func_ov031_020e4774() {}
+ActorItemBoomerang_CC::~ActorItemBoomerang_CC() {}
 
 // non-matching
 bool ActorItemBoomerang::vfunc_18(unk32 param1) {}
@@ -88,21 +93,21 @@ void ActorItemBoomerang::func_ov031_020e52a0() {}
 // non-matching
 void ActorItemBoomerang::vfunc_2C(unk32 param1) {}
 
-void ActorItemBoomerang::func_ov031_020e53c8(Actor *actor) {
+void ActorItemBoomerang_A0::vfunc_10(Actor *actor) {
     data_027e0d2c->func_ov031_020d95c8(actor->mRef);
 }
 
-void ActorItemBoomerang::func_ov031_020e53e4(Actor *actor) {
+void ActorItemBoomerang_CC::vfunc_10(Actor *actor) {
     data_027e0d2c->func_ov031_020d95c8(actor->mRef);
 }
 
 extern "C" bool func_ov000_0207b754();
 
 // non-matching
-bool ActorItemBoomerang::func_ov031_020e5400(Actor *actor) {
+bool ActorItemBoomerang_CC::vfunc_0C(Actor *actor) {
     if (actor) {
-        if (actor->mRef.Get32() && actor->mVel.x == FLOAT_TO_FX32(0.0f) && actor->mVel.y == FLOAT_TO_FX32(0.0f) &&
-            actor->mVel.z == FLOAT_TO_FX32(0.0f)) {
+        if (actor->mRef.Get32() == this->mUnk_2C && actor->mVel.x == FLOAT_TO_FX32(0.0f) &&
+            actor->mVel.y == FLOAT_TO_FX32(0.0f) && actor->mVel.z == FLOAT_TO_FX32(0.0f)) {
             this->mUnk_2C = 0x0;
             return func_ov000_0207b754();
         }
@@ -113,17 +118,15 @@ bool ActorItemBoomerang::func_ov031_020e5400(Actor *actor) {
 // non-matching
 void ActorItemBoomerang::func_ov031_020e544c() {}
 // non-matching
-void ActorItemBoomerang::func_ov031_020e5488() {}
+void ActorItemBoomerang_11C::vfunc_00() {}
 // non-matching
-void ActorItemBoomerang::func_ov031_020e54a4() {}
+void ActorItemBoomerang_11C::vfunc_04() {}
 // non-matching
-void ActorItemBoomerang::func_ov031_020e54d4() {}
+void ActorItemBoomerang_11C::vfunc_08() {}
+// non-matching
+void ActorItemBoomerang_11C::vfunc_10() {}
 // non-matching
 void ActorItemBoomerang::func_ov031_020e5704() {}
-// non-matching
-void ActorItemBoomerang::func_ov031_020e5710() {}
-// non-matching
-void ActorItemBoomerang::func_ov031_020e572c() {}
 
 ActorItemBoomerang::~ActorItemBoomerang() {}
 ActorProfileItemBoomerang::~ActorProfileItemBoomerang() {}
