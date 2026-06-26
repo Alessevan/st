@@ -120,7 +120,7 @@ bool ActorItemBoomerang_CC::vfunc_0C(Actor *actor, VecFx32 *param2) {
         if (actor->mRef.Get32() == this->mUnk_2C && actor->mVel.x == FLOAT_TO_FX32(0.0f) &&
             actor->mVel.y == FLOAT_TO_FX32(0.0f) && actor->mVel.z == FLOAT_TO_FX32(0.0f)) {
             this->mUnk_2C = 0x0;
-            return ActorShotArrow_194_Base::vfunc_0C(actor, param2);
+            return UnkStruct_ov031_Items_01::vfunc_0C(actor, param2);
         }
     }
     return false;

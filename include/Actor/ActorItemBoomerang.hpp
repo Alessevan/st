@@ -3,6 +3,7 @@
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
 #include "Render/ModelRender.hpp"
+#include "Unknown/UnkStruct_ov031_Items.hpp"
 #include "global.h"
 #include "types.h"
 
@@ -26,7 +27,7 @@ public:
     void func_ov031_020e5704();
 };
 
-class ActorItemBoomerang_11C : public ActorShotArrow_178_Base {
+class ActorItemBoomerang_11C : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (vtable) */
     /* 04 */ STRUCT_PAD(0x04, 0x08);
@@ -41,7 +42,7 @@ public:
     ///* 10 */ virtual void func_ov000_0207c010();
 };
 
-class ActorItemBoomerang_A0 : public ActorShotArrow_194_Base {
+class ActorItemBoomerang_A0 : public UnkStruct_ov031_Items_01 {
 public:
     /* 00 (vtable) */
     /* 04 */
@@ -50,7 +51,7 @@ public:
     /* 10 */ virtual void vfunc_10(Actor *actor) override; // func_ov031_020e53c8
 };
 
-class ActorItemBoomerang_CC {
+class ActorItemBoomerang_CC : public UnkStruct_ov031_Items_01 {
 public:
     /* 00 (vtable) */
     /* 2C */ unk32 mUnk_2C;
@@ -81,7 +82,7 @@ public:
     /* 13A */ u16 mUnk_13A;
     /* 13C */ u16 mUnk_13C;
     /* 13E */ STRUCT_PAD(0x13E, 0x140);
-    /* 140 */ ActorShotArrow_1DC mUnk_140;
+    /* 140 */ UnkStruct_ov031_Items_02 mUnk_140;
 
     ActorItemBoomerang();
 
