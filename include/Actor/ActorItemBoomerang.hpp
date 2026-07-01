@@ -79,7 +79,8 @@ public:
     /* 13C */ u16 mUnk_13C;
     /* 13E */ STRUCT_PAD(0x13E, 0x140);
     /* 140 */ UnkStruct_ov031_Items_02 mUnk_140;
-    /* 14B */
+    /* 14C */ STRUCT_PAD(0x14C, 0x188);
+    /* 188 */
 
     ActorItemBoomerang();
 

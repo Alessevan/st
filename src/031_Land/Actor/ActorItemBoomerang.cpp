@@ -104,8 +104,87 @@ void ActorItemBoomerang::vfunc_20() {
     }
 }
 
+typedef struct {
+    /* 00 */ unk32 mUnk_00;
+    /* 04 */ VecFx32 *mUnk_04;
+    /* 08 */ unk32 mUnk_08;
+} UnkStack_ov031_020e5034;
+
 // non-matching
-void ActorItemBoomerang::func_ov031_020e5034(unk32 param1) {}
+void ActorItemBoomerang::func_ov031_020e5034(unk32 param1) {
+    UnkStack_ov031_020e5034 stack;
+    if (this->mUnk_128 == param1) {
+        return;
+    }
+    this->mUnk_128               = param1;
+    UnkStruct_PlayerGet_ec **ptr = NULL;
+    void *nextVarAddress         = NULL;
+
+    switch (this->mUnk_128) {
+        case 0x1:
+            this->mUnk_13C = 0x8d72;
+            ptr            = (UnkStruct_PlayerGet_ec **) &this->mUnk_12C;
+            nextVarAddress = &this->mUnk_138;
+            if (ptr != nextVarAddress) {
+                do {
+                    (*ptr)->func_ov000_020a0334();
+                    ++ptr;
+                } while (ptr != nextVarAddress);
+            }
+
+            data_027e0cec->func_ov000_0209ff8c(&this->mUnk_12C[0], 0x818, &this->mPos, 0x2);
+            data_027e0cec->func_ov000_0209ff8c(&this->mUnk_12C[1], 0x819, &this->mPos, 0x2);
+
+            if (!func_ov000_0205aeac()) {
+                return;
+            }
+            if ((this->mUnk_12C + 0)->mUnk_00 != NULL) {
+                this->mUnk_12C->mUnk_00->mUnk_A0 = 0;
+            }
+            if ((this->mUnk_12C + 1)->mUnk_00 != NULL) {
+                (this->mUnk_12C + 1)->mUnk_00->mUnk_A0 = 0;
+            }
+            data_027e0cd8->mUnk_0C->func_ov000_02080a5c(&this->mUnk_140.mUnk_00);
+            return;
+        case 0x2:
+            this->mUnk_13C = 0x8D73;
+            ptr            = (UnkStruct_PlayerGet_ec **) &this->mUnk_12C;
+            nextVarAddress = &this->mUnk_138;
+            if (ptr != nextVarAddress) {
+                do {
+                    (*ptr)->func_ov000_020a0334();
+                    ++ptr;
+                } while (ptr != nextVarAddress);
+            }
+
+            stack.mUnk_00 = 0x817;
+            stack.mUnk_04 = &this->mVel;
+            stack.mUnk_08 = 0x2;
+
+            data_027e0cec->func_ov000_020a00d4(&this->mUnk_12C[0], 0x815, 0x816, 0x817);
+            if (!func_ov000_0205aeac()) {
+                return;
+            }
+            if ((this->mUnk_12C + 0)->mUnk_00 != NULL) {
+                this->mUnk_12C->mUnk_00->mUnk_A0 = 0;
+            }
+            if ((this->mUnk_12C + 1)->mUnk_00 != NULL) {
+                (this->mUnk_12C + 1)->mUnk_00->mUnk_A0 = 0;
+            }
+            if ((this->mUnk_12C + 2)->mUnk_00 != NULL) {
+                (this->mUnk_12C + 2)->mUnk_00->mUnk_A0 = 0;
+            }
+            data_027e0cd8->mUnk_0C->func_ov000_02080a5c(&this->mUnk_140.mUnk_00);
+            return;
+        default:
+            this->mUnk_13C = 0x8D71;
+            if (!func_ov000_0205aeac()) {
+                return;
+            }
+            data_027e0cd8->mUnk_0C->func_ov000_02080a78(&this->mUnk_140.mUnk_00);
+            break;
+    }
+}
 
 void ActorItemBoomerang::func_ov031_020e5220() {
     data_027e0cec->func_ov000_0209feac(0x81A, &this->mPos, 0x2, 0x0, 0x0);
@@ -125,9 +204,10 @@ void ActorItemBoomerang::func_ov031_020e52a0() {
         do {
             UnkStruct_PlayerGet_ec *var = *ptr;
             if (var) {
-                /* var->mUnk_28 = this->mPos.x + var->mUnk_20[0]->mUnk_04;
-                var->mUnk_2C = this->mPos.y + var->mUnk_20[0]->mUnk_08;
-                var->mUnk_30 = this->mPos.z + var->mUnk_20[0]->mUnk_0C; */
+                // really non matching
+                var->mUnk_00->mUnk_28 = this->mPos.x + var->mUnk_00->mUnk_24;
+                var->mUnk_00->mUnk_2C = this->mPos.y + var->mUnk_00->mUnk_28;
+                var->mUnk_00->mUnk_30 = this->mPos.z + var->mUnk_00->mUnk_2C;
             }
         } while (++ptr != nextVarAddress);
         return;
