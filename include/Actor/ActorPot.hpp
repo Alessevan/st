@@ -25,6 +25,7 @@ public:
     /* 04 */ virtual ~UnkStruct_ov000_020b2838(); // func_ov000_0207bfe8
     /* 08 */ virtual void vfunc_08();             // func_ov000_0207c000
     /* 0C */ virtual void vfunc_0C();             // func_ov000_0207c008
+    /* 10 */ virtual void vfunc_10();             // func_ov000_0207c010
 };
 
 class UnkStruct_ov031_02113fb8 : UnkStruct_ov000_020b2838 {
