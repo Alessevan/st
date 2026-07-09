@@ -8,26 +8,25 @@
 #include "types.h"
 
 // NPC Renderer ?
-class ModelRender_ov000_020b323c : public ModelRender {
+class ModelRender_ov000_020b4d64 : public ModelRender {
 public:
     /* 00 (base) */
     /* 60 */
 
-    ModelRender_ov000_020b323c(G3d_Model *pModel) :
+    ModelRender_ov000_020b4d64(G3d_Model *pModel) :
         ModelRender(pModel) {}
 
-    // data_ov000_020b323c
-    /* 0C */ virtual void vfunc_0C() override;                            // func_ov000_0209a814
+    // data_ov000_020b4d64
+    /* 0C */ virtual void vfunc_0C() override;                            // func_ov000_02057a88
     /* 1C */ virtual void vfunc_1C(UnkSystem4_vfunc_1C *param1) override; // func_ov000_0209a79c
 };
 
-class ModelRender_ov031_02113670 : public ModelRender_ov000_020b323c {
+class ModelRender_ov031_02113670 : public ModelRender_ov000_020b4d64 {
 public:
     /* 00 (base) */
     /* 60 */
 
-    ModelRender_ov031_02113670(G3d_Model *pModel) :
-        ModelRender_ov000_020b323c(pModel) {}
+    ModelRender_ov031_02113670(G3d_Model *pModel);
 
     // data_ov031_02113670
     /* 00 */ virtual ~ModelRender_ov031_02113670() override; // func_ov031_020ea500 (T) & _ZN19func_ov031_020ee79cD0Ev
@@ -115,10 +114,35 @@ public:
 
 // --- Actor ZLSL ---
 
+enum ActorUnkZLSLState_ {
+    ActorUnkZLSLState_0  = 0,
+    ActorUnkZLSLState_1  = 1,
+    ActorUnkZLSLState_2  = 2,
+    ActorUnkZLSLState_3  = 3,
+    ActorUnkZLSLState_4  = 4,
+    ActorUnkZLSLState_5  = 5,
+    ActorUnkZLSLState_6  = 6,
+    ActorUnkZLSLState_7  = 7,
+    ActorUnkZLSLState_8  = 8,
+    ActorUnkZLSLState_9  = 9,
+    ActorUnkZLSLState_10 = 10,
+    ActorUnkZLSLState_11 = 11,
+    ActorUnkZLSLState_12 = 12,
+    ActorUnkZLSLState_13 = 13,
+    ActorUnkZLSLState_14 = 14,
+    ActorUnkZLSLState_15 = 15,
+    ActorUnkZLSLState_16 = 16,
+    ActorUnkZLSLState_MAX
+};
+
 class ActorUnkZLSL : public Actor_Derived1 {
 public:
     /* 0000 (base) */
-    /* 0120 */ STRUCT_PAD(0x120, 0x2908);
+    /* 0120 */ STRUCT_PAD(0x120, 0x286E);
+    /* 286E */ unk16 mUnk_286E;
+    /* 2870 */ STRUCT_PAD(0x2870, 0x2878);
+    /* 2878 */ VecFx32 mUnk_2878;
+    /* 2884 */ STRUCT_PAD(0x2884, 0x2908);
     /* 2908 */
 
     ActorUnkZLSL();
@@ -143,6 +167,7 @@ public:
     /* B0 */ virtual void vfunc_B0() override;                        // func_ov031_020ec5f0
     /* B4 */ virtual void vfunc_B4() override;                        // func_ov031_020ee3e8
 
+    bool func_ov031_020ea0b4(Actor *param1);
     void func_ov031_020ea674();
     void func_ov031_020ea7a8();
     void func_ov031_020ecbe0();
@@ -164,6 +189,51 @@ public:
     void func_ov031_020ec164();
     void func_ov031_020eba58();
     void func_ov031_020ee1f4();
+    bool func_ov031_020ee724();
+
+    // not sure where they go
+    void func_ov031_020ea8c0();
+    void func_ov031_020ea8c4();
+    void func_ov031_020ea8c8();
+    void func_ov031_020eaa88();
+    void func_ov031_020eab0c();
+    void func_ov031_020eab40();
+    void func_ov031_020eace0();
+    void func_ov031_020ead78();
+    void func_ov031_020eafb0();
+    void func_ov031_020eb158();
+    void func_ov031_020eb218();
+    void func_ov031_020eb2b0();
+    void func_ov031_020eb61c();
+    void func_ov031_020eba8c();
+    void func_ov031_020ec028();
+    void func_ov031_020ec058();
+    void func_ov031_020ec0a8();
+    void func_ov031_020ec12c();
+    void func_ov031_020ec170();
+    void func_ov031_020ec3d0();
+    void func_ov031_020ec49c();
+    void func_ov031_020ec54c();
+    void func_ov031_020ec6d8();
+    void func_ov031_020ec8c4();
+    void func_ov031_020ecc68();
+    void func_ov031_020ecea8();
+    void func_ov031_020ed0b0();
+    void func_ov031_020ed3c0();
+    void func_ov031_020ed47c();
+    void func_ov031_020ed4e4();
+    void func_ov031_020ed55c();
+    void func_ov031_020ed6cc();
+    void func_ov031_020ed8ac();
+    void func_ov031_020edc80();
+    void func_ov031_020edd14();
+    void func_ov031_020edd54();
+    void func_ov031_020ede30();
+    void func_ov031_020edf98();
+    void func_ov031_020ee2c8();
+    void func_ov031_020ee41c();
+    void func_ov031_020ee4c4();
+    void func_ov031_020ee654();
 };
 
 class ActorProfileUnkZLSL : public ActorProfile {

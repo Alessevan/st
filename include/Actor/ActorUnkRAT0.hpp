@@ -7,6 +7,11 @@
 #include "global.h"
 #include "types.h"
 
+enum ActorUnkRAT0State_ {
+    ActorUnkRAT0State_0,
+    ActorUnkRAT0State_MAX
+};
+
 class ActorUnkRAT0_C4 : public Actor_C4 {
 public:
     ActorUnkRAT0_C4(Actor *param1);
