@@ -182,6 +182,7 @@ public:
     /* 00 */ unk32 mUnk_00;
 
     void func_ov031_020eeca8();
+    void func_ov031_020eece8();
 };
 
 class ActorUnkZLSL : public Actor_Derived1 {

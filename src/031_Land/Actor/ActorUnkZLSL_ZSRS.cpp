@@ -876,7 +876,7 @@ void ActorUnkZLSL::vfunc_2C(unk32 param1) {
         default:
             break;
     }
-    this->mUnk_1690.func_ov031_020eeca8();
+    this->mUnk_1690.func_ov031_020eece8();
 }
 
 unk32 ActorUnkZLSL::vfunc_7C(unk32 param1) {
