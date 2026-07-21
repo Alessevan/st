@@ -8,7 +8,11 @@
 
 class ActorUnkTGTZ_C4 : public Actor_C4 {
 public:
-    ActorUnkTGTZ_C4(Actor *param1);
+    /* 00 (base) */
+    /* 24 */
+
+    ActorUnkTGTZ_C4(Actor *param1) :
+        Actor_C4(param1) {}
 
     /* 00 */ virtual bool vfunc_00(ActorRef ref, unk32 param2) override;
     /* 04 */ virtual bool vfunc_04() override;
@@ -18,33 +22,38 @@ public:
 
 class ActorUnkTGTZ_ModelRender : public ModelRender_Derived1 {
 public:
+    /* 00 (base) */
+    /* 6C */
+
     ActorUnkTGTZ_ModelRender(G3d_Model *pModel, unk32 param2, void *param3) :
         ModelRender_Derived1(pModel, param2, param3) {}
-
-    // data_ov031_021145dc
-    /* 00 */ virtual ~ActorUnkTGTZ_ModelRender();
 };
 
 class ActorUnkTGTZ : public Actor {
 public:
-    /* 000 (base) */
+/* 000 (base) */
+#if IS_JP
+    /* 094 */ UnkSystem6_Derived2 mUnk_094;
+    /* 09C */ bool mUnk_09C;
+#else
     /* 094 */ ActorUnkTGTZ_ModelRender mUnk_094;
     /* 100 */ STRUCT_PAD(0x100, 0x190);
+#endif
     /* 190 */ Mat3p mUnk_190;
     /* 1B4 */ ActorUnkNTTZ *mUnk_1B4;
     /* 1B8 */ unk32 mUnk_1B8;
     /* 1BC */ unk32 mUnk_1BC;
-    /* 1C0 */ unk16 mUnk_1C0;
-    /* 1C2 */ unk16 mUnk_1C2;
+    /* 1C0 */ volatile u16 mUnk_1C0;
+    /* 1C2 */ u16 mUnk_1C2;
     /* 1CC */ fx32 mUnk_1C4;
-    /* 1C8 */ STRUCT_PAD(0x1C8, 0x1CC);
+    /* 1C8 */ UnkStruct_ov019_020d24c8_28_258_00 *mUnk_1C8;
     /* 1CC */ unk32 mUnk_1CC;
-    /* 1D0 */ unk16 mUnk_1D0;
-    /* 1D2 */ unk16 mUnk_1D2;
-    /* 1D4 */ unk16 mUnk_1D4;
-    /* 1D6 */ unk16 mUnk_1D6;
+    /* 1D0 */ volatile u16 mUnk_1D0;
+    /* 1D2 */ u16 mUnk_1D2;
+    /* 1D4 */ u16 mUnk_1D4;
+    /* 1D6 */ u16 mUnk_1D6;
     /* 1D8 */ bool mUnk_1D8;
-    /* 1DC */ unk32 mUnk_1DC;
+    /* 1DC */ ActorRef mUnk_1DC;
     /* 1E0 */
 
     ActorUnkTGTZ();
@@ -53,7 +62,15 @@ public:
     /* 20 */ virtual void vfunc_20() override;
     /* 24 */ virtual void vfunc_24() override;
     /* 30 */ virtual void vfunc_2C(unk32 param1) override;
-    /* 34 */ virtual void vfunc_30() override;
+    /* 34 */ virtual void vfunc_30(Actor_vfunc_30 *param1) override;
+
+    bool IsInternalTimerOut() {
+        if (this->mUnk_1D0 < this->mUnk_1D2) {
+            ++this->mUnk_1D0;
+            return false;
+        }
+        return true;
+    }
 
     void func_ov031_020f6984();
     static void func_ov031_020f6e5c(ActorRef param1);
