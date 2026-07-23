@@ -33,8 +33,8 @@ static const Vec3p data_ov031_02116344(FLOAT_TO_FX32(1.5f), FLOAT_TO_FX32(2.0f),
 static unk32 data_ov031_02114584[0x2]  = {0};
 static const char *data_ov031_021145a4 = "target";
 #endif
-extern unk32 data_ov031_02116b54 = 0x0;
-extern UnkStruct_ov019_020d24c8_28_258_00 data_ov031_02116b58(NULL, 0);
+unk32 data_ov031_02116b54 = 0x0;
+UnkStruct_ov019_020d24c8_28_258_00 data_ov031_02116b58(NULL, 0);
 
 DECL_PROFILE(ActorProfileUnkTGTZ);
 
