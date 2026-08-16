@@ -1,11 +1,20 @@
-//! TODO: This file was generated automatically and might contain errors
-
 #pragma once
 
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
 #include "global.h"
 #include "types.h"
+
+enum ActorUnkBOMBState_ {
+    ActorUnkBOMBState_0 = 0,
+    ActorUnkBOMBState_1 = 1,
+    ActorUnkBOMBState_2 = 2,
+    ActorUnkBOMBState_3 = 3,
+    ActorUnkBOMBState_4 = 4,
+    ActorUnkBOMBState_5 = 5,
+    ActorUnkBOMBState_6 = 6,
+    ActorUnkBOMBState_Max
+};
 
 class ActorUnkBOMB_unk : public UnkStruct_PlayerGet_ec {
 public:
@@ -19,83 +28,107 @@ public:
     // ActorUnkBOMB::func_ov031_020e17f4() dtor ?
 };
 
-class ActorUnkBOMB_C4 : public Actor_C4 {
+class ActorUnkBomb_19C : public UnkStruct_ov031_Items_01 {
 public:
-    ActorUnkBOMB_C4(Actor *param1);
+    /* 00 (base) */
+    /* 2C */ Actor *mUnk_2C;
+    /* 30 */
 
-    /* 00 */ virtual bool vfunc_00(ActorRef ref, unk32 param2) override;
-    /* 04 */ virtual bool vfunc_04() override;
-    /* 08 */ virtual void vfunc_08() override;
-    /* 0C */ virtual void vfunc_0C(unk32 param1) override;
+    ActorUnkBomb_19C(Actor *param1);
+
+    // data_ov031_02112c94
+    /* 10 */ virtual void vfunc_10(Actor *actor) override;
+};
+
+class ActorUnkBomb_180 : public UnkStruct_ov031_Items_00 {
+public:
+    /* 00 (base) */
+    /* 04 */ STRUCT_PAD(0x04, 0x08);
+    /* 08 */ Actor *mUnk_08;
+    /* 0C */ unk32 mUnk_0C;
+    /* 10 */ unk32 mUnk_10;
+    /* 14 */ unk32 mUnk_14;
+    /* 18 */ unk32 mUnk_18;
+    /* 1C */
+
+    ActorUnkBomb_180(Actor *param1);
+
+    // data_ov031_02112c78
+    /* 00 */ virtual ~ActorUnkBomb_180() override;
+    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override;
+    /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) override;
+    /* 10 */ virtual void vfunc_10() override;
+};
+
+class ActorUnkBOMB_ov031_020e2134 : public UnkStruct_ov031_Items_00 {
+public:
+    /* 00 (base) */
+    /* 04 */
+
+    // data_ov031_02112cb0
+    /* 00 */ // dtor _ZN12ActorUnkBOMB19func_ov031_020e2220Ev &  _ZN12ActorUnkBOMB19func_ov031_020e33c0Ev
+    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override; // func_ov031_020e3310
 };
 
 class ActorUnkBOMB : public Actor {
 public:
-    /* 00 (base) */
-    /* 94 */
+    /* 000 (base) */
+    /* 094 */ STRUCT_PAD(0x094, 0x180);
+    /* 180 */ ActorUnkBomb_180 mUnk_180;
+    /* 19C */ ActorUnkBomb_19C mUnk_19C;
+    /* FFF */
 
     ActorUnkBOMB();
 
-    /* 4C */ virtual ~ActorUnkBOMB() override;
+    /* 18 */ virtual bool vfunc_18(unk32 param1) override;
+    /* 20 */ virtual void vfunc_20() override;
+    /* 24 */ virtual void vfunc_24() override;
+    /* 2C */ virtual void vfunc_2C(unk32 param1) override;
+    /* 38 */ virtual bool Grab(ActorGrabParams grabParams) override;
+    /* 3C */ virtual bool Drop(ActorGrabParams grabParams, const VecFx32 *pVel) override;
 
-    void func_ov031_020e1540(void);
-    void func_ov031_020e15d0(void);
-    void func_ov031_020e1634(void);
-    void func_ov031_020e17f4(void);
-    void func_ov031_020e1808(void);
-    void func_ov031_020e181c(void);
-    void func_ov031_020e18a0(void);
-    void func_ov031_020e18c4(void);
-    void func_ov031_020e1908(void);
-    void func_ov031_020e1920(void);
-    void func_ov031_020e193c(void);
-    void func_ov031_020e1a28(void);
-    void func_ov031_020e1af8(void);
-    void func_ov031_020e1b1c(void);
-    void func_ov031_020e1b7c(void);
-    void func_ov031_020e1d18(void);
-    void func_ov031_020e1d48(void);
-    void func_ov031_020e1d58(void);
-    void func_ov031_020e1d74(void);
-    void func_ov031_020e1da0(void);
-    void func_ov031_020e1ebc(void);
-    void func_ov031_020e1ed8(void);
-    void func_ov031_020e1f18(void);
-    void func_ov031_020e1f88(void);
-    void func_ov031_020e1fe0(void);
-    void func_ov031_020e1fe4(void);
-    void func_ov031_020e2034(void);
-    void func_ov031_020e2064(void);
-    void func_ov031_020e20d8(void);
-    void func_ov031_020e20fc(void);
-    void func_ov031_020e2100(void);
-    void func_ov031_020e2134(void);
-    void func_ov031_020e2220(void);
-    void func_ov031_020e2234(void);
-    void func_ov031_020e238c(void);
-    void func_ov031_020e246c(void);
-    void func_ov031_020e24ac(void);
-    void func_ov031_020e25bc(void);
-    void func_ov031_020e262c(void);
-    void func_ov031_020e2680(void);
-    void func_ov031_020e2780(void);
-    void func_ov031_020e2820(void);
-    void func_ov031_020e295c(void);
-    void func_ov031_020e2a9c(void);
-    void func_ov031_020e2b40(void);
-    void func_ov031_020e2c2c(void);
-    void func_ov031_020e2d78(void);
-    void func_ov031_020e2df4(void);
-    void func_ov031_020e2e3c(void);
-    void func_ov031_020e328c(void);
-    void func_ov031_020e3310(void);
-    void func_ov031_020e3340(void);
-    void func_ov031_020e337c(void);
-    void func_ov031_020e33ac(void);
-    void func_ov031_020e33c0(void);
-    void func_ov031_020e33dc(void);
-    void func_ov031_020e33f8(void);
-    void func_ov031_020e3448(void);
+    // check if really in ActorUnkBomb
+    void func_ov031_020e1540();
+    void func_ov031_020e15d0();
+    void func_ov031_020e1634();
+    void func_ov031_020e17f4();
+
+    //
+    void func_ov031_020e18a0();
+    void func_ov031_020e18c4(ActorState state);
+    void func_ov031_020e1908();
+    void func_ov031_020e1920();
+    void func_ov031_020e193c();
+    void func_ov031_020e1b1c();
+    void func_ov031_020e1b7c();
+    void func_ov031_020e1d18();
+    void func_ov031_020e1d48();
+    void func_ov031_020e1d58();
+    void func_ov031_020e1d74();
+    void func_ov031_020e1da0();
+    void func_ov031_020e1ebc();
+    void func_ov031_020e1ed8();
+    void func_ov031_020e1f18();
+    void func_ov031_020e1f88();
+    void func_ov031_020e1fe0();
+    void func_ov031_020e1fe4();
+    void func_ov031_020e2034();
+    void func_ov031_020e2064();
+    void func_ov031_020e20d8();
+    void func_ov031_020e20fc();
+    void func_ov031_020e2100();
+    void func_ov031_020e2134();
+    void func_ov031_020e238c();
+    bool func_ov031_020e25bc();
+    void func_ov031_020e262c();
+    void func_ov031_020e2680();
+    void func_ov031_020e2780();
+    void func_ov031_020e2820();
+    void func_ov031_020e295c();
+    void func_ov031_020e2a9c();
+    void func_ov031_020e2b40();
+    void func_ov031_020e2c2c();
+    void func_ov031_020e33ac();
 };
 
 class ActorProfileUnkBOMB : public ActorProfile {
@@ -103,7 +136,6 @@ public:
     /* 00 (base) */
 
     ActorProfileUnkBOMB();
-    ~ActorProfileUnkBOMB();
 
     /* 0C */ virtual Actor *Create();
 
