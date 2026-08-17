@@ -28,7 +28,7 @@ public:
     void func_ov031_02102af4(void);
 };
 
-class MapObjectProfileUnkBMFL : public MapObjectProfile {
+class MapObjectProfileUnkBMFL : public MapObjectProfile_Derived2 {
 public:
     /* 00 (base) */
 

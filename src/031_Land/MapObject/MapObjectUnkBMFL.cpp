@@ -6,11 +6,15 @@
 DECL_PROFILE(MapObjectProfileUnkBMFL);
 
 MapObject *MapObjectProfileUnkBMFL::Create() {
-    return new(HeapIndex_2) MapObjectUnkBMFL();
+    return new(HeapIndex_ITCM) MapObjectUnkBMFL();
 }
 
 MapObjectProfileUnkBMFL::MapObjectProfileUnkBMFL() :
-    MapObjectProfile(MapObjectId_BMFL) {}
+    MapObjectProfile_Derived2(MapObjectId_BMFL, MapObjectId_BMFL) {
+    this->mUnk_0E = 0x0;
+    this->mUnk_06 = 0x0;
+    this->mUnk_0C = 0x1333;
+}
 
 MapObjectUnkBMFL::MapObjectUnkBMFL() {}
 

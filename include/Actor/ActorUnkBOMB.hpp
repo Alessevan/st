@@ -2,6 +2,7 @@
 
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
+#include "Actor_Derived1.hpp"
 #include "global.h"
 #include "types.h"
 
@@ -43,7 +44,7 @@ public:
 class ActorUnkBomb_180 : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (base) */
-    /* 04 */ STRUCT_PAD(0x04, 0x08);
+    /* 04 */ unk16 mUnk_04;
     /* 08 */ Actor *mUnk_08;
     /* 0C */ unk32 mUnk_0C;
     /* 10 */ unk32 mUnk_10;
@@ -57,7 +58,7 @@ public:
     /* 00 */ virtual ~ActorUnkBomb_180() override;
     /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override;
     /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) override;
-    /* 10 */ virtual void vfunc_10() override;
+    /* 10 */ virtual bool vfunc_10(ActorRef param1, unk32 param2) override;
 };
 
 class ActorUnkBOMB_ov031_020e2134 : public UnkStruct_ov031_Items_00 {
@@ -73,10 +74,28 @@ public:
 class ActorUnkBOMB : public Actor {
 public:
     /* 000 (base) */
-    /* 094 */ STRUCT_PAD(0x094, 0x180);
+    /* 094 */ ModelRender mUnk_094;
+    /* 0F4 */ UnkSystem5 mUnk_0F4;
+    /* 114 */ unk32 mUnk_114;
+    /* 118 */ STRUCT_PAD(0x118, 0x134);
+    /* 134 */ Actor_9C mUnk_134;
+    /* 140 */ STRUCT_PAD(0x154, 0x158);
+    /* 158 */ unk32 mUnk_158;
+    /* 15C */ STRUCT_PAD(0x15C, 0x180);
     /* 180 */ ActorUnkBomb_180 mUnk_180;
     /* 19C */ ActorUnkBomb_19C mUnk_19C;
-    /* FFF */
+    /* 1CC */ VecFx32 mUnk_1CC;
+    /* 1D8 */ STRUCT_PAD(0x1D8, 0x1E4);
+    /* 1E4 */ ActorRef mUnk_1E4;
+    /* 1E8 */ unk8 mUnk_1E8;
+    /* 1EA */ unk16 mUnk_1EA;
+    /* 1EC */ unk16 mUnk_1EC;
+    /* 1EE */ unk8 mUnk_1EE;
+    /* 1EF */ STRUCT_PAD(0x1EF, 0x1F0);
+    /* 1F0 */ unk8 mUnk_1F0;
+    /* 1F1 */ STRUCT_PAD(0x1F1, 0x1F4);
+    /* 1F4 */ Actor_Derived1_94 mUnk_1F4;
+    /* 200 */
 
     ActorUnkBOMB();
 
@@ -88,8 +107,8 @@ public:
     /* 3C */ virtual bool Drop(ActorGrabParams grabParams, const VecFx32 *pVel) override;
 
     // check if really in ActorUnkBomb
-    void func_ov031_020e1540();
-    void func_ov031_020e15d0();
+    G3d_Model *func_ov031_020e1540(u16 param1);
+    unk32 func_ov031_020e15d0(u16 param1);
     void func_ov031_020e1634();
     void func_ov031_020e17f4();
 
@@ -97,14 +116,14 @@ public:
     void func_ov031_020e18a0();
     void func_ov031_020e18c4(ActorState state);
     void func_ov031_020e1908();
-    void func_ov031_020e1920();
+    void func_ov031_020e1920(VecFx32 *param1);
     void func_ov031_020e193c();
     void func_ov031_020e1b1c();
     void func_ov031_020e1b7c();
     void func_ov031_020e1d18();
     void func_ov031_020e1d48();
-    void func_ov031_020e1d58();
-    void func_ov031_020e1d74();
+    bool func_ov031_020e1d58();
+    bool func_ov031_020e1d74();
     void func_ov031_020e1da0();
     void func_ov031_020e1ebc();
     void func_ov031_020e1ed8();
@@ -128,7 +147,6 @@ public:
     void func_ov031_020e2a9c();
     void func_ov031_020e2b40();
     void func_ov031_020e2c2c();
-    void func_ov031_020e33ac();
 };
 
 class ActorProfileUnkBOMB : public ActorProfile {

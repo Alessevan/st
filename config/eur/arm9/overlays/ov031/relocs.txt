@@ -4634,7 +4634,7 @@ from:0x02102440 kind:load to:0x02117acc module:overlay(31)
 from:0x02102454 kind:arm_call to:0x02011f3c module:main
 from:0x02102460 kind:arm_call to:0x021024ac module:overlay(31)
 from:0x02102478 kind:arm_call to:0x0209c9a8 module:overlay(0)
-from:0x021024a4 kind:load to:0x0211570c module:overlay(31)
+from:0x021024a4 kind:load to:0x02115704 module:overlay(31) add:0x8
 from:0x021024b4 kind:arm_call to:0x0209d700 module:overlay(0)
 from:0x02102518 kind:arm_call to:0x02102bc0 module:overlay(31)
 from:0x02102538 kind:arm_call to:0x0207c018 module:overlay(0)

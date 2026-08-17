@@ -49,7 +49,7 @@ public:
     }
 
     fx32 func_ov031_020e3b94();
-    void func_ov031_020e3b9c(unk16 param1, unk16 param2);
+    static void func_ov031_020e3b9c(Actor *spawner, unk16 param1, unk16 param2);
 };
 
 class ActorProfileBlast : public ActorProfile {

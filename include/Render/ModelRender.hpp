@@ -11,6 +11,12 @@
 class UnkSystem5;
 extern "C" void *func_ov000_02057750(size_t allocSize);
 
+struct ActorUnkZLSL_AnimationTag {
+    unk32 index;
+    char name[0x10];
+    u32 unknown;
+};
+
 typedef void (*UnkSystem4_UnkCallback)(void *, unk32);
 
 class UnkSystem4_vfunc_1C_B4 {
@@ -79,6 +85,7 @@ public:
     void func_ov000_02057d9c();
     void func_ov000_0209a7b8(void *param1, UnkSystem4_UnkCallback param2);
     void func_ov000_02057c98(UnkSystem5 *param1);
+    void func_ov000_02057cf4();
 };
 
 class UnkSystem6_Derived1 : public ModelRenderBase {
@@ -140,7 +147,7 @@ public:
 class UnkSystem5 {
 public:
     /* 00 */ G3d_Model *mpModel;
-    /* 04 */ unk32 mUnk_04;
+    /* 04 */ unk16 mUnk_04;
     /* 08 */ unk32 mUnk_08;
     /* 0C */ unk32 mUnk_0C;
     /* 10 */ unk32 mUnk_10;
