@@ -17,7 +17,7 @@ public:
         mUnk_04(param1) {}
 
     // data_ov031_02112d4c
-    /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 param2) override;
+    /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) override;
 };
 
 class ActorBlast : public Actor {

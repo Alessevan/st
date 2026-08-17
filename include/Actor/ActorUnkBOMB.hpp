@@ -17,7 +17,7 @@ enum ActorUnkBOMBState_ {
     ActorUnkBOMBState_Max
 };
 
-class ActorUnkBOMB_unk : public UnkStruct_PlayerGet_ec {
+class ActorUnkBOMB_unk : public UnkSystem7 {
 public:
     /* 00 (base) */
     /* 04 */ unk32 mUnk_04;
@@ -44,7 +44,7 @@ public:
 class ActorUnkBomb_180 : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (base) */
-    /* 04 */ unk16 mUnk_04;
+    /* 04 */ u16 mUnk_04;
     /* 08 */ Actor *mUnk_08;
     /* 0C */ unk32 mUnk_0C;
     /* 10 */ unk32 mUnk_10;
@@ -64,11 +64,11 @@ public:
 class ActorUnkBOMB_ov031_020e2134 : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (base) */
-    /* 04 */
+    /* 04 */ STRUCT_PAD(0x4, 0x8);
+    /* 08 */
 
     // data_ov031_02112cb0
-    /* 00 */ // dtor _ZN12ActorUnkBOMB19func_ov031_020e2220Ev &  _ZN12ActorUnkBOMB19func_ov031_020e33c0Ev
-    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override; // func_ov031_020e3310
+    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override;
 };
 
 class ActorUnkBOMB : public Actor {
@@ -79,20 +79,29 @@ public:
     /* 114 */ unk32 mUnk_114;
     /* 118 */ STRUCT_PAD(0x118, 0x134);
     /* 134 */ Actor_9C mUnk_134;
-    /* 140 */ STRUCT_PAD(0x154, 0x158);
-    /* 158 */ unk32 mUnk_158;
-    /* 15C */ STRUCT_PAD(0x15C, 0x180);
+    /* 154 */ Cylinder mUnk_154;
+    /* 164 */ ActorUnkBOMB_unk mUnk_164[0x2];
+    /* 17C */ unk32 *mUnk_17C;
     /* 180 */ ActorUnkBomb_180 mUnk_180;
     /* 19C */ ActorUnkBomb_19C mUnk_19C;
     /* 1CC */ VecFx32 mUnk_1CC;
-    /* 1D8 */ STRUCT_PAD(0x1D8, 0x1E4);
+    /* 1D8 */ unk32 mUnk_1D8;
+    /* 1D8 */ unk32 mUnk_1DC;
+    /* 1E0 */ union {
+        struct {
+            u16 mUnk_1E0s;
+            u16 mUnk_1E2;
+        };
+        u32 mUnk_1E0;
+    };
     /* 1E4 */ ActorRef mUnk_1E4;
     /* 1E8 */ unk8 mUnk_1E8;
+    /* 1E8 */ u8 mUnk_1E9;
     /* 1EA */ unk16 mUnk_1EA;
     /* 1EC */ unk16 mUnk_1EC;
     /* 1EE */ unk8 mUnk_1EE;
-    /* 1EF */ STRUCT_PAD(0x1EF, 0x1F0);
-    /* 1F0 */ unk8 mUnk_1F0;
+    /* 1EF */ bool mUnk_1EF;
+    /* 1F0 */ bool mUnk_1F0;
     /* 1F1 */ STRUCT_PAD(0x1F1, 0x1F4);
     /* 1F4 */ Actor_Derived1_94 mUnk_1F4;
     /* 200 */
@@ -109,7 +118,7 @@ public:
     // check if really in ActorUnkBomb
     G3d_Model *func_ov031_020e1540(u16 param1);
     unk32 func_ov031_020e15d0(u16 param1);
-    void func_ov031_020e1634();
+    static void func_ov031_020e1634();
     void func_ov031_020e17f4();
 
     //
@@ -142,10 +151,10 @@ public:
     void func_ov031_020e262c();
     void func_ov031_020e2680();
     void func_ov031_020e2780();
-    void func_ov031_020e2820();
-    void func_ov031_020e295c();
+    void func_ov031_020e2820(ActorUnkBOMB_ov031_020e2134 *param1);
+    void func_ov031_020e295c(ActorUnkBOMB_ov031_020e2134 *param1);
     void func_ov031_020e2a9c();
-    void func_ov031_020e2b40();
+    bool func_ov031_020e2b40();
     void func_ov031_020e2c2c();
 };
 
