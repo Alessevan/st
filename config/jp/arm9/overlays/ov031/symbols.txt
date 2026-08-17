@@ -485,7 +485,7 @@ _ZN15ActorUnkSWBM_948vfunc_08EPK24UnkStruct_ov031_020f3310 kind:function(arm,siz
 _ZN15ActorUnkSWBM_948vfunc_0CEPK24UnkStruct_ov031_020e54d4Pii kind:function(arm,size=0x1c) addr:0x020e82ec
 _ZN15ActorUnkSWBM_988vfunc_0CEP5ActorP7VecFx32 kind:function(arm,size=0x58) addr:0x020e8308
 _ZN15ActorUnkSWBM_988vfunc_10EP5Actor kind:function(arm,size=0x58) addr:0x020e8360
-_ZN15ActorUnkSWBM_C88vfunc_00Eiii kind:function(arm,size=0x168) addr:0x020e83b8
+_ZN15ActorUnkSWBM_C88vfunc_00Eii kind:function(arm,size=0x168) addr:0x020e83b8
 _ZN19ActorProfileUnkSWBM10GetProfileEv kind:function(arm,size=0xc) addr:0x020e8520
 _ZN19ActorProfileUnkSWBM6CreateEv kind:function(arm,size=0x24) addr:0x020e852c
 _ZN19ActorProfileUnkSWBMC1Ev kind:function(arm,size=0x44) addr:0x020e8550
