@@ -91,7 +91,7 @@ public:
 
     // overlay 0
     G3d_Model *func_ov000_0208ed30(unk32 param1, unk32 param2, char *param3);
-    unk32 func_ov000_0208ee94(unk32 param1, unk32 param2, char *param3, unk32 param4);
+    UnkStruct_ov000_02058a84 *func_ov000_0208ee94(unk32 param1, unk32 param2, char *param3, unk32 param4);
 
     // overlay 1
     void func_ov001_020bccec();

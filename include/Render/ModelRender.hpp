@@ -160,14 +160,14 @@ public:
 
     void func_01ffc3b4();
 
-    void func_ov000_020577a4(unk32 param1, unk32 param2, unk32 param3);
+    void func_ov000_020577a4(UnkStruct_ov000_02058a84 *param1, unk32 param2, unk32 param3);
     void func_ov000_020577f8(unk32 param1);
     void func_ov000_020578a4(unk32 param1, unk32 param2);
 };
 
 class UnkSystem5_Derived1 : public UnkSystem5 {
 public:
-    UnkSystem5_Derived1(void *param1, G3d_Model *param2, unk32 param3) :
+    UnkSystem5_Derived1(void *param1, G3d_Model *param2, UnkStruct_ov000_02058a84 *param3) :
         UnkSystem5(param1, param2) {
         unk32 value = 0;
 

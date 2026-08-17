@@ -46,9 +46,7 @@ public:
     /* 00 (base) */
     /* 04 */ u16 mUnk_04;
     /* 08 */ Actor *mUnk_08;
-    /* 0C */ unk32 mUnk_0C;
-    /* 10 */ unk32 mUnk_10;
-    /* 14 */ unk32 mUnk_14;
+    /* 0C */ VecFx32 mUnk_0C; // cylinder ?
     /* 18 */ unk32 mUnk_18;
     /* 1C */
 
@@ -81,7 +79,7 @@ public:
     /* 134 */ Actor_9C mUnk_134;
     /* 154 */ Cylinder mUnk_154;
     /* 164 */ ActorUnkBOMB_unk mUnk_164[0x2];
-    /* 17C */ unk32 *mUnk_17C;
+    /* 17C */ VecFx32 *mUnk_17C;
     /* 180 */ ActorUnkBomb_180 mUnk_180;
     /* 19C */ ActorUnkBomb_19C mUnk_19C;
     /* 1CC */ VecFx32 mUnk_1CC;
@@ -111,7 +109,7 @@ public:
 
     // check if really in ActorUnkBomb
     G3d_Model *func_ov031_020e1540(u16 param1);
-    unk32 func_ov031_020e15d0(u16 param1);
+    UnkStruct_ov000_02058a84 *func_ov031_020e15d0(u16 param1);
     static void func_ov031_020e1634();
     void func_ov031_020e17f4();
 
@@ -143,7 +141,7 @@ public:
     void func_ov031_020e238c();
     bool func_ov031_020e25bc();
     bool func_ov031_020e262c();
-    void func_ov031_020e2680();
+    void func_ov031_020e2680(VecFx32 *param1);
     void func_ov031_020e2780(VecFx32 *param1);
     void func_ov031_020e2820(ActorUnkBOMB_ov031_020e2134 *param1);
     void func_ov031_020e295c(ActorUnkBOMB_ov031_020e2134 *param1);

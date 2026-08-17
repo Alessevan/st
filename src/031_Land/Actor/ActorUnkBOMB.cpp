@@ -17,15 +17,16 @@
 
 extern "C" VecFx32 data_027e07d4;
 extern "C" unk32 data_ov000_020aecf8;
-extern "C" unk32 data_ov031_02110a10;
-extern "C" unk32 data_ov031_02110a28;
+extern "C" VecFx32 data_ov031_02110a10;
+extern "C" VecFx32 data_ov031_02110a28;
 extern "C" char data_ov031_02110a50;
 extern "C" char data_ov031_02110a60;
 extern "C" char data_ov031_02110a70;
 
 extern "C" void func_01ff9218(fx32 *, fx32, fx32);
 extern "C" unk32 func_01ff9258(fx32, fx32);
-extern "C" void func_01ffb974(unk32, unk32 *, VecFx32 *, VecFx32 *);
+extern "C" void func_01ff94cc(VecFx32 *, VecFx32 *, VecFx32 *);
+extern "C" void func_01ffb974(unk32, VecFx32 *, VecFx32 *, VecFx32 *);
 extern "C" void func_01ffc5a0(ModelRender *, unk32, UnkAngleStruct, void *);
 extern "C" void func_0200b578(G3d_RenderObject *, void (*)(), unk32, unk32, unk32);
 
@@ -70,13 +71,14 @@ G3d_Model *ActorUnkBOMB::func_ov031_020e1540(u16 param1) {
         ((MapObjectProfileUnkBMFL *) data_ov000_020b5d34.GetProfileFromId(MapObjectId_BMFL))->mUnk_20.mUnk_50);
 }
 
-unk32 ActorUnkBOMB::func_ov031_020e15d0(u16 param1) {
+UnkStruct_ov000_02058a84 *ActorUnkBOMB::func_ov031_020e15d0(u16 param1) {
     if (param1 == 0x0) {
         return data_027e0ce0->mUnk_1C->func_ov000_0208ee94(0x0, 0x1, &data_ov031_02110a70, 0x1);
     }
     return ((MapObjectProfileUnkBMFL *) data_ov000_020b5d34.GetProfileFromId(MapObjectId_BMFL))
         ->mUnk_20.func_ov000_02058a84(0x1, &data_ov031_02110a50);
 }
+
 void ActorUnkBOMB::func_ov031_020e1634() {}
 
 ActorUnkBOMB::ActorUnkBOMB() :
@@ -162,7 +164,8 @@ void ActorUnkBOMB::func_ov031_020e193c() {
         VecFx32 sp0C;
         func_01ffb974(this->mUnk_1D8, this->mUnk_17C, &this->mPos, &sp0C);
         VecFx32 sp00;
-        func_01ffb974(this->mUnk_1D8, this->mUnk_17C + 3, &this->mPos, &sp00);
+        // weird logic + 1
+        func_01ffb974(this->mUnk_1D8, this->mUnk_17C + 1, &this->mPos, &sp00);
 
         data_027e0cec->func_ov000_020a0140(&this->mUnk_164[0], &sp0C);
         data_027e0cec->func_ov000_020a0140(&this->mUnk_164[1], &sp00);
@@ -222,11 +225,11 @@ void ActorUnkBOMB::vfunc_24() {
 
 // non-matching
 void ActorUnkBOMB::func_ov031_020e1b1c() {
-    unk32 param1 = this->func_ov031_020e15d0(this->mUnk_5C.mParams[0]);
+    UnkStruct_ov000_02058a84 *param1 = this->func_ov031_020e15d0(this->mUnk_5C.mParams[0]);
 
-    u32 param3;
+    bool param3 = !(param1->mUnk_6 & 0x2);
 
-    this->mUnk_0F4.func_ov000_020577a4(param1, 0x0, 0x1);
+    this->mUnk_0F4.func_ov000_020577a4(param1, 0x0, param3);
 
     this->mUnk_0F4.mUnk_08 = 0x1000;
     this->mUnk_0F4.mUnk_04 = data_ov031_02112be8.unknown;
@@ -280,7 +283,7 @@ void ActorUnkBOMB::func_ov031_020e1da0() {
                 this->func_ov000_020984d0();
                 return;
             }
-            if (this->mUnk_180.mUnk_14 >= -0x19A) {
+            if (this->mUnk_180.mUnk_0C.z >= -0x19A) {
                 this->mUnk_2C = 0x0;
                 VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
                 func_01ffb974(-0x29, &this->mUnk_180.mUnk_0C, &this->mVel, &this->mVel);
@@ -547,7 +550,31 @@ bool ActorUnkBOMB::func_ov031_020e262c() {
     return true;
 }
 
-void ActorUnkBOMB::func_ov031_020e2680() {}
+void ActorUnkBOMB::func_ov031_020e2680(VecFx32 *param1) {
+    if (this->mVel.y == FLOAT_TO_FX32(0.0f)) {
+        return;
+    }
+
+    if (param1->x == FLOAT_TO_FX32(0.0f) && param1->y == FLOAT_TO_FX32(0.0f) && param1->z == FLOAT_TO_FX32(0.0f)) {
+        return;
+    }
+
+    VecFx32 sp0C = this->mVel;
+    VecFx32 sp00 = this->mVel;
+
+    if (VecFx32_Dot(param1, &sp00) >= FLOAT_TO_FX32(0.0f)) {
+        return;
+    }
+
+    fx32 velLength = VecFx32_Length(&this->mVel);
+
+    func_01ff94cc(&sp00, param1, &sp0C);
+    VecFx32_TryNormalize(&sp00);
+
+    this->mVel.x = MUL_FX32(sp00.x, MUL_FX32(velLength, FLOAT_TO_FX32(0.2f)));
+    this->mVel.z = MUL_FX32(sp00.z, MUL_FX32(velLength, FLOAT_TO_FX32(0.2f)));
+}
+
 void ActorUnkBOMB::func_ov031_020e2780(VecFx32 *param1) {
     VecFx32 sp00 = *param1;
 
@@ -556,13 +583,13 @@ void ActorUnkBOMB::func_ov031_020e2780(VecFx32 *param1) {
     }
 
     fx32 dot = VecFx32_Dot(&sp00, &this->mVel);
-    if (dot >= 0x0) {
+    if (dot >= FLOAT_TO_FX32(0.0f)) {
         return;
     }
 
-    func_01ffb974((s32) (dot * 0xFFFFECCD + 0x800) >> 0xC, &sp00.x, &this->mVel, &this->mVel); // TODO : reformat
-    this->mVel.x = (this->mVel.x * 0xC00 + 0x800) >> 0xC;
-    this->mVel.z = (this->mVel.z * 0xC00 + 0x800) >> 0xC;
+    func_01ffb974(ROUND_FX32(dot * FLOAT_TO_FX32(-1.2002f)), &sp00, &this->mVel, &this->mVel);
+    this->mVel.x = ROUND_FX32(this->mVel.x * FLOAT_TO_FX32(0.75f));
+    this->mVel.z = ROUND_FX32(this->mVel.z * FLOAT_TO_FX32(0.75f));
 }
 
 void ActorUnkBOMB::func_ov031_020e2820(ActorUnkBOMB_ov031_020e2134 *param1) {}
@@ -576,17 +603,24 @@ void ActorUnkBOMB::func_ov031_020e2c2c() {
 }
 
 ActorUnkBomb_180::ActorUnkBomb_180(Actor *param1) :
-    mUnk_08(param1),
-    mUnk_0C(0x0),
-    mUnk_10(0x0),
-    mUnk_14(0x0),
-    mUnk_18(0x0) {}
+    mUnk_08(param1) {
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_0C);
+    this->mUnk_18 = 0x0;
+}
 
 ActorUnkBomb_180::~ActorUnkBomb_180() {
     this->mUnk_08 = NULL;
 }
 
-bool ActorUnkBomb_180::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {}
+// non-matching (wrong instruction in condition)
+bool ActorUnkBomb_180::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
+    if (((((u32) param1->mUnk_04->mUnk_24[param1->mUnk_00->mUnk_06]) >> 0x19) & 1) == 1) {
+        return false;
+    }
+
+    VecFx16_Copy2VecFx32(&param1->mUnk_08, &this->mUnk_0C);
+    return this->UnkStruct_ov031_Items_00::vfunc_08(param1);
+}
 
 bool ActorUnkBomb_180::vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) {}
 

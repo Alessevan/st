@@ -268,7 +268,7 @@ void ActorItemTornado::vfunc_2C(unk32 param1) {
     VecFx32 vec = this->mPos;
 
     if (this->mState == ActorItemTornadoState_0) {
-        vec.y += (((FLOAT_TO_FX32(1.0f) - this->mUnk_1DC) << 0xC) + FLOAT_TO_FX32(0.5f)) >> 0xC;
+        vec.y += ROUND_FX32(((FLOAT_TO_FX32(1.0f) - this->mUnk_1DC) << 0xC));
     }
     data_027e0958->func_ov000_02058fc4(&this->mUnk_17C, &vec);
 }
