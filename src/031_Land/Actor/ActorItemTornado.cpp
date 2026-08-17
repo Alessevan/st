@@ -39,7 +39,7 @@ ActorProfileItemTornado::ActorProfileItemTornado() :
 
 // non-matching
 ActorItemTornado::ActorItemTornado() :
-    mUnk_94(data_027e0ce0->func_ov000_0208ed30(0x0, 0x1, data_ov031_02110a88)),
+    mUnk_94(data_027e0ce0->mUnk_1C->func_ov000_0208ed30(0x0, 0x1, data_ov031_02110a88)),
     mUnk_F4(&this->mUnk_114, this->mUnk_94.mpModel),
     mUnk_134(&this->mUnk_154, this->mUnk_94.mpModel),
     mUnk_17C(NULL),
