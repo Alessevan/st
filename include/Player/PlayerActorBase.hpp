@@ -18,14 +18,7 @@ extern "C" void func_ov000_0205d500(ActorGrabParams *, unk32, unk32);
 bool PlayerCharacter_IsNotLink(s32 character);
 
 struct ActorGrabParams {
-    /* 00 */
-    union {
-        struct {
-            u16 unk_00;
-            u16 unk_02;
-        };
-        u32 mUnk_00;
-    };
+    /* 00 */ ActorRef mUnk_00;
     /* 04 */
 
     ActorGrabParams() {}

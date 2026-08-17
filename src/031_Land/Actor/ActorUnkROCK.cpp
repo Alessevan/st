@@ -106,7 +106,7 @@ void ActorUnkROCK::vfunc_2C(unk32 param1) {
 }
 
 bool ActorUnkROCK::Grab(ActorGrabParams param1) {
-    if (param1.unk_00 != 0x100 || param1.unk_02 != 1) {
+    if (param1.mUnk_00.type_index != 0x100 || param1.mUnk_00.unk_id != 1) {
         return false;
     }
     if (!this->Actor::Grab(param1)) {

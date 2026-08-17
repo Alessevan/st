@@ -87,13 +87,7 @@ public:
     /* 1CC */ VecFx32 mUnk_1CC;
     /* 1D8 */ unk32 mUnk_1D8;
     /* 1D8 */ unk32 mUnk_1DC;
-    /* 1E0 */ union {
-        struct {
-            u16 mUnk_1E0s;
-            u16 mUnk_1E2;
-        };
-        u32 mUnk_1E0;
-    };
+    /* 1E0 */ ActorRef mUnk_1E0;
     /* 1E4 */ ActorRef mUnk_1E4;
     /* 1E8 */ unk8 mUnk_1E8;
     /* 1E8 */ u8 mUnk_1E9;
@@ -148,9 +142,9 @@ public:
     void func_ov031_020e2134();
     void func_ov031_020e238c();
     bool func_ov031_020e25bc();
-    void func_ov031_020e262c();
+    bool func_ov031_020e262c();
     void func_ov031_020e2680();
-    void func_ov031_020e2780();
+    void func_ov031_020e2780(VecFx32 *param1);
     void func_ov031_020e2820(ActorUnkBOMB_ov031_020e2134 *param1);
     void func_ov031_020e295c(ActorUnkBOMB_ov031_020e2134 *param1);
     void func_ov031_020e2a9c();
