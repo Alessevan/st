@@ -96,7 +96,12 @@ ActorUnkBOMB::ActorUnkBOMB() :
     mUnk_1EA(0x0),
     mUnk_1EC(0x0),
     mUnk_1EE(0x0),
-    mUnk_1F0(false) {
+    mUnk_1F0(false)
+#if IS_JP
+    ,
+    mUnk_1F1(false)
+#endif
+{
     if (this->mUnk_5C.mParams[0] != 0x1) {
         this->mUnk_1EF = false;
         this->mUnk_17C = &data_ov031_02110a28;
@@ -110,6 +115,9 @@ ActorUnkBOMB::ActorUnkBOMB() :
     this->mUnk_164[1].mUnk_04 = 0x811;
     this->mUnk_164[1].mUnk_08 = 0x2;
     SET_FLAG(this->mFlags, ActorFlag_11);
+#if IS_JP
+    SET_FLAG(this->mFlags, ActorFlag_13);
+#endif
 }
 
 void ActorUnkBOMB::func_ov031_020e17f4() {}
@@ -323,9 +331,17 @@ void ActorUnkBOMB::func_ov031_020e1f18() {
             var = false;
         }
         if (var) {
-            ItemManager *itemManager = data_027e0ce0->mUnk_2C;
-            if (itemManager != NULL && itemManager->GetInventory()->GetBombAmount() > 0) {
-                itemManager->GetInventory()->GiveBombs(-1);
+#if IS_JP
+            if (!this->mUnk_1F1)
+#endif
+            {
+                ItemManager *itemManager = data_027e0ce0->mUnk_2C;
+                if (itemManager != NULL && itemManager->GetInventory()->GetBombAmount() > 0) {
+                    itemManager->GetInventory()->GiveBombs(-1);
+#if IS_JP
+                    this->mUnk_1F1 = true;
+#endif
+                }
             }
         }
     }

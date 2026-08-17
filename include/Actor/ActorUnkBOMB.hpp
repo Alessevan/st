@@ -94,7 +94,12 @@ public:
     /* 1EE */ unk8 mUnk_1EE;
     /* 1EF */ bool mUnk_1EF;
     /* 1F0 */ bool mUnk_1F0;
-    /* 1F1 */ STRUCT_PAD(0x1F1, 0x1F4);
+#if IS_JP
+    /* 1F1 */ bool mUnk_1F1;
+#else
+    /* 1F1 */ STRUCT_PAD(0x1F1, 0x1F2);
+#endif
+    /* 1F2 */ STRUCT_PAD(0x1F2, 0x1F4);
     /* 1F4 */ Actor_Derived1_94 mUnk_1F4;
     /* 200 */
 
