@@ -101,7 +101,7 @@ void MapObjectPot::vfunc_48() {
 
     data_027e0cec->func_ov000_0209feac(0x822, &stack_09, 0x4, 0x0, 0x0);
 
-    if (this->func_ov000_0209da64() != 0x65) {
+    if (this->MapObjectPot_Base::vfunc_54() != 0x65) {
         return;
     }
 
@@ -117,7 +117,7 @@ void MapObjectPot::vfunc_14() {
 }
 
 unk32 MapObjectPot::vfunc_54() {
-    if (this->func_ov000_0209da64() == 0x65) {
+    if (this->MapObjectPot_Base::vfunc_54() == 0x65) {
         return 0x1;
     }
 
@@ -125,14 +125,14 @@ unk32 MapObjectPot::vfunc_54() {
         return 0x1;
     }
 
-    return this->func_ov000_0209da64();
+    return this->MapObjectPot_Base::vfunc_54();
 }
 
 void MapObjectPot::vfunc_24(MapObject *param1, VecFx32 param2) {
-    this->func_ov000_0209d8e8((MapObjectPot_Base *) param1, param2.x);
+    this->MapObjectPot_Base::vfunc_24(param1, param2);
     param1->func_ov000_0209d614(0x1);
 
-    if (((MapObjectPot_Base *) param1)->func_ov000_0209da64() != 0x65) {
+    if (((MapObjectPot_Base *) param1)->MapObjectPot_Base::vfunc_54() != 0x65) {
         return;
     }
 
@@ -144,17 +144,17 @@ void MapObjectPot::vfunc_24(MapObject *param1, VecFx32 param2) {
 }
 
 bool MapObjectPot::vfunc_3C() {
-    if (this->func_ov000_0209da64() == 0x65) {
+    if (this->MapObjectPot_Base::vfunc_54() == 0x65) {
         return false;
     }
-    if (this->func_ov000_0209da64() == 0x0) {
+    if (this->MapObjectPot_Base::vfunc_54() == 0x0) {
         return this->func_ov000_0209d668() == 0x0;
     }
     return false;
 }
 
 bool MapObjectPot::vfunc_40() {
-    if (this->func_ov000_0209da64() == 0x65) {
+    if (this->MapObjectPot_Base::vfunc_54() == 0x65) {
         if (!this->func_ov000_0209d29c(0x0)) {
             return true;
         }

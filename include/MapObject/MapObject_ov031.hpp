@@ -22,10 +22,6 @@ public:
     /* 4C */ virtual void vfunc_4C() override;
     /* 50 */ virtual void vfunc_50() override;
     /* 54 */ virtual unk32 vfunc_54() override;
-
-    // overlay 0
-    void func_ov000_0209d8e8(MapObjectPot_Base *param1, fx32 param2);
-    unk32 func_ov000_0209da64();
 };
 
 class MapObject_10_Pot : public MapObject_10 {
