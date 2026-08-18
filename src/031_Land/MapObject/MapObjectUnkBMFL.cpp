@@ -2,6 +2,7 @@
 
 #include "Actor/ActorManager.hpp"
 #include "System/SysNew.hpp"
+#include "Unknown/UnkStruct_027e09a8.hpp"
 #include "Unknown/UnkStruct_027e0d38.hpp"
 
 extern "C" fx32 func_01ffb464(fx32);
@@ -52,7 +53,7 @@ bool MapObjectUnkBMFL::vfunc_1C(ActorRef param1, unk32 param2, VecFx32 *param3) 
                 break;
             }
             func_ov031_020e0f30(param1);
-            this->vfunc_44(0x1, 0x0);
+            this->SetState(MapObjUnkBMFLState_1, 0x0);
             break;
         case 0x0:
         case 0x3:
@@ -64,17 +65,17 @@ bool MapObjectUnkBMFL::vfunc_1C(ActorRef param1, unk32 param2, VecFx32 *param3) 
                 break;
             }
             if (param2 != 0) {
-                this->vfunc_44(0x1, 0x0);
+                this->SetState(MapObjUnkBMFLState_1, 0x0);
                 break;
             }
-            this->vfunc_44(0x6, 0x0);
+            this->SetState(0x6, 0x0);
             break;
         case 0x4:
             if (this->mState != MapObjUnkBMFLState_0) {
                 return false;
             }
             if (data_027e0d38->func_ov031_020d9c04(0x2, 0x0, 0x1)) {
-                this->vfunc_44(0x3, 0x0);
+                this->SetState(MapObjUnkBMFLState_3, 0x0);
             }
             return false;
         case 0x10:
@@ -121,11 +122,11 @@ void MapObjectUnkBMFL::vfunc_08() {
                 break;
             }
 
-            this->vfunc_44(0x5, 0x0);
+            this->SetState(MapObjUnkBMFLState_5, 0x0);
             break;
         case MapObjUnkBMFLState_5:
             if (this->IsInternalTimerOut()) {
-                this->vfunc_44(0x0, 0x0);
+                this->SetState(MapObjUnkBMFLState_0, 0x0);
                 break;
             }
 
@@ -141,7 +142,63 @@ void MapObjectUnkBMFL::vfunc_08() {
     this->mUnk_BC = true;
 }
 
-void MapObjectUnkBMFL::vfunc_44(unk32, unk32) {}
+bool MapObjectUnkBMFL::SetState(MapObjState state, unk32 param2) {
+    if (param2 == 0x0 && this->mState == state) {
+        return true;
+    }
+    this->mState = state;
+
+    switch (this->mState) {
+        case MapObjUnkBMFLState_1:
+            this->vfunc_48();
+            this->SetState(MapObjUnkBMFLState_4, 0x0);
+            break;
+
+        case MapObjUnkBMFLState_6:
+            this->vfunc_58();
+            this->SetState(MapObjUnkBMFLState_4, 0x0);
+            break;
+
+        case MapObjUnkBMFLState_2:
+            this->SetState(MapObjUnkBMFLState_4, 0x0);
+            break;
+
+        case MapObjUnkBMFLState_4:
+            this->mUnk_C0.mUnk_04 &= 0xFD;
+            this->mUnk_C0.mUnk_08 |= 0xA800000;
+            UNSET_FLAG(this->mFlags, MapObjFlag_9);
+            this->mUnk_B4 = FLOAT_TO_FX32(0.0f);
+            this->mUnk_BA = 0xB4;
+            this->mUnk_B8 = 0x00;
+            break;
+
+        case MapObjUnkBMFLState_5:
+            this->mUnk_BA = 0xA;
+            this->mUnk_B8 = 0x0;
+            data_027e09a8->func_ov000_02071b30(0x10C, &this->mPos, 0x0);
+            break;
+
+        case MapObjUnkBMFLState_0:
+            this->MapObjectPot_Base::SetState(state, param2);
+            this->mUnk_C0.mUnk_04 |= 0x2;
+            this->mUnk_C0.mUnk_08 &= ~0xA800000;
+            SET_FLAG(this->mFlags, MapObjFlag_9);
+            this->mUnk_B4 = FLOAT_TO_FX32(1.0f);
+            break;
+
+        case MapObjUnkBMFLState_3:
+            this->vfunc_38();
+            this->SetState(MapObjUnkBMFLState_4, 0x0);
+            break;
+
+        default:
+            this->MapObjectPot_Base::SetState(state, param2);
+            break;
+    }
+
+    this->mUnk_B0 = this->mUnk_B4;
+    return true;
+}
 
 void MapObjectUnkBMFL::vfunc_14() {
     this->mUnk_48.func_ov031_02102c00();

@@ -57,29 +57,29 @@ void MapObjectPot::vfunc_04() {
 bool MapObjectPot::vfunc_1C(ActorRef param1, unk32 param2, VecFx32 *param3) {
     switch (param2) {
         case 0xD:
-            this->vfunc_44(0x1, 0x0);
+            this->SetState(0x1, 0x0);
             func_ov031_020e0f30(param1);
             break;
         case 0x0:
         case 0x1:
         case 0x7:
         case 0x8:
-            this->vfunc_44(0x1, 0x0);
+            this->SetState(0x1, 0x0);
             break;
         case 0x3:
         case 0xC:
-            this->vfunc_44(0x1, 0x0);
+            this->SetState(0x1, 0x0);
             return false;
         case 0xA:
         case 0xB:
-            this->vfunc_44(0x1, 0x0);
+            this->SetState(0x1, 0x0);
             break;
         case 0x4:
             if (data_027e0d38->func_ov031_020d9c04(0x1, 0x0, 0x0)) {
                 Actor *actor = gpActorManager->func_01fff3b4(param1);
                 if (actor != NULL) {
                     this->mUnk_14 = actor->mAngle;
-                    this->vfunc_44(0x3, 0x0);
+                    this->SetState(0x3, 0x0);
                     break;
                 }
             }

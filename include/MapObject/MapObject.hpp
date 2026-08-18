@@ -82,7 +82,7 @@ public:
 
     MapObject_10() {}
 
-    // data_ov031_02113f18
+    // data_ov000_020b36b8
     /* 00 */ virtual void vfunc_00();
     /* 04 */ virtual void vfunc_04();
     /* 08 */ virtual void vfunc_08();

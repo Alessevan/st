@@ -236,6 +236,7 @@ config.libs = [
             Object("000_Second/MapObject/MapObjectProfile.cpp"),
             Object("000_Second/MapObject/MapObjectProfile_Derived2_20.cpp"),
             Object("000_Second/MapObject/MapObject.cpp"),
+            Object("000_Second/MapObject/MapObjectPot_Base.cpp"),
             Object("000_Second/MapObject/MapObjectSwitchStep.cpp"),
             Object("000_Second/MapObject/MapObjectMiniBlocks.cpp"),
             Object("000_Second/Cutscene/Cutscene.cpp"),

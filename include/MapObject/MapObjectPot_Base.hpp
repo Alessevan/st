@@ -1,10 +1,17 @@
 #pragma once
+#include "Actor/ActorId.hpp"
+#include "MapObject.hpp"
+
+enum MapObjPotBase_State_ {
+    MapObjPotBase_State_0,
+    MapObjPotBase_State_Max
+};
 
 class MapObjectPot_Base : public MapObject {
 public:
     /* 00 (base) */
     /* 40 */ ActorId mUnk_40;
-    /* 44 */ STRUCT_PAD(0x44, 0x48);
+    /* 44 */ unk16 mUnk_44;
     /* 48 */
 
     MapObjectPot_Base();
@@ -17,26 +24,11 @@ public:
     /* 38 */ virtual void vfunc_38() override;
     /* 3C */ virtual bool vfunc_3C() override;
     /* 40 */ virtual bool vfunc_40() override;
-    /* 44 */ virtual void vfunc_44(unk32, unk32) override;
+    /* 44 */ virtual bool SetState(MapObjState state, unk32 param2) override;
     /* 48 */ virtual void vfunc_48() override;
-    /* 4C */ virtual void vfunc_4C() override;
+    /* 4C */ virtual bool vfunc_4C() override;
     /* 50 */ virtual void vfunc_50() override;
     /* 54 */ virtual unk32 vfunc_54() override;
-};
 
-class MapObject_10_Pot : public MapObject_10 {
-public:
-    /* 00 (base) */
-    /* 24 */
-
-    MapObject_10_Pot() {}
-};
-
-class MapObjectProfilePot_Base : public MapObjectProfile_Derived2 {
-public:
-    /* 00 (base) */
-    /* D4 */ MapObject_10_Pot mUnk_D4;
-
-    MapObjectProfilePot_Base(MapObjectId param1, MapObjectId param2) :
-        MapObjectProfile_Derived2(param1, param2) {}
+    void func_ov000_0209da78(unk32 param1, unk32 param2);
 };

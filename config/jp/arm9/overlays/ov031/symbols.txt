@@ -1515,7 +1515,7 @@ _ZN16MapObjectUnkBMFL8vfunc_48Ev kind:function(arm,size=0x10) addr:0x02104464
 _ZN16MapObjectUnkBMFL8vfunc_58Ev kind:function(arm,size=0x10) addr:0x02104474
 _ZN16MapObjectUnkBMFL19func_ov031_02102728Ei kind:function(arm,size=0x7c) addr:0x02104484
 _ZN16MapObjectUnkBMFL8vfunc_08Ev kind:function(arm,size=0xf0) addr:0x02104500
-_ZN16MapObjectUnkBMFL8vfunc_44Eii kind:function(arm,size=0x15c) addr:0x021045f0
+_ZN16MapObjectUnkBMFL8SetStateEsi kind:function(arm,size=0x15c) addr:0x021045f0
 _ZN16MapObjectUnkBMFL8vfunc_14Ev kind:function(arm,size=0x50) addr:0x0210474c
 _ZN16MapObjectUnkBMFL8vfunc_38Ev kind:function(arm,size=0x98) addr:0x0210479c
 _ZN16MapObjectUnkBMFL8vfunc_28Ev kind:function(arm,size=0x1c) addr:0x02104834
@@ -2329,7 +2329,7 @@ _ZTV10ActorHeart kind:data(any) addr:0x02115bb0
 _ZTV19ActorProfileUnkRMTG kind:data(any) addr:0x02115c0c
 _ZTV12ActorUnkRMTG kind:data(any) addr:0x02115c30
 _ZTV19ActorProfileUnkSCCN kind:data(any) addr:0x02115c8c
-_ZTV12MapObject_10 kind:data(any) addr:0x02115cb0
+_ZTV16MapObject_10_Pot kind:data(any) addr:0x02115cb0
 _ZTV12ActorUnkSCCN kind:data(any) addr:0x02115cd8
 _ZTV19data_ov031_02115d3c kind:data(any) addr:0x02115d34
 data_ov031_02115d58 kind:data(any) addr:0x02115d58

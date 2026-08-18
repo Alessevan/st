@@ -1,9 +1,11 @@
 #pragma once
 
 #include "Actor/ActorItemFlower.hpp"
+#include "Actor/ActorUnkSCCN.hpp"
 #include "MapObject/MapObject.hpp"
 #include "MapObject/MapObjectProfile.hpp"
-#include "MapObject_ov031.hpp"
+#include "MapObjectPot_Base.hpp"
+#include "MapObject_10_Pot.hpp"
 #include "global.h"
 #include "types.h"
 
@@ -14,6 +16,7 @@ enum MapObjUnkBMFLState_ {
     MapObjUnkBMFLState_3 = 3,
     MapObjUnkBMFLState_4 = 4,
     MapObjUnkBMFLState_5 = 5,
+    MapObjUnkBMFLState_6 = 6,
     MapObjUnkBMFLState_Max
 };
 
@@ -36,7 +39,7 @@ public:
     /* 1C */ virtual bool vfunc_1C(ActorRef param1, unk32 param2, VecFx32 *param3) override;
     /* 28 */ virtual unk32 vfunc_28() override;
     /* 38 */ virtual void vfunc_38() override;
-    /* 44 */ virtual void vfunc_44(unk32, unk32) override;
+    /* 44 */ virtual bool SetState(MapObjState state, unk32) override;
     /* 48 */ virtual void vfunc_48() override;
     /* 50 */ virtual void vfunc_50() override;
     /* 58 */ virtual void vfunc_58();
