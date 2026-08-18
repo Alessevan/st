@@ -532,7 +532,7 @@ config.libs = [
             Object("031_Land/Actor/ActorShotArrow.cpp"),
             Object("031_Land/Actor/ActorUnkATTG.cpp"),
             Object("031_Land/Actor/ActorBlast.cpp"),
-            Object("031_Land/Actor/ActorUnkBOMB.cpp"),
+            Object("031_Land/Actor/ActorBomb.cpp"),
             Object("031_Land/Actor/ActorUnkCLLT.cpp"),
             Object("031_Land/Actor/ActorUnkEFSB.cpp"),
             Object("031_Land/Actor/ActorUnkFLEN.cpp"),

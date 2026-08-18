@@ -6,42 +6,40 @@
 #include "global.h"
 #include "types.h"
 
-enum ActorUnkBOMBState_ {
-    ActorUnkBOMBState_0 = 0,
-    ActorUnkBOMBState_1 = 1,
-    ActorUnkBOMBState_2 = 2,
-    ActorUnkBOMBState_3 = 3,
-    ActorUnkBOMBState_4 = 4,
-    ActorUnkBOMBState_5 = 5,
-    ActorUnkBOMBState_6 = 6,
-    ActorUnkBOMBState_Max
+enum ActorBombState_ {
+    ActorBombState_0 = 0,
+    ActorBombState_1 = 1,
+    ActorBombState_2 = 2,
+    ActorBombState_3 = 3,
+    ActorBombState_4 = 4,
+    ActorBombState_5 = 5,
+    ActorBombState_6 = 6,
+    ActorBombState_Max
 };
 
-class ActorUnkBOMB_unk : public UnkSystem7 {
+class ActorBomb_unk : public UnkSystem7 {
 public:
     /* 00 (base) */
     /* 04 */ unk32 mUnk_04;
     /* 08 */ unk32 mUnk_08;
     /* 0C */
 
-    ActorUnkBOMB_unk(); // ActorUnkBOMB::func_ov031_020e33ac()
-
-    // ActorUnkBOMB::func_ov031_020e17f4() dtor ?
+    ActorBomb_unk();
 };
 
-class ActorUnkBomb_19C : public UnkStruct_ov031_Items_01 {
+class ActorBomb_19C : public UnkStruct_ov031_Items_01 {
 public:
     /* 00 (base) */
     /* 2C */ Actor *mUnk_2C;
     /* 30 */
 
-    ActorUnkBomb_19C(Actor *param1);
+    ActorBomb_19C(Actor *param1);
 
     // data_ov031_02112c94
     /* 10 */ virtual void vfunc_10(Actor *actor) override;
 };
 
-class ActorUnkBomb_180 : public UnkStruct_ov031_Items_00 {
+class ActorBomb_180 : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (base) */
     /* 04 */ u16 mUnk_04;
@@ -50,16 +48,16 @@ public:
     /* 18 */ unk32 mUnk_18;
     /* 1C */
 
-    ActorUnkBomb_180(Actor *param1);
+    ActorBomb_180(Actor *param1);
 
     // data_ov031_02112c78
-    /* 00 */ virtual ~ActorUnkBomb_180() override;
+    /* 00 */ virtual ~ActorBomb_180() override;
     /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override;
     /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) override;
     /* 10 */ virtual bool vfunc_10(ActorRef param1, unk32 param2) override;
 };
 
-class ActorUnkBOMB_ov031_020e2134 : public UnkStruct_ov031_Items_00 {
+class ActorBomb_ov031_020e2134 : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (base) */
     /* 04 */ STRUCT_PAD(0x4, 0x8);
@@ -69,7 +67,7 @@ public:
     /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override;
 };
 
-class ActorUnkBOMB : public Actor {
+class ActorBomb : public Actor {
 public:
     /* 000 (base) */
     /* 094 */ ModelRender mUnk_094;
@@ -78,10 +76,10 @@ public:
     /* 118 */ STRUCT_PAD(0x118, 0x134);
     /* 134 */ Actor_9C mUnk_134;
     /* 154 */ Cylinder mUnk_154;
-    /* 164 */ ActorUnkBOMB_unk mUnk_164[0x2];
+    /* 164 */ ActorBomb_unk mUnk_164[0x2];
     /* 17C */ VecFx32 *mUnk_17C;
-    /* 180 */ ActorUnkBomb_180 mUnk_180;
-    /* 19C */ ActorUnkBomb_19C mUnk_19C;
+    /* 180 */ ActorBomb_180 mUnk_180;
+    /* 19C */ ActorBomb_19C mUnk_19C;
     /* 1CC */ VecFx32 mUnk_1CC;
     /* 1D8 */ unk32 mUnk_1D8;
     /* 1D8 */ unk32 mUnk_1DC;
@@ -103,7 +101,7 @@ public:
     /* 1F4 */ Actor_Derived1_94 mUnk_1F4;
     /* 200 */
 
-    ActorUnkBOMB();
+    ActorBomb();
 
     /* 18 */ virtual bool vfunc_18(unk32 param1) override;
     /* 20 */ virtual void vfunc_20() override;
@@ -155,13 +153,13 @@ public:
     void func_ov031_020e2c2c();
 };
 
-class ActorProfileUnkBOMB : public ActorProfile {
+class ActorProfileBomb : public ActorProfile {
 public:
     /* 00 (base) */
 
-    ActorProfileUnkBOMB();
+    ActorProfileBomb();
 
     /* 0C */ virtual Actor *Create();
 
-    static ActorProfileUnkBOMB *GetProfile();
+    static ActorProfileBomb *GetProfile();
 };
