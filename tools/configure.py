@@ -562,7 +562,7 @@ config.libs = [
             Object("031_Land/Actor/ActorUnkZLSL_ZSRS.cpp"),
             Object("031_Land/MapObject/MapObjectDoorBase.cpp"),
             Object("031_Land/MapObject/MapObjectUnkBLCC.cpp"),
-            Object("031_Land/MapObject/MapObjectUnkBMFL.cpp"),
+            Object("031_Land/MapObject/MapObjectBombFlower.cpp"),
             Object("031_Land/MapObject/MapObjectUnkBREX.cpp"),
             Object("031_Land/MapObject/MapObjectUnkCRWL.cpp"),
             Object("031_Land/MapObject/MapObjectDoorClick.cpp"),

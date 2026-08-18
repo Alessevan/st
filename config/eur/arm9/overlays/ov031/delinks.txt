@@ -290,7 +290,7 @@ src/031_Land/MapObject/MapObjectUnkSWHT.cpp:
     .ctor       start:0x02112838 end:0x0211283c
     .bss        start:0x021179b8 end:0x02117abc
 
-src/031_Land/MapObject/MapObjectUnkBMFL.cpp:
+src/031_Land/MapObject/MapObjectBombFlower.cpp:
     .text       start:0x02102438 end:0x02102bc0
     .init       start:0x02111ef8 end:0x02111f48
     .ctor       start:0x0211283c end:0x02112840

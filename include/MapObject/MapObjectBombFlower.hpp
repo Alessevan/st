@@ -9,18 +9,18 @@
 #include "global.h"
 #include "types.h"
 
-enum MapObjUnkBMFLState_ {
-    MapObjUnkBMFLState_0 = 0,
-    MapObjUnkBMFLState_1 = 1,
-    MapObjUnkBMFLState_2 = 2,
-    MapObjUnkBMFLState_3 = 3,
-    MapObjUnkBMFLState_4 = 4,
-    MapObjUnkBMFLState_5 = 5,
-    MapObjUnkBMFLState_6 = 6,
-    MapObjUnkBMFLState_Max
+enum MapObjBombFlowerState_ {
+    MapObjBombFlowerState_0 = 0,
+    MapObjBombFlowerState_1 = 1,
+    MapObjBombFlowerState_2 = 2,
+    MapObjBombFlowerState_3 = 3,
+    MapObjBombFlowerState_4 = 4,
+    MapObjBombFlowerState_5 = 5,
+    MapObjBombFlowerState_6 = 6,
+    MapObjBombFlowerState_Max
 };
 
-class MapObjectUnkBMFL : public MapObjectPot_Base {
+class MapObjectBombFlower : public MapObjectPot_Base {
 public:
     /* 00 (base) */
     /* 48 */ ModelRender_ov031_0211578c mUnk_48;
@@ -32,7 +32,7 @@ public:
     /* BC */ bool mUnk_BC;
     /* C0 */ MapObject_10_Pot mUnk_C0;
 
-    MapObjectUnkBMFL();
+    MapObjectBombFlower();
 
     /* 08 */ virtual void vfunc_08() override;
     /* 14 */ virtual void vfunc_14() override;
@@ -56,13 +56,13 @@ public:
     void func_ov031_02102728(unk32 param1);
 };
 
-class MapObjectProfileUnkBMFL : public MapObjectProfile_Derived2 {
+class MapObjectProfileBombFlower : public MapObjectProfile_Derived2 {
 public:
     /* 00 (base) */
 
-    MapObjectProfileUnkBMFL();
+    MapObjectProfileBombFlower();
 
     /* 0C */ virtual MapObject *Create();
 
-    static MapObjectProfileUnkBMFL *GetProfile();
+    static MapObjectProfileBombFlower *GetProfile();
 };

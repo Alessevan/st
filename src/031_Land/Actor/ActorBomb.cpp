@@ -5,8 +5,8 @@
 #include "Actor/Actor_Derived1.hpp"
 #include "MainGame/AdventureMode.hpp"
 #include "Map/MapObjectId.hpp"
+#include "MapObject/MapObjectBombFlower.hpp"
 #include "MapObject/MapObjectProfile.hpp"
-#include "MapObject/MapObjectUnkBMFL.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
 #include "Unknown/UnkStruct_027e09b4.hpp"
@@ -83,14 +83,14 @@ G3d_Model *ActorBomb::func_ov031_020e1540(u16 param1) {
     }
 
     return G3d_GetModelPtr(
-        ((MapObjectProfileUnkBMFL *) data_ov000_020b5d34.GetProfileFromId(MapObjectId_BMFL))->mUnk_20.mUnk_50);
+        ((MapObjectProfileBombFlower *) data_ov000_020b5d34.GetProfileFromId(MapObjectId_BombFlower))->mUnk_20.mUnk_50);
 }
 
 UnkStruct_ov000_02058a84 *ActorBomb::func_ov031_020e15d0(u16 param1) {
     if (param1 == 0x0) {
         return data_027e0ce0->mUnk_1C->func_ov000_0208ee94(0x0, 0x1, &data_ov031_02110a70, 0x1);
     }
-    return ((MapObjectProfileUnkBMFL *) data_ov000_020b5d34.GetProfileFromId(MapObjectId_BMFL))
+    return ((MapObjectProfileBombFlower *) data_ov000_020b5d34.GetProfileFromId(MapObjectId_BombFlower))
         ->mUnk_20.func_ov000_02058a84(0x1, &data_ov031_02110a50);
 }
 

@@ -1507,23 +1507,23 @@ _ZN16MapObjectUnkSWHT19func_ov031_021020ecEv kind:function(arm,size=0xd4) addr:0
 _ZN16MapObjectUnkSWHT19func_ov031_021021c0Ev kind:function(arm,size=0x1f0) addr:0x021021c0
 _ZN16MapObjectUnkSWHT19func_ov031_021023b0Ev kind:function(arm,size=0x74) addr:0x021023b0
 _ZN23MapObjectProfileUnkSWHTD1Ev kind:function(arm,size=0x14) addr:0x02102424
-_ZN23MapObjectProfileUnkBMFL10GetProfileEv kind:function(arm,size=0xc) addr:0x02102438
-_ZN23MapObjectProfileUnkBMFL6CreateEv kind:function(arm,size=0x24) addr:0x02102444
-_ZN23MapObjectProfileUnkBMFLC1Ev kind:function(arm,size=0x44) addr:0x02102468
-_ZN16MapObjectUnkBMFLC1Ev kind:function(arm,size=0x118) addr:0x021024ac
-_ZN16MapObjectUnkBMFL8vfunc_1CE8ActorRefiP7VecFx32 kind:function(arm,size=0x144) addr:0x021025c4
-_ZN16MapObjectUnkBMFL8vfunc_48Ev kind:function(arm,size=0x10) addr:0x02102708
-_ZN16MapObjectUnkBMFL8vfunc_58Ev kind:function(arm,size=0x10) addr:0x02102718
-_ZN16MapObjectUnkBMFL19func_ov031_02102728Ei kind:function(arm,size=0x7c) addr:0x02102728
-_ZN16MapObjectUnkBMFL8vfunc_08Ev kind:function(arm,size=0xf0) addr:0x021027a4
-_ZN16MapObjectUnkBMFL8SetStateEsi kind:function(arm,size=0x15c) addr:0x02102894
-_ZN16MapObjectUnkBMFL8vfunc_14Ev kind:function(arm,size=0x50) addr:0x021029f0
-_ZN16MapObjectUnkBMFL8vfunc_38Ev kind:function(arm,size=0x98) addr:0x02102a40
-_ZN16MapObjectUnkBMFL8vfunc_28Ev kind:function(arm,size=0x1c) addr:0x02102ad8
-_ZN16MapObjectUnkBMFL8vfunc_50Ev kind:function(arm,size=0x70) addr:0x02102af4
-_ZN16MapObjectUnkBMFLD1Ev kind:function(arm,size=0x20) addr:0x02102b64
-_ZN16MapObjectUnkBMFLD0Ev kind:function(arm,size=0x28) addr:0x02102b84
-_ZN23MapObjectProfileUnkBMFLD1Ev kind:function(arm,size=0x14) addr:0x02102bac
+_ZN26MapObjectProfileBombFlower10GetProfileEv kind:function(arm,size=0xc) addr:0x02102438
+_ZN26MapObjectProfileBombFlower6CreateEv kind:function(arm,size=0x24) addr:0x02102444
+_ZN26MapObjectProfileBombFlowerC1Ev kind:function(arm,size=0x44) addr:0x02102468
+_ZN19MapObjectBombFlowerC1Ev kind:function(arm,size=0x118) addr:0x021024ac
+_ZN19MapObjectBombFlower8vfunc_1CE8ActorRefiP7VecFx32 kind:function(arm,size=0x144) addr:0x021025c4
+_ZN19MapObjectBombFlower8vfunc_48Ev kind:function(arm,size=0x10) addr:0x02102708
+_ZN19MapObjectBombFlower8vfunc_58Ev kind:function(arm,size=0x10) addr:0x02102718
+_ZN19MapObjectBombFlower19func_ov031_02102728Ei kind:function(arm,size=0x7c) addr:0x02102728
+_ZN19MapObjectBombFlower8vfunc_08Ev kind:function(arm,size=0xf0) addr:0x021027a4
+_ZN19MapObjectBombFlower8SetStateEsi kind:function(arm,size=0x15c) addr:0x02102894
+_ZN19MapObjectBombFlower8vfunc_14Ev kind:function(arm,size=0x50) addr:0x021029f0
+_ZN19MapObjectBombFlower8vfunc_38Ev kind:function(arm,size=0x98) addr:0x02102a40
+_ZN19MapObjectBombFlower8vfunc_28Ev kind:function(arm,size=0x1c) addr:0x02102ad8
+_ZN19MapObjectBombFlower8vfunc_50Ev kind:function(arm,size=0x70) addr:0x02102af4
+_ZN19MapObjectBombFlowerD1Ev kind:function(arm,size=0x20) addr:0x02102b64
+_ZN19MapObjectBombFlowerD0Ev kind:function(arm,size=0x28) addr:0x02102b84
+_ZN26MapObjectProfileBombFlowerD1Ev kind:function(arm,size=0x14) addr:0x02102bac
 _ZN26ModelRender_ov031_0211578cC1EPK10G3d_Model_ii kind:function(arm,size=0x40) addr:0x02102bc0
 _ZN26ModelRender_ov031_0211578c19func_ov031_02102c00Ev kind:function(arm,size=0x30) addr:0x02102c00
 func_ov031_02102c30 kind:function(arm,size=0x224) addr:0x02102c30
@@ -2110,7 +2110,7 @@ __sinit_MapObjectUnkGATE.cpp kind:function(arm,size=0x50) addr:0x02111d58
 __sinit_MapObjectUnkSTIR.cpp kind:function(arm,size=0x50) addr:0x02111da8
 __sinit_MapObjectGrass.cpp kind:function(arm,size=0x90) addr:0x02111df8
 __sinit_MapObjectUnkSWHT.cpp kind:function(arm,size=0x70) addr:0x02111e88
-__sinit_MapObjectUnkBMFL.cpp kind:function(arm,size=0x50) addr:0x02111ef8
+__sinit_MapObjectBombFlower.cpp kind:function(arm,size=0x50) addr:0x02111ef8
 __sinit_MapObjectTreasureSpawned.cpp kind:function(arm,size=0x6c) addr:0x02111f48 local
 __sinit_MapObjectChestBase.cpp kind:function(arm,size=0x30) addr:0x02111fb4
 __sinit_MapObjectUnkTRED.cpp kind:function(arm,size=0x6c) addr:0x02111fe4
@@ -2174,7 +2174,7 @@ __sinit_MapObjectUnkSWFS.cpp kind:function(arm,size=0x70) addr:0x02112724
 .p__sinit_MapObjectUnkSTIR.cpp kind:data(word) addr:0x02112830
 .p__sinit_MapObjectGrass.cpp kind:data(word) addr:0x02112834
 .p__sinit_MapObjectUnkSWHT.cpp kind:data(word) addr:0x02112838
-.p__sinit_MapObjectUnkBMFL.cpp kind:data(word) addr:0x0211283c
+.p__sinit_MapObjectBombFlower.cpp kind:data(word) addr:0x0211283c
 .p__sinit_MapObjectTreasureSpawned.cpp kind:data(word) addr:0x02112840 local
 .p__sinit_MapObjectChestBase.cpp kind:data(word) addr:0x02112844
 .p__sinit_MapObjectUnkTRED.cpp kind:data(word) addr:0x02112848
@@ -2440,8 +2440,8 @@ _ZTV14MapObjectGrass kind:data(any) addr:0x02115654
 data_ov031_0211569c kind:data(any) addr:0x0211569c
 _ZTV19data_ov031_021156b0 kind:data(any) addr:0x021156a8
 data_ov031_021156cc kind:data(any) addr:0x021156cc
-_ZTV23MapObjectProfileUnkBMFL kind:data(any) addr:0x02115704
-_ZTV16MapObjectUnkBMFL kind:data(any) addr:0x02115720
+_ZTV26MapObjectProfileBombFlower kind:data(any) addr:0x02115704
+_ZTV19MapObjectBombFlower kind:data(any) addr:0x02115720
 _ZTV19data_ov031_0211578c kind:data(any) addr:0x02115784
 data_ov031_021157b0 kind:data(any) addr:0x021157b0 local
 _ZTV31MapObjectProfileTreasureSpawned kind:data(any) addr:0x021157b8
@@ -2657,9 +2657,9 @@ _ZGVN15ProfileInstanceI23MapObjectProfileUnkSWHTE8sProfileE kind:bss addr:0x0211
 _ZN15ProfileInstanceI23MapObjectProfileUnkSWHTE8sProfileE kind:bss addr:0x021179c8
 data_ov031_021179e8 kind:bss addr:0x021179e8
 data_ov031_02117a9c kind:bss addr:0x02117a9c
-_ZGVN15ProfileInstanceI23MapObjectProfileUnkBMFLE8sProfileE kind:bss addr:0x02117abc
+_ZGVN15ProfileInstanceI26MapObjectProfileBombFlowerE8sProfileE kind:bss addr:0x02117abc
 @10993 kind:bss addr:0x02117ac0
-_ZN15ProfileInstanceI23MapObjectProfileUnkBMFLE8sProfileE kind:bss addr:0x02117acc
+_ZN15ProfileInstanceI26MapObjectProfileBombFlowerE8sProfileE kind:bss addr:0x02117acc
 _ZGVN15ProfileInstanceI31MapObjectProfileTreasureSpawnedE8sProfileE kind:bss addr:0x02117ba0
 @10999 kind:bss addr:0x02117ba4 local
 _ZN15ProfileInstanceI31MapObjectProfileTreasureSpawnedE8sProfileE kind:bss addr:0x02117bb0
