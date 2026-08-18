@@ -2224,7 +2224,7 @@ data_ov031_0211478c kind:data(any) addr:0x0211478c
 _ZTV21UnkStruct_027e0cd8_0C kind:data(any) addr:0x021147a4 ambiguous
 data_ov031_021147f0 kind:data(any) addr:0x021147f0
 data_ov031_02114804 kind:data(any) addr:0x02114804
-data_ov031_02114818 kind:data(any) addr:0x02114818
+_ZTV16MapObject_10_Pot kind:data(any) addr:0x02114810
 data_ov031_02114840 kind:data(any) addr:0x02114840
 data_ov031_02114874 kind:data(any) addr:0x02114874
 data_ov031_02114880 kind:data(any) addr:0x02114880
@@ -2329,7 +2329,7 @@ _ZTV10ActorHeart kind:data(any) addr:0x02115bb0
 _ZTV19ActorProfileUnkRMTG kind:data(any) addr:0x02115c0c
 _ZTV12ActorUnkRMTG kind:data(any) addr:0x02115c30
 _ZTV19ActorProfileUnkSCCN kind:data(any) addr:0x02115c8c
-_ZTV16MapObject_10_Pot kind:data(any) addr:0x02115cb0
+_ZTV17MapObject_10_SCCN kind:data(any) addr:0x02115cb0
 _ZTV12ActorUnkSCCN kind:data(any) addr:0x02115cd8
 _ZTV19data_ov031_02115d3c kind:data(any) addr:0x02115d34
 data_ov031_02115d58 kind:data(any) addr:0x02115d58
@@ -2428,7 +2428,7 @@ data_ov031_021172d4 kind:data(any) addr:0x021172d4
 data_ov031_021172fc kind:data(any) addr:0x021172fc
 data_ov031_0211733c kind:data(any) addr:0x0211733c
 data_ov031_02117358 kind:data(any) addr:0x02117358
-_ZTV19data_ov031_02117398 kind:data(any) addr:0x02117390
+_ZTV24MapObjectProfilePot_Base kind:data(any) addr:0x02117390
 _ZTV21MapObjectProfileGrass kind:data(any) addr:0x021173ac
 _ZTV14MapObjectGrass kind:data(any) addr:0x021173c8
 data_ov031_02117410 kind:data(any) addr:0x02117410
@@ -2456,8 +2456,8 @@ data_ov031_02117768 kind:data(any) addr:0x02117768
 data_ov031_021177c4 kind:data(any) addr:0x021177c4
 data_ov031_021177e0 kind:data(any) addr:0x021177e0
 data_ov031_0211784c kind:data(any) addr:0x0211784c
-data_ov031_02117860 kind:data(any) addr:0x02117860
-data_ov031_0211787c kind:data(any) addr:0x0211787c
+_ZTV19MapObjectProfilePot kind:data(any) addr:0x02117858
+_ZTV12MapObjectPot kind:data(any) addr:0x02117874
 data_ov031_021178d4 kind:data(any) addr:0x021178d4
 data_ov031_021178e8 kind:data(any) addr:0x021178e8
 data_ov031_02117900 kind:data(any) addr:0x02117900
@@ -2674,7 +2674,7 @@ _ZN15ProfileInstanceI23MapObjectProfileUnkTRWSE8sProfileE kind:bss addr:0x02119b
 _ZGVN15ProfileInstanceI19MapObjectProfilePotE8sProfileE kind:bss addr:0x02119ccc
 @31029 kind:bss addr:0x02119cd0
 _ZN15ProfileInstanceI19MapObjectProfilePotE8sProfileE kind:bss addr:0x02119cdc
-data_ov031_02119db0 kind:bss addr:0x02119db0
+data_ov031_02118010 kind:bss addr:0x02119db0
 _ZGVN15ProfileInstanceI23MapObjectProfileUnkSKBNE8sProfileE kind:bss addr:0x02119dd0
 @31035 kind:bss addr:0x02119dd4
 _ZN15ProfileInstanceI23MapObjectProfileUnkSKBNE8sProfileE kind:bss addr:0x02119de0
