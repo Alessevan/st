@@ -22,7 +22,6 @@ public:
 class MapObject_10_Pot : public NotTheRealClass {
 public:
     /* 00 (base) */
-    /* 0C */ VecFx32 mUnk_0C;
     /* 18 */ fx32 mUnk_18;
     /* 1C */ fx32 mUnk_1C;
     /* 20 */

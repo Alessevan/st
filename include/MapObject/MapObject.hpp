@@ -57,7 +57,8 @@ public:
     /* 06 */ unk8 mUnk_06;
     /* 07 */ unk8 mUnk_07;
     /* 08 */ unk32 mUnk_08;
-    /* 0C */
+    /* 0C */ VecFx32 mUnk_0C;
+    /* 18 */
 
     MapObject_10_Base(); // func_ov000_0207c018
 
@@ -76,7 +77,6 @@ public:
 class MapObject_10 : public MapObject_10_Base {
 public:
     /* 00 (vtable) */
-    /* 0C */ VecFx32 mUnk_0C;
     /* 18 */ VecFx32 mUnk_18;
     /* 24 */
 
