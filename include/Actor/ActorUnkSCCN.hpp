@@ -11,7 +11,7 @@ public:
     /* 00 (vtable) */
     /* 04 */ ActorRef mUnk_04;
     /* 08 */ VecFx32 *mUnk_08;
-    /* 0C */ MapObject_10 *mUnk_0C;
+    /* 0C */ MapObject_10_Base *mUnk_0C;
     /* 10 */
 
     ActorUnkSCCN_B8();

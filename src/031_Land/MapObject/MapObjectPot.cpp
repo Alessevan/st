@@ -9,7 +9,7 @@
 
 #include "limits.h"
 
-extern "C" MapObject_10 data_ov031_02118010;
+extern "C" MapObject_10_Pot data_ov031_02118010;
 
 extern "C" fx32 func_01ffe868(VecFx32 *, unk32, unk32);
 extern "C" void func_ov031_020e0f30(ActorRef);
@@ -27,10 +27,10 @@ MapObjectProfilePot::MapObjectProfilePot() :
 
     VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_D4.mUnk_0C);
 
-    this->mUnk_D4.mUnk_18.x = FLOAT_TO_FX32(0.5f);
-    this->mUnk_D4.mUnk_18.y = FLOAT_TO_FX32(1.2f);
-    this->mUnk_06           = 0x0;
-    this->mUnk_0C           = 0x1000;
+    this->mUnk_D4.mUnk_18 = FLOAT_TO_FX32(0.5f);
+    this->mUnk_D4.mUnk_1C = FLOAT_TO_FX32(1.2f);
+    this->mUnk_06         = 0x0;
+    this->mUnk_0C         = 0x1000;
 }
 
 ModelRender_ov000_020b198c::ModelRender_ov000_020b198c(G3d_Model *pModel, unk8 param2) :

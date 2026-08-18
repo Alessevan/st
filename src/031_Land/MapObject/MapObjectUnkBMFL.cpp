@@ -38,9 +38,9 @@ MapObjectUnkBMFL::MapObjectUnkBMFL() :
 
     this->mUnk_C0.mUnk_08 = (unk32) 0x80007006;
     VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_C0.mUnk_0C);
-    this->mUnk_C0.mUnk_18.x = FLOAT_TO_FX32(0.5f);
-    this->mUnk_C0.mUnk_18.y = FLOAT_TO_FX32(1.2f);
-    this->mUnk_10           = &this->mUnk_C0;
+    this->mUnk_C0.mUnk_18 = FLOAT_TO_FX32(0.5f);
+    this->mUnk_C0.mUnk_1C = FLOAT_TO_FX32(1.2f);
+    this->mUnk_10         = &this->mUnk_C0;
 
     SET_FLAG(this->mFlags, MapObjFlag_6);
 }

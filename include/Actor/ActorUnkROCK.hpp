@@ -4,6 +4,7 @@
 #include "Actor/ActorProfile.hpp"
 #include "ActorUnkSCCN.hpp"
 #include "MapObject/MapObjectPot_Base.hpp"
+#include "MapObject/MapObject_10_Pot.hpp"
 #include "global.h"
 #include "types.h"
 

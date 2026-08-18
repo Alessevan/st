@@ -1,4 +1,6 @@
 #include "Actor/ActorUnkROCK.hpp"
+
+#include "MapObject/MapObject_10_Pot.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
 #include "Unknown/UnkStruct_027e09b4.hpp"
@@ -6,7 +8,7 @@
 
 extern "C" Mat3p data_027e0130;
 
-static MapObject_10 data_ov031_021166b8;
+static MapObject_10_Pot data_ov031_021166b8;
 
 DECL_PROFILE(ActorProfileUnkROCK);
 
@@ -17,9 +19,10 @@ Actor *ActorProfileUnkROCK::Create() {
 // non-matching
 ActorProfileUnkROCK::ActorProfileUnkROCK() :
     ActorProfileUnkROCK_Base(ActorId_ROCK) {
-    this->mUnk_04.Init(FLOAT_TO_FX32(0.5f));
+    this->mUnk_04.Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.5f));
     VecFx32_Init(FLOAT_TO_FX32(7.0017f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_D8.mUnk_0C);
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.6f), FLOAT_TO_FX32(1.2f), &this->mUnk_D8.mUnk_18);
+    this->mUnk_D8.mUnk_18 = FLOAT_TO_FX32(0.6f);
+    this->mUnk_D8.mUnk_1C = FLOAT_TO_FX32(1.2f);
 }
 
 ActorUnkROCK::ActorUnkROCK() :
