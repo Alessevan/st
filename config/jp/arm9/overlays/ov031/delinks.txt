@@ -291,6 +291,7 @@ src/031_Land/MapObject/MapObjectUnkBMFL.cpp:
     .text       start:0x02104194 end:0x0210491c
     .init       start:0x02113c84 end:0x02113cd4
     .ctor       start:0x021145c8 end:0x021145cc
+    .data       start:0x02117478 end:0x021174f8
     .bss        start:0x0211985c end:0x02119940
 
 src/031_Land/MapObject/MapObjectTreasureSpawned.cpp:
