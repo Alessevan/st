@@ -3,24 +3,25 @@
 class MapObjectPot_Base : public MapObject {
 public:
     /* 00 (base) */
-    /* 40 */
+    /* 40 */ ActorId mUnk_40;
+    /* 44 */ STRUCT_PAD(0x44, 0x48);
+    /* 48 */
 
     MapObjectPot_Base();
 
     // data_ov000_020b35d0
-
-    /* 00 */ virtual bool vfunc_00();                                           // func_ov000_0209d780
-    /* 24 */ virtual void vfunc_24(MapObject *param1, VecFx32 param2) override; // func_ov000_0209d8e8
-    /* 28 */ virtual unk32 vfunc_28() override;                                 // func_ov000_0209d9f8
+    /* 00 */ virtual bool vfunc_00();
+    /* 24 */ virtual void vfunc_24(MapObject *param1, VecFx32 param2) override;
+    /* 28 */ virtual unk32 vfunc_28() override;
     /* 30 */ virtual ~MapObjectPot_Base() = 0 override;
-    /* 38 */ virtual void vfunc_38() override;             // func_ov000_0209d9ac
-    /* 3C */ virtual bool vfunc_3C() override;             // func_ov000_0209db74
-    /* 40 */ virtual bool vfunc_40() override;             // func_ov000_0209db7c
-    /* 44 */ virtual void vfunc_44(unk32, unk32) override; // func_ov000_0209d7a4
-    /* 48 */ virtual void vfunc_48() override;             // func_ov000_0209da60
-    /* 4C */ virtual void vfunc_4C() override;             // func_ov000_0209da70
-    /* 50 */ virtual void vfunc_50() override;             // func_ov000_0209dac0
-    /* 54 */ virtual unk32 vfunc_54() override;            // func_ov000_0209da64
+    /* 38 */ virtual void vfunc_38() override;
+    /* 3C */ virtual bool vfunc_3C() override;
+    /* 40 */ virtual bool vfunc_40() override;
+    /* 44 */ virtual void vfunc_44(unk32, unk32) override;
+    /* 48 */ virtual void vfunc_48() override;
+    /* 4C */ virtual void vfunc_4C() override;
+    /* 50 */ virtual void vfunc_50() override;
+    /* 54 */ virtual unk32 vfunc_54() override;
 
     // overlay 0
     void func_ov000_0209d8e8(MapObjectPot_Base *param1, fx32 param2);
