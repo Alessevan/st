@@ -87,7 +87,7 @@ public:
     /* 1D8 */ unk32 mUnk_1DC;
     /* 1E0 */ ActorRef mUnk_1E0;
     /* 1E4 */ ActorRef mUnk_1E4;
-    /* 1E8 */ unk8 mUnk_1E8;
+    /* 1E8 */ u8 mUnk_1E8;
     /* 1E8 */ u8 mUnk_1E9;
     /* 1EA */ unk16 mUnk_1EA;
     /* 1EC */ unk16 mUnk_1EC;
@@ -148,8 +148,8 @@ public:
     bool func_ov031_020e262c();
     void func_ov031_020e2680(VecFx32 *param1);
     void func_ov031_020e2780(VecFx32 *param1);
-    void func_ov031_020e2820(ActorUnkBOMB_ov031_020e2134 *param1);
-    void func_ov031_020e295c(ActorUnkBOMB_ov031_020e2134 *param1);
+    fx32 func_ov031_020e2820(UnkStruct_ov031_Items_00 *param1);
+    fx32 func_ov031_020e295c(UnkStruct_ov031_Items_00 *param1);
     void func_ov031_020e2a9c();
     bool func_ov031_020e2b40();
     void func_ov031_020e2c2c();

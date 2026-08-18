@@ -3,10 +3,12 @@
 #include "Actor/ActorBlast.hpp"
 #include "Actor/ActorManager.hpp"
 #include "Actor/Actor_Derived1.hpp"
+#include "MainGame/AdventureMode.hpp"
 #include "Map/MapObjectId.hpp"
 #include "MapObject/MapObjectProfile.hpp"
 #include "MapObject/MapObjectUnkBMFL.hpp"
 #include "System/SysNew.hpp"
+#include "Unknown/UnkStruct_027e09a8.hpp"
 #include "Unknown/UnkStruct_027e09b4.hpp"
 #include "Unknown/UnkStruct_027e09b8.hpp"
 #include "Unknown/UnkStruct_027e09c0.hpp"
@@ -14,6 +16,12 @@
 #include "Unknown/UnkStruct_027e0d38.hpp"
 #include "Unknown/UnkStruct_027e0d8c.hpp"
 #include "Unknown/UnkStruct_ov000_020b5d34.hpp"
+
+struct UnkStruct_ov031_020e5d18_00 {
+    /* 00 */ Actor *mUnk_00;
+    /* 04 */ STRUCT_PAD(0x04, 0x18);
+    /* 18 */
+};
 
 extern "C" VecFx32 data_027e07d4;
 extern "C" unk32 data_ov000_020aecf8;
@@ -23,12 +31,19 @@ extern "C" char data_ov031_02110a50;
 extern "C" char data_ov031_02110a60;
 extern "C" char data_ov031_02110a70;
 
+extern "C" bool func_01ff916c(void *, int, int);
 extern "C" void func_01ff9218(fx32 *, fx32, fx32);
 extern "C" unk32 func_01ff9258(fx32, fx32);
 extern "C" void func_01ff94cc(VecFx32 *, VecFx32 *, VecFx32 *);
+extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
 extern "C" void func_01ffb974(unk32, VecFx32 *, VecFx32 *, VecFx32 *);
 extern "C" void func_01ffc5a0(ModelRender *, unk32, UnkAngleStruct, void *);
+extern "C" void func_01ffe6c4(UnkStruct_ov031_020e5d18_00 *, ActorRef, VecFx32 *, VecFx32 *, s32, VecFx32 *,
+                              UnkStruct_ov031_Items_00_Base *);
 extern "C" void func_0200b578(G3d_RenderObject *, void (*)(), unk32, unk32, unk32);
+
+extern "C" void func_ov017_020c2438(unk32 *, unk32, VecFx32 *, unk32, unk32);
+extern "C" void func_ov017_020c26f8(unk32, VecFx32 *, unk32, unk32);
 
 static ActorUnkZLSL_AnimationTag data_ov031_02112be8                 = {.index = 0, .name = "bomb_clanim", .unknown = 0};
 static PTMF<ActorUnkBOMB> data_ov031_02112c00[ActorUnkBOMBState_Max] = {
@@ -79,6 +94,7 @@ UnkStruct_ov000_02058a84 *ActorUnkBOMB::func_ov031_020e15d0(u16 param1) {
         ->mUnk_20.func_ov000_02058a84(0x1, &data_ov031_02110a50);
 }
 
+// who has this ?!
 void ActorUnkBOMB::func_ov031_020e1634() {}
 
 ActorUnkBOMB::ActorUnkBOMB() :
@@ -608,14 +624,160 @@ void ActorUnkBOMB::func_ov031_020e2780(VecFx32 *param1) {
     this->mVel.z = ROUND_FX32(this->mVel.z * FLOAT_TO_FX32(0.75f));
 }
 
-void ActorUnkBOMB::func_ov031_020e2820(ActorUnkBOMB_ov031_020e2134 *param1) {}
-void ActorUnkBOMB::func_ov031_020e295c(ActorUnkBOMB_ov031_020e2134 *param1) {}
-void ActorUnkBOMB::func_ov031_020e2a9c() {}
-bool ActorUnkBOMB::func_ov031_020e2b40() {}
+// non-matching
+fx32 ActorUnkBOMB::func_ov031_020e2820(UnkStruct_ov031_Items_00 *param1) {
+    UnkStruct_ov031_020e5d18_00 sp60;
+    sp60.mUnk_00 = NULL;
+    VecFx32 sp54 = this->mPos;
+    VecFx32 sp48 = this->mPrevPos;
+    VecFx32 sp3C;
+
+    func_01ffb714(&sp54, &sp48, &sp3C);
+    fx32 sp3CLength = VecFx32_Length(&sp3C);
+
+    VecFx32 sp0C = sp48;
+    VecFx32 sp30 = sp0C;
+    VecFx32 sp24 = sp0C;
+    VecFx32 sp18 = sp3C;
+
+    if (VecFx32_TryNormalize(&sp18) != 0x0) {
+        while (sp3CLength != FLOAT_TO_FX32(0.0f)) {
+            if (sp3CLength > FLOAT_TO_FX32(0.5f)) {
+                func_01ffb974(FLOAT_TO_FX32(0.5f), &sp18, &sp24, &sp24);
+                sp3CLength -= FLOAT_TO_FX32(0.5f);
+            } else {
+                func_01ffb974(sp3CLength, &sp18, &sp24, &sp24);
+                sp3CLength = FLOAT_TO_FX32(0.0f);
+            }
+            func_01ffe6c4(&sp60, this->mRef, &sp24, &sp30, (s16) this->mUnk_44, &this->mPos, param1);
+
+            if (!this->Actor::func_ov000_0207e294(this->mUnk_30)) {
+                VecFx32_Copy(&sp24, &sp30);
+            }
+        }
+    }
+
+    return sp3CLength;
+}
+
+// non-matching
+fx32 ActorUnkBOMB::func_ov031_020e295c(UnkStruct_ov031_Items_00 *param1) {
+    UnkStruct_ov031_020e5d18_00 sp60;
+    sp60.mUnk_00 = NULL;
+    VecFx32 sp54 = this->mPos;
+    VecFx32 sp48 = this->mPrevPos;
+    VecFx32 sp3C;
+
+    func_01ffb714(&sp54, &sp48, &sp3C);
+    fx32 sp3CLength = VecFx32_Length(&sp3C);
+
+    VecFx32 sp0C = sp48;
+    VecFx32 sp30 = sp0C;
+    VecFx32 sp24 = sp0C;
+    VecFx32 sp18 = sp3C;
+
+    if (VecFx32_TryNormalize(&sp18) != 0x0) {
+        while (sp3CLength != FLOAT_TO_FX32(0.0f)) {
+            if (sp3CLength > FLOAT_TO_FX32(0.5f)) {
+                func_01ffb974(FLOAT_TO_FX32(0.5f), &sp18, &sp24, &sp24);
+                sp3CLength -= FLOAT_TO_FX32(0.5f);
+            } else {
+                func_01ffb974(sp3CLength, &sp18, &sp24, &sp24);
+                sp3CLength = FLOAT_TO_FX32(0.0f);
+            }
+            func_01ffe6c4(&sp60, this->mRef, &sp24, &sp30, (s16) this->mUnk_44, &this->mPos, param1);
+
+            if (!this->Actor::func_ov000_0207df88(this->mUnk_30, 0x10)) {
+                VecFx32_Copy(&sp24, &sp30);
+            }
+        }
+    }
+
+    return sp3CLength;
+}
+
+void ActorUnkBOMB::func_ov031_020e2a9c() {
+    UnkStruct_ov031_020e5d18_00 s0C;
+    s0C.mUnk_00 = NULL;
+
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_180.mUnk_0C);
+
+    func_01ffe6c4(&s0C, this->mRef, &this->mPos, &this->mPrevPos, (s16) this->mUnk_44, &this->mPos, &this->mUnk_180);
+
+    unk32 value = this->func_ov031_020e295c(&this->mUnk_180) | this->func_ov031_020e2820(&this->mUnk_180);
+    if (this->mUnk_1E0.type_index != 0x0) {
+        this->mUnk_154.pos.y = 0x4CC;
+    } else {
+        func_01ff916c(&this->mUnk_154.pos.y, 0x4CC, 0x333);
+    }
+    this->mUnk_46 = value;
+}
+
+bool ActorUnkBOMB::func_ov031_020e2b40() {
+    if (this->mUnk_180.mUnk_04 & 0x4) {
+        func_ov017_020c26f8(0x2, &this->mPos, 0x1, 0x1);
+        data_027e09a8->func_ov000_02071b30(0xED, &this->mPos, 0x0);
+
+        ActorBlast::func_ov031_020e3b9c(this, 0x0, 0x0);
+
+        return true;
+    }
+
+    if (this->mUnk_180.mUnk_04 & 0x2) {
+        unk32 sp00;
+        func_ov017_020c2438(&sp00, 0x2, &this->mPos, 0x1, 0x1);
+
+        data_027e09a8->func_ov000_02071b30(0xEA, &this->mPos, 0x0);
+
+        return true;
+    }
+
+    if (!(this->mUnk_180.mUnk_04 & 0x1)) {
+        return false;
+    }
+
+    data_027e09a8->func_ov000_02071b30(0xE8, &this->mPos, 0x0);
+    return true;
+}
 
 void ActorUnkBOMB::func_ov031_020e2c2c() {
-    if (this->func_ov031_020e1d74() || (this->mUnk_180.mUnk_04 & 0x1) == 0x0) {
+    if (this->func_ov031_020e1d74() || (this->mUnk_180.mUnk_04 & 0x1) != 0x0) {
+        if (this->mUnk_1F0) {
+            this->mUnk_1EF = true;
+        }
+
+        if (this->mUnk_180.mUnk_04 & 0x8) {
+            if (!this->func_ov031_020e1d58()) {
+                return;
+            }
+            this->func_ov031_020e18c4(ActorUnkBOMBState_6);
+            return;
+        }
+
+        if (this->func_ov031_020e2b40()) {
+            this->Actor::func_ov000_020984d0();
+            return;
+        }
+
+        ++this->mUnk_1E8;
+        this->mVel.y = MUL_FX32(-this->mVel.y, 0x99A);
+        this->mVel.x = MUL_FX32(this->mVel.x, 0x333);
+        this->mVel.z = MUL_FX32(this->mVel.z, 0x333);
+
+        if (this->mUnk_1E8 <= 0x3) {
+            return;
+        }
+
+        VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+        this->func_ov031_020e18c4(ActorUnkBOMBState_0);
+        return;
     }
+
+    if (!(this->mUnk_46 & 0x1C)) {
+        return;
+    }
+
+    this->func_ov031_020e2780(&this->mUnk_180.mUnk_0C);
 }
 
 ActorUnkBomb_180::ActorUnkBomb_180(Actor *param1) :
