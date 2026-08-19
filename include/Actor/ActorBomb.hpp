@@ -87,9 +87,9 @@ public:
     /* 1E4 */ ActorRef mUnk_1E4;
     /* 1E8 */ u8 mUnk_1E8;
     /* 1E8 */ u8 mUnk_1E9;
-    /* 1EA */ unk16 mUnk_1EA;
-    /* 1EC */ unk16 mUnk_1EC;
-    /* 1EE */ unk8 mUnk_1EE;
+    /* 1EA */ volatile u16 mUnk_1EA;
+    /* 1EC */ u16 mUnk_1EC;
+    /* 1EE */ bool mUnk_1EE;
     /* 1EF */ bool mUnk_1EF;
     /* 1F0 */ bool mUnk_1F0;
 #if IS_JP
@@ -109,6 +109,14 @@ public:
     /* 2C */ virtual void vfunc_2C(unk32 param1) override;
     /* 38 */ virtual bool Grab(ActorGrabParams grabParams) override;
     /* 3C */ virtual bool Drop(ActorGrabParams grabParams, const VecFx32 *pVel) override;
+
+    bool IsInternalTimerOut() {
+        if (this->mUnk_1EA < this->mUnk_1EC) {
+            ++this->mUnk_1EA;
+            return false;
+        }
+        return true;
+    }
 
     // check if really in ActorUnkBomb
     G3d_Model *func_ov031_020e1540(u16 param1);

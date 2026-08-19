@@ -111,7 +111,7 @@ ActorBomb::ActorBomb() :
     mUnk_1E8(0x0),
     mUnk_1EA(0x0),
     mUnk_1EC(0x0),
-    mUnk_1EE(0x0),
+    mUnk_1EE(false),
     mUnk_1F0(false)
 #if IS_JP
     ,
@@ -263,7 +263,50 @@ void ActorBomb::func_ov031_020e1b1c() {
     this->mUnk_094.func_ov000_02057c98(&this->mUnk_0F4);
 }
 
-void ActorBomb::func_ov031_020e1b7c() {}
+extern "C" fx32 func_01ffb464(fx32);
+extern "C" void func_01ff9218(fx32 *, fx32, fx32);
+
+void ActorBomb::func_ov031_020e1b7c() {
+    if (!this->mUnk_1EF) {
+        return;
+    }
+    data_027e09a8->func_ov000_02071d34(&this->mRef, 0xF4, &this->mPos, 0x0);
+
+    if (!this->mUnk_1EE) {
+        if (!this->IsInternalTimerOut()) {
+            return;
+        }
+
+        this->mUnk_1EE = true;
+        this->mUnk_1EC = 0x3C;
+        this->mUnk_1EA = 0x00;
+        this->func_ov031_020e1b1c();
+        return;
+    }
+    fx32 delta             = this->mUnk_1EC - this->mUnk_1EA;
+    this->mUnk_0F4.mUnk_08 = 0x1800 - delta * 0x51;
+    this->mUnk_0F4.func_01ffc3b4();
+
+    if (delta > 0x0) {
+        func_01ff9218(&this->mUnk_1D8, FLOAT_TO_FX32(1.3f), func_01ffb464((u32) delta << 0xC));
+    }
+    if (!this->IsInternalTimerOut()) {
+        return;
+    }
+    ActorBlast::func_ov031_020e3b9c(this, 0x0, 0x0);
+
+    if (this->mState == ActorBombState_6) {
+        ActorParams params;
+        ActorRef ref;
+        params.mUnk_28 = 0;
+        params.func_ov000_020975f8();
+
+        VecFx32_Copy(&this->mPos, &params.mInitialPos);
+        params.mInitialPos.y = this->mUnk_1DC;
+        this->Actor::func_ov000_020973f4(&ref, &data_ov000_020b539c_eur, ActorId_EFSC, &params, 0x0);
+    }
+    this->Actor::func_ov000_020984d0();
+}
 
 void ActorBomb::func_ov031_020e1d18() {
     this->func_ov000_02098838();
