@@ -95,6 +95,7 @@ UnkStruct_ov000_02058a84 *ActorBomb::func_ov031_020e15d0(u16 param1) {
         ->mUnk_20.func_ov000_02058a84(0x1, &data_ov031_02110a50);
 }
 
+// non-matching
 // who has this ?!
 void ActorBomb::func_ov031_020e1634() {}
 
@@ -175,6 +176,7 @@ void ActorBomb::func_ov031_020e1908() {
     this->mUnk_1F0 = true;
 }
 
+// non-matching
 void ActorBomb::func_ov031_020e1920(VecFx32 *param1) {
     fx32 y           = param1->y;
     fx32 z           = param1->z;
@@ -841,6 +843,7 @@ bool ActorBomb_180::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
     return this->UnkStruct_ov031_Items_00::vfunc_08(param1);
 }
 
+// non-matching
 bool ActorBomb_180::vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) {}
 
 bool ActorBomb_180::vfunc_10(ActorRef param1, unk32 param2) {

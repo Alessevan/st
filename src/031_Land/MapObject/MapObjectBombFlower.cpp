@@ -28,6 +28,7 @@ MapObjectProfileBombFlower::MapObjectProfileBombFlower() :
     this->mUnk_0C = 0x1333;
 }
 
+// non-matching
 MapObjectBombFlower::MapObjectBombFlower() :
     mUnk_48(G3d_GetModelPtr(GET_PROFILE(MapObjectProfileBombFlower)->mUnk_20.mUnk_50), 0x0, 0x0),
     mUnk_B4(0x1000),
@@ -232,6 +233,7 @@ void MapObjectBombFlower::vfunc_38() {
     bomb->SetState(ActorBombState_4);
 }
 
+// non-matching
 unk32 MapObjectBombFlower::vfunc_28() {
     if (this->mState == MapObjBombFlowerState_4) {
         return 0x0;
@@ -239,15 +241,17 @@ unk32 MapObjectBombFlower::vfunc_28() {
     return this->MapObjectPot_Base::vfunc_28();
 }
 
-void MapObjectBombFlower::vfunc_50(ActorRef *param1) {
+// non-matching
+// https://decomp.me/scratch/WRLuY
+void MapObjectBombFlower::vfunc_50(ActorRef *param1, MapObjectPot_Base *thisx) {
     ActorParams params;
     params.mUnk_28 = 0;
 
     params.func_ov000_020975f8();
 
-    params.mInitialAngle = this->mAngle;
-    VecFx32_Copy(&this->mPos, &params.mInitialPos);
+    params.mInitialAngle = thisx->mAngle;
+    VecFx32_Copy(&thisx->mPos, &params.mInitialPos);
 
     params.mParams[0] = 0x1;
-    Actor::func_ov000_020973f4(param1, &data_ov000_020b539c_eur, this->mUnk_40, &params, 0x0);
+    Actor::func_ov000_020973f4(param1, &data_ov000_020b539c_eur, thisx->mUnk_40, &params, 0x0);
 }

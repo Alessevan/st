@@ -41,7 +41,7 @@ public:
     /* 38 */ virtual void vfunc_38() override;
     /* 44 */ virtual bool SetState(MapObjState state, unk32) override;
     /* 48 */ virtual void vfunc_48() override;
-    /* 50 */ virtual void vfunc_50(ActorRef *param1) override;
+    /* 50 */ virtual void vfunc_50(ActorRef *param1, MapObjectPot_Base *thisx) override;
     /* 58 */ virtual void vfunc_58();
 
     bool IsInternalTimerOut() {
