@@ -2,8 +2,11 @@
 #include "Actor/ActorId.hpp"
 #include "MapObject.hpp"
 
-enum MapObjPotBase_State_ {
-    MapObjPotBase_State_0,
+enum MapObjPot_Base_State_ {
+    MapObjPot_BaseState_0 = 0,
+    MapObjPot_BaseState_1 = 1,
+    MapObjPot_BaseState_2 = 2,
+    MapObjPot_BaseState_3 = 3,
     MapObjPotBase_State_Max
 };
 
