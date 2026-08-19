@@ -25,4 +25,4 @@ bool MapObjectPot_Base::vfunc_4C() {
     return true;
 }
 void MapObjectPot_Base::func_ov000_0209da78(unk32 param1, unk32 param2) {}
-void MapObjectPot_Base::vfunc_50() {}
+void MapObjectPot_Base::vfunc_50(ActorRef *param1) {}

@@ -145,7 +145,7 @@ bool ActorBomb::vfunc_18(unk32 param1) {
     this->mUnk_154.size = profileCylinder->size;
     this->mUnk_30       = &this->mUnk_154;
 
-    this->func_ov031_020e18c4(ActorBombState_0);
+    this->SetState(ActorBombState_0);
 
     this->mUnk_19C.mUnk_04 = this->mRef;
     VecFx32_Copy(&this->mPos, &this->mUnk_19C.mUnk_0C.pos);
@@ -162,7 +162,7 @@ void ActorBomb::func_ov031_020e18a0() {
     this->mUnk_2C = data_ov000_020aecf8;
 }
 
-void ActorBomb::func_ov031_020e18c4(ActorState state) {
+void ActorBomb::SetState(ActorState state) {
     this->mState = state;
     this->func_ov031_020e18a0();
 
@@ -300,7 +300,7 @@ void ActorBomb::func_ov031_020e1da0() {
     if (this->func_ov031_020e1d74() || this->mUnk_180.mUnk_04 & 0x1) {
         if (this->mUnk_180.mUnk_04 & 0x8) {
             if (this->func_ov031_020e1d58()) {
-                this->func_ov031_020e18c4(ActorBombState_6);
+                this->SetState(ActorBombState_6);
             }
         } else {
             if (this->func_ov031_020e2b40()) {
@@ -406,7 +406,7 @@ void ActorBomb::func_ov031_020e2064() {
     this->Actor::vfunc_44();
 
     if (GET_FLAG(this->mFlags, ActorFlag_5)) {
-        this->func_ov031_020e18c4(ActorBombState_3);
+        this->SetState(ActorBombState_3);
         this->mUnk_44 = (s16) this->mUnk_44 | 0x20;
     }
     this->func_ov031_020e238c();
@@ -509,10 +509,10 @@ void ActorBomb::func_ov031_020e238c() {
             if (!data_027e0d38->func_ov031_020d9c04(0x1, 0x0, 0x0)) {
                 break;
             }
-            this->func_ov031_020e18c4(ActorBombState_4);
+            this->SetState(ActorBombState_4);
             break;
         case 0:
-            this->func_ov031_020e18c4(ActorBombState_5);
+            this->SetState(ActorBombState_5);
             break;
         default:
             ActorBlast::func_ov031_020e3b9c(this, 0x0, 0x0);
@@ -522,7 +522,7 @@ void ActorBomb::func_ov031_020e238c() {
 }
 
 bool ActorBomb::Grab(ActorGrabParams grabParams) {
-    this->func_ov031_020e18c4(ActorBombState_1);
+    this->SetState(ActorBombState_1);
     this->mUnk_1E0         = grabParams.mUnk_00;
     this->mUnk_1E4         = 0;
     this->mUnk_180.mUnk_18 = 0x0;
@@ -531,7 +531,7 @@ bool ActorBomb::Grab(ActorGrabParams grabParams) {
 }
 
 bool ActorBomb::Drop(ActorGrabParams grabParams, const VecFx32 *pVel) {
-    this->func_ov031_020e18c4(ActorBombState_2);
+    this->SetState(ActorBombState_2);
     this->mUnk_1E4 = this->mUnk_1E0;
     this->mUnk_1E0 = 0x0;
 
@@ -750,7 +750,7 @@ void ActorBomb::func_ov031_020e2c2c() {
             if (!this->func_ov031_020e1d58()) {
                 return;
             }
-            this->func_ov031_020e18c4(ActorBombState_6);
+            this->SetState(ActorBombState_6);
             return;
         }
 
@@ -769,7 +769,7 @@ void ActorBomb::func_ov031_020e2c2c() {
         }
 
         VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
-        this->func_ov031_020e18c4(ActorBombState_0);
+        this->SetState(ActorBombState_0);
         return;
     }
 
@@ -808,7 +808,7 @@ bool ActorBomb_180::vfunc_10(ActorRef param1, unk32 param2) {
         if (actor != NULL && actor->GetActorId() == ActorId_Bomb) {
             ActorBlast::func_ov031_020e3b9c(this->mUnk_08, 0x0, 0x0);
             this->mUnk_08->func_ov000_020984d0();
-            ((ActorBomb *) actor)->func_ov031_020e18c4(ActorBombState_5);
+            ((ActorBomb *) actor)->SetState(ActorBombState_5);
         }
     }
     return true;

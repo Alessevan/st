@@ -118,7 +118,7 @@ public:
 
     //
     void func_ov031_020e18a0();
-    void func_ov031_020e18c4(ActorState state);
+    void SetState(ActorState state);
     void func_ov031_020e1908();
     void func_ov031_020e1920(VecFx32 *param1);
     void func_ov031_020e193c();

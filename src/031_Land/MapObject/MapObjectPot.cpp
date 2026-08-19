@@ -78,7 +78,7 @@ bool MapObjectPot::vfunc_1C(ActorRef param1, unk32 param2, VecFx32 *param3) {
             if (data_027e0d38->func_ov031_020d9c04(0x1, 0x0, 0x0)) {
                 Actor *actor = gpActorManager->func_01fff3b4(param1);
                 if (actor != NULL) {
-                    this->mUnk_14 = actor->mAngle;
+                    this->mAngle = actor->mAngle;
                     this->SetState(0x3, 0x0);
                     break;
                 }

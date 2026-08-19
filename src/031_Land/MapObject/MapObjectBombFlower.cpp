@@ -1,5 +1,6 @@
 #include "MapObject/MapObjectBombFlower.hpp"
 
+#include "Actor/ActorBomb.hpp"
 #include "Actor/ActorManager.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
@@ -8,6 +9,11 @@
 extern "C" fx32 func_01ffb464(fx32);
 extern "C" void func_01ff9218(fx32 *, fx32, fx32);
 extern "C" void func_ov031_020e0f30(ActorRef);
+
+struct UnkStruct_ov031_02102728 {
+    ActorRef ref;
+    unk32 mUnk_04;
+};
 
 DECL_PROFILE(MapObjectProfileBombFlower);
 
@@ -99,7 +105,7 @@ void MapObjectBombFlower::func_ov031_02102728(unk32 param1) {
     params.mUnk_28 = 0;
     params.func_ov000_020975f8();
 
-    params.mUnk_28 = this->mUnk_38;
+    params.mUnk_28 = *(unk32 *) &this->mUnk_38;
     VecFx32_Copy(&this->mPos, &params.mInitialPos);
 
     params.mParams[0] = 0x0;
@@ -107,8 +113,8 @@ void MapObjectBombFlower::func_ov031_02102728(unk32 param1) {
         params.mParams[0] = 0x1;
     }
 
-    ActorRef ref;
-    Actor::func_ov000_020973f4(&ref, &data_ov000_020b539c_eur, ActorId_Blast, &params, 0);
+    UnkStruct_ov031_02102728 stack;
+    Actor::func_ov000_020973f4(&stack.ref, &data_ov000_020b539c_eur, ActorId_Blast, &params, 0);
 }
 
 void MapObjectBombFlower::vfunc_08() {
@@ -207,7 +213,24 @@ void MapObjectBombFlower::vfunc_14() {
     this->mUnk_48.vfunc_18(&this->mPos);
 }
 
-void MapObjectBombFlower::vfunc_38() {}
+void MapObjectBombFlower::vfunc_38() {
+    ActorParams params;
+    params.mUnk_28 = 0;
+    params.func_ov000_020975f8();
+
+    params.mInitialAngle = this->mAngle;
+    VecFx32_Copy(&this->mPos, &params.mInitialPos);
+
+    params.mParams[0] = 0x1;
+    ActorRef ref;
+    Actor::func_ov000_020973f4(&ref, &data_ov000_020b539c_eur, this->mUnk_40, &params, 0x0);
+
+    ActorBomb *bomb = (ActorBomb *) gpActorManager->func_01fff3b4(ref);
+    if (bomb == NULL) {
+        return;
+    }
+    bomb->SetState(ActorBombState_4);
+}
 
 unk32 MapObjectBombFlower::vfunc_28() {
     if (this->mState == MapObjBombFlowerState_4) {
@@ -216,9 +239,15 @@ unk32 MapObjectBombFlower::vfunc_28() {
     return this->MapObjectPot_Base::vfunc_28();
 }
 
-void MapObjectBombFlower::vfunc_50() {
+void MapObjectBombFlower::vfunc_50(ActorRef *param1) {
     ActorParams params;
     params.mUnk_28 = 0;
 
     params.func_ov000_020975f8();
+
+    params.mInitialAngle = this->mAngle;
+    VecFx32_Copy(&this->mPos, &params.mInitialPos);
+
+    params.mParams[0] = 0x1;
+    Actor::func_ov000_020973f4(param1, &data_ov000_020b539c_eur, this->mUnk_40, &params, 0x0);
 }
