@@ -3,7 +3,17 @@
 #include "Actor/Actor_Derived1.hpp"
 #include "System/SysNew.hpp"
 
-static const VecFx32 data_ov032_02122160(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
+// should be elsewhere
+class VecFx32Cpp {
+public:
+    /* 00 (base) */ VecFx32 mUnk_00;
+
+    VecFx32Cpp(fx32 x, fx32 y, fx32 z) {
+        VecFx32_Init(x, y, z, &this->mUnk_00);
+    }
+};
+
+static const VecFx32Cpp data_ov032_02122160(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
 static ActorUnkZLSL_AnimationTag data_ov032_0212219a                 = {.index = 0, .name = "KURI", .unknown = 0x1};
 static ActorUnkZLSL_AnimationTag data_ov032_02122184                 = {.index = 0, .name = "wait", .unknown = 0x0};
 static ActorUnkZLSL_AnimationTag data_ov032_0212219c                 = {.index = 1, .name = "discover", .unknown = 0x1};
@@ -55,7 +65,7 @@ ActorUnkKURI::ActorUnkKURI() :
     mUnk_1D8(NULL, NULL) {
     this->func_ov000_0209862c(0x4);
     SET_FLAG(this->mFlags, ActorFlag_9);
-    this->mUnk_A4 = &data_ov032_02122160;
+    this->mUnk_A4 = &data_ov032_02122160.mUnk_00;
 }
 
 ActorUnkKURI::~ActorUnkKURI() {}
@@ -101,8 +111,9 @@ void ActorUnkKURI::func_ov032_0211b37c() {}
 void ActorUnkKURI::func_ov032_0211b3b0() {}
 void ActorUnkKURI::vfunc_54(unk32 param1) {}
 
-ActorUnkKURI_268::ActorUnkKURI_268() :
-    mUnk_08(0x0, 0x0, 0x0) {}
+ActorUnkKURI_268::ActorUnkKURI_268() {
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_08);
+}
 
 ActorUnkKURI_268::~ActorUnkKURI_268() {}
 
