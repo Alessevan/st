@@ -301,7 +301,7 @@ public:
     /* 00 (base) */
     /* 94 */ unk32 mUnk_94;
     /* 98 */ VecFx32 mUnk_98;
-    /* A4 */ unk32 mUnk_A4;
+    /* A4 */ VecFx32 const *mUnk_A4;
     /* A8 */ void *mUnk_A8;
     /* AC */ unk8 mUnk_AC;
     /* AD */ unk8 mUnk_AD;
