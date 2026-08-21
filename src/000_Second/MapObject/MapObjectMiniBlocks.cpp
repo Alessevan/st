@@ -85,20 +85,20 @@ bool MapObjectMiniBlocks::vfunc_00(void) {
         case 1:
         case 6:
         case 8:
-            this->mAngle = -0x8000;
+            this->mAngle = DEG_TO_ANG(-180);
             break;
         case 2:
         case 7:
         case 9:
-            this->mAngle = 0x4000;
+            this->mAngle = DEG_TO_ANG(90);
             break;
         case 3:
         case 5:
         case 11:
-            this->mAngle = -0x4000;
+            this->mAngle = DEG_TO_ANG(-90);
             break;
         default:
-            this->mAngle = 0;
+            this->mAngle = DEG_TO_ANG(0);
             break;
     }
 
