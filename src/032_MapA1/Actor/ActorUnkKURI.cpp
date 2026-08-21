@@ -1,5 +1,6 @@
 #include "Actor/ActorUnkKURI.hpp"
 
+#include "Actor/ActorManager.hpp"
 #include "Actor/Actor_Derived1.hpp"
 #include "System/SysNew.hpp"
 
@@ -12,6 +13,12 @@ public:
         VecFx32_Init(x, y, z, &this->mUnk_00);
     }
 };
+
+extern "C" unk32 data_ov000_020aecf8;
+
+extern "C" fx16 func_01ffbbe0(fx32, fx32);
+extern "C" void func_01fff2fc(ActorManager *, void (*)(Actor *, u16), unk32);
+extern "C" Actor *func_02016fbc(ActorId, VecFx32 *, unk32);
 
 static const VecFx32Cpp data_ov032_02122160(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
 static ActorUnkZLSL_AnimationTag data_ov032_0212219a                 = {.index = 0, .name = "KURI", .unknown = 0x1};
@@ -94,12 +101,63 @@ ActorUnkKURI::ActorUnkKURI() :
 ActorUnkKURI::~ActorUnkKURI() {}
 
 bool ActorUnkKURI::vfunc_18(unk32 param1) {}
-void ActorUnkKURI::vfunc_1C() {}
-void ActorUnkKURI::func_ov032_021194dc() {}
-void ActorUnkKURI::func_ov032_0211953c() {}
+
+void ActorUnkKURI::vfunc_1C() {
+    if (this->mUnk_5C.mParams[0] == 0x2) {
+        this->mUnk_294 = false;
+        Actor *actor   = func_02016fbc(ActorId_Soldier, &this->mPos, 0x0);
+        if (actor == NULL) {
+            this->SetState(ActorUnkKURIState_0);
+            return;
+        }
+        fx32 deltaZ  = actor->mPos.z - this->mPos.z;
+        fx32 deltaX  = actor->mPos.x - this->mPos.x;
+        this->mAngle = func_01ffbbe0(deltaX, deltaZ);
+        this->SetState(ActorUnkKURIState_11);
+        return;
+    }
+    this->SetState(ActorUnkKURIState_0);
+}
+
+void ActorUnkKURI::func_ov032_021194dc(ActorState state) {
+    this->mUnk_2C  = data_ov000_020aecf8;
+    this->mUnk_218 = 0x0;
+
+    if (this->mState != ActorUnkKURIState_11) {
+        return;
+    }
+
+    unk32 param2 = 0xA;
+    if (state == ActorUnkKURIState_1) {
+        param2 = 0x10;
+    }
+
+    if (this->mUnk_294) {
+        return;
+    }
+
+    func_01fff2fc(gpActorManager, (void (*)(Actor *, u16)) &ActorUnkKURI::func_ov032_0211b37c, param2);
+}
+
+void ActorUnkKURI::SetState(ActorState state) {
+    this->func_ov032_021194dc(state);
+    this->mState = state;
+
+    CALL_PTMF(PTMF<ActorUnkKURI>, data_ov032_02122348[this->mState]);
+}
+
 void ActorUnkKURI::vfunc_20() {}
 void ActorUnkKURI::vfunc_2C(unk32 param1) {}
-void ActorUnkKURI::func_ov032_02119990() {}
+
+void ActorUnkKURI::func_ov032_02119990() {
+    this->mVel.x   = FLOAT_TO_FX32(0.0f);
+    this->mVel.z   = FLOAT_TO_FX32(0.0f);
+    this->mUnk_264 = 0x3800;
+
+    this->mUnk_110.vfunc_1C(data_ov032_02122184, 0x1000, 0x19A, 0x0);
+    this->mUnk_220 = 0x7B;
+}
+
 void ActorUnkKURI::func_ov032_02119a0c() {}
 void ActorUnkKURI::func_ov032_02119be8() {}
 void ActorUnkKURI::func_ov032_02119c80() {}
@@ -130,8 +188,30 @@ void ActorUnkKURI::func_ov032_0211b17c() {}
 void ActorUnkKURI::func_ov032_0211b190() {}
 void ActorUnkKURI::func_ov032_0211b1e0() {}
 void ActorUnkKURI::func_ov032_0211b298() {}
-void ActorUnkKURI::func_ov032_0211b37c() {}
-void ActorUnkKURI::func_ov032_0211b3b0() {}
+
+void ActorUnkKURI::func_ov032_0211b37c(ActorUnkKURI *thisx, u16 param1) {
+    if (thisx->GetActorId() == ActorId_KURI) {
+        thisx->mUnk_294 = true;
+        thisx->mUnk_52  = param1;
+        thisx->mUnk_50  = 0x0;
+    }
+}
+
+void ActorUnkKURI::func_ov032_0211b3b0() {
+    if (this->mUnk_5C.mUnk_1A[1] != 0x0) {
+        UNSET_FLAG(this->mFlags, ActorFlag_Alive);
+    } else {
+        this->Actor::func_ov000_020984d0();
+    }
+
+    if (this->mUnk_5C.mParams[0] == 0x2) {
+        this->Actor::func_ov000_02098a88(0x0, 0x1);
+        UNSET_FLAG(this->mFlags, ActorFlag_Alive);
+        return;
+    }
+    this->Actor::func_ov000_020984d0();
+}
+
 void ActorUnkKURI::vfunc_54(unk32 param1) {}
 
 ActorUnkKURI_268::ActorUnkKURI_268() {

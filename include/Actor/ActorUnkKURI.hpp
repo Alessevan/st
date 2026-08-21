@@ -125,8 +125,8 @@ public:
     /* 4C */ virtual ~ActorUnkKURI() override;
     /* 54 */ virtual void vfunc_54(unk32 param1) override;
 
-    void func_ov032_021194dc();
-    void func_ov032_0211953c();
+    void func_ov032_021194dc(ActorState state);
+    void SetState(ActorState state);
     void func_ov032_02119990();
     void func_ov032_02119a0c();
     void func_ov032_02119be8();
@@ -158,9 +158,8 @@ public:
     void func_ov032_0211b190();
     void func_ov032_0211b1e0();
     void func_ov032_0211b298();
-    void func_ov032_0211b37c();
+    static void func_ov032_0211b37c(ActorUnkKURI *, u16 param1);
     void func_ov032_0211b3b0();
-    void func_ov032_0211b570();
 };
 
 class ActorProfileUnkKURI : public ActorProfile_Derived1 {
