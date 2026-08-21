@@ -73,10 +73,17 @@ public:
 class ActorUnkKURI_1BC : public UnkStruct_ov000_020b31a8 {
 public:
     /* 00 (base) */
-    /* 1C */
+    /* 1C */ UnkSystem5 mUnk_1C;
+    /* 3C */ unk32 mUnk_3C;
+    /* 40 */
 
-    ActorUnkKURI_1BC(UnkSystem5 *param1, ModelRender *param2, UnkActorFileSystem2 *param3) :
-        UnkStruct_ov000_020b31a8(param1, param2, param3) {}
+    ActorUnkKURI_1BC(ModelRender *param2, UnkActorFileSystem2 *param3) :
+        UnkStruct_ov000_020b31a8(&this->mUnk_1C, param2, param3),
+        mUnk_1C(&this->mUnk_3C, NULL) {
+        if (param3 != NULL) {
+            this->mUnk_1C.mpModel = this->mUnk_10;
+        }
+    }
 
     // data data_ov032_021221fc
     /* 30 */ virtual s8 vfunc_30() override;
@@ -90,12 +97,24 @@ public:
     /* 0AE */ STRUCT_PAD(0x0AE, 0x0B0);
     /* 0B0 */ ModelRender_ov000_020b1a1c mUnk_0B0;
     /* 110 */ ActorUnkKURI_110 mUnk_110;
+    /* 1A0 */ STRUCT_PAD(0x1A0, 0x1BC);
     /* 1BC */ ActorUnkKURI_1BC mUnk_1BC;
-    /* 1D8 */ UnkSystem5 mUnk_1D8;
+    /* 1FC */ STRUCT_PAD(0x1FC, 0x218);
+    /* 218 */ unk16 mUnk_218;
+    /* 21C */ unk32 mUnk_21C;
+    /* 220 */ unk32 mUnk_220;
+    /* 224 */ unk16 mUnk_224;
     /* 228 */ Actor_9C mUnk_228;
     /* 248 */ UnkStruct_ActorUnkCANS_224 mUnk_248;
     /* 258 */ Actor_Derived1_94 mUnk_258;
+    /* 264 */ unk32 mUnk_264;
     /* 268 */ ActorUnkKURI_268 mUnk_268;
+    /* 27C */ VecFx32 mUnk_27C;
+    /* 288 */ VecFx32 mUnk_288;
+    /* 294 */ bool mUnk_294;
+    /* 296 */ unk16 mUnk_296;
+    /* 298 */ unk16 mUnk_298;
+    /* 29A */
 
     ActorUnkKURI();
 

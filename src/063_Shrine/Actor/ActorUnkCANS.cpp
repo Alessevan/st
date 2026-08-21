@@ -659,7 +659,7 @@ void ActorUnkCANS::func_ov063_02159100(void) {
         return;
     }
 
-    u16 *tmpArr = (u16 *) &mUnk_22C;
+    u16 *tmpArr = (u16 *) &mUnk_224.mUnk_08;
     if (tmpArr[0] < tmpArr[1]) {
         this->func_ov063_02158448(4);
         return;
@@ -1106,7 +1106,7 @@ unk32 ActorUnkCANS::func_ov063_0215a2c0(void) {
 
 void ActorUnkCANS::func_ov063_0215a428(void) {
     // A not very clean code to access 22C and 22E matching the asm
-    u16 *values = (u16 *) &mUnk_22C;
+    u16 *values = (u16 *) &mUnk_224.mUnk_08;
     if (values[0] < values[1]) {
         this->func_ov063_02158448(4);
     } else if (mUnk_268 == NULL) {

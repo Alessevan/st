@@ -58,13 +58,36 @@ ActorProfileUnkKURI::ActorProfileUnkKURI() :
     this->vfunc_04()->mUnk_15 = true;
 }
 
+// non-matching
 ActorUnkKURI::ActorUnkKURI() :
     mUnk_0B0(G3d_GetModelPtr(GET_PROFILE(ActorProfileUnkKURI)->vfunc_04()->mUnk_50)),
     mUnk_110(&this->mUnk_0B0, GET_PROFILE(ActorProfileUnkKURI)->vfunc_04()),
-    mUnk_1BC(&this->mUnk_1D8, &this->mUnk_0B0, GET_PROFILE(ActorProfileUnkKURI)->vfunc_04()),
-    mUnk_1D8(NULL, NULL) {
+    mUnk_1BC(&this->mUnk_0B0, GET_PROFILE(ActorProfileUnkKURI)->vfunc_04()),
+    mUnk_218(0x0),
+    mUnk_21C(0x0),
+    mUnk_220(0x7B),
+    mUnk_224(0x0),
+    mUnk_264(0x3800) {
+    SET_FLAG(this->mFlags, ActorFlag_6);
+    SET_FLAG(this->mFlags, ActorFlag_13);
+
+    this->mUnk_228.mUnk_04 |= 0x8000;
+    this->mUnk_294 = true;
+
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_288);
+
+    Actor_38 *actor_38 = &this->mUnk_258.mUnk_00;
+    actor_38->mUnk_08  = 0x1;
+    this->mUnk_38      = actor_38;
+    this->mUnk_296     = 0x0;
+    this->mUnk_298     = 0x0;
+
+    VecFx32_Init(FLOAT_TO_FX32(1.0f), FLOAT_TO_FX32(1.0f), FLOAT_TO_FX32(1.0f), &this->mUnk_27C);
+
     this->func_ov000_0209862c(0x4);
+
     SET_FLAG(this->mFlags, ActorFlag_9);
+
     this->mUnk_A4 = &data_ov032_02122160.mUnk_00;
 }
 
