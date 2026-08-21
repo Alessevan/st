@@ -152,7 +152,7 @@ public:
     void func_ov032_0211ad40();
     void func_ov032_0211adf4();
     void func_ov032_0211b024();
-    void func_ov032_0211b064();
+    bool func_ov032_0211b064(unk32 param1);
     void func_ov032_0211b114();
     void func_ov032_0211b17c();
     void func_ov032_0211b190();

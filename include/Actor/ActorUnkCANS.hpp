@@ -93,8 +93,8 @@ public:
 class UnkStruct_ActorUnkCANS_224 {
 public:
     /* 00 (base) */ UnkStruct_PlayerGet_ec mUnk_00[0x2];
-    /* 08 */ unk16 mUnk_08;
-    /* 0A */ unk16 mUnk_0A;
+    /* 08 */ u16 mUnk_08;
+    /* 0A */ u16 mUnk_0A;
     /* 0C */ STRUCT_PAD(0x0C, 0x10);
     /* 10 */
 
