@@ -120,7 +120,8 @@ class UnkStruct_PlayerGet_50 {
 public:
     /* 00 (base) */ STRUCT_PAD(0x00, 0x04);
     /* 04 */ fx32 mUnk_04;
-    /* 08 */
+    /* 08 */ unk32 mUnk_08;
+    /* 0C */
 
     unk32 func_01ff8fa8();
     unk32 func_02015080(unk32 param1);

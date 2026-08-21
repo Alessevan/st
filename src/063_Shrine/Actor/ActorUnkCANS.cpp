@@ -734,7 +734,7 @@ void ActorUnkCANS::func_ov063_02159784(void) {
         data_027e09a8->func_ov000_02071b30(0x9862, &mPos, 0);
     }
 
-    if (0x7000 <= *(int *) (mUnk_128.vfunc_28() + 8) && *(int *) (mUnk_128.vfunc_28() + 8) <= 0xF000) {
+    if (0x7000 <= mUnk_128.vfunc_28()->mUnk_08 && mUnk_128.vfunc_28()->mUnk_08 <= 0xF000) {
 #if IS_JP
         fx32 yDiff    = data_027e0ce0->func_01fff148(0)->y - mPos.y;
         fx32 yDiffAbs = ABS(yDiff);
