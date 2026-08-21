@@ -96,7 +96,11 @@ UnkStruct_ov000_02058a84 *ActorBomb::func_ov031_020e15d0(u16 param1) {
 }
 
 // non-matching
-// who has this ?!
+// seems not to be in the actor
+// use a pattern like this->mUnk_04->mUnk_04
+// so it's not ActorBomb and the class has at
+// least 0xB3 bytes so it does not seem to be
+// one of the auxiliary classes
 void ActorBomb::func_ov031_020e1634() {}
 
 ActorBomb::ActorBomb() :
