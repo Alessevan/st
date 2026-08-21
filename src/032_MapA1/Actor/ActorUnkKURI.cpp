@@ -22,7 +22,7 @@ extern "C" Actor *func_02016fbc(ActorId, VecFx32 *, unk32);
 
 static const VecFx32Cpp data_ov032_02122160(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
 static ActorUnkZLSL_AnimationTag data_ov032_0212219a                 = {.index = 0, .name = "KURI", .unknown = 0x1};
-static ActorUnkZLSL_AnimationTag data_ov032_02122184                 = {.index = 0, .name = "wait", .unknown = 0x0};
+static ActorUnkZLSL_AnimationTag data_ov032_02122184                 = {.index = 0, .name = "walk", .unknown = 0x0};
 static ActorUnkZLSL_AnimationTag data_ov032_0212219c                 = {.index = 1, .name = "discover", .unknown = 0x1};
 static PTMF<ActorUnkKURI> data_ov032_02122288[ActorUnkKURIState_Max] = {
     ActorUnkKURI::func_ov032_02119a0c, // ActorUnkKURIState_0
