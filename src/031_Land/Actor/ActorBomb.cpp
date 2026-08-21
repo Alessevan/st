@@ -114,10 +114,11 @@ ActorBomb::ActorBomb() :
     mUnk_1EA(0x0),
     mUnk_1EC(0x0),
     mUnk_1EE(false),
-    mUnk_1F0(false)
 #if IS_JP
-    ,
+    mUnk_1F0(false),
     mUnk_1F1(false)
+#else
+    mUnk_1F0(false)
 #endif
 {
     if (this->mUnk_5C.mParams[0] != 0x1) {
