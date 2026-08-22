@@ -50,7 +50,7 @@ extern "C" fx32 func_01ff9a5c(VecFx32 *, VecFx32 *, VecFx32 *);
 extern "C" void func_01ffad5c(Mat4x3p *, Mat4x3p *, Mat4x3p *);
 extern "C" fx32 func_01ffb428(unk32, unk32);
 extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" unk32 func_01ffbbe0(unk32 param1, unk32 param2);
+extern "C" unk32 func_01ffbbe0(fx32 param1, fx32 param2);
 extern "C" void func_01ffc6d4(ModelRender *param1, UnkAngleStruct param2, VecFx32 *param3);
 extern "C" void func_0200eab0(G3d_Model *, unk32, u8);
 
@@ -312,13 +312,13 @@ void ActorUnkCANS::vfunc_20(void) {
                 mUnk_236 = func_ov000_02098d7c(this, &mUnk_200);
                 mUnk_234 = 0;
 
-                iVar5 = this->func_ov063_0215a56c((unk16) func_01ffbbe0(*(u32 *) &mUnk_200.mUnk_10, mUnk_200.mUnk_18));
+                iVar5 = this->func_ov063_0215a56c((unk16) func_01ffbbe0(mUnk_200.mUnk_10.x, mUnk_200.mUnk_10.z));
 
                 switch (mUnk_200.mUnk_1C) {
                     case 12:
                         if (iVar5 != 0) {
                             Actor *iVar6 = gpActorManager->func_01fff3b4(mUnk_200.mUnk_0C.data);
-                            if (iVar6 != 0) {
+                            if (iVar6 != NULL) {
                                 ((ActorItemBoomerang *) iVar6)->func_ov031_020e49b0(0x8D70);
                             }
                             if (mState != 4) {
@@ -895,9 +895,7 @@ void ActorUnkCANS::func_ov063_02159ec0(void) {
 
     mUnk_224.func_ov000_02099a0c();
 
-    mUnk_200.mUnk_10 = 0;
-    mUnk_200.mUnk_14 = 0;
-    mUnk_200.mUnk_18 = 0;
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &mUnk_200.mUnk_10);
 
     this->func_ov063_02158448(4);
 
