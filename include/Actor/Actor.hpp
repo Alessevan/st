@@ -97,9 +97,7 @@ public:
     /* 04 */ unk32 mUnk_04;
     /* 08 */ unk32 mUnk_08;
     /* 0C */ ActorRef mUnk_0C;
-    /* 10 */ unk32 mUnk_10;
-    /* 14 */ unk32 mUnk_14;
-    /* 18 */ unk32 mUnk_18;
+    /* 10 */ VecFx32 mUnk_10;
     /* 1C */ u16 mUnk_1C;
     /* 1E */ u16 mUnk_1E;
     /* 20 */
@@ -324,7 +322,10 @@ public:
     /* 54 */ virtual void vfunc_54(unk32 param1);
 
     void func_ov000_020992dc();
+    unk32 func_ov000_02099450(void *param2, VecFx32 *param3, unk32 param4, u16 param5);
+    void func_ov000_020994a0();
     void func_ov000_020997c4(unk32 param1);
+    void func_ov000_02098f34(VecFx32 *);
 };
 
 extern UnkStruct_ov000_020b539c data_ov000_020b539c_eur;

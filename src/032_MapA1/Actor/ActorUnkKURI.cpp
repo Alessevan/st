@@ -2,8 +2,10 @@
 
 #include "Actor/ActorManager.hpp"
 #include "Actor/Actor_Derived1.hpp"
+#include "System/Random.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
+#include "Unknown/UnkStruct_027e0cec.hpp"
 
 // should be elsewhere
 class VecFx32Cpp {
@@ -18,6 +20,7 @@ public:
 extern "C" u16 data_ov000_020aecf4[];
 extern "C" unk32 data_ov000_020aecf8;
 
+extern "C" bool func_01ff916c(void *, int, int);
 extern "C" void func_01ff941c(VecFx32 *, VecFx32 *);
 extern "C" fx32 func_01ffb66c(unk32, u16);
 extern "C" fx16 func_01ffbbe0(fx32, fx32);
@@ -28,9 +31,9 @@ extern "C" void func_ov017_020c2438(unk32 *, unk32, VecFx32 *, unk32, unk32);
 extern "C" void func_ov017_020c26f8(unk32, VecFx32 *, unk32, unk32);
 
 static const VecFx32Cpp data_ov032_02122160(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
-static ActorUnkZLSL_AnimationTag data_ov032_0212216c                 = {.index = 0, .name = "KURI", .unknown = 0x1};
 static ActorUnkZLSL_AnimationTag data_ov032_02122184                 = {.index = 0, .name = "walk", .unknown = 0x0};
 static ActorUnkZLSL_AnimationTag data_ov032_0212219c                 = {.index = 1, .name = "discover", .unknown = 0x1};
+static ActorUnkZLSL_AnimationTag data_ov032_0212216c                 = {.index = 0, .name = "KURI", .unknown = 0x1};
 static PTMF<ActorUnkKURI> data_ov032_02122288[ActorUnkKURIState_Max] = {
     ActorUnkKURI::func_ov032_02119a0c, // ActorUnkKURIState_0
     ActorUnkKURI::func_ov032_02119c80, // ActorUnkKURIState_1
@@ -167,7 +170,13 @@ void ActorUnkKURI::SetState(ActorState state) {
     CALL_PTMF(PTMF<ActorUnkKURI>, data_ov032_02122348[this->mState]);
 }
 
-void ActorUnkKURI::vfunc_20() {}
+void ActorUnkKURI::vfunc_20() {
+    // some code
+
+    CALL_PTMF(PTMF<ActorUnkKURI>, data_ov032_02122288[this->mState]);
+
+    // some code
+}
 
 void ActorUnkKURI::vfunc_2C(unk32 param1) {
     if (!this->Actor::func_01fff5d0(param1, 0x0)) {
@@ -263,21 +272,213 @@ void ActorUnkKURI::func_ov032_0211a9c8() {
     this->func_ov032_0211b1e0();
 }
 
-void ActorUnkKURI::func_ov032_0211aa40() {}
-void ActorUnkKURI::func_ov032_0211aac8() {}
-void ActorUnkKURI::func_ov032_0211ab20() {}
-void ActorUnkKURI::func_ov032_0211abc0() {}
-void ActorUnkKURI::func_ov032_0211ac20() {}
-void ActorUnkKURI::func_ov032_0211ac94() {}
-void ActorUnkKURI::func_ov032_0211ad40() {}
-void ActorUnkKURI::func_ov032_0211adf4() {}
-void ActorUnkKURI::func_ov032_0211b024() {}
-bool ActorUnkKURI::func_ov032_0211b064(unk32 param1) {}
-void ActorUnkKURI::func_ov032_0211b114() {}
-void ActorUnkKURI::func_ov032_0211b17c() {}
-void ActorUnkKURI::func_ov032_0211b190() {}
-void ActorUnkKURI::func_ov032_0211b1e0() {}
-void ActorUnkKURI::func_ov032_0211b298() {}
+extern "C" u16 data_ov000_020aecf0;
+
+void ActorUnkKURI::func_ov032_0211aa40() {
+    this->Actor_Derived2::func_ov000_02099450(&this->mUnk_248, &this->mUnk_228.mUnk_10, 0x0, data_ov000_020aecf0);
+
+    this->mUnk_110.vfunc_1C(data_ov032_02122184, 0x0, 0x19A, 0x0);
+
+    this->mUnk_228.func_ov000_02097bec();
+}
+
+void ActorUnkKURI::func_ov032_0211aac8() {
+    this->Actor_Derived2::func_ov000_020994a0();
+
+    if (!GET_FLAG(this->mFlags, ActorFlag_5)) {
+        return;
+    }
+
+    if (this->func_ov032_0211b064(0x0) || this->mUnk_5C.mParams[0] == 0x2) {
+        this->func_ov032_0211b024();
+        return;
+    }
+
+    this->SetState(ActorUnkKURIState_0);
+}
+
+void ActorUnkKURI::func_ov032_0211ab20() {
+    this->Actor_Derived2::func_ov000_02098f34(&this->mUnk_228.mUnk_10);
+
+    this->vfunc_40();
+    *((s16 *) &this->mUnk_44) &= ~0x20;
+    this->mUnk_2C = 0x0;
+
+    this->mUnk_110.vfunc_1C(data_ov032_02122184, 0x1000, 0x19A, 0x0);
+
+    this->mUnk_38->mUnk_08 = 0x3;
+    this->mUnk_228.func_ov000_02097bec();
+}
+
+void ActorUnkKURI::func_ov032_0211abc0() {
+    this->vfunc_44();
+
+    if (!GET_FLAG(this->mFlags, ActorFlag_5)) {
+        return;
+    }
+
+    this->mUnk_38->mUnk_08 = 0x1;
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_228.mUnk_10);
+
+    this->mUnk_248.func_ov000_02099a0c();
+
+    this->SetState(ActorUnkKURIState_7);
+
+    *((s16 *) &this->mUnk_44) |= 0x20;
+}
+
+void ActorUnkKURI::func_ov032_0211ac20() {
+    this->mVel.x = FLOAT_TO_FX32(0.0f);
+    this->mVel.z = FLOAT_TO_FX32(0.0f);
+
+    this->mUnk_52 = 0xA;
+    this->mUnk_50 = 0x0;
+
+    this->mUnk_110.vfunc_1C(data_ov032_02122184, 0x1000, 0x19A, 0x0);
+}
+
+void ActorUnkKURI::func_ov032_0211ac94() {
+    this->mUnk_27C.y -= 0x199;
+
+    if (!this->IsTimerOut()) {
+        return;
+    }
+
+    data_027e09a8->func_ov000_02071b30(0x983D, &this->mPos, 0x0);
+
+    this->Actor::func_ov000_020984d0();
+
+    if (this->mUnk_5C.mParams[0] == 0x2) {
+        this->func_ov000_02098a88(0x0, 0x1);
+    }
+    this->func_ov017_020bf3e0(0x1, 0x0);
+
+    this->Actor_Derived2::func_ov000_020997c4(0x0);
+}
+
+void ActorUnkKURI::func_ov032_0211ad40() {
+    this->mVel.x = FLOAT_TO_FX32(0.0f);
+    this->mVel.z = FLOAT_TO_FX32(0.0f);
+
+    this->mUnk_110.vfunc_1C(data_ov032_02122184, 0x1000, 0x19A, 0x0);
+
+    this->mUnk_298 = gRandom.Next32(0xE);
+    this->mUnk_296 = 0x0;
+}
+
+void ActorUnkKURI::func_ov032_0211adf4() {
+    this->IsTimerOut();
+    switch (this->mUnk_218) {
+        case 0x0:
+            if (!this->IsInternalTimerOut()) {
+                break;
+            }
+
+            ++this->mUnk_218;
+            this->mUnk_110.vfunc_1C(data_ov032_0212219c, 0x1000, 0x19A, 0x0);
+            data_027e09a8->func_ov000_02071b30(0x9836, &this->mPos, 0x0);
+            break;
+
+        case 0x1:
+            if (this->mUnk_110.vfunc_28()->func_01ff8fa8() == 0x0) {
+                break;
+            }
+
+            data_027e0cec->func_ov000_0209feac(0x880, &this->mPos, 0x2, 0x0, 0x0);
+            this->mUnk_110.vfunc_1C(data_ov032_02122184, 0x1000, 0x19A, 0x0);
+            if (this->func_ov032_0211b064(0x0) || (this->mUnk_294 && this->mUnk_50 >= this->mUnk_52)) {
+                this->SetState(ActorUnkKURIState_1);
+                return;
+            }
+            u16 random     = gRandom.Next32(0);
+            this->mUnk_298 = random + 0xA;
+            this->mUnk_296 = 0x0;
+            this->mUnk_218 = 0x0;
+            break;
+
+        default:
+            break;
+    }
+}
+
+void ActorUnkKURI::func_ov032_0211b024() {
+    if (this->mUnk_5C.mParams[0] == 0x1 && !this->func_ov032_0211b114()) {
+        this->SetState(ActorUnkKURIState_4);
+        return;
+    }
+    this->SetState(ActorUnkKURIState_2);
+}
+
+extern "C" unk32 func_01ff9258(fx32, fx32);
+extern "C" bool func_02016ae0(VecFx32 *, VecFx32 *, UnkAngleStruct, unk32, unk32);
+extern "C" bool func_ov000_0205adfc(VecFx32 *, VecFx32 *);
+
+bool ActorUnkKURI::func_ov032_0211b064(unk32 param1) {
+    VecFx32 *vec = data_027e0ce0->func_01fff148(0x0);
+    bool ret     = false;
+    if (func_ov000_0205adfc(vec, &this->mPos) &&
+        func_01ff9258(vec->x - this->mPos.x, vec->z - this->mPos.z) < this->mUnk_264) {
+        ret = true;
+    }
+
+    if (param1 != 0x0) {
+        if (!ret || !func_02016ae0(&this->mPos, vec, this->mAngleStruct, 0x4E39, 0x1) == 0x0) {
+            ret = true;
+        } else {
+            ret = false;
+        }
+    }
+
+    return ret;
+}
+
+bool ActorUnkKURI::func_ov032_0211b114() {}
+
+bool ActorUnkKURI::func_ov032_0211b17c() {
+    return this->mState == ActorUnkKURIState_10;
+}
+
+void ActorUnkKURI::func_ov032_0211b190(s32 param1, s32 param2) {}
+
+void ActorUnkKURI::func_ov032_0211b1e0() {
+    if (this->mUnk_110.vfunc_30() != 0x0 || !GET_FLAG(this->mFlags, ActorFlag_14)) {
+        return;
+    }
+
+    if (this->mUnk_110.vfunc_10()->mUnk_04.func_02015080(0x1000) != 0x0) {
+        data_027e09a8->func_ov000_02071b30(0x9838, &this->mPos, 0x0);
+        return;
+    }
+
+    if (this->mUnk_110.vfunc_10()->mUnk_04.func_02015080(0xF000) != 0x0) {
+        data_027e09a8->func_ov000_02071b30(0x9839, &this->mPos, 0x0);
+        return;
+    }
+}
+
+void ActorUnkKURI::func_ov032_0211b298() {
+    if (this->mUnk_110.vfunc_30() != 0x1) {
+        if (this->mUnk_288.y <= FLOAT_TO_FX32(0.0f)) {
+            this->mUnk_288.z = FLOAT_TO_FX32(0.0f);
+            return;
+        }
+
+        this->mUnk_288.z -= this->mUnk_2C;
+
+        func_01ff916c(&this->mUnk_288.y, 0x0, this->mUnk_288.z);
+        return;
+    }
+
+    fx32 value = this->mUnk_110.vfunc_28()->mUnk_08;
+
+    if (value > FLOAT_TO_FX32(1.0f) && value < FLOAT_TO_FX32(16.0f)) {
+        value -= FLOAT_TO_FX32(1.0f);
+        this->mUnk_288.y = MUL_FX32(value + MUL_FX32(-MUL_FX32(value, value), 0x92492493), 0x3B4);
+        return;
+    }
+
+    this->mUnk_288.y = FLOAT_TO_FX32(0.0f);
+}
 
 void ActorUnkKURI::func_ov032_0211b37c(ActorUnkKURI *thisx, u16 param1) {
     if (thisx->GetActorId() == ActorId_KURI) {

@@ -107,6 +107,8 @@ public:
         this->mUnk_0A = 0x0;
         this->mUnk_08 = 0x0;
     }
+
+    void func_ov000_02099a0c();
 };
 
 class ActorUnkCANS : public Actor_Derived2 {

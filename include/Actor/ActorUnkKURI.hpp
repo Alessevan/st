@@ -112,11 +112,20 @@ public:
     /* 27C */ VecFx32 mUnk_27C;
     /* 288 */ VecFx32 mUnk_288;
     /* 294 */ bool mUnk_294;
-    /* 296 */ unk16 mUnk_296;
-    /* 298 */ unk16 mUnk_298;
+    /* 296 */ volatile u16 mUnk_296;
+    /* 298 */ u16 mUnk_298;
     /* 29A */
 
     ActorUnkKURI();
+
+    bool IsInternalTimerOut() {
+        if (this->mUnk_296 < this->mUnk_298) {
+            this->mUnk_296++;
+            return false;
+        }
+
+        return true;
+    }
 
     /* 18 */ virtual bool vfunc_18(unk32 param1) override;
     /* 1C */ virtual void vfunc_1C() override;
@@ -153,9 +162,9 @@ public:
     void func_ov032_0211adf4();
     void func_ov032_0211b024();
     bool func_ov032_0211b064(unk32 param1);
-    void func_ov032_0211b114();
-    void func_ov032_0211b17c();
-    void func_ov032_0211b190();
+    bool func_ov032_0211b114();
+    bool func_ov032_0211b17c();
+    void func_ov032_0211b190(s32 param1, s32 param2);
     void func_ov032_0211b1e0();
     void func_ov032_0211b298();
     static void func_ov032_0211b37c(ActorUnkKURI *, u16 param1);
