@@ -22,7 +22,8 @@ typedef void (*UnkSystem4_UnkCallback)(void *, unk32);
 class UnkSystem4_vfunc_1C_B4 {
 public:
     /* 00 */ unk32 mUnk_00;
-    /* 00 */ STRUCT_PAD(0x04, 0x4C);
+    /* 00 */ STRUCT_PAD(0x04, 0x28);
+    /* 28 */ Mat3p mUnk_28;
     /* 4C */ unk32 mUnk_4C;
     /* 50 */ unk32 mUnk_50;
     /* 54 */ unk32 mUnk_54;

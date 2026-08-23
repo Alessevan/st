@@ -4,6 +4,7 @@
 
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
+#include "MapObject/MapObjectUnkSWSW.hpp"
 #include "global.h"
 #include "types.h"
 
@@ -19,8 +20,11 @@ public:
 
 class ActorUnkNSSW : public Actor {
 public:
-    /* 00 (base) */
-    /* 94 */
+    /* 000 (base) */
+    /* 094 */ STRUCT_PAD(0x094, 0x184);
+    /* 184 */ MapObjectUnkSWSW *mUnk_184;
+    /* 188 */ MapObjectUnkSWSW *mUnk_188;
+    /* 18C */
 
     ActorUnkNSSW();
 
