@@ -1,32 +1,32 @@
-//! TODO: This file was generated automatically and might contain errors
-
 #include "MapObject/MapObjectUnkSWSW.hpp"
 #include "System/SysNew.hpp"
+
+extern "C" char data_ov032_02121ef4;
 
 DECL_PROFILE(MapObjectProfileUnkSWSW);
 
 MapObject *MapObjectProfileUnkSWSW::Create() {
-    return new(HeapIndex_2) MapObjectUnkSWSW();
+    return new(HeapIndex_ITCM) MapObjectUnkSWSW();
 }
 
 MapObjectProfileUnkSWSW::MapObjectProfileUnkSWSW() :
-    MapObjectProfile(MapObjectId_SWSW) {}
+    MapObjectProfileUnkSWSW_Base(MapObjectId_SWSW) {}
 
-MapObjectUnkSWSW::MapObjectUnkSWSW() {}
+MapObjectUnkSWSW_40::MapObjectUnkSWSW_40(G3d_Model *pModel) :
+    ModelRender(pModel) {}
 
-void MapObjectUnkSWSW::func_ov032_02120f78(void) {}
-void MapObjectUnkSWSW::func_ov032_02120fe4(void) {}
-void MapObjectUnkSWSW::func_ov032_021210a0(void) {}
-void MapObjectUnkSWSW::func_ov032_021211c8(void) {}
-void MapObjectUnkSWSW::func_ov032_021211dc(void) {}
-void MapObjectUnkSWSW::func_ov032_0212141c(void) {}
-void MapObjectUnkSWSW::func_ov032_021218d0(void) {}
-void MapObjectUnkSWSW::func_ov032_02121b48(void) {}
-void MapObjectUnkSWSW::func_ov032_02121b90(void) {}
-void MapObjectUnkSWSW::func_ov032_02121c18(void) {}
-void MapObjectUnkSWSW::func_ov032_02121d70(void) {}
-void MapObjectUnkSWSW::func_ov032_02121dc8(void) {}
-void MapObjectUnkSWSW::func_ov032_02121e94(void) {}
+void MapObjectUnkSWSW_40::vfunc_1C(UnkSystem4_vfunc_1C *param1) {}
 
-MapObjectUnkSWSW::~MapObjectUnkSWSW() {}
-MapObjectProfileUnkSWSW::~MapObjectProfileUnkSWSW() {}
+void MapObjectUnkSWSW::func_ov032_021210a0() {}
+
+MapObjectUnkSWSW::MapObjectUnkSWSW() :
+    mUnk_40(G3d_GetUnkPtr(GET_PROFILE(MapObjectProfileUnkSWSW)->mUnk_20.mUnk_50, &data_ov032_02121ef4)) {}
+
+void MapObjectUnkSWSW::func_ov032_021211dc() {}
+void MapObjectUnkSWSW::func_ov032_0212141c() {}
+void MapObjectUnkSWSW::func_ov032_021218d0() {}
+void MapObjectUnkSWSW::func_ov032_02121b48() {}
+void MapObjectUnkSWSW::func_ov032_02121b90() {}
+void MapObjectUnkSWSW::func_ov032_02121c18() {}
+void MapObjectUnkSWSW::func_ov032_02121d70() {}
+void MapObjectUnkSWSW::func_ov032_02121dc8() {}
