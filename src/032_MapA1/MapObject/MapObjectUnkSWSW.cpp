@@ -12,7 +12,7 @@
 
 extern "C" char data_ov032_02121ef4;
 extern "C" char data_ov032_02121f04;
-extern "C" unk32 data_ov032_02121f14; //* ig these variables should be 0x10-byte long
+extern "C" unk32 data_ov032_02121f14; // ig these variables should be 0x10-byte long
 extern "C" unk32 data_ov032_02121f24; // same as above
 extern "C" MapObjectProfile_Derived2_20_Base data_ov032_02122ad8;
 extern "C" MapObject_10 data_ov032_02122b8c;
@@ -194,7 +194,7 @@ void MapObjectUnkSWSW::vfunc_08() {
             func_01ff91b8(&this->mUnk_10C, 0x0, 0x4CD);
             break;
 
-        case 0x2:
+        case 0x2: {
             if (this->mUnk_102 != 0x0 && this->mUnk_100 >= this->mUnk_102) {
                 this->MapObject::func_ov000_0209d2c4(0x0, true);
 
@@ -261,8 +261,9 @@ void MapObjectUnkSWSW::vfunc_08() {
                 }
             }
             break;
+        }
 
-        case 0x1:
+        case 0x1: {
             VecFx32 sp30;
             VecFx32 sp24;
             VecFx32 sp18;
@@ -294,6 +295,7 @@ void MapObjectUnkSWSW::vfunc_08() {
                 VecFx32_Copy(&sp0C, &actorNSSW->mPrevPos);
             }
             break;
+        }
 
         case 0x3:
             func_01ff9218(&this->mUnk_108, 0x0, 0x99A);
@@ -443,7 +445,7 @@ void MapObjectUnkSWSW::vfunc_3C(unk32 param1) {
             this->mUnk_0AC.func_ov000_020577f8(0x1000);
             break;
 
-        case 0x1:
+        case 0x1: {
             VecFx32 sp18;
             VecFx32 sp0C;
             VecFx32 sp00;
@@ -468,6 +470,7 @@ void MapObjectUnkSWSW::vfunc_3C(unk32 param1) {
             VecFx32_Copy(&sp00, &nssw0F8->mPos);
             VecFx32_Copy(&sp00, &nssw0F8->mPrevPos);
             break;
+        }
 
         case 0x0:
             this->mUnk_0AC.func_ov000_020577f8(0x1000);
