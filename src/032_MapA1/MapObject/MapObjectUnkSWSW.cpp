@@ -13,7 +13,7 @@
 extern "C" char data_ov032_02121ef4;
 extern "C" char data_ov032_02121f04;
 extern "C" unk32 data_ov032_02121f14; //* ig these variables should be 0x10-byte long
-extern "C" unk32 data_ov032_02121f24; //|
+extern "C" unk32 data_ov032_02121f24; // same as above
 extern "C" MapObjectProfile_Derived2_20_Base data_ov032_02122ad8;
 extern "C" MapObject_10 data_ov032_02122b8c;
 
