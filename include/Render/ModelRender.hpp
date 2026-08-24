@@ -56,6 +56,9 @@ public:
     /* 18 */ virtual void vfunc_18(VecFx32 *param1)                                 = 0;
     /* 1C */
 
+    void func_01ffc6d4(UnkAngleStruct angleStruct, VecFx32 *pos);
+
+    void func_ov000_02057cb0();
     unk32 func_ov000_02057f18(const void *param1);
     unk32 func_ov000_02057f40(const void *param1);
     const G3d_Model_14 *func_ov000_02057ee0() const;
@@ -118,8 +121,6 @@ public:
     // data_ov000_020b1968
     /* 00 */ virtual ~UnkSystem6_Derived2() {}
     /* 0C */ virtual void vfunc_0C() override;
-
-    void func_01ffc6d4(UnkAngleStruct angleStruct, VecFx32 *pos);
 };
 
 class ModelRender_ov000_020b198c : public ModelRenderBase {
