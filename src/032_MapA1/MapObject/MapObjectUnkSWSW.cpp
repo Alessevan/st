@@ -99,7 +99,7 @@ void MapObjectUnkSWSW_40::func_ov032_021210a0(fx32 param1) {
 MapObjectUnkSWSW::MapObjectUnkSWSW() :
     mUnk_040(G3d_GetUnkPtr(GET_PROFILE(MapObjectProfileUnkSWSW)->mUnk_20.mUnk_50, &data_ov032_02121ef4)),
     mUnk_0AC(&this->mUnk_0CC, NULL),
-    mUnk_0EC(0x0, 0x800, 0x148 - 0x800),
+    mUnk_0EC(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(-0.4202f)),
     mUnk_0F8(NULL),
     mUnk_0FC(0x4),
     mUnk_100(0x0),
@@ -407,13 +407,13 @@ void MapObjectUnkSWSW::func_ov032_02121b90() {
     this->mUnk_0F8 = NULL;
 
     if (this->mUnk_114 != NULL) {
-        if (this->mUnk_114->mUnk_184 != NULL && this != this->mUnk_114->mUnk_184) {
-            this->mUnk_114->mUnk_184->func_ov032_02121b90();
+        if (this->mUnk_114->mUnk_184_eur != NULL && this != this->mUnk_114->mUnk_184_eur) {
+            this->mUnk_114->mUnk_184_eur->func_ov032_02121b90();
         }
 
-        this->mUnk_0F8           = this->mUnk_114;
-        this->mUnk_114->mUnk_184 = this;
-        this->mUnk_0F8->mUnk_188 = this;
+        this->mUnk_0F8               = this->mUnk_114;
+        this->mUnk_114->mUnk_184_eur = this;
+        this->mUnk_0F8->mUnk_188_eur = this;
 
         this->vfunc_3C(0x0);
         return;
@@ -512,8 +512,8 @@ ActorUnkNSSW *MapObjectUnkSWSW::func_ov032_02121dc8(VecFx32 *param1) {
 
     ActorUnkNSSW *actor = (ActorUnkNSSW *) gpActorManager->func_01fff3b4(unk.ref);
 
-    actor->mUnk_184 = this;
-    actor->mUnk_188 = this;
+    actor->mUnk_184_eur = this;
+    actor->mUnk_188_eur = this;
 
     return actor;
 }
