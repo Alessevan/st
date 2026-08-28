@@ -264,7 +264,7 @@ _ZTV10ActorKeese kind:data(any) addr:0x0212262c
 _ZTV19data_ov032_02122694 kind:data(any) addr:0x0212268c
 data_ov032_021226ac kind:data(any) addr:0x021226ac
 _ZTV19data_ov032_021226c0 kind:data(any) addr:0x021226c0
-_ZTV17ActorProfileKeese kind:data(any) addr:0x021226e4
+data_ov032_021226e4 kind:data(any) addr:0x021226e4
 _ZTV23MapObjectProfileUnkSWSW kind:data(any) addr:0x02122744
 _ZTV28MapObjectProfileUnkSWSW_Base kind:data(any) addr:0x02122760
 _ZTV17MapObject_10_SWSW kind:data(any) addr:0x0212277c
