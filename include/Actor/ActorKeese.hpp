@@ -33,7 +33,7 @@ public:
         mUnk_04(param1) {}
 
     // data_ov000_020b34c4
-    /* 00 */ virtual bool vfunc_00(MapObject *param1); // func_ov000_0209c348
+    /* 00 */ virtual bool vfunc_00(MapObject *param1);
 };
 
 class UnkStruct_ov032_0212251c : public UnkStruct_ov000_020b34c4 {
@@ -44,7 +44,7 @@ public:
     UnkStruct_ov032_0212251c();
 
     // data_ov032_0212251c
-    /* 00 */ virtual bool vfunc_00(MapObject *param1);
+    /* 00 */ virtual bool vfunc_00(MapObject *param1) override;
 };
 
 class ActorKeese_2AC : public UnkStruct_ov031_Items_00 {
@@ -55,10 +55,10 @@ public:
     /* 0C */ VecFx32 mUnk_0C;
     /* 18 */
 
-    ActorKeese_2AC(ActorKeese *param1); // func_ov032_0211de34
+    ActorKeese_2AC(ActorKeese *param1);
 
     // data_ov032_02122528
-    /* 00 */ virtual ~ActorKeese_2AC();
+    /* 00 */ virtual ~ActorKeese_2AC() override;
     /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1) override;
     /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) override;
 };
