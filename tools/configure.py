@@ -597,7 +597,7 @@ config.libs = [
     GameLib(
         "Overlay 32",
         [
-            Object("032_MapA1/Actor/ActorUnkKETH.cpp"),
+            Object("032_MapA1/Actor/ActorKeese.cpp"),
             Object("032_MapA1/Actor/ActorSpinut.cpp"),
             Object("032_MapA1/Actor/ActorUnkMKUR.cpp"),
             Object("032_MapA1/Actor/ActorUnkNSSW.cpp"),
