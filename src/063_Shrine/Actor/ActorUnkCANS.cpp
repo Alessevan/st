@@ -70,8 +70,6 @@ extern "C" unk32 func_ov000_02098d7c(ActorUnkCANS *param1, UnkStruct_ov063_02162
 
 // Overlay 17
 extern "C" void func_ov017_020bf050(ActorUnkCANS *param1, UnkStruct_ov063_02162e88 *param2, unk32 param3);
-extern "C" void func_ov017_020bf634(ActorUnkCANS *param1, unk16 *param2, unk32 param3, unk32 param4);
-extern "C" void func_ov017_020bf688(ActorUnkCANS *param1);
 
 // Overlay 26
 #if IS_JP
@@ -571,12 +569,12 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
 }
 
 void ActorUnkCANS::func_ov063_021590c8(void) {
-    func_ov017_020bf634(this, (unk16 *) &mUnk_200.mUnk_10, this->func_ov063_0215a5bc(), this->func_ov063_0215a5d8());
-    ((Actor_9C *) &mUnk_200)->func_ov000_02097bec();
+    this->Actor::func_ov017_020bf634(&mUnk_200.mUnk_10, this->func_ov063_0215a5bc(), this->func_ov063_0215a5d8());
+    mUnk_200.func_ov000_02097bec();
 }
 
 void ActorUnkCANS::func_ov063_02159100(void) {
-    func_ov017_020bf688(this);
+    this->Actor::func_ov017_020bf688();
 
     if (!GET_FLAG(this->mFlags, 5)) {
         return;

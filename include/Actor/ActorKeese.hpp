@@ -45,6 +45,8 @@ public:
 
     // data_ov032_0212251c
     /* 00 */ virtual bool vfunc_00(MapObject *param1) override;
+
+    VecFx32 *func_020170ac(VecFx32 *param1);
 };
 
 class ActorKeese_2AC : public UnkStruct_ov031_Items_00 {
@@ -70,7 +72,7 @@ public:
     /* 6C */ unk32 mUnk_6C;
     /* 70 */
 
-    ModelRender_ov032_02122568(G3d_Model *pModel); // func_ov032_0211dbcc
+    ModelRender_ov032_02122568(G3d_Model *pModel);
 
     // data_ov032_02122568
 };
@@ -109,11 +111,9 @@ public:
     /* 2A4 */ unk32 mUnk_2A4;
     /* 2A8 */ unk16 mUnk_2A8;
     /* 2AC */ ActorKeese_2AC mUnk_2AC;
-    /* 2C4 */ unk32 mUnk_2C4;
-    /* 2C8 */ unk32 mUnk_2C8;
-    /* 2CC */ unk32 mUnk_2CC;
-    /* 2D0 */ unk32 mUnk_2D0;
-    /* 2D4 */ unk32 mUnk_2D4;
+    /* 2C4 */ VecFx32 mUnk_2C4;
+    /* 2D0 */ Actor_38 *mUnk_2D0;
+    /* 2D4 */ ActorRef mUnk_2D4;
     /* 2D8 */
 
     ActorKeese();
@@ -150,7 +150,7 @@ public:
     void func_ov032_0211f6bc();
     void func_ov032_0211f804();
     void func_ov032_0211f93c();
-    void func_ov032_0211f9c4();
+    bool func_ov032_0211f9c4();
     void func_ov032_0211fa4c();
     static void func_ov032_0211faf0(void *param1, unk32 param2);
 };

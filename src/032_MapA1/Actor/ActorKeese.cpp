@@ -2,13 +2,22 @@
 
 #include "Actor/ActorKeese.hpp"
 
+#include "Actor/ActorManager.hpp"
 #include "Map/MapObjectId.hpp"
 #include "MapObject/MapObjectUnkSKDI.hpp"
 #include "System/Random.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
+#include "Unknown/UnkStruct_027e0cec.hpp"
+
+extern "C" u16 data_ov000_020aecf0[];
+extern "C" u16 data_ov000_020aecf4[];
+extern "C" unk32 data_ov000_020aecf8;
+extern "C" unk32 data_ov000_020aecfc[];
 
 extern "C" void *data_ov032_02121ed4;
+
+extern "C" s8 func_ov000_02059da4(UnkStruct_027e0960_TableEntry *, VecFx32 *param1);
 
 static const VecFx32 data_ov032_021224d8(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
 static ActorUnkZLSL_AnimationTag data_ov032_021224e4             = {.index = 0, .name = "fly"};
@@ -72,10 +81,8 @@ ActorKeese::ActorKeese() :
     mUnk_2A4(0x0),
     mUnk_2A8(0x0),
     mUnk_2AC(this),
-    mUnk_2C4(0x0),
-    mUnk_2C8(0x0),
-    mUnk_2CC(0x0),
-    mUnk_2D0(0x0),
+    mUnk_2C4(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f)),
+    mUnk_2D0(NULL),
     mUnk_2D4(0x0) {
     this->Actor::func_ov000_0209862c(0x4);
 
@@ -99,6 +106,7 @@ bool ActorKeese_2AC::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
     this->UnkStruct_ov031_Items_00::vfunc_08(param1);
 }
 
+// non-matching
 bool ActorKeese_2AC::vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) {}
 
 bool ActorKeese::vfunc_18(unk32 param1) {
@@ -120,6 +128,7 @@ void ActorKeese::func_ov032_0211e0c0() {
     this->func_ov032_0211e0d4(this->mUnk_5C.mParams[0], 0x0);
 }
 
+// non-matching (cf below)
 void ActorKeese::func_ov032_0211e0d4(s16 param1, unk32 param2) {
     if (this->mUnk_22A == param1) {
         return;
@@ -129,16 +138,52 @@ void ActorKeese::func_ov032_0211e0d4(s16 param1, unk32 param2) {
 
     switch (param1) {
         case 0x0:
-            this->mUnk_1CC.func_ov000_02099ddc(data_ov032_021224fc, 0x1000, 0x1000);
+            this->mUnk_1CC.func_ov000_02099ddc(data_ov032_021224fc, 0x1000, 0x0);
 
             this->mUnk_278.func_ov000_020a0334();
 
+            for (ActorKeese_284 *ptr = this->mUnk_284; ptr != this->mUnk_284 + ARRAY_LEN(this->mUnk_284); ++ptr) {
+                ptr->func_ov000_020a0334();
+            }
             break;
 
-        case 0x1:
+        case 0x1: {
+            this->mUnk_1CC.func_ov000_02099ddc(data_ov032_021224fc, 0x1000, 0x2000);
+
+            // does not match add r4, r6, #0x284 then str r1 [r4, #0x4]
+            this->mUnk_284[0].mUnk_04 = 0xD045;
+            this->mUnk_284[0].mUnk_08 = 0x2;
+            this->mUnk_284[1].mUnk_04 = 0xD046;
+            this->mUnk_284[1].mUnk_08 = 0x2;
+
+            UnkStruct_027e0cec *data = data_027e0cec;
+            for (ActorKeese_284 *ptr = this->mUnk_284; ptr != this->mUnk_284 + ARRAY_LEN(this->mUnk_284); ++ptr) {
+                data->func_ov000_020a0140(ptr, &this->mUnk_2C4);
+            }
+
+            if (param2 != 0x0) {
+                data_027e09a8->func_ov000_02071b30(0x9823, &this->mPos, 0x0);
+            }
+
+            this->mUnk_278.func_ov000_020a0334();
             break;
+        }
 
         case 0x2:
+            this->mUnk_1CC.func_ov000_02099ddc(data_ov032_021224fc, 0x1000, 0x1000);
+
+            this->mUnk_27C = 0x877;
+            this->mUnk_280 = 0x2;
+
+            data_027e0cec->func_ov000_020a0140(&this->mUnk_278, &this->mUnk_2C4);
+
+            if (param2 != 0x0) {
+                data_027e09a8->func_ov000_02071b30(0x9822, &this->mPos, 0x0);
+            }
+
+            for (ActorKeese_284 *ptr = this->mUnk_284; ptr != this->mUnk_284 + ARRAY_LEN(this->mUnk_284); ++ptr) {
+                ptr->func_ov000_020a0334();
+            }
             break;
 
         default:
@@ -148,16 +193,47 @@ void ActorKeese::func_ov032_0211e0d4(s16 param1, unk32 param2) {
 
 void ActorKeese::func_ov032_0211e308() {
     switch (this->mUnk_22A) {
-        case 0x1:
+        case 0x1: {
+            UnkStruct_027e0cec *data = data_027e0cec;
+            for (ActorKeese_284 *ptr = this->mUnk_284; ptr != this->mUnk_284 + ARRAY_LEN(this->mUnk_284); ++ptr) {
+                data->func_ov000_020a0140(ptr, &this->mUnk_2C4);
+            }
             break;
+        }
+
         case 0x2:
+            data_027e0cec->func_ov000_020a0140(&this->mUnk_278, &this->mUnk_2C4);
             break;
+
         default:
             break;
     }
 }
 
-void ActorKeese::func_ov032_0211e380() {}
+void ActorKeese::func_ov032_0211e380() {
+    switch (this->mUnk_5C.mParams[1]) {
+        case 0x0:
+            this->SetState(ActorKeeseState_0);
+            break;
+
+        case 0x1: {
+            u8 sp00 = this->mUnk_5C.mUnk_0E;
+            this->mUnk_22C.func_ov024_020d6680(&this->mPos, &sp00);
+
+            this->mUnk_22C.mUnk_04 = func_ov000_02059da4(this->mUnk_22C.mUnk_00, &this->mPos);
+
+            this->SetState(ActorKeeseState_1);
+            break;
+        }
+
+        case 0x2:
+            this->SetState(ActorKeeseState_9);
+            break;
+
+        default:
+            break;
+    }
+}
 
 void ActorKeese::func_ov032_0211e40c() {
     this->mUnk_2C  = 0x0;
@@ -172,6 +248,7 @@ void ActorKeese::SetState(ActorState state) {
     CALL_PTMF(PTMF<ActorKeese>, data_ov032_0212258c[this->mState]);
 }
 
+// non-matching
 void ActorKeese::func_ov032_0211e468() {}
 
 void ActorKeese::vfunc_20() {
@@ -236,10 +313,15 @@ void ActorKeese::vfunc_20() {
     this->mUnk_120.vfunc_34();
 }
 
+// non-matching
 void ActorKeese::vfunc_2C(unk32 param1) {}
+// non-matching
 void ActorKeese::func_ov032_0211e9ec() {}
+// non-matching
 void ActorKeese::func_ov032_0211eb60() {}
+// non-matching
 void ActorKeese::func_ov032_0211ece8() {}
+// non-matching
 void ActorKeese::func_ov032_0211ee5c() {}
 
 void ActorKeese::func_ov032_0211f054() {
@@ -247,19 +329,95 @@ void ActorKeese::func_ov032_0211f054() {
     this->mUnk_50 = 0x0;
 }
 
+// non-matching
 void ActorKeese::func_ov032_0211f0a8() {}
+// non-matching
 void ActorKeese::func_ov032_0211f1f0() {}
+// non-matching
 void ActorKeese::func_ov032_0211f1f4() {}
 
 void ActorKeese::func_ov032_0211f300() {
     this->mUnk_248.func_ov000_02097bec();
 }
 
-void ActorKeese::func_ov032_0211f310() {}
-void ActorKeese::func_ov032_0211f3ac() {}
-void ActorKeese::func_ov032_0211f404() {}
-void ActorKeese::func_ov032_0211f4a4() {}
-void ActorKeese::func_ov032_0211f50c() {}
+// non-matching (270 + 2)
+void ActorKeese::func_ov032_0211f310() {
+    this->Actor_Derived2::func_ov000_020992dc();
+
+    if (GET_FLAG(this->mFlags, ActorFlag_5)) {
+        if (this->mUnk_48 <= 0x0) {
+            this->vfunc_54(0x0);
+        } else {
+            if (this->mUnk_268.mUnk_08 >= this->mUnk_268.mUnk_0A) {
+                this->func_ov032_0211e380();
+            } else {
+                this->SetState(ActorKeeseState_6);
+            }
+        }
+    }
+
+    this->Actor::func_ov000_02098838();
+
+    VecFx32_Copy(&this->mPos, &this->mPrevPos);
+    VecFx32_Add(&this->mPos, &this->mVel, &this->mPos);
+}
+
+// non-matching (regalloc)
+void ActorKeese::func_ov032_0211f3ac() {
+    this->Actor::func_ov017_020bf634(&this->mUnk_248.mUnk_10, data_ov000_020aecfc[0], data_ov000_020aecf4[0]);
+
+    this->mUnk_248.func_ov000_02097bec();
+
+    this->mUnk_120.vfunc_28()->mUnk_04 = FLOAT_TO_FX32(1.2f);
+    this->mUnk_2C                      = 0x7B;
+}
+
+void ActorKeese::func_ov032_0211f404() {
+    this->func_ov017_020bf688();
+
+    if (GET_FLAG(this->mFlags, ActorFlag_5)) {
+        if (this->mUnk_48 <= 0x0) {
+            this->Actor::func_ov000_020984d0();
+            this->Actor::func_ov017_020bf3e0(0x1, FLOAT_TO_FX32(0.0f));
+
+            this->Actor_Derived2::func_ov000_020997c4(0x0);
+        } else {
+            this->func_ov032_0211e380();
+        }
+    }
+
+    if (!(this->mUnk_46 & 0x1)) {
+        this->mAngle += 0xE39; // DEG_TO_ANG leads to d/fflt, d/fadd d/ffix if non int value. E39 seems to be between 22 and 23
+    }
+
+    this->Actor::func_ov000_02098838();
+
+    VecFx32_Copy(&this->mPos, &this->mPrevPos);
+    VecFx32_Add(&this->mPos, &this->mVel, &this->mPos);
+}
+
+void ActorKeese::func_ov032_0211f4a4() {
+    this->Actor_Derived2::func_ov000_02099450(&this->mUnk_268, &this->mUnk_248.mUnk_10, 0x0, data_ov000_020aecf0[0]);
+
+    this->mUnk_2C = data_ov000_020aecf8;
+
+    this->mUnk_248.func_ov000_02097bec();
+
+    this->mUnk_120.vfunc_28()->mUnk_04 = FLOAT_TO_FX32(0.8f);
+}
+
+void ActorKeese::func_ov032_0211f50c() {
+    this->Actor_Derived2::func_ov000_020994a0();
+
+    if (GET_FLAG(this->mFlags, ActorFlag_5)) {
+        this->func_ov032_0211e380();
+    }
+
+    this->Actor::func_ov000_02098838();
+
+    VecFx32_Copy(&this->mPos, &this->mPrevPos);
+    VecFx32_Add(&this->mPos, &this->mVel, &this->mPos);
+}
 
 void ActorKeese::func_ov032_0211f560() {
     this->Actor_Derived2::func_ov000_02098f34(&this->mUnk_248.mUnk_10);
@@ -269,18 +427,103 @@ void ActorKeese::func_ov032_0211f560() {
     this->mUnk_248.func_ov000_02097bec();
 }
 
-void ActorKeese::func_ov032_0211f58c() {}
+void ActorKeese::func_ov032_0211f58c() {
+    this->vfunc_44();
+
+    if (GET_FLAG(this->mFlags, ActorFlag_5)) {
+        VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_248.mUnk_10);
+
+        this->mUnk_268.func_ov000_02099a0c();
+
+        this->SetState(ActorKeeseState_6);
+    }
+
+    this->Actor::func_ov000_02098838();
+
+    VecFx32_Copy(&this->mPos, &this->mPrevPos);
+    VecFx32_Add(&this->mPos, &this->mVel, &this->mPos);
+}
 
 void ActorKeese::func_ov032_0211f604() {
     this->mUnk_2A4 = 0x19A;
 }
 
+// non-matching
 void ActorKeese::func_ov032_0211f614() {}
+// non-matching
 void ActorKeese::func_ov032_0211f6bc() {}
-void ActorKeese::func_ov032_0211f804() {}
+
+extern "C" void func_ov017_020c26f8(unk32, VecFx32 *, unk32, unk32);
+
+// non-matching (instruction order)
+void ActorKeese::func_ov032_0211f804() {
+    Actor *actor = gpActorManager->func_01fff3b4(this->mUnk_2D4);
+
+    switch (this->mUnk_228) {
+        case 0x0:
+            if (actor != NULL) {
+                break;
+            }
+
+            ++this->mUnk_228;
+            this->mUnk_52 = 0x1E;
+            this->mUnk_50 = 0x00;
+            break;
+
+        case 0x1: {
+            if (!this->IsTimerOut()) {
+                return;
+            }
+
+            VecFx32 vec = this->mPos;
+            vec.y -= FLOAT_TO_FX32(1.0f);
+
+            func_ov017_020c26f8(0x1, &vec, 0x1, 0x2);
+
+            ++this->mUnk_228;
+            this->mUnk_52 = 0xA;
+            this->mUnk_50 = 0x0;
+            break;
+        }
+
+        case 0x2:
+            if (!this->IsTimerOut()) {
+                return;
+            }
+
+            this->SetState(ActorKeeseState_9);
+            break;
+
+        default:
+            break;
+    }
+}
+
+// non-matching
 void ActorKeese::func_ov032_0211f93c() {}
-void ActorKeese::func_ov032_0211f9c4() {}
+
+extern "C" unk32 func_01ff9258(fx32, fx32);
+
+// non-matching (vec should movs into r5)
+bool ActorKeese::func_ov032_0211f9c4() {
+    if (this->mUnk_22A != 0x0) {
+        return false;
+    }
+
+    UnkStruct_ov032_0212251c sp04;
+
+    VecFx32 *vec = sp04.func_020170ac(&this->mPos);
+    if (vec == NULL || func_01ff9258(this->mPos.x - vec->x, this->mPos.z - vec->z) > 0x3000) {
+        return false;
+    }
+
+    this->mUnk_2D0 = this->mUnk_38;
+    return true;
+}
+
+// non-matching
 void ActorKeese::func_ov032_0211fa4c() {}
+// non-matching
 void ActorKeese::func_ov032_0211faf0(void *param1, unk32 param2) {}
 
 UnkStruct_ov032_0212251c::UnkStruct_ov032_0212251c() :

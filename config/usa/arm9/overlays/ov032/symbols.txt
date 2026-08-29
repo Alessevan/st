@@ -238,8 +238,8 @@ data_ov032_02122164 kind:data(any) addr:0x02122164
 data_ov032_0212217c kind:data(any) addr:0x0212217c
 data_ov032_0212219c kind:data(any) addr:0x0212219c
 data_ov032_021221b8 kind:data(any) addr:0x021221b8
-data_ov032_021221dc kind:data(any) addr:0x021221dc
-data_ov032_02122224 kind:data(any) addr:0x02122224
+_ZTV15ActorSpinut_1BC kind:data(any) addr:0x021221d4
+_ZTV15ActorSpinut_110 kind:data(any) addr:0x0212221c
 data_ov032_02122268 kind:data(any) addr:0x02122268
 data_ov032_021222d0 kind:data(any) addr:0x021222d0
 data_ov032_02122328 kind:data(any) addr:0x02122328
