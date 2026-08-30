@@ -17,6 +17,8 @@ extern "C" unk32 data_ov000_020aecfc[];
 
 extern "C" void *data_ov032_02121ed4;
 
+extern "C" unk32 func_01ff9258(fx32, fx32);
+
 extern "C" s8 func_ov000_02059da4(UnkStruct_027e0960_TableEntry *, VecFx32 *param1);
 
 static const VecFx32 data_ov032_021224d8(FLOAT_TO_FX32(1.7f), FLOAT_TO_FX32(0.5f), FLOAT_TO_FX32(1.7f));
@@ -334,7 +336,36 @@ void ActorKeese::func_ov032_0211f0a8() {}
 // non-matching
 void ActorKeese::func_ov032_0211f1f0() {}
 // non-matching
-void ActorKeese::func_ov032_0211f1f4() {}
+void ActorKeese::func_ov032_0211f1f4() {
+    bool val = this->func_ov032_0211f93c(data_027e0ce0->func_01fff148(0x0), 0xB6);
+
+    if (this->mUnk_5C.mParams[1] == 0x1) {
+        VecFx32 sp00;
+        this->mUnk_22C.mUnk_00->mTable.GetPtr(this->mUnk_22C.mUnk_04)->vfunc_0C(&sp00);
+
+        if (func_01ff9258(this->mPos.x - sp00.x, this->mPos.z - sp00.z) > 0x2000) {
+            this->func_ov032_0211e380();
+
+            this->Actor::func_ov000_0209a008(this->mUnk_2A0, this->mAngle);
+            return;
+        }
+    }
+
+    if (func_01ff9258(this->mPos.x - this->mUnk_5C.mInitialPos.x, this->mPos.z - this->mUnk_5C.mInitialPos.z) > 0x2000) {
+        this->SetState(ActorKeeseState_3);
+
+        this->Actor::func_ov000_0209a008(this->mUnk_2A0, this->mAngle);
+        return;
+    }
+
+    if (this->func_ov032_0211f9c4()) {
+        this->SetState(ActorKeeseState_8);
+    } else if (val || this->mUnk_46 & 0x1C) {
+        this->func_ov032_0211e380();
+    }
+
+    this->Actor::func_ov000_0209a008(this->mUnk_2A0, this->mAngle);
+}
 
 void ActorKeese::func_ov032_0211f300() {
     this->mUnk_248.func_ov000_02097bec();
@@ -500,9 +531,7 @@ void ActorKeese::func_ov032_0211f804() {
 }
 
 // non-matching
-void ActorKeese::func_ov032_0211f93c() {}
-
-extern "C" unk32 func_01ff9258(fx32, fx32);
+bool ActorKeese::func_ov032_0211f93c(VecFx32 *param1, unk32 param2) {}
 
 // non-matching (vec should movs into r5)
 bool ActorKeese::func_ov032_0211f9c4() {
@@ -521,8 +550,25 @@ bool ActorKeese::func_ov032_0211f9c4() {
     return true;
 }
 
-// non-matching
-void ActorKeese::func_ov032_0211fa4c() {}
+// non-matching (stack size 0x14 expected but 0xC here)
+bool ActorKeese::func_ov032_0211fa4c(unk32 param1) {
+    if (param1 == 0x1) {
+        return false;
+    }
+
+    if (this->mUnk_22A != 0x1) {
+        if (this->mUnk_22A != 0x2) {
+            return false;
+        }
+
+        data_027e0ce0->func_ov000_0208bc1c(param1, 0x1, 0x6, 0x0, 0x0, 0x0);
+        return true;
+    }
+
+    data_027e0ce0->func_ov000_0208bc1c(param1, 0x1, 0x8, 0x0, 0x0, 0x0);
+    return true;
+}
+
 // non-matching
 void ActorKeese::func_ov032_0211faf0(void *param1, unk32 param2) {}
 

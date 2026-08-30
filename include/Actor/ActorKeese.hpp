@@ -149,9 +149,9 @@ public:
     void func_ov032_0211f614();
     void func_ov032_0211f6bc();
     void func_ov032_0211f804();
-    void func_ov032_0211f93c();
+    bool func_ov032_0211f93c(VecFx32 *param1, unk32 param2);
     bool func_ov032_0211f9c4();
-    void func_ov032_0211fa4c();
+    bool func_ov032_0211fa4c(unk32 param1);
     static void func_ov032_0211faf0(void *param1, unk32 param2);
 };
 
