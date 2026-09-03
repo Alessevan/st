@@ -1,5 +1,6 @@
 #include "Actor/ActorItemBoomerang.hpp"
 
+#include "MapObject/MapObjectManager.hpp"
 #include "MapObject/MapObjectUnkICEB.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
@@ -103,7 +104,7 @@ void ActorItemBoomerang::vfunc_20() {
 
     bool var2 = false;
     switch (this->mState) {
-        case ActorItemBoomerangState_0:
+        case ActorItemBoomerangState_0: {
             this->mUnk_A0.mUnk_0C.Init(this->mPos.x, this->mPos.y, this->mPos.z, FLOAT_TO_FX32(0.3f));
 
             data_027e09c0->func_ov000_0207e58c(this->mRef, 0xC, 0x8, &this->mUnk_A0);
@@ -175,7 +176,9 @@ void ActorItemBoomerang::vfunc_20() {
             }
             this->func_ov031_020e49b0(0x8D70);
             break;
-        case ActorItemBoomerangState_1:
+        }
+
+        case ActorItemBoomerangState_1: {
             this->mUnk_A0.mUnk_0C.Init(this->mPos.x, this->mPos.y, this->mPos.z, FLOAT_TO_FX32(0.3f));
 
             data_027e09c0->func_ov000_0207e58c(this->mRef, 0xC, 0x8, &this->mUnk_A0);
@@ -224,6 +227,8 @@ void ActorItemBoomerang::vfunc_20() {
             func_01ff97c8(&sp48, 0x200);
             VecFx32_Add(&this->mVel, &sp48, &this->mVel);
             break;
+        }
+
         default:
             break;
     }
