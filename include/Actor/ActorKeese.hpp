@@ -106,10 +106,10 @@ public:
     /* 27C */ unk32 mUnk_27C;
     /* 280 */ unk32 mUnk_280;
     /* 284 */ ActorKeese_284 mUnk_284[0x2];
-    /* 29C */ unk32 mUnk_29C;
-    /* 2A0 */ unk32 mUnk_2A0;
+    /* 29C */ fx32 mUnk_29C;
+    /* 2A0 */ fx32 mUnk_2A0;
     /* 2A4 */ unk32 mUnk_2A4;
-    /* 2A8 */ unk16 mUnk_2A8;
+    /* 2A8 */ fx16 mUnk_2A8;
     /* 2AC */ ActorKeese_2AC mUnk_2AC;
     /* 2C4 */ VecFx32 mUnk_2C4;
     /* 2D0 */ Actor_38 *mUnk_2D0;

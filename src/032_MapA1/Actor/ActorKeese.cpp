@@ -8,6 +8,8 @@
 #include "System/Random.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
+#include "Unknown/UnkStruct_027e09b4.hpp"
+#include "Unknown/UnkStruct_027e0cd8.hpp"
 #include "Unknown/UnkStruct_027e0cec.hpp"
 
 extern "C" u16 data_ov000_020aecf0[];
@@ -17,7 +19,11 @@ extern "C" unk32 data_ov000_020aecfc[];
 
 extern "C" void *data_ov032_02121ed4;
 
+extern "C" bool func_01ff916c(fx32 *, unk32, unk32);
 extern "C" unk32 func_01ff9258(fx32, fx32);
+extern "C" fx16 func_01ffbbe0(fx32, fx32);
+extern "C" void func_01fff05c(u32 *, UnkStruct_027e0cd8_0C_Base *, VecFx32 *);
+extern "C" bool func_02016b8c(VecFx32 *, VecFx32 *, unk32, UnkAngleStruct, unk32, unk32);
 
 extern "C" s8 func_ov000_02059da4(UnkStruct_027e0960_TableEntry *, VecFx32 *param1);
 
@@ -315,11 +321,94 @@ void ActorKeese::vfunc_20() {
 }
 
 // non-matching
-void ActorKeese::vfunc_2C(unk32 param1) {}
+void ActorKeese::vfunc_2C(unk32 param1) {
+    if (!this->func_01fff5d0(param1, 0x0)) {
+        this->mUnk_278.func_ov000_020a0334();
+
+        for (ActorKeese_284 *ptr = this->mUnk_284; ptr != this->mUnk_284 + ARRAY_LEN(this->mUnk_284); ++ptr) {
+            ptr->func_ov000_020a0334();
+        }
+
+        return;
+    }
+
+    VecFx32 *og = this->mUnk_0B0.func_01ffc6d4(this->mAngleStruct, &this->mPos);
+    VecFx32 vec;
+    VecFx32_Init(og->x, og->y, og->z, &vec);
+
+    data_027e09b4->func_ov017_020c08c4(&vec, 0x4CD, 0x4CD, 0x1F, 0x0, 0x1);
+}
+
 // non-matching
-void ActorKeese::func_ov032_0211e9ec() {}
-// non-matching
-void ActorKeese::func_ov032_0211eb60() {}
+void ActorKeese::func_ov032_0211e9ec() {
+    this->mUnk_52 = gRandom.Next32(0x1F) + 0x1E;
+    this->mUnk_50 = 0x0;
+
+    u32 sp00;
+
+    func_01fff05c(&sp00, data_027e0cd8->mUnk_0C, &this->mPos);
+
+    bool var_r6 = false;
+    if ((*&sp00 & 0x1F) == 0xF && ((*&sp00 >> 5) & 3) == 2) {
+        var_r6 = true;
+    }
+
+    fx32 unk = this->mUnk_5C.mInitialPos.y;
+    if (var_r6) {
+        unk = data_027e0cd8->mUnk_0C->vfunc_28(&this->mPos, 0x1, 0x0);
+    }
+
+    this->mUnk_29C = unk + 0x800 + gRandom.Next32(0x99B) + 0xFFFFFB33;
+    gRandom.UpdateRandomValue();
+    s32 var_r1   = this->mUnk_2A8;
+    bool temp_gt = var_r1 > 0;
+    if (temp_gt > 0) {
+        var_r1 = 0xFFFFF8E4;
+    }
+    this->mUnk_2A4 = 0x19A;
+    if (!temp_gt) {
+        var_r1 = 0x71C;
+    }
+    this->mUnk_2A8 = var_r1;
+}
+
+void ActorKeese::func_ov032_0211eb60() {
+    if (this->mUnk_46 & 0x1C) {
+        this->mAngle = func_01ffbbe0(this->mUnk_2AC.mUnk_0C.x, this->mUnk_2AC.mUnk_0C.z);
+    }
+
+    this->mAngle += this->mUnk_2A8;
+
+    if (this->IsTimerOut()) {
+        this->func_ov032_0211e380();
+    }
+
+    func_01ff916c(&this->mUnk_2A0, this->mUnk_2A4, 0xA4);
+    func_01ff916c(&this->mPos.y, this->mUnk_29C, 0xA4);
+
+    this->Actor::func_ov000_0209a008(this->mUnk_2A0, this->mAngle);
+
+    if (this->IsTimerOut()) {
+        if (func_01ff9258(this->mPos.x - this->mUnk_5C.mInitialPos.x, this->mPos.z - this->mUnk_5C.mInitialPos.z) > 0x2000) {
+            this->SetState(ActorKeeseState_3);
+            return;
+        }
+    }
+
+    if (this->func_ov032_0211f9c4()) {
+        this->SetState(ActorKeeseState_8);
+        return;
+    }
+
+    VecFx32 *vec = data_027e0ce0->func_01fff148(0x0);
+
+    if (!func_02016b8c(&this->mPos, vec, 0x3000, this->mAngleStruct, 0x1000, 0x1)) {
+        return;
+    }
+
+    this->SetState(ActorKeeseState_2);
+}
+
 // non-matching
 void ActorKeese::func_ov032_0211ece8() {}
 // non-matching
