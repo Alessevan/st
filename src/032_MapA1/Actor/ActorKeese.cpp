@@ -102,10 +102,9 @@ ActorKeese_2AC::~ActorKeese_2AC() {
     this->mUnk_08 = NULL;
 }
 
-// non-matching (regalloc)
-bool ActorKeese_2AC::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
+bool ActorKeese_2AC::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
     VecFx16_Copy2VecFx32(&param1->mUnk_08, &this->mUnk_0C);
-    this->UnkStruct_ov031_Items_00::vfunc_08(param1);
+    this->UnkStruct_ov031_Items_00::vfunc_08(param1, param2);
 }
 
 // non-matching
