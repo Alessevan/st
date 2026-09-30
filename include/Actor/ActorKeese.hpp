@@ -4,7 +4,6 @@
 #include "Actor/ActorProfile.hpp"
 #include "ActorSpinut.hpp"
 #include "Map/MapObjectId.hpp"
-#include "Unknown/UnkStruct_ov000_020b19f0.hpp"
 #include "global.h"
 #include "types.h"
 

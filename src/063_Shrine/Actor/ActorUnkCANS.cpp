@@ -10,7 +10,6 @@
 #include "MapObject/MapObject.hpp"
 #include "MapObject/MapObjectManager.hpp"
 #include "Physics/Cylinder.hpp"
-#include "Player/PlayerGet.hpp"
 #include "Render/ModelRender.hpp"
 #include "Save/AdventureFlags.hpp"
 #include "System/Random.hpp"
@@ -154,8 +153,9 @@ unk32 UnkStruct_ov063_02162e88::vfunc_04(ActorRef param1, unk32 param2, unk32 pa
     return ret1;
 }
 
+// non-matching
 ActorUnkCANS::ActorUnkCANS() :
-    mUnk_0B0(G3d_GetModelPtr(((MapObjectProfile_Derived2_20 *) GET_PROFILE(ActorProfileUnkCANS)->vfunc_04())->mUnk_50)),
+    mUnk_0B0(G3d_GetModelPtr(GET_PROFILE(ActorProfileUnkCANS)->vfunc_04()->mUnk_50)),
     mUnk_128(&mUnk_0B0, GET_PROFILE(ActorProfileUnkCANS)->vfunc_04()),
     mUnk_1F4(),
     mUnk_200(this),
@@ -242,6 +242,7 @@ void ActorUnkCANS::vfunc_24(void) {
     }
 }
 
+// non-matching
 void ActorUnkCANS::vfunc_20(void) {
     if (mUnk_238 < mUnk_23A) {
         mUnk_238++;
@@ -250,7 +251,7 @@ void ActorUnkCANS::vfunc_20(void) {
     if (!this->func_ov017_020bef4c(0x4000) && mUnk_48 != 0 && mState != 4) {
         return;
     }
-    mUnk_3C = (Actor_9C *) &mUnk_200;
+    mUnk_3C = &mUnk_200;
 
     CALL_PTMF(PTMF<ActorUnkCANS>, data_ov063_02162fb0[mState]);
 
@@ -293,9 +294,7 @@ void ActorUnkCANS::vfunc_20(void) {
 
         if (var == 0) {
             if (mUnk_268 != NULL) {
-                //! INFO: mUnk_268 is NOT an ActorUnkCANS*, this is a placeholder as mUnk_1F4 is not yet defined in
-                //! ActorUnkCASE (current type of *mUnk_268)
-                *(char *) &((ActorUnkCANS *) mUnk_268)->mUnk_1F4 = 0;
+                mUnk_268->mUnk_1F4 = 0;
             }
         } else {
 
@@ -382,7 +381,7 @@ void ActorUnkCANS::vfunc_20(void) {
                     case 11:
                     default:
                         if (iVar5 != 0) {
-                            this->func_ov017_020bfb18((Actor_9C *) &mUnk_200);
+                            this->func_ov017_020bfb18(&mUnk_200);
                             if (mState != 4) {
                                 this->func_ov063_02158448(5);
                             }
@@ -393,9 +392,7 @@ void ActorUnkCANS::vfunc_20(void) {
                 }
             }
             if (mUnk_268 != NULL) {
-                //! INFO: mUnk_268 is NOT an ActorUnkCANS*, this is a placeholder as mUnk_1F4 is not yet defined in
-                //! ActorUnkCASE (current type of *mUnk_268)
-                *(char *) &((ActorUnkCANS *) mUnk_268)->mUnk_1F4 = (char) iVar5;
+                mUnk_268->mUnk_1F4 = iVar5;
             }
         }
     }
@@ -466,16 +463,17 @@ void ActorUnkCANS::vfunc_2C(unk32 param1) {
 }
 
 void ActorUnkCANS::func_ov063_02158b0c(void) {
-    mUnk_268             = NULL;
-    ((u16 *) mUnk_38)[4] = 1;
-    mUnk_34              = (Cylinder *) &data_ov063_02162e90;
-    mUnk_30              = (Cylinder *) &data_ov063_02162e90;
+    mUnk_268         = NULL;
+    mUnk_38->mUnk_08 = 1;
+    mUnk_34          = (Cylinder *) &data_ov063_02162e90;
+    mUnk_30          = (Cylinder *) &data_ov063_02162e90;
 }
 
 void ActorUnkCANS::func_ov063_02158b34(void) {
     mUnk_128.vfunc_1C(data_ov063_02163068, 0x1000, 0x19A, 0);
 }
 
+// non-matching
 void ActorUnkCANS::func_ov063_02158b98(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x1000) || mUnk_128.vfunc_28()->func_02015080(0x11000) ||
         mUnk_128.vfunc_28()->func_02015080(0x21000)) {
@@ -512,6 +510,7 @@ void ActorUnkCANS::func_ov063_02158d40(void) {
     mUnk_238 = 0;
 }
 
+// non-matching
 void ActorUnkCANS::func_ov063_02158db0(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x1000) || mUnk_128.vfunc_28()->func_02015080(0xD000) ||
         mUnk_128.vfunc_28()->func_02015080(0x19000) || mUnk_128.vfunc_28()->func_02015080(0x25000)) {
@@ -576,7 +575,7 @@ void ActorUnkCANS::func_ov063_021590c8(void) {
 void ActorUnkCANS::func_ov063_02159100(void) {
     this->Actor::func_ov017_020bf688();
 
-    if (!GET_FLAG(this->mFlags, 5)) {
+    if (!GET_FLAG(this->mFlags, ActorFlag_5)) {
         return;
     }
 
@@ -588,7 +587,7 @@ void ActorUnkCANS::func_ov063_02159100(void) {
         return;
     }
 
-    u16 *tmpArr = (u16 *) &mUnk_224.mUnk_08;
+    u16 *tmpArr = &mUnk_224.mUnk_08;
     if (tmpArr[0] < tmpArr[1]) {
         this->func_ov063_02158448(4);
         return;
@@ -651,7 +650,7 @@ void ActorUnkCANS::func_ov063_02159258(void) {
 void ActorUnkCANS::func_ov063_02159408(void) {
     this->func_ov000_02099450(&mUnk_224, &data_027e07d4, 0, data_ov000_020aecf0[0]);
     mUnk_128.vfunc_1C(data_ov063_02163068, 0, 0x19A, 0);
-    ((Actor_9C *) &mUnk_200)->func_ov000_02097bec();
+    mUnk_200.func_ov000_02097bec();
 }
 
 void ActorUnkCANS::func_ov063_02159494(void) {
@@ -689,7 +688,7 @@ void ActorUnkCANS::func_ov063_021595a4(void) {
     mVel.z   = 0;
     mUnk_270 = 0;
     mUnk_128.vfunc_1C(data_ov063_021630b0, 0x1000, 0x400, 0);
-    ((Actor_9C *) &mUnk_200)->func_ov000_02097bec();
+    mUnk_200.func_ov000_02097bec();
 }
 
 void ActorUnkCANS::func_ov063_02159618(void) {
@@ -765,6 +764,7 @@ void ActorUnkCANS::func_ov063_021598fc(void) {
     mUnk_276 = gRandom.Next32(0) & 0x80000000 ? 1 : -1;
 }
 
+// non-matching
 void ActorUnkCANS::func_ov063_021599e4(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x1000) || mUnk_128.vfunc_28()->func_02015080(0xA000) ||
         mUnk_128.vfunc_28()->func_02015080(0x13000) || mUnk_128.vfunc_28()->func_02015080(0x1C000)) {
@@ -876,6 +876,7 @@ void ActorUnkCANS::func_ov063_02159e20(void) {
     mUnk_38->mUnk_08 = 3;
 }
 
+// non-matching
 void ActorUnkCANS::func_ov063_02159ec0(void) {
     this->vfunc_44();
 
@@ -896,6 +897,7 @@ void ActorUnkCANS::func_ov063_02159ec0(void) {
     *(s16 *) &mUnk_44 |= 0x20;
 }
 
+// non-matching
 // return bool ?
 unk32 ActorUnkCANS::func_ov063_02159f3c(unk32 param1) {
     s16 var;
@@ -938,6 +940,7 @@ unk32 ActorUnkCANS::func_ov063_02159f3c(unk32 param1) {
     return func_01ff9a5c(data_027e0ce0->func_01fff148(0), &vec1, &vec2) < param1;
 }
 
+// non-matching
 // return bool ?
 unk32 ActorUnkCANS::func_ov063_0215a0f0(void) {
     s16 var1;
@@ -985,6 +988,7 @@ unk32 ActorUnkCANS::func_ov063_0215a0f0(void) {
     return func_01ff9a5c(data_027e0ce0->func_01fff148(0), &mPos, &vec) < 0x4CD;
 }
 
+// non-matching
 unk32 ActorUnkCANS::func_ov063_0215a2c0(void) {
     s16 var1;
     func_ov000_020986b4((s16 *) &var1, this, 0);
@@ -1033,7 +1037,7 @@ unk32 ActorUnkCANS::func_ov063_0215a2c0(void) {
 
 void ActorUnkCANS::func_ov063_0215a428(void) {
     // A not very clean code to access 22C and 22E matching the asm
-    u16 *values = (u16 *) &mUnk_224.mUnk_08;
+    u16 *values = &mUnk_224.mUnk_08;
     if (values[0] < values[1]) {
         this->func_ov063_02158448(4);
     } else if (mUnk_268 == NULL) {
@@ -1079,7 +1083,7 @@ unk32 ActorUnkCANS::func_ov063_0215a514(void) {
     func_ov000_020986b4((s16 *) &var, this, 0);
 
     var = (volatile s16) var - mUnk_26C;
-    return 0x4AAB < ABS(var);
+    return DEG_TO_ANG(105) + 1 < ABS(var);
 }
 
 // return bool ?
@@ -1091,12 +1095,13 @@ unk32 ActorUnkCANS::func_ov063_0215a56c(unk32 param1) {
     return DEG_TO_ANG(90) <= ABS((s16) (param1 - mAngle));
 }
 
+// non-matching
 void ActorUnkCANS::func_ov063_0215a5a0(VecFx32 *param1) {
     // Does not match instruction order
     VecFx32 vec;
-    vec.x     = ((VecFx32 *) &mUnk_250)->x;
-    vec.y     = ((VecFx32 *) &mUnk_250)->y;
-    vec.z     = ((VecFx32 *) &mUnk_250)->z;
+    vec.x     = mUnk_250.x;
+    vec.y     = mUnk_250.y;
+    vec.z     = mUnk_250.z;
     param1->z = vec.z;
     param1->x = vec.x;
     param1->y = vec.y;
@@ -1116,6 +1121,7 @@ unk32 ActorUnkCANS::func_ov063_0215a5d8(void) {
     return data_ov000_020aecfc[0];
 }
 
+// non-matching
 void ActorUnkCANS::vfunc_10(Cylinder *param1) {
     Cylinder *cylinder = this->mUnk_34;
     *param1            = *cylinder;
@@ -1130,6 +1136,7 @@ void ActorUnkCANS::vfunc_10(Cylinder *param1) {
     }
 }
 
+// non-matching
 void ActorUnkCANS::func_ov063_0215a678(ActorUnkCANS *actor, UnkStruct_func_ov063_0215a678 *param2) {
     ModelRender *modelRender = param2->mUnk_04;
     u8 var1;
@@ -1215,6 +1222,7 @@ bool UnkStruct_ov063_02162ea8::vfunc_08(const UnkStruct_ov031_020f3310 *param1, 
     return retVal;
 }
 
+// non-matching
 bool UnkStruct_ov063_02162ea8::vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) {
     UnkStruct_02162ea8_vfunc_0C *param2Struct = (UnkStruct_02162ea8_vfunc_0C *) param2;
     if ((*(u16 *) &param2Struct->mUnk_04 & 0x1000) != 0) {
