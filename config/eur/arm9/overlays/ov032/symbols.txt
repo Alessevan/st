@@ -224,7 +224,7 @@ data_ov032_02121f14 kind:data(any) addr:0x02121f14
 data_ov032_02121f24 kind:data(any) addr:0x02121f24
 __sinit_ActorSpinut.cpp kind:function(arm,size=0x6c) addr:0x02121f34
 __sinit_ActorFleeingSpinut.cpp kind:function(arm,size=0x80) addr:0x02121fa0
-__sinit_ActorUnkKETH.cpp kind:function(arm,size=0x6c) addr:0x02122020
+__sinit_ActorKeese.cpp kind:function(arm,size=0x6c) addr:0x02122020
 __sinit_ActorUnkNSSW.cpp kind:function(arm,size=0x50) addr:0x0212208c
 __sinit_MapObjectUnkSWSW.cpp kind:function(arm,size=0x50) addr:0x021220dc
 .p__sinit_ActorSpinut.cpp kind:data(word) addr:0x0212212c

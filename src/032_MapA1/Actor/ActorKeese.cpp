@@ -419,8 +419,30 @@ void ActorKeese::func_ov032_0211f054() {
     this->mUnk_50 = 0x0;
 }
 
-// non-matching
-void ActorKeese::func_ov032_0211f0a8() {}
+void ActorKeese::func_ov032_0211f0a8() {
+    this->func_ov032_0211f93c(&this->mUnk_5C.mInitialPos, 0x38E);
+
+    if (this->IsTimerOut()) {
+        VecFx32 *vec = data_027e0ce0->func_01fff148(0x0);
+        if (func_02016b8c(&this->mPos, vec, 0x3000, this->mAngleStruct, 0x1000, 0x1)) {
+            this->SetState(ActorKeeseState_2);
+        }
+    }
+
+    if (this->func_ov032_0211f9c4()) {
+        this->SetState(ActorKeeseState_8);
+    } else {
+        if (this->IsTimerOut() && (this->mUnk_46 & 0x1C)) {
+            this->mAngle = func_01ffbbe0(this->mUnk_2AC.mUnk_0C.x, this->mUnk_2AC.mUnk_0C.z);
+            this->SetState(ActorKeeseState_0);
+        } else if (func_01ff9258(this->mUnk_5C.mInitialPos.x - this->mPos.x, this->mUnk_5C.mInitialPos.z - this->mPos.z) <
+                   0x800) {
+            this->SetState(ActorKeeseState_0);
+        }
+    }
+    this->func_ov000_0209a008(this->mUnk_2A0, this->mAngle);
+}
+
 // non-matching
 void ActorKeese::func_ov032_0211f1f0() {}
 // non-matching
