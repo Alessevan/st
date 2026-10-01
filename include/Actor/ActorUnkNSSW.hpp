@@ -40,10 +40,8 @@ public:
     /* 0C0 */ Actor_9C mUnk_0C0;
     /* 0E0 */ ActorUnkNSSW_0E0 mUnk_0E0;
     /* 104 */ ActorUnkNSSW_104 mUnk_104;
-    /* 134 */ unk32 mUnk_134;
-    /* 138 */ unk32 mUnk_138;
-    /* 13C */ unk32 mUnk_13C;
-    /* 140 */ unk32 mUnk_140;
+    /* 134 */ ActorRef mUnk_134;
+    /* 138 */ VecFx32 mUnk_138;
     /* 144 */ unk32 mUnk_144;
     /* 148 */ unk32 mUnk_148;
     /* 14C */ unk32 mUnk_14C;
@@ -80,7 +78,7 @@ public:
     void func_ov032_021202d8();
     void func_ov032_021203fc();
     void func_ov032_02120880();
-    void func_ov032_02120894();
+    void func_ov032_02120894(unk32 param1);
     void func_ov032_02120b34(ActorRef ref);
     void func_ov032_02120b6c();
     void func_ov032_02120b7c(VecFx32 *param1);

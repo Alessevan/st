@@ -1,6 +1,24 @@
+#define VECFX32_CTORS
+
 #include "Actor/ActorUnkNSSW.hpp"
+
+#include "Actor/ActorManager.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_ov000_020b5d34.hpp"
+
+extern fx16 data_02040964[];
+
+extern "C" void CopySingle288(Mat4x3p *, Mat3p *);
+extern "C" void func_01ffa60c(const Mat3p *, Mat3p *, Mat3p *);
+extern "C" void func_ov000_0205f8e8(unk32 *, Mat3p *);
+
+class ActorWithMat4x3pAt154 : public Actor {
+public:
+    /* 000 (base) */
+    /* 094 */ STRUCT_PAD(0x094, 0x154);
+    /* 154 */ Mat4x3p mUnk_154;
+    /* 184 */
+};
 
 DECL_PROFILE(ActorProfileUnkNSSW);
 
@@ -24,9 +42,7 @@ ActorUnkNSSW::ActorUnkNSSW() :
     mUnk_0E0(this),
     mUnk_104(this),
     mUnk_134(0x0),
-    mUnk_138(0x0),
-    mUnk_13C(0x0),
-    mUnk_140(0x0),
+    mUnk_138(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f)),
     mUnk_144(0x0),
     mUnk_148(0x0),
     mUnk_14C(0x0),
@@ -50,25 +66,102 @@ bool ActorUnkNSSW::vfunc_18(unk32 param1) {
     this->mUnk_0E0.mUnk_1C = 0x1;
     this->mUnk_19d         = 0x0;
 
-    this->func_ov032_02120894();
+    this->func_ov032_02120894(0x0);
     return true;
 }
 
+// non-matching
 void ActorUnkNSSW::vfunc_20() {}
-void ActorUnkNSSW::func_ov032_02120118() {}
+
+void ActorUnkNSSW::func_ov032_02120118() {
+    ActorWithMat4x3pAt154 *actor = (ActorWithMat4x3pAt154 *) gpActorManager->func_01fff3b4(this->mUnk_134);
+    if (actor == NULL) {
+        return;
+    }
+
+    CopySingle288(&actor->mUnk_154, &this->mUnk_150);
+
+    Mat3p stack;
+    Mat3p_InitYRotation(&stack, data_02040964[0], data_02040964[1]);
+
+    func_01ffa60c(&stack, &this->mUnk_150, &this->mUnk_150);
+
+    func_ov000_0205f8e8(&this->mUnk_174, &this->mUnk_150);
+}
+
+// non-matching
 void ActorUnkNSSW::func_ov032_02120190() {}
+// non-matching
 void ActorUnkNSSW::func_ov032_0212025c() {}
+// non-matching
 void ActorUnkNSSW::func_ov032_021202d8() {}
+// non-matching
 void ActorUnkNSSW::func_ov032_021203fc() {}
+// non-matching
 void ActorUnkNSSW::vfunc_2C(unk32 param1) {}
-void ActorUnkNSSW::func_ov032_02120880() {}
-void ActorUnkNSSW::func_ov032_02120894() {}
-void ActorUnkNSSW::func_ov032_02120b34(ActorRef ref) {}
-void ActorUnkNSSW::func_ov032_02120b6c() {}
-void ActorUnkNSSW::func_ov032_02120b7c(VecFx32 *param1) {}
-void ActorUnkNSSW::func_ov032_02120bc0() {}
+
+void ActorUnkNSSW::func_ov032_02120880() {
+    this->mUnk_3C = &this->mUnk_0C0;
+    this->Actor::func_ov000_020989e0();
+}
+
+// non-matching
+void ActorUnkNSSW::func_ov032_02120894(unk32 param1) {}
+// non-matching
+void ActorUnkNSSW::func_ov032_02120b34(ActorRef ref) {
+    if (this->mUnk_0BC == 0x3) {
+        return;
+    }
+    this->mUnk_134 = ref;
+    this->func_ov032_02120894(0x2);
+}
+
+void ActorUnkNSSW::func_ov032_02120b6c() {
+    this->func_ov032_02120894(0x3);
+}
+
+void ActorUnkNSSW::func_ov032_02120b7c(VecFx32 *param1) {
+    fx32 x = param1->x;
+    fx32 y = param1->y;
+    fx32 z = param1->z;
+    VecFx32_Init(x, y, z, &this->mUnk_138);
+
+    if (x == FLOAT_TO_FX32(0.0f) && y == FLOAT_TO_FX32(0.0f) && z == FLOAT_TO_FX32(0.0f)) {
+        this->func_ov032_02120894(0x6);
+        return;
+    }
+    this->func_ov032_02120894(0x4);
+}
+
+void ActorUnkNSSW::func_ov032_02120bc0() {
+    if (this->mUnk_188_eur != NULL && this == this->mUnk_188_eur->mUnk_114) {
+        this->mUnk_188_eur->vfunc_38();
+    }
+
+    this->func_ov032_02120894(0x6);
+}
+
+// non-matching
 void ActorUnkNSSW::func_ov032_02120bfc() {}
-void ActorUnkNSSW::func_ov032_02120c64(MapObjectUnkSWSW *param1) {}
+
+// non-matching
+void ActorUnkNSSW::func_ov032_02120c64(MapObjectUnkSWSW *param1) {
+    if (this->mUnk_0BC != 0x4) {
+        return;
+    }
+
+    VecFx32 vec = param1->mPos;
+    VecFx32_Copy(&vec, &this->mPrevPos);
+    VecFx32_Copy(&vec, &this->mPos); // non-matching
+
+    this->mUnk_18C = 0x0;
+    Mat3p_InitIdentity(&this->mUnk_150);
+
+    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_138);
+
+    this->func_ov032_02120894(0x0);
+    this->mUnk_188_eur = param1;
+}
 
 ActorUnkNSSW_0E0::ActorUnkNSSW_0E0(ActorUnkNSSW *actor) :
     Actor_C4(actor, 0x1) {
