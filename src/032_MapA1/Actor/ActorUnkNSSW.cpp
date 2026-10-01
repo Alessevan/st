@@ -52,11 +52,11 @@ ActorUnkNSSW::ActorUnkNSSW() :
     mUnk_180(0x1000),
     mUnk_184_eur(NULL),
     mUnk_188_eur(NULL),
-    mUnk_18C(0x0),
-    mUnk_190(0x0),
-    mUnk_194(0x0),
-    mUnk_198(0x0),
-    mUnk_19d(0x0) {
+    mUnk_18C_eur(0x0),
+    mUnk_190_eur(0x0),
+    mUnk_194_eur(0x0),
+    mUnk_198_eur(0x0),
+    mUnk_19D_eur(0x0) {
     Mat3p_InitIdentity(&this->mUnk_150);
     this->mUnk_40 = &this->mUnk_0E0;
 }
@@ -64,7 +64,7 @@ ActorUnkNSSW::ActorUnkNSSW() :
 bool ActorUnkNSSW::vfunc_18(unk32 param1) {
     this->mUnk_104.mUnk_04 = this->mRef;
     this->mUnk_0E0.mUnk_1C = 0x1;
-    this->mUnk_19d         = 0x0;
+    this->mUnk_19D_eur     = 0x0;
 
     this->func_ov032_02120894(0x0);
     return true;
@@ -154,7 +154,7 @@ void ActorUnkNSSW::func_ov032_02120c64(MapObjectUnkSWSW *param1) {
     VecFx32_Copy(&vec, &this->mPrevPos);
     VecFx32_Copy(&vec, &this->mPos); // non-matching
 
-    this->mUnk_18C = 0x0;
+    this->mUnk_18C_eur = 0x0;
     Mat3p_InitIdentity(&this->mUnk_150);
 
     VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_138);

@@ -54,15 +54,21 @@ public:
     /* 184 */ STRUCT_PAD(0x184, 0x190);
     /* 190 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 194 */ MapObjectUnkSWSW *mUnk_188_eur;
+    /* 198 */ unk16 mUnk_18C_eur;
+    /* 19C */ unk32 mUnk_190_eur;
+    /* 1A0 */ unk32 mUnk_194_eur;
+    /* 1A4 */ unk32 mUnk_198_eur;
+    /* 1A8 */ STRUCT_PAD(0x1A8, 0x1A9);
+    /* 1A9 */ unk8 mUnk_19D_eur;
 #else
     /* 184 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 188 */ MapObjectUnkSWSW *mUnk_188_eur;
-    /* 18C */ unk16 mUnk_18C;
-    /* 190 */ unk32 mUnk_190;
-    /* 194 */ unk32 mUnk_194;
-    /* 198 */ unk32 mUnk_198;
+    /* 18C */ unk16 mUnk_18C_eur;
+    /* 190 */ unk32 mUnk_190_eur;
+    /* 194 */ unk32 mUnk_194_eur;
+    /* 198 */ unk32 mUnk_198_eur;
     /* 19C */ STRUCT_PAD(0x19C, 0x19D);
-    /* 19D */ unk8 mUnk_19d;
+    /* 19D */ unk8 mUnk_19D_eur;
 #endif
     /* 18C */
 
