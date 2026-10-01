@@ -110,7 +110,7 @@ ActorKeese_2AC::~ActorKeese_2AC() {
 
 bool ActorKeese_2AC::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
     VecFx16_Copy2VecFx32(&param1->mUnk_08, &this->mUnk_0C);
-    this->UnkStruct_ov031_Items_00::vfunc_08(param1, param2);
+    return this->UnkStruct_ov031_Items_00::vfunc_08(param1, param2);
 }
 
 // non-matching
@@ -360,16 +360,12 @@ void ActorKeese::func_ov032_0211e9ec() {
 
     this->mUnk_29C = unk + 0x800 + gRandom.Next32(0x99B) + 0xFFFFFB33;
     gRandom.UpdateRandomValue();
-    s32 var_r1   = this->mUnk_2A8;
-    bool temp_gt = var_r1 > 0;
-    if (temp_gt > 0) {
-        var_r1 = 0xFFFFF8E4;
-    }
     this->mUnk_2A4 = 0x19A;
-    if (!temp_gt) {
-        var_r1 = 0x71C;
+    if (this->mUnk_2A8 > 0) {
+        this->mUnk_2A8 = 0xFFFFF8E4;
+    } else {
+        this->mUnk_2A8 = 0x71C;
     }
-    this->mUnk_2A8 = var_r1;
 }
 
 void ActorKeese::func_ov032_0211eb60() {
