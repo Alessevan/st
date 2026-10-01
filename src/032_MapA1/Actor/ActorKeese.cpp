@@ -499,9 +499,8 @@ void ActorKeese::func_ov032_0211f310() {
     VecFx32_Add(&this->mPos, &this->mVel, &this->mPos);
 }
 
-// non-matching (regalloc)
 void ActorKeese::func_ov032_0211f3ac() {
-    this->Actor::func_ov017_020bf634(&this->mUnk_248.mUnk_10, data_ov000_020aecfc[0], data_ov000_020aecf4[0]);
+    this->Actor::func_ov017_020bf634(&this->mUnk_248.mUnk_10, data_ov000_020aecf4[0], data_ov000_020aecfc[0]);
 
     this->mUnk_248.func_ov000_02097bec();
 

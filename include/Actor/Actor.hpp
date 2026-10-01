@@ -250,7 +250,7 @@ public:
     void func_ov017_020bef88(Actor_vfunc_30 *param1, void *param2, unk32 param3);
     void func_ov017_020bf3e0(unk32 param1, fx32 param2);
     void func_ov017_020bf5c4(VecFx32 *param1, unk32 param2, unk32 param3, unk32 param4, unk32 param5);
-    void func_ov017_020bf634(VecFx32 *param1, unk32 param2, unk32 param3);
+    void func_ov017_020bf634(const VecFx32 *param1, u16 param2, unk32 param3);
     void func_ov017_020bf688();
     void func_ov017_020bf9c8(Actor *param1);
     void func_ov017_020bfa50(VecFx32 *param1, unk32 param2);
