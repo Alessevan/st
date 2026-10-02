@@ -74,9 +74,9 @@ public:
 
     ActorUnkNSSW();
 
-    /* 1C */ virtual bool vfunc_18(unk32 param1) override;
-    /* 20 */ virtual void vfunc_20() override;
-    /* 2C */ virtual void vfunc_2C(unk32 param1) override;
+    /* 1C */ virtual bool Init(unk32 param1) override;
+    /* 20 */ virtual void Setup() override;
+    /* 2C */ virtual void vfunc_2C(Actor_vfunc_30 *param1) override;
 
     void func_ov032_02120118();
     void func_ov032_02120190();

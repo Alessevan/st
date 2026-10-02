@@ -61,7 +61,7 @@ ActorUnkNSSW::ActorUnkNSSW() :
     this->mUnk_40 = &this->mUnk_0E0;
 }
 
-bool ActorUnkNSSW::vfunc_18(unk32 param1) {
+bool ActorUnkNSSW::Init(unk32 param1) {
     this->mUnk_104.mUnk_04 = this->mRef;
     this->mUnk_0E0.mUnk_1C = 0x1;
     this->mUnk_19D_eur     = 0x0;
@@ -71,7 +71,7 @@ bool ActorUnkNSSW::vfunc_18(unk32 param1) {
 }
 
 // non-matching
-void ActorUnkNSSW::vfunc_20() {}
+void ActorUnkNSSW::Setup() {}
 
 void ActorUnkNSSW::func_ov032_02120118() {
     ActorWithMat4x3pAt154 *actor = (ActorWithMat4x3pAt154 *) gpActorManager->func_01fff3b4(this->mUnk_134);
@@ -98,7 +98,7 @@ void ActorUnkNSSW::func_ov032_021202d8() {}
 // non-matching
 void ActorUnkNSSW::func_ov032_021203fc() {}
 // non-matching
-void ActorUnkNSSW::vfunc_2C(unk32 param1) {}
+void ActorUnkNSSW::vfunc_2C(Actor_vfunc_30 *param1) {}
 
 void ActorUnkNSSW::func_ov032_02120880() {
     this->mUnk_3C = &this->mUnk_0C0;
