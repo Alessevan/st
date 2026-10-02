@@ -1,5 +1,6 @@
 #include "Actor/ActorItemBoomerang.hpp"
 
+#include "MapObject/MapObjectManager.hpp"
 #include "MapObject/MapObjectUnkICEB.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
@@ -17,7 +18,6 @@ extern "C" unk32 func_01ffb9cc(VecFx32 *, VecFx32 *);
 extern "C" void func_01ffe6c4(Actor **, ActorRef, VecFx32 *, VecFx32 *, s32, VecFx32 *, UnkStruct_ov031_Items_00 *);
 extern "C" void func_01ffedac(Vec2bCpp *, VecFx32 *);
 extern "C" bool func_ov000_0205aeac();
-extern "C" bool func_ov000_020982d8();
 
 DECL_PROFILE(ActorProfileItemBoomerang);
 
@@ -37,9 +37,9 @@ ActorItemBoomerang::ActorItemBoomerang() :
     mUnk_13A(0x0),
     mUnk_13C((u16) 0x8D71),
     mUnk_140(0x1000, 0x0) {
-    this->mState  = ActorItemBoomerangState_0;
-    this->mUnk_52 = 0xFFFF;
-    this->mUnk_50 = 0x0;
+    this->mState    = ActorItemBoomerangState_0;
+    this->mTimerMax = 0xFFFF;
+    this->mTimer    = 0x0;
 }
 
 bool ActorItemBoomerang::vfunc_18(unk32 param1) {
@@ -66,9 +66,9 @@ bool ActorItemBoomerang::vfunc_18(unk32 param1) {
 
 // non-matching
 void ActorItemBoomerang::SetState(ActorState state) {
-    this->mState  = state;
-    this->mUnk_52 = 0xFFFF;
-    this->mUnk_50 = 0;
+    this->mState    = state;
+    this->mTimerMax = 0xFFFF;
+    this->mTimer    = 0;
 }
 
 void ActorItemBoomerang::func_ov031_020e49b0(unk32 param1) {
@@ -103,7 +103,7 @@ void ActorItemBoomerang::vfunc_20() {
 
     bool var2 = false;
     switch (this->mState) {
-        case ActorItemBoomerangState_0:
+        case ActorItemBoomerangState_0: {
             this->mUnk_A0.mUnk_0C.Init(this->mPos.x, this->mPos.y, this->mPos.z, FLOAT_TO_FX32(0.3f));
 
             data_027e09c0->func_ov000_0207e58c(this->mRef, 0xC, 0x8, &this->mUnk_A0);
@@ -175,7 +175,9 @@ void ActorItemBoomerang::vfunc_20() {
             }
             this->func_ov031_020e49b0(0x8D70);
             break;
-        case ActorItemBoomerangState_1:
+        }
+
+        case ActorItemBoomerangState_1: {
             this->mUnk_A0.mUnk_0C.Init(this->mPos.x, this->mPos.y, this->mPos.z, FLOAT_TO_FX32(0.3f));
 
             data_027e09c0->func_ov000_0207e58c(this->mRef, 0xC, 0x8, &this->mUnk_A0);
@@ -224,6 +226,8 @@ void ActorItemBoomerang::vfunc_20() {
             func_01ff97c8(&sp48, 0x200);
             VecFx32_Add(&this->mVel, &sp48, &this->mVel);
             break;
+        }
+
         default:
             break;
     }
@@ -299,12 +303,12 @@ void ActorItemBoomerang::func_ov031_020e52a0() {
     if (this->mUnk_128 == 0x1 || this->mUnk_128 == 0x2) {
         for (UnkStruct_PlayerGet_ec *ptr = this->mUnk_12C; ptr != this->mUnk_12C + 0x3; ++ptr) {
             UnkSystem7_UnkStruct_00 *data = ptr->mUnk_00;
-            if (data == NULL) {
-                continue;
+
+            if (data != NULL) {
+                data->mUnk_28.x = this->mPos.x + data->mUnk_20->mUnk_00->mUnk_04.x;
+                data->mUnk_28.y = this->mPos.y + data->mUnk_20->mUnk_00->mUnk_04.y;
+                data->mUnk_28.z = this->mPos.z + data->mUnk_20->mUnk_00->mUnk_04.z;
             }
-            data->mUnk_28 = this->mPos.x + data->mUnk_20->mUnk_00->mUnk_04.x;
-            data->mUnk_2C = this->mPos.y + data->mUnk_20->mUnk_00->mUnk_04.y;
-            data->mUnk_30 = this->mPos.z + data->mUnk_20->mUnk_00->mUnk_04.z;
         }
         return;
     }
@@ -314,7 +318,7 @@ void ActorItemBoomerang::func_ov031_020e52a0() {
 }
 
 // non-matching
-void ActorItemBoomerang::vfunc_2C(unk32 param1) {
+void ActorItemBoomerang::vfunc_2C(Actor_vfunc_30 *param1) {
     if (Actor::func_01fff5d0(param1, 0x0)) {
         this->mUnk_94.func_01ffc6d4(this->mAngleStruct, &this->mPos);
         data_027e09b4->func_ov017_020c08c4(&this->mPos, 0x400, 0x400, 0x1F, 0x0, 0x1);
@@ -354,14 +358,14 @@ ActorItemBoomerang_11C::ActorItemBoomerang_11C(ActorItemBoomerang *param1) :
 ActorItemBoomerang_11C::~ActorItemBoomerang_11C() {}
 
 // non-matching
-bool ActorItemBoomerang_11C::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
+bool ActorItemBoomerang_11C::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
     u32 var = param1->mUnk_04->mUnk_24[param1->mUnk_00->mUnk_06];
 
     if (((var >> 0x18) & 1) == 1) {
         return false;
     }
 
-    return func_ov000_020982d8();
+    return this->UnkStruct_ov031_Items_00::vfunc_08(param1, param2);
 }
 
 bool ActorItemBoomerang_11C::vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) {

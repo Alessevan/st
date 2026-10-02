@@ -22,7 +22,7 @@ extern "C" void FlushGfxQueue();
 static const Cylinder data_ov031_02113114(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.35f));
 
 // non-matching
-bool ActorUnkSWBM_94::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
+bool ActorUnkSWBM_94::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
     return (((u32) param1->mUnk_04->mUnk_24[param1->mUnk_00->mUnk_06] >> 0x16) & 0x1) != 0x1;
 }
 
@@ -115,9 +115,9 @@ ActorUnkSWBM::ActorUnkSWBM() :
     mUnk_108(0x0),
     mUnk_10A(0x0) {
     MI_CpuFill32(0x0, this->mUnk_0E4, ARRAY_LEN(this->mUnk_0E4) * sizeof *this->mUnk_0E4);
-    this->mState  = ActorUnkSWBMState_0;
-    this->mUnk_52 = 0xFFFF;
-    this->mUnk_50 = 0x0000;
+    this->mState    = ActorUnkSWBMState_0;
+    this->mTimerMax = 0xFFFF;
+    this->mTimer    = 0x0000;
 }
 
 bool ActorUnkSWBM::vfunc_18(unk32 param1) {
@@ -190,9 +190,9 @@ void ActorUnkSWBM::func_ov031_020e6e84(ActorState state) {
             this->mVel.z /= 3;
             break;
     }
-    this->mState  = state;
-    this->mUnk_52 = 0xFFFF;
-    this->mUnk_50 = 0x0000;
+    this->mState    = state;
+    this->mTimerMax = 0xFFFF;
+    this->mTimer    = 0x0000;
 }
 
 // non-matching
@@ -307,7 +307,7 @@ void ActorUnkSWBM::func_ov031_020e718c(VecFx32 *param0, Mat3p *param1, s32 param
     REG_GFX_FIFO_MATRIX_POP   = true;
 }
 
-void ActorUnkSWBM::vfunc_2C(unk32 param1) {
+void ActorUnkSWBM::vfunc_2C(Actor_vfunc_30 *param1) {
     if (this->mState == ActorUnkSWBMState_2) {
         return;
     }

@@ -505,7 +505,7 @@ void ActorBomb::func_ov031_020e2134() {
     }
 }
 
-void ActorBomb::vfunc_2C(unk32 param1) {
+void ActorBomb::vfunc_2C(Actor_vfunc_30 *param1) {
     if (!this->Actor::func_01fff5d0(param1, 0x0)) {
         for (ActorBomb_unk *ptr = this->mUnk_164; ptr != this->mUnk_164 + ARRAY_LEN(this->mUnk_164); ptr++) {
             ptr->func_ov000_020a0334();
@@ -839,13 +839,13 @@ ActorBomb_180::~ActorBomb_180() {
 }
 
 // non-matching (wrong instruction in condition)
-bool ActorBomb_180::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
+bool ActorBomb_180::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
     if (((((u32) param1->mUnk_04->mUnk_24[param1->mUnk_00->mUnk_06]) >> 0x19) & 1) == 1) {
         return false;
     }
 
     VecFx16_Copy2VecFx32(&param1->mUnk_08, &this->mUnk_0C);
-    return this->UnkStruct_ov031_Items_00::vfunc_08(param1);
+    return this->UnkStruct_ov031_Items_00::vfunc_08(param1, param2);
 }
 
 // non-matching
@@ -864,11 +864,11 @@ bool ActorBomb_180::vfunc_10(ActorRef param1, unk32 param2) {
 }
 
 // non-matching (unreachable code ?)
-bool ActorBomb_ov031_020e2134::vfunc_08(const UnkStruct_ov031_020f3310 *param1) {
+bool ActorBomb_ov031_020e2134::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
     if ((((u32) param1->mUnk_04->mUnk_24[param1->mUnk_00->mUnk_06] >> 0x9) & 0x7) == 0xA) {
         return false;
     }
-    return this->UnkStruct_ov031_Items_00::vfunc_08(param1);
+    return this->UnkStruct_ov031_Items_00::vfunc_08(param1, param2);
 }
 
 ActorBomb_19C::ActorBomb_19C(Actor *param1) :

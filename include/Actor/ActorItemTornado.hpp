@@ -9,7 +9,7 @@
 class UnkStruct_ov031_02112ff4 : public UnkStruct_ov031_Items_00 {
 public:
     // data_ov031_02112ff4
-    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1);
+    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2);
     /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 param2);
 };
 
@@ -53,7 +53,7 @@ public:
     /* 18 */ virtual bool vfunc_18(unk32 param1) override;
     /* 20 */ virtual void vfunc_20() override;
     /* 24 */ virtual void vfunc_24() override;
-    /* 2C */ virtual void vfunc_2C(unk32 param1) override;
+    /* 2C */ virtual void vfunc_2C(Actor_vfunc_30 *param1) override;
 
     void SetState(ActorState state);
     void func_ov031_020e5d18(unk32 param1);

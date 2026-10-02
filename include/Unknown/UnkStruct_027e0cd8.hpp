@@ -4,8 +4,6 @@
 #include "math.hpp"
 #include "types.h"
 
-#include "Actor/Actor.hpp"
-#include "MapObject/MapObjectManager.hpp"
 #include "Render/ModelRender.hpp"
 #include "Save/SaveFile.hpp"
 #include "Unknown/Common.hpp"
@@ -13,7 +11,6 @@
 #include "Unknown/UnkStruct_027e09a4.hpp"
 #include "profile.hpp"
 
-#include <algorithm>
 #include <vector>
 
 class MapObject_20;
@@ -449,8 +446,12 @@ public:
     bool func_ov000_02081f3c(unk16 param1, unk32 param2);
     u32 func_ov000_02081d5c(); // returns current room index?
     bool func_ov000_02082124();
+    void func_ov000_02081b84();
+    void func_ov000_02081b9c(unk32 param1);
+    void func_ov000_02081bf4();
     bool func_ov000_02081c28();
     void func_ov000_02081ca0();
+    void func_ov000_02081d58();
     bool func_ov000_02081edc(u16 param1);
 
     // overlay 1
