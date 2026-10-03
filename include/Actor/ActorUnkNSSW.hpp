@@ -42,9 +42,7 @@ public:
     /* 104 */ ActorUnkNSSW_104 mUnk_104;
     /* 134 */ ActorRef mUnk_134;
     /* 138 */ VecFx32 mUnk_138;
-    /* 144 */ unk32 mUnk_144;
-    /* 148 */ unk32 mUnk_148;
-    /* 14C */ unk32 mUnk_14C;
+    /* 144 */ VecFx32 mUnk_144;
     /* 150 */ Mat3p mUnk_150;
     /* 174 */ unk32 mUnk_174;
     /* 178 */ unk32 mUnk_178;
@@ -59,7 +57,8 @@ public:
     /* 1A0 */ unk32 mUnk_194_eur;
     /* 1A4 */ unk32 mUnk_198_eur;
     /* 1A8 */ STRUCT_PAD(0x1A8, 0x1A9);
-    /* 1A9 */ unk8 mUnk_19D_eur;
+    /* 1A9 */ bool mUnk_19D_eur;
+    /* 1AC */ unk32 mUnk_1A0_eur;
 #else
     /* 184 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 188 */ MapObjectUnkSWSW *mUnk_188_eur;
@@ -68,14 +67,15 @@ public:
     /* 194 */ unk32 mUnk_194_eur;
     /* 198 */ unk32 mUnk_198_eur;
     /* 19C */ STRUCT_PAD(0x19C, 0x19D);
-    /* 19D */ unk8 mUnk_19D_eur;
+    /* 19D */ bool mUnk_19D_eur;
+    /* 1A0 */ unk32 mUnk_1A0_eur;
 #endif
     /* 18C */
 
     ActorUnkNSSW();
 
     /* 1C */ virtual bool Init(unk32 param1) override;
-    /* 20 */ virtual void Setup() override;
+    /* 20 */ virtual void Update() override;
     /* 2C */ virtual void vfunc_2C(Actor_vfunc_30 *param1) override;
 
     void func_ov032_02120118();
@@ -89,7 +89,7 @@ public:
     void func_ov032_02120b6c();
     void func_ov032_02120b7c(VecFx32 *param1);
     void func_ov032_02120bc0();
-    void func_ov032_02120bfc();
+    void func_ov032_02120bfc(Actor *actor);
     void func_ov032_02120c64(MapObjectUnkSWSW *param1);
 };
 
