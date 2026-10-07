@@ -217,7 +217,7 @@ _ZN16MapObjectUnkSWSWD1Ev kind:function(arm,size=0x20) addr:0x02122030
 _ZN16MapObjectUnkSWSWD0Ev kind:function(arm,size=0x28) addr:0x02122050
 _ZN23MapObjectProfileUnkSWSWD1Ev kind:function(arm,size=0x14) addr:0x02122078
 data_ov032_02121ed4 kind:data(any) addr:0x02122090
-data_ov032_021220a0 kind:data(any) addr:0x021220a0
+data_ov032_02121ee4 kind:data(any) addr:0x021220a0
 data_ov032_021220b0 kind:data(any) addr:0x021220b0
 data_ov032_021220c0 kind:data(any) addr:0x021220c0
 data_ov032_021220d0 kind:data(any) addr:0x021220d0
@@ -261,10 +261,10 @@ _ZTV26ModelRender_ov032_02122568 kind:data(any) addr:0x02122700
 data_ov032_0212258c kind:data(any) addr:0x0212272c
 data_ov032_021225dc kind:data(any) addr:0x0212277c
 _ZTV10ActorKeese kind:data(any) addr:0x021227cc
-_ZTV19data_ov032_02122834 kind:data(any) addr:0x0212282c
-data_ov032_0212284c kind:data(any) addr:0x0212284c
-data_ov032_02122868 kind:data(any) addr:0x02122868
-data_ov032_0212288c kind:data(any) addr:0x0212288c
+_ZTV16ActorUnkNSSW_0E0 kind:data(any) addr:0x0212282c
+_ZTV16ActorUnkNSSW_104 kind:data(any) addr:0x02122844
+_ZTV19ActorProfileUnkNSSW kind:data(any) addr:0x02122860
+_ZTV12ActorUnkNSSW kind:data(any) addr:0x02122884
 _ZTV23MapObjectProfileUnkSWSW kind:data(any) addr:0x021228e4
 _ZTV28MapObjectProfileUnkSWSW_Base kind:data(any) addr:0x02122900
 _ZTV17MapObject_10_SWSW kind:data(any) addr:0x0212291c

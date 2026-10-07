@@ -31,6 +31,21 @@ public:
     /* 10 */ virtual void vfunc_10(Actor *actor) override;
 };
 
+#if IS_JP
+class ActorUnkNSSW_138 : public UnkStruct_ov031_Items_00 {
+public:
+    /* 00 (base) */
+    /* 04 */ unk32 mUnk_04;
+    /* 08 */ ActorUnkNSSW *mUnk_08;
+
+    ActorUnkNSSW_138(ActorUnkNSSW *actor) :
+        UnkStruct_ov031_Items_00(),
+        mUnk_08(actor) {}
+
+    /* 0C */ virtual bool vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) override;
+};
+#endif
+
 class ActorUnkNSSW : public Actor_Derived2 {
 public:
     /* 000 (base) */
@@ -41,32 +56,35 @@ public:
     /* 0E0 */ ActorUnkNSSW_0E0 mUnk_0E0;
     /* 104 */ ActorUnkNSSW_104 mUnk_104;
     /* 134 */ ActorRef mUnk_134;
-    /* 138 */ VecFx32 mUnk_138;
-    /* 144 */ VecFx32 mUnk_144;
-    /* 150 */ Mat3p mUnk_150;
-    /* 174 */ unk32 mUnk_174;
-    /* 178 */ unk32 mUnk_178;
-    /* 17C */ unk32 mUnk_17C;
-    /* 180 */ unk32 mUnk_180;
 #if IS_JP
-    /* 184 */ STRUCT_PAD(0x184, 0x190);
+    /* 138 */ ActorUnkNSSW_138 mUnk_138_jp;
+    /* 144 */ VecFx32 mUnk_138_eur;
+    /* 144 */ VecFx32 mUnk_144_eur;
+    /* 150 */ Mat3p mUnk_150_eur;
+    /* 174 */ unk32 mUnk_174_eur;
+    /* 178 */ unk32 mUnk_178_eur;
+    /* 17C */ unk32 mUnk_17C_eur;
+    /* 180 */ unk32 mUnk_180_eur;
     /* 190 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 194 */ MapObjectUnkSWSW *mUnk_188_eur;
     /* 198 */ unk16 mUnk_18C_eur;
-    /* 19C */ unk32 mUnk_190_eur;
-    /* 1A0 */ unk32 mUnk_194_eur;
-    /* 1A4 */ unk32 mUnk_198_eur;
-    /* 1A8 */ STRUCT_PAD(0x1A8, 0x1A9);
+    /* 19C */ VecFx32 mUnk_190_eur;
+    /* 1A8 */ bool mUnk_19C_eur;
     /* 1A9 */ bool mUnk_19D_eur;
     /* 1AC */ unk32 mUnk_1A0_eur;
 #else
+    /* 138 */ VecFx32 mUnk_138_eur;
+    /* 144 */ VecFx32 mUnk_144_eur;
+    /* 150 */ Mat3p mUnk_150_eur;
+    /* 174 */ unk32 mUnk_174_eur;
+    /* 178 */ unk32 mUnk_178_eur;
+    /* 17C */ unk32 mUnk_17C_eur;
+    /* 180 */ unk32 mUnk_180_eur;
     /* 184 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 188 */ MapObjectUnkSWSW *mUnk_188_eur;
     /* 18C */ unk16 mUnk_18C_eur;
-    /* 190 */ unk32 mUnk_190_eur;
-    /* 194 */ unk32 mUnk_194_eur;
-    /* 198 */ unk32 mUnk_198_eur;
-    /* 19C */ STRUCT_PAD(0x19C, 0x19D);
+    /* 190 */ VecFx32 mUnk_190_eur;
+    /* 19C */ bool mUnk_19C_eur;
     /* 19D */ bool mUnk_19D_eur;
     /* 1A0 */ unk32 mUnk_1A0_eur;
 #endif
@@ -90,6 +108,9 @@ public:
     void func_ov032_02120b7c(VecFx32 *param1);
     void func_ov032_02120bc0();
     void func_ov032_02120bfc(Actor *actor);
+#if IS_JP
+    void func_ov032_02122b0c(MapObject *mapObject);
+#endif
     void func_ov032_02120c64(MapObjectUnkSWSW *param1);
 };
 

@@ -4006,7 +4006,7 @@ data_ov000_020b4e54 kind:data(any) addr:0x020b4e54
 data_ov000_020b4e68 kind:data(any) addr:0x020b4e68
 data_ov000_020b4e9c kind:data(any) addr:0x020b4e7c
 data_ov000_020b4ea0 kind:bss addr:0x020b4ea0
-data_ov000_020b4ea4 kind:bss addr:0x020b4ea4
+data_ov000_020b4ec4 kind:bss addr:0x020b4ea4
 data_ov000_020b4eb4 kind:bss addr:0x020b4eb4
 data_ov000_020b4ec0 kind:bss addr:0x020b4ec0
 data_ov000_020b4ec4 kind:bss addr:0x020b4ec4
