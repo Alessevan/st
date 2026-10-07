@@ -219,7 +219,7 @@ void ActorItemTornado::vfunc_24() {
     this->func_ov031_020e5d18(0x1);
 }
 
-// non-matching
+// non-matching (regalloc)
 void ActorItemTornado::vfunc_2C(Actor_vfunc_30 *param1) {
     if (this->mUnk_1DC <= 0x0) {
         return;
@@ -245,7 +245,7 @@ void ActorItemTornado::vfunc_2C(Actor_vfunc_30 *param1) {
     }
 
     G3d_Model *model = this->mUnk_94.mpModel;
-    func_0200ef9c(model);
+    func_0200ef9c(model, var_r1);
 
     if (this->mUnk_1D1 >= 0x0) {
         for (unk32 index = 0x0; index < (u32) this->mUnk_1D1; ++index) {
