@@ -1,4 +1,5 @@
 #include "Actor/ActorManager.hpp"
+#include "CommonFuncs.hpp"
 #include "Cutscene/Cutscene.hpp"
 #include "Game/GameModeManager.hpp"
 #include "MainGame/AdventureMode.hpp"
@@ -29,9 +30,6 @@
 
 #include <nitro/mi.h>
 #include <string.h>
-
-extern "C" void func_01fff17c(unk16 *, UnkStruct_027e0ce0 *, unk32);
-extern "C" u16 func_ov026_02106564(void *);
 
 extern const OverlayIndex data_ov000_020b21c4[];
 extern const OverlayIndex data_ov000_020b21e0[];
@@ -85,9 +83,9 @@ UnkStruct_027e09a4::UnkStruct_027e09a4(SceneMode mode) :
 
     this->mUnk_2C.mSceneIndex = SceneIndex_t_area0;
     this->mUnk_2C.mUnk_02     = 0x00;
-    this->mUnk_2C.mUnk_04.x   = FLOAT_TO_FX32(0.0f);
-    this->mUnk_2C.mUnk_04.y   = FLOAT_TO_FX32(0.0f);
-    this->mUnk_2C.mUnk_04.z   = FLOAT_TO_FX32(0.0f);
+    this->mUnk_2C.mUnk_04.x   = FX_F32_TO_FX32(0.0f);
+    this->mUnk_2C.mUnk_04.y   = FX_F32_TO_FX32(0.0f);
+    this->mUnk_2C.mUnk_04.z   = FX_F32_TO_FX32(0.0f);
     this->mUnk_2C.mUnk_10     = 0x00;
     this->mUnk_40             = this->mUnk_2C;
     this->mpWarpUnk1          = new(HeapIndex_1) UnkStruct_WarpUnk1();

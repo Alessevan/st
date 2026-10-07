@@ -1,4 +1,5 @@
 #include "Actor/ActorUnkNFSP.hpp"
+#include "CommonFuncs.hpp"
 
 #include "Actor/ActorManager.hpp"
 #include "MapObject/MapObjectUnkSWFS.hpp"
@@ -8,7 +9,7 @@
 class ActorUnkNFSP_vfunc_54 : public Actor {
 public:
     /* 000 (base) */
-    /* 094 */ STRUCT_PAD(0x94, 0x2B0);
+    /* 094 */ PAD(0x94, 0x2B0);
     /* 2B0 */ unk32 mUnk_2B0;
     /* 2B4 */
 };
@@ -16,12 +17,10 @@ public:
 class ActorUnkNFSP_ov031_020fb9b4 : public Actor {
 public:
     /* 00 (base) */
-    /* 94 */ STRUCT_PAD(0x94, 0xE8);
+    /* 94 */ PAD(0x94, 0xE8);
     /* E8 */ VecFx32 mUnk_E8;
     /* F4 */
 };
-
-extern "C" void func_01ff993c(VecFx32 *, VecFx32 *, unk32);
 
 DECL_PROFILE(ActorProfileUnkNFSP);
 
@@ -31,7 +30,7 @@ Actor *ActorProfileUnkNFSP::Create() {
 
 ActorProfileUnkNFSP::ActorProfileUnkNFSP() :
     ActorProfile_Derived1(ActorId_NFSP) {
-    this->mUnk_04.Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.4f));
+    this->mUnk_04.Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.4f));
 }
 
 ActorUnkNFSP::ActorUnkNFSP() :
@@ -107,7 +106,7 @@ void ActorUnkNFSP::func_ov031_020fb9b4() {
     VecFx32 vec = actor->mUnk_E8;
 
     data_027e0ce0->func_01fff148(0x0);
-    vec.z -= FLOAT_TO_FX32(1.0f);
+    vec.z -= FX_F32_TO_FX32(1.0f);
     VecFx32_Copy(&vec, &this->mPos);
 
 #if IS_JP

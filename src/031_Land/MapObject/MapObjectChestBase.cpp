@@ -1,4 +1,5 @@
 #include "MapObject/MapObjectChestBase.hpp"
+#include "CommonFuncs.hpp"
 
 #include "MapObject/MapObjectManager.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
@@ -7,11 +8,6 @@
 #include "Unknown/UnkStruct_027e0cec.hpp"
 
 #pragma readonly_strings on
-
-extern "C" unk32 func_0200f218(unk32, const char *);
-extern "C" void func_0200b58c(G3d_RenderObject *);
-extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, void *);
-extern "C" void func_01ffcfcc(VecFx32 *, VecFx32 *, VecFx32 *);
 
 struct UnkStruct_ov031_02117c84 {
     u16 mUnk_00;
@@ -109,23 +105,23 @@ void MapObjectChestBase::Setup() {
 
     pUVar5 = data_027e0cd8->mUnk_0C;
 
-    sp48.x = FLOAT_TO_FX32(0.0f);
-    sp48.y = FLOAT_TO_FX32(0.0f);
-    sp48.z = FLOAT_TO_FX32(0.0f);
+    sp48.x = FX_F32_TO_FX32(0.0f);
+    sp48.y = FX_F32_TO_FX32(0.0f);
+    sp48.z = FX_F32_TO_FX32(0.0f);
 
-    sp3C.x = FLOAT_TO_FX32(0.0f);
-    sp3C.y = FLOAT_TO_FX32(0.0f);
-    sp3C.z = FLOAT_TO_FX32(0.0f);
+    sp3C.x = FX_F32_TO_FX32(0.0f);
+    sp3C.y = FX_F32_TO_FX32(0.0f);
+    sp3C.z = FX_F32_TO_FX32(0.0f);
 
-    sp18.x = FLOAT_TO_FX32(0.5f);
-    sp18.y = FLOAT_TO_FX32(0.0f);
-    sp18.z = FLOAT_TO_FX32(0.5f);
+    sp18.x = FX_F32_TO_FX32(0.5f);
+    sp18.y = FX_F32_TO_FX32(0.0f);
+    sp18.z = FX_F32_TO_FX32(0.5f);
 
     func_01ffb714(&sp48, &sp18, &sp48);
 
-    spC.x = FLOAT_TO_FX32(0.5f);
-    spC.y = FLOAT_TO_FX32(1.0f);
-    spC.z = FLOAT_TO_FX32(0.5f);
+    spC.x = FX_F32_TO_FX32(0.5f);
+    spC.y = FX_F32_TO_FX32(1.0f);
+    spC.z = FX_F32_TO_FX32(0.5f);
 
     VecFx32_Add((VecFx32 *) &sp3C, &spC, (VecFx32 *) &sp3C);
 
@@ -138,12 +134,12 @@ void MapObjectChestBase::Setup() {
         temp_r0.x--;
 
         if (pUVar5->func_01ffedf4((Vec2bCpp *) &temp_r0) > iVar2 || gpMapObjManager->func_01fff498(local_5e) != NULL) {
-            sp48.x -= FLOAT_TO_FX32(0.5f);
+            sp48.x -= FX_F32_TO_FX32(0.5f);
         }
 
         temp_r0.x += 3;
         if (pUVar5->func_01ffedf4((Vec2bCpp *) &temp_r0) > iVar2 || gpMapObjManager->func_01fff498(local_5e) != NULL) {
-            sp3C.x += FLOAT_TO_FX32(0.5f);
+            sp3C.x += FX_F32_TO_FX32(0.5f);
         }
     } else {
         Vec2bCpp temp_r0(this->mUnk_3A.x, this->mUnk_3A.y);
@@ -154,12 +150,12 @@ void MapObjectChestBase::Setup() {
         // local_5e.y += 2;
 
         if (gpMapObjManager->func_ov000_0209c3a8(&temp_r0) == MapObjectId_MiniBlocks) {
-            sp48.x -= FLOAT_TO_FX32(0.5f);
+            sp48.x -= FX_F32_TO_FX32(0.5f);
         }
 
         // temp_r0.x += 3;
         if (gpMapObjManager->func_ov000_0209c3a8(&temp_r0) == MapObjectId_MiniBlocks) {
-            sp3C.x += FLOAT_TO_FX32(0.5f);
+            sp3C.x += FX_F32_TO_FX32(0.5f);
         }
     }
 
@@ -167,7 +163,7 @@ void MapObjectChestBase::Setup() {
 
     if (gpMapObjManager->func_ov000_0209c3a8(&local_62) == MapObjectId_MiniBlocks &&
         iVar2 == pUVar5->func_01ffedf4(&local_62)) {
-        sp48.z -= FLOAT_TO_FX32(0.5f);
+        sp48.z -= FX_F32_TO_FX32(0.5f);
     }
 
     if (data_027e09a4->CurrentSceneIndex() == SceneIndex_d_flame) {
@@ -178,7 +174,7 @@ void MapObjectChestBase::Setup() {
         local_64.y = local_66.y - 1;
 
         if (iVar2 > pUVar5->func_01ffedf4(&local_64) && iVar2 > pUVar5->func_01ffedf4(&local_66)) {
-            sp3C.y += FLOAT_TO_FX32(1.0f);
+            sp3C.y += FX_F32_TO_FX32(1.0f);
         }
     }
 

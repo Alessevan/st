@@ -1,4 +1,5 @@
 #include "MapObject/MapObjectSwitchStep.hpp"
+#include "CommonFuncs.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_0204af1c.hpp"
 #include "Unknown/UnkStruct_027e0998.hpp"
@@ -6,8 +7,6 @@
 #include "Unknown/UnkStruct_027e09a8.hpp"
 #include "Unknown/UnkStruct_ov000_020b5214.hpp"
 #include <nitro/mi.h>
-
-extern "C" unk32 func_0200f218(unk32, const char *);
 
 static const char data_ov000_020af550[] = "switch";
 static const char data_ov000_020af560[] = "switchB";
@@ -24,13 +23,13 @@ MapObjectProfileSwitchStep::MapObjectProfileSwitchStep() :
     MapObjectProfileSwitchStep_Base(MapObjectId_SwitchStep) {
     this->mUnk_D4.mUnk_08 = 0x2DC04009;
 
-    this->mUnk_D4.mUnk_0C.x = -FLOAT_TO_FX32(0.5f);
-    this->mUnk_D4.mUnk_0C.y = FLOAT_TO_FX32(0.0f);
-    this->mUnk_D4.mUnk_0C.z = -FLOAT_TO_FX32(0.5f);
+    this->mUnk_D4.mUnk_0C.x = -FX_F32_TO_FX32(0.5f);
+    this->mUnk_D4.mUnk_0C.y = FX_F32_TO_FX32(0.0f);
+    this->mUnk_D4.mUnk_0C.z = -FX_F32_TO_FX32(0.5f);
 
-    this->mUnk_D4.mUnk_18.x = FLOAT_TO_FX32(0.5f);
-    this->mUnk_D4.mUnk_18.y = FLOAT_TO_FX32(0.5f);
-    this->mUnk_D4.mUnk_18.z = FLOAT_TO_FX32(0.5f);
+    this->mUnk_D4.mUnk_18.x = FX_F32_TO_FX32(0.5f);
+    this->mUnk_D4.mUnk_18.y = FX_F32_TO_FX32(0.5f);
+    this->mUnk_D4.mUnk_18.z = FX_F32_TO_FX32(0.5f);
 
     this->mUnk_06         = 1;
     this->mUnk_0C         = 0xC00;

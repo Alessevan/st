@@ -1,3 +1,4 @@
+#include "CommonFuncs.hpp"
 #include "Unknown/UnkStruct_02049b18.hpp"
 #include "Unknown/UnkStruct_0204a088.hpp"
 #include "Unknown/UnkStruct_027e09bc.hpp"
@@ -9,19 +10,6 @@
 #include "math.hpp"
 #include "nitro/fx.h"
 #include "nitro/math.h"
-
-extern "C" bool func_01ff916c(void *, int, int);
-extern "C" void func_01ffb974(unk32, VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" void func_01ff9770(VecFx32 *, unk32);
-extern "C" unk32 func_01ffb428(unk32, unk32);
-extern "C" u16 func_01ffbbe0(fx32 x, fx32 z);
-extern "C" unk32 func_01ff9364(u16 *, UnkAngleStruct);
-extern "C" bool func_ov000_02080998(VecFx32 *);
-extern "C" VecFx32 *func_ov000_0205d524(unk32, unk32);
-extern "C" unk32 func_ov000_02077480();
-extern "C" unk16 func_0201a710(unk16);
-extern "C" void func_ov000_0205db44(void *, void *, unk32);
 
 void UnkStruct_027e0ce0_40_Base_7C::func_ov017_020be2ec(UnkStruct_027e0ce0_40_Base_14 *param1, bool param2,
                                                         UnkParamStruct1 param3) {
@@ -38,7 +26,7 @@ void UnkStruct_027e0ce0_40_Base_7C::func_ov017_020be2ec(UnkStruct_027e0ce0_40_Ba
     if (!param2 && param1->mTouchControl.mState.touch && this->func_ov000_020968fc()) {
         VecFx32 sp4;
 
-        func_01ffb974((this->mUnk_14 + FLOAT_TO_FX32(0.5999f)) - param1->mUnk_24.y, &param1->mUnk_30, &param1->mUnk_24, &sp4);
+        func_01ffb974((this->mUnk_14 + FX_F32_TO_FX32(0.5999f)) - param1->mUnk_24.y, &param1->mUnk_30, &param1->mUnk_24, &sp4);
         data_027e0cec->func_ov000_020a0140(&this->mUnk_08, &sp4);
         fx32 originalY = func_ov000_0205d524(0, this->mUnk_00)->y;
         fx32 y         = originalY;
@@ -47,7 +35,7 @@ void UnkStruct_027e0ce0_40_Base_7C::func_ov017_020be2ec(UnkStruct_027e0ce0_40_Ba
             y = data_027e0cd8->mUnk_0C->vfunc_28(&sp4, 1, 0);
         }
 
-        func_01ff916c(&this->mUnk_14, ClampValue(y, originalY, originalY + FLOAT_TO_FX32(3.6f)), 0x1000);
+        func_01ff916c(&this->mUnk_14, ClampValue(y, originalY, originalY + FX_F32_TO_FX32(3.6f)), 0x1000);
         return;
     }
 

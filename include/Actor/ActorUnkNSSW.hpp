@@ -49,7 +49,7 @@ public:
 class ActorUnkNSSW : public Actor_Derived2 {
 public:
     /* 000 (base) */
-    /* 0AE */ STRUCT_PAD(0x0AE, 0x0B0);
+    /* 0AE */ PAD(0x0AE, 0x0B0);
     /* 0B0 */ UnkSystem6_Derived2 mUnk_0B0;
     /* 0BC */ unk32 mUnk_0BC;
     /* 0C0 */ Actor_9C mUnk_0C0;
@@ -58,9 +58,9 @@ public:
     /* 134 */ ActorRef mUnk_134;
 #if IS_JP
     /* 138 */ ActorUnkNSSW_138 mUnk_138_jp;
-    /* 144 */ VecFx32 mUnk_138_eur;
-    /* 144 */ VecFx32 mUnk_144_eur;
-    /* 150 */ Mat3p mUnk_150_eur;
+    /* 144 */ VecFx32Cpp mUnk_138_eur;
+    /* 144 */ VecFx32Cpp mUnk_144_eur;
+    /* 150 */ MtxFx33 mUnk_150_eur;
     /* 174 */ unk32 mUnk_174_eur;
     /* 178 */ unk32 mUnk_178_eur;
     /* 17C */ unk32 mUnk_17C_eur;
@@ -68,14 +68,14 @@ public:
     /* 190 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 194 */ MapObjectUnkSWSW *mUnk_188_eur;
     /* 198 */ unk16 mUnk_18C_eur;
-    /* 19C */ VecFx32 mUnk_190_eur;
+    /* 19C */ VecFx32Cpp mUnk_190_eur;
     /* 1A8 */ bool mUnk_19C_eur;
     /* 1A9 */ bool mUnk_19D_eur;
     /* 1AC */ unk32 mUnk_1A0_eur;
 #else
-    /* 138 */ VecFx32 mUnk_138_eur;
-    /* 144 */ VecFx32 mUnk_144_eur;
-    /* 150 */ Mat3p mUnk_150_eur;
+    /* 138 */ VecFx32Cpp mUnk_138_eur;
+    /* 144 */ VecFx32Cpp mUnk_144_eur;
+    /* 150 */ MtxFx33 mUnk_150_eur;
     /* 174 */ unk32 mUnk_174_eur;
     /* 178 */ unk32 mUnk_178_eur;
     /* 17C */ unk32 mUnk_17C_eur;
@@ -83,7 +83,7 @@ public:
     /* 184 */ MapObjectUnkSWSW *mUnk_184_eur;
     /* 188 */ MapObjectUnkSWSW *mUnk_188_eur;
     /* 18C */ unk16 mUnk_18C_eur;
-    /* 190 */ VecFx32 mUnk_190_eur;
+    /* 190 */ VecFx32Cpp mUnk_190_eur;
     /* 19C */ bool mUnk_19C_eur;
     /* 19D */ bool mUnk_19D_eur;
     /* 1A0 */ unk32 mUnk_1A0_eur;

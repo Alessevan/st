@@ -1,3 +1,4 @@
+#include "CommonFuncs.hpp"
 #include "Player/PlayerLink.hpp"
 #include "Unknown/UnkStruct_0204a088.hpp"
 #include "Unknown/UnkStruct_0204a110.hpp"
@@ -10,8 +11,6 @@
 #include "nitro/fx.h"
 #include "nitro/math.h"
 #include "nitro/types.h"
-
-extern "C" bool func_ov000_020864f8(void *, UnkAngleStruct, void *, void *);
 
 bool PlayerLinkActor::func_ov017_020bd6b8() {
     bool ret = false;
@@ -32,7 +31,7 @@ unk32 PlayerLinkActor::func_ov017_020bd6e0(bool param1) {
         return 1;
     }
 
-    if (data_027e0cd8->mUnk_0C->func_ov000_0208217c(&this->mPos, 1)) {
+    if (data_027e0cd8->mUnk_0C->func_ov000_0208217c(&this->mPos.vec, 1)) {
         return 2;
     }
 
@@ -53,7 +52,7 @@ void PlayerLinkActor::func_ov017_020bd758() {
 void PlayerLinkActor::func_ov017_020bd788(bool param1) {
     STACK_PAD(0x10);
 
-    VecFx32_Copy(&this->mPos, &this->mPrevPos);
+    VecFx32_Copy(&this->mPos.vec, &this->mPrevPos.vec);
 
     if (this->func_ov000_0208d754() != 0) {
         this->mUnk_138.func_ov000_020609c4();
@@ -84,8 +83,14 @@ void PlayerLinkActor::func_ov017_020bd788(bool param1) {
     if (param1) {
         unk32 var_r4 = -1;
 
-        if (this->mUnk_0A0->func_ov000_02091f08(0x0B) || this->mUnk_0A0->func_ov000_02091f08(0x0F)) {
-            VecFx32_Reset(&this->mVel);
+#if IS_JP
+        bool cond = this->mUnk_0A0->mUnk_68 == 0x49;
+#else
+        bool cond = false;
+#endif
+
+        if (cond || this->mUnk_0A0->func_ov000_02091f08(0x0B) || this->mUnk_0A0->func_ov000_02091f08(0x0F)) {
+            VecFx32_Reset(&this->mVel.vec);
         } else {
             if (this->mUnk_09C->mUnk_090 >= 0 && !this->mUnk_0A0->func_ov000_020936c4()) {
                 var_r4 = 3;
@@ -109,8 +114,8 @@ void PlayerLinkActor::func_ov017_020bd788(bool param1) {
                 var_r4 = 0;
 
                 if (this->mUnk_0A0->mUnk_68 != 0x70) {
-                    this->mVel.x = 0;
-                    this->mVel.z = 0;
+                    this->mVel.vec.x = 0;
+                    this->mVel.vec.z = 0;
                 }
 
                 this->func_ov000_0208cbf0();
@@ -120,7 +125,7 @@ void PlayerLinkActor::func_ov017_020bd788(bool param1) {
         }
 
         this->mUnk_09C->mUnk_098 = 0x1000;
-        VecFx32_Reset(&this->mAccel);
+        VecFx32_Reset(&this->mAccel.vec);
         this->mUnk_0A0->func_ov000_02092648(1);
 
         if (this->mUnk_58->Unk78HasValue()) {
@@ -134,7 +139,7 @@ void PlayerLinkActor::func_ov017_020bd788(bool param1) {
         if (var_r4 != -1) {
             if (!this->mUnk_09C->func_ov017_020bc640(var_r4, true, this->mUnk_0A0->func_ov000_0209360c(),
                                                      this->mUnk_0A0->func_ov000_02093650(), this->func_ov017_020bd6b8(),
-                                                     &this->mAccel, &this->mPos, &this->mVel)) {
+                                                     &this->mAccel.vec, &this->mPos.vec, &this->mVel.vec)) {
                 if (var_r4 != 1 && this->mUnk_0A0->mUnk_68 != 0x16) {
                     this->mUnk_0A0->func_ov000_020921e4(0x16);
                 }
@@ -172,7 +177,7 @@ void PlayerLinkActor::func_ov017_020bd788(bool param1) {
 
     this->func_ov000_0208cbf0();
     this->mUnk_09C->mUnk_098 = 0x1000;
-    VecFx32_Reset(&this->mAccel);
+    VecFx32_Reset(&this->mAccel.vec);
     this->mUnk_0A0->func_ov000_02092648(0);
 
     if (this->mUnk_58->Unk78HasValue()) {
@@ -190,8 +195,8 @@ void PlayerLinkActor::func_ov017_020bd788(bool param1) {
     }
 
     if (!this->mUnk_09C->func_ov017_020bc640(var_r5_2, param1, this->mUnk_0A0->func_ov000_0209360c(),
-                                             this->mUnk_0A0->func_ov000_02093650(), this->func_ov017_020bd6b8(), &this->mAccel,
-                                             &this->mPos, &this->mVel)) {
+                                             this->mUnk_0A0->func_ov000_02093650(), this->func_ov017_020bd6b8(),
+                                             &this->mAccel.vec, &this->mPos.vec, &this->mVel.vec)) {
         if (var_r5_2 != 1 && this->mUnk_0A0->mUnk_68 != 0x16) {
             this->mUnk_0A0->func_ov000_020921e4(0x16);
         }
@@ -241,7 +246,7 @@ void PlayerLinkActor::func_ov017_020bdd84(void *param1, unk32 param2) {
     s8 sp8;
     bool var_r2;
     bool temp_r1_2;
-    Mat4x3p *temp_r4;
+    MtxFx43 *temp_r4;
     bool var_r5;
 
     //! TODO: figure out param1's type (most likely data_0204a110.mUnk_DF8)
@@ -254,10 +259,10 @@ void PlayerLinkActor::func_ov017_020bdd84(void *param1, unk32 param2) {
     if (var_r5) {
         if (param2 != 0) {
             if (this->mUnk_74 != 0) {
-                this->mUnk_70->func_ov017_020bbef4(&this->mPos, this->mAngle);
+                this->mUnk_70->func_ov017_020bbef4(&this->mPos.vec, this->mAngle);
             }
         } else {
-            this->mUnk_70->func_ov017_020bbcd8(&this->mPos, this->mAngle);
+            this->mUnk_70->func_ov017_020bbcd8(&this->mPos.vec, this->mAngle);
         }
 
         if (param1 == NULL && data_0204a110.func_02019514() == 0) {
@@ -308,7 +313,7 @@ void PlayerLinkActor::func_ov017_020bdf48(s8 *param1, unk32 param2, void *param3
     if (!this->mUnk_0A0->func_ov000_02091f08(0x0D) && param1[1] == 1) {
         sp4 = this->mUnk_50;
 
-        if (!data_027e0998->vfunc_00(&this->mPos, &sp8, &sp4.mUnk_00)) {
+        if (!data_027e0998->vfunc_00(&this->mPos.vec, &sp8, &sp4.mUnk_00)) {
             return;
         }
 

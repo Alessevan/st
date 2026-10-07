@@ -1,5 +1,3 @@
-#define VECFX32_CTORS //! TODO: remove this hack
-
 #include "Actor/ActorUnkCASE.hpp"
 #include "Actor/Actor.hpp"
 #include "Actor/ActorId.hpp"
@@ -8,6 +6,7 @@
 #include "Actor/ActorShotArrow.hpp"
 #include "Actor/ActorUnkCANS.hpp"
 #include "Actor/ActorUnkITWP.hpp"
+#include "CommonFuncs.hpp"
 #include "Physics/Cylinder.hpp"
 #include "Render/ModelRender.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
@@ -23,20 +22,13 @@
 extern const Actor_Derived2_A8_PTR data_ov063_02162558;
 extern const void *data_ov063_02162568;
 
-extern Mat4x3p data_027e0964;
-extern "C" void func_01ffa60c(const Mat3p *, Mat3p *, Mat3p *);
-extern "C" void func_01ffa7a0(VecFx32 *, Mat3p *, VecFx32 *);
-extern "C" void func_01ffad5c(Mat4x3p *, Mat4x3p *, Mat4x3p *);
-extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" u16 func_01ffbbe0(fx32 x, fx32 z);
+extern MtxFx43 data_027e0964;
 
 // Overlay 0
 extern unk32 data_ov000_020aecf8[0x2]; //! INFO: Unsure about the size and type
 extern u16 data_ov000_020aed00;
-extern "C" void func_ov000_0207b70c(ActorUnkCASE_174 *param1, Actor *param2);
 
 // Other
-extern "C" void G3d_GetCurrentMtx(Mat4x3p *mtx1, Mat3p *mtx2);
 
 struct UnkStruct_data_ov063_021630c8 {
     /* 00 */ unk32 mUnk_00;
@@ -219,7 +211,7 @@ void ActorUnkCASE::func_ov063_0215afb8(void) {
         return;
     }
 
-    //! INFO: Actually a Mat3p, this is only used to allow a "batched" copy (all 9 elements at a time, not 3 by 3)
+    //! INFO: Actually a MtxFx33, this is only used to allow a "batched" copy (all 9 elements at a time, not 3 by 3)
     struct Fx32Array9 {
         fx32 array[9];
     };
@@ -274,11 +266,11 @@ void ActorUnkCASE::func_ov063_0215b1bc(void) {
     mVel.z = 0;
 
     VecFx32 vec;
-    VecFx32_Init(0, 0, FLOAT_TO_FX32(1.0f), &vec);
+    VecFx32_Init(0, 0, FX_F32_TO_FX32(1.0f), &vec);
     func_01ffa7a0(&vec, &mUnk_1A4, &vec);
 
     s16 angle = func_01ffbbe0(vec.x, vec.z);
-    Mat3p_InitYRotation(&mUnk_1A4, SIN((u16) angle), COS((u16) angle));
+    MtxFx33_InitYRotation(&mUnk_1A4, SIN((u16) angle), COS((u16) angle));
 }
 
 void ActorUnkCASE::func_ov063_0215b244(void) {
@@ -360,7 +352,7 @@ void ActorUnkCASE::Update() {
         x_neg    = vec2->x;
     } else if (mState == 5) {
         VecFx32 vec1;
-        vec1 = mUnk_1CC;
+        vec1 = mUnk_1CC.vec;
         func_01ffb714(&vec1, &mPos, &vec1);
 
         z = vec1.z;
@@ -372,7 +364,7 @@ void ActorUnkCASE::Update() {
         ((VecFx16 *) &mUnk_150.mUnk_0E)->z = z;
 
         vec2     = data_027e0ce0->func_01fff148(0);
-        vec_base = &mUnk_1CC;
+        vec_base = &mUnk_1CC.vec;
         z_pos    = vec_base->z;
         z_neg    = vec2->z;
         x_pos    = vec_base->x;
@@ -434,9 +426,9 @@ void ActorUnkCASE::vfunc_2C(Actor_vfunc_30 *param1) {
         fx32 sin_val = SIN((u16) mUnk_1C8);
         fx32 cos_val = COS((u16) mUnk_1C8);
 
-        Mat3p mat2;
-        Mat3p mat1;
-        Mat3p_InitZRotation(&mat1, sin_val, cos_val);
+        MtxFx33 mat2;
+        MtxFx33 mat1;
+        MtxFx33_InitZRotation(&mat1, sin_val, cos_val);
 
         func_01ffa60c(&mat1, &mUnk_1A4, &mat2);
         mUnk_0B0.vfunc_14(&mat2, &mPos);
@@ -560,16 +552,16 @@ void ActorUnkCASE::func_ov063_0215b99c(ActorUnkCASE *param1, UnkStruct_func_ov06
         return;
     }
 
-    Mat4x3p matx1, matx2;
+    MtxFx43 matx1, matx2;
     G3d_GetCurrentMtx(&matx1, NULL);
     func_01ffad5c(&matx1, &data_027e0964, &matx2);
     // VecFx32_Copy(&matx2.wColumn, &param1->mUnk_1CC);
-    fx32 x             = matx2.wColumn.x;
-    fx32 z             = matx2.wColumn.z;
-    fx32 y             = matx2.wColumn.y;
-    param1->mUnk_1CC.x = x;
-    param1->mUnk_1CC.y = y;
-    param1->mUnk_1CC.z = z;
+    fx32 x                 = matx2._30;
+    fx32 z                 = matx2._32;
+    fx32 y                 = matx2._31;
+    param1->mUnk_1CC.vec.x = x;
+    param1->mUnk_1CC.vec.y = y;
+    param1->mUnk_1CC.vec.z = z;
 
     param2->mUnk_92 = 2;
     var2[0x25]      = 2;

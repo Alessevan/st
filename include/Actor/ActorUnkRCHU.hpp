@@ -20,7 +20,7 @@ public:
 class ActorUnkRCHU : public Actor {
 public:
     /* 000 (base) */
-    /* 094 */ STRUCT_PAD(0x094, 0x268);
+    /* 094 */ PAD(0x094, 0x268);
     /* 268 */ unk32 mUnk_268;
 
     ActorUnkRCHU();

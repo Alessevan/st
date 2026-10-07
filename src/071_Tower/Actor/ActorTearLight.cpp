@@ -1,4 +1,5 @@
 #include "Actor/ActorTearLight.hpp"
+#include "CommonFuncs.hpp"
 
 #include "Actor/ActorManager.hpp"
 #include "System/SysNew.hpp"
@@ -25,17 +26,12 @@ public:
 class UnkActor_ov071_0215ffbc : public Actor {
 public:
     /* 00 (base) */
-    /* 94 */ STRUCT_PAD(0x94, 0xE8);
+    /* 94 */ PAD(0x94, 0xE8);
     /* E8 */ VecFx32 mUnk_E8;
 };
 
-extern "C" unk32 data_ov000_020aecf8;
-extern "C" VecFx32 data_ov071_02164bd4;
-
-extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" void func_01ffedac(Vec2bCpp *, VecFx32 *);
-extern "C" fx32 func_ov000_02080068(fx32 x);
-extern "C" fx32 func_ov000_02080080(fx32 x);
+extern unk32 data_ov000_020aecf8;
+extern VecFx32 data_ov071_02164bd4;
 
 extern UnkStruct_ov019_020d24c8_28_258_00 data_ov071_02165150;
 
@@ -58,7 +54,7 @@ ActorProfileTearLight::ActorProfileTearLight() :
     ActorProfile_Derived1(ActorId_TearLight) {
     this->mUnk_18 = 0x0;
     this->mUnk_1A = 0x1000;
-    this->mUnk_04.Init(FLOAT_TO_FX32(0.4f));
+    this->mUnk_04.Init(FX_F32_TO_FX32(0.4f));
 }
 
 // non-matching
@@ -78,7 +74,7 @@ ActorTearLight::ActorTearLight() :
     this->mUnk_44 = 0xA3;
     SET_FLAG(this->mFlags, ActorFlag_13);
     this->mUnk_168.mUnk_04 = 0x13010;
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mUnk_094);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mUnk_094);
 }
 
 // non-matching
@@ -129,7 +125,7 @@ void ActorTearLight::vfunc_24() {
             this->mTimer.Update();
             if (this->mTimer.value == 20) {
                 this->func_ov071_0215fca4();
-                VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+                VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mVel);
                 this->mUnk_1B8 = 0x0;
                 SET_FLAG(this->mFlags, ActorFlag_Visible);
                 return;
@@ -150,11 +146,11 @@ void ActorTearLight::vfunc_2C(Actor_vfunc_30 *param1) {
     if (!this->func_01fff5d0(param1, 0x0)) {
         return;
     }
-    Mat3p matrix;
-    Mat3p_InitYRotation(&matrix, SIN((u16) this->mAngle.angle_s), COS((u16) this->mAngle.angle_s));
+    MtxFx33 matrix;
+    MtxFx33_InitYRotation(&matrix, SIN((u16) this->mAngle.angle_s), COS((u16) this->mAngle.angle_s));
 
     VecFx32 vecC = this->mPos;
-    vecC.y += FLOAT_TO_FX32(0.5f);
+    vecC.y += FX_F32_TO_FX32(0.5f);
 
     this->mUnk_0A4.vfunc_10(&data_ov071_02164bd4, &matrix, &vecC);
 
@@ -189,7 +185,7 @@ void ActorTearLight::func_ov071_0215f824() {
         default:
             if (this->func_ov017_020beeec(0x4000)) {
                 VecFx32 vec = this->mPos;
-                vec.y += FLOAT_TO_FX32(0.5f);
+                vec.y += FX_F32_TO_FX32(0.5f);
                 UnkStruct_027e0cec *data = data_027e0cec;
                 for (ActorTearLight_204 *playerGet = this->mUnk_204; playerGet != this->mUnk_204 + ARRAY_LEN(this->mUnk_204);
                      ++playerGet) {
@@ -245,14 +241,14 @@ void ActorTearLight::func_ov071_0215f92c() {
             }
             fx32 temp_r1 = this->mVel.y;
             bool temp_gt = temp_r1 > -0x800;
-            this->mVel.y = FLOAT_TO_FX32(0.0f);
+            this->mVel.y = FX_F32_TO_FX32(0.0f);
             if (!temp_gt) {
-                VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.25f), FLOAT_TO_FX32(0.0f), &this->mVel);
+                VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.25f), FX_F32_TO_FX32(0.0f), &this->mVel);
             } else if (temp_r1 >= 0xFFFFFE66) {
                 this->func_ov071_0215fd04();
             } else {
                 fx32 temp_r1_2 = (0 - temp_r1) * 3;
-                VecFx32_Init(FLOAT_TO_FX32(0.0f), (temp_r1_2 + ((u32) (temp_r1_2 >> 1) >> 0x1E)) >> 2, FLOAT_TO_FX32(0.0f),
+                VecFx32_Init(FX_F32_TO_FX32(0.0f), (temp_r1_2 + ((u32) (temp_r1_2 >> 1) >> 0x1E)) >> 2, FX_F32_TO_FX32(0.0f),
                              &this->mVel);
             }
         }
@@ -312,7 +308,7 @@ void ActorTearLight::func_ov071_0215fca4() {
 
     this->mTimer.Reset();
 
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.25f), FLOAT_TO_FX32(0.0f), &this->mVel);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.25f), FX_F32_TO_FX32(0.0f), &this->mVel);
 
     this->mUnk_4A[0] = 0x0;
     this->mUnk_44    = 0xA3;
@@ -336,7 +332,7 @@ void ActorTearLight::func_ov071_0215fd04() {
     }
 
     this->mTimer.Reset();
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mVel);
     this->mUnk_44 = 0;
     if (var_z) {
         this->mUnk_18C = false;
@@ -350,7 +346,7 @@ void ActorTearLight::func_ov071_0215fd80() {
     this->func_ov071_0215f7f4(ActorUnkSZKUState_3);
 
     this->mTimer.Reset();
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mVel);
 
     this->mUnk_4A[0] = 0x0;
     this->mUnk_44    = 0x0;
@@ -365,7 +361,7 @@ void ActorTearLight::func_ov071_0215fdd4() {
     this->mTimer.Reset();
 
     this->mUnk_4A[0] = 0x0;
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mVel);
 
     this->vfunc_40();
 
@@ -382,7 +378,7 @@ void ActorTearLight::func_ov071_0215fdd4() {
 void ActorTearLight::func_ov071_0215fe54() {
     this->func_ov071_0215f7f4(ActorUnkSZKUState_6);
     this->mUnk_2C = 0x0;
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mVel);
 
     this->mUnk_160 = data_ov071_02164d00;
 }
@@ -391,7 +387,7 @@ void ActorTearLight::func_ov071_0215fe54() {
 void ActorTearLight::func_ov071_0215fe94() {
     this->func_ov071_0215f7f4(ActorUnkSZKUState_7);
     this->mUnk_2C = 0x0;
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &this->mVel);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &this->mVel);
 
     this->mUnk_160 = data_ov071_02164d08;
 }

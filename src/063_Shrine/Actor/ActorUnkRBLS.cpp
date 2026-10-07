@@ -1,12 +1,11 @@
 #include "Actor/ActorUnkRBLS.hpp"
+#include "CommonFuncs.hpp"
 #include "Render/ModelRender.hpp"
 #include "Unknown/UnkStruct_027e0cd8.hpp"
 #include "nitro/fx.h"
 #include "nitro/math.h"
 
 ActorUnkZLSL_AnimationTag data_ov063_02163740 = {0, "RBLS"};
-
-extern "C" void func_ov000_02099f64(UnkStruct_ov063_02163784 *param1, ActorUnkZLSL_AnimationTag param2, unk32 param3);
 
 DECL_PROFILE(ActorProfileUnkRBLS);
 
@@ -23,8 +22,8 @@ ActorUnkRBLS::ActorUnkRBLS() :
     mUnk_F4(&mUnk_94, GET_PROFILE(ActorProfileUnkRBLS)->vfunc_04()) {}
 
 bool ActorUnkRBLS::Init(unk32 param1) {
-    this->mPos.x -= FLOAT_TO_FX32(0.5f);
-    this->mPos.z -= FLOAT_TO_FX32(0.5f);
+    this->mPos.x -= FX_F32_TO_FX32(0.5f);
+    this->mPos.z -= FX_F32_TO_FX32(0.5f);
     this->mPos.y = 0;
     func_ov000_02099f64(&this->mUnk_F4, data_ov063_02163740, 0x1000);
     this->mUnk_F4.vfunc_3C();

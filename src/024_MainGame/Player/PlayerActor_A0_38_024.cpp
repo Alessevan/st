@@ -1,7 +1,5 @@
+#include "CommonFuncs.hpp"
 #include "Player/PlayerLink.hpp"
-
-extern "C" void func_ov000_0205be34(void *thisx, unk16 param1);
-extern "C" void func_ov000_0205be44(void *thisx, Vec2s *param1, Vec2s *param2, bool param3, bool param4);
 
 struct UnkStruct_auStack_14 {
     unk16 unk_00;
@@ -82,7 +80,7 @@ void PlayerLinkActor_A0_38_18::vfunc_00() {
         Vec2us temp2;
         temp1.x = data_ov024_020d8228.x;
         temp1.y = data_ov024_020d8228.y;
-        temp2.x = (temp_r6 + 0x18) + ROUND_FX32(MUL_FX32(SIN(this->mUnk_10->mUnk_30), FLOAT_TO_FX32(16.0f)));
+        temp2.x = (temp_r6 + 0x18) + ROUND_FX32(FX_MUL(SIN(this->mUnk_10->mUnk_30), FX_F32_TO_FX32(16.0f)));
         temp2.y = temp_r7 - 0x18;
         temp2.y = temp2.y & 0xFFFF; //! TODO: fake match?
 

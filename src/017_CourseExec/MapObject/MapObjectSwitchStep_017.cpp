@@ -1,8 +1,6 @@
+#include "CommonFuncs.hpp"
 #include "MapObject/MapObjectSwitchStep.hpp"
 #include "nitro/math.h"
-
-extern "C" void func_01ff91b8(unk16 *, fx32, fx32);
-extern "C" fx32 func_01ffb464(fx32);
 
 void MapObjectSwitchStep::vfunc_08() {
     s16 sp0 = this->mUnk_40.mUnk_60;
@@ -13,7 +11,7 @@ void MapObjectSwitchStep::vfunc_08() {
             break;
         case 1:
             if (this->mUnk_E8 > 0) {
-                func_01ff91b8(&sp0, -FLOAT_TO_FX32(0.1f), func_01ffb464(INT_TO_FX32(this->mUnk_E8)));
+                func_01ff91b8(&sp0, -FX_F32_TO_FX32(0.1f), func_01ffb464(INT_TO_FX32(this->mUnk_E8)));
             }
 
             if (this->mUnk_E8 <= 0) {

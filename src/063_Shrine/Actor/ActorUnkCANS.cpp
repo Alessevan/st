@@ -6,6 +6,7 @@
 #include "Actor/ActorRef.hpp"
 #include "Actor/ActorShotArrow.hpp"
 #include "Actor/ActorUnkCASE.hpp"
+#include "CommonFuncs.hpp"
 #include "Map/MapObjectId.hpp"
 #include "MapObject/MapObject.hpp"
 #include "MapObject/MapObjectManager.hpp"
@@ -38,19 +39,8 @@ extern ActorUnkZLSL_AnimationTag data_ov063_02163098;
 extern ActorUnkZLSL_AnimationTag data_ov063_021630b0;
 
 extern VecFx32 data_027e07d4;
-extern Mat4x3p data_027e0964;
+extern MtxFx43 data_027e0964;
 extern UnkStruct_027e09c0 *data_027e09c0;
-
-extern "C" void func_01ff916c(unk32 *param1, unk32 param2, unk32 param3);
-extern "C" unk32 func_01ff9258(unk32, unk32);
-extern "C" unk32 func_01ff930c(s16 *, unk16, unk32);
-extern "C" void func_01ff9638(VecFx32 *param1, fx16 param2);
-extern "C" fx32 func_01ff9a5c(VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" void func_01ffad5c(Mat4x3p *, Mat4x3p *, Mat4x3p *);
-extern "C" fx32 func_01ffb428(unk32, unk32);
-extern "C" void func_01ffb714(VecFx32 *, VecFx32 *, VecFx32 *);
-extern "C" unk32 func_01ffbbe0(fx32 param1, fx32 param2);
-extern "C" void func_0200eab0(G3d_Model *, unk32, u8);
 
 // Overlay 0
 extern u16 data_ov000_020aed00;
@@ -59,23 +49,14 @@ extern u16 data_ov000_020aecf4[0x4];   //! INFO: Unsure about the size
 extern unk32 data_ov000_020aecf8[0x2]; //! INFO: Unsure about the size
 extern unk32 data_ov000_020aecfc[0x2]; //! INFO: Unsure about the size
 
-extern "C" void func_ov000_02057c98(ModelRender *param1, UnkSystem5 *param2);
 #if IS_JP
-extern "C" unk32 func_ov000_0205c384(VecFx32 *param1, VecFx32 *param2);
-#endif
-extern "C" void func_ov000_0208bd20(UnkStruct_027e0ce0 *param1, unk32 param2, unk32 param3, unk32 param4);
-extern "C" void func_ov000_020986b4(s16 *param1, Actor_Derived2 *param2, unk32 param3);
-extern "C" unk32 func_ov000_02098d7c(ActorUnkCANS *param1, UnkStruct_ov063_02162e88 *param2);
 
-// Overlay 17
-extern "C" void func_ov017_020bf050(ActorUnkCANS *param1, UnkStruct_ov063_02162e88 *param2, unk32 param3);
+#endif
 
 // Overlay 26
 #if IS_JP
-extern "C" void func_ov026_020f46a8(Actor *param1, VecFx32 *param2, bool param3);
-#endif
 
-extern "C" void G3d_GetCurrentMtx(Mat4x3p *mtx1, Mat3p *mtx2);
+#endif
 
 const Cylinder data_ov063_02162e90(0, 0x99A, 0, 0x99A);
 
@@ -133,8 +114,8 @@ unk32 UnkStruct_ov063_02162e88::vfunc_04(ActorRef param1, unk32 param2, unk32 pa
 
         if (ret4 != NULL && ret4->GetActorId() == ActorId_ShotArrow) {
             u16 angle    = ((ActorUnkCANS *) mUnk_20)->mAngle.angle_s;
-            fx32 sin_val = MUL_FX32(SIN(angle), FLOAT_TO_FX32(1.f));
-            fx32 cos_val = MUL_FX32(COS(angle), FLOAT_TO_FX32(1.f));
+            fx32 sin_val = FX_MUL(SIN(angle), FX_F32_TO_FX32(1.f));
+            fx32 cos_val = FX_MUL(COS(angle), FX_F32_TO_FX32(1.f));
             VecFx32 vec;
             // VecFx32_Init doesn't match
             vec.x = sin_val;
@@ -476,8 +457,8 @@ void ActorUnkCANS::func_ov063_02158b98(void) {
 
     func_01ff916c(&mUnk_270, mUnk_276 * 0xCD, 0xCD);
     u16 angle = (fx16) (fx32) (mUnk_26C + 0x4000);
-    mVel.x    = MUL_FX32(SIN(angle), mUnk_270);
-    mVel.z    = MUL_FX32(COS(angle), mUnk_270);
+    mVel.x    = FX_MUL(SIN(angle), mUnk_270);
+    mVel.z    = FX_MUL(COS(angle), mUnk_270);
 
     if (this->func_ov063_0215a514() != 0) {
         this->func_ov063_02158448(8);
@@ -516,8 +497,8 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
 
     VecFx32 vec = {mPos.x, mPos.y, mPos.z};
 
-    vec.x = MUL_FX32(SIN((u16) mUnk_26C), ret1);
-    vec.z = MUL_FX32(COS((u16) mUnk_26C), mPos.z);
+    vec.x = FX_MUL(SIN((u16) mUnk_26C), ret1);
+    vec.z = FX_MUL(COS((u16) mUnk_26C), mPos.z);
 
     unk32 param2 = func_01ff9a5c(data_027e0ce0->func_01fff148(0), &mPos, &vec) < threshold ? 0 : mUnk_276 * 0x3AE;
 
@@ -526,8 +507,8 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
     s16 iVar5b   = mUnk_26C + 0x4000;
     fx32 sin_val = SIN((u16) iVar5b);
     fx32 cos_val = COS((u16) iVar5b);
-    mVel.x       = MUL_FX32(sin_val, mUnk_270);
-    mVel.z       = MUL_FX32(cos_val, mUnk_270);
+    mVel.x       = FX_MUL(sin_val, mUnk_270);
+    mVel.z       = FX_MUL(cos_val, mUnk_270);
 
     if (this->func_ov063_0215a514()) {
         this->func_ov063_02158448(8);
@@ -619,8 +600,8 @@ void ActorUnkCANS::func_ov063_02159258(void) {
     fx16 angle   = mUnk_26C + DEG_TO_ANG(90);
     fx32 sin_val = SIN((u16) angle);
     fx32 cos_val = COS((u16) angle);
-    mVel.x       = MUL_FX32(sin_val, val);
-    mVel.z       = MUL_FX32(cos_val, val);
+    mVel.x       = FX_MUL(sin_val, val);
+    mVel.z       = FX_MUL(cos_val, val);
 
     if (!mUnk_270 && this->func_ov063_0215a514()) {
         this->func_ov063_02158448(8);
@@ -712,12 +693,12 @@ void ActorUnkCANS::func_ov063_02159784(void) {
         fx32 yDiff    = data_027e0ce0->func_01fff148(0)->y - mPos.y;
         fx32 yDiffAbs = ABS(yDiff);
 
-        if (yDiffAbs < FLOAT_TO_FX32(.5f))
+        if (yDiffAbs < FX_F32_TO_FX32(.5f))
 #endif
         {
 
             Cylinder vec1;
-            vec1.Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(1.2f));
+            vec1.Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(1.2f));
 
             this->func_ov063_0215a5a0(&vec1.pos);
 
@@ -770,14 +751,14 @@ void ActorUnkCANS::func_ov063_021599e4(void) {
     }
 
     func_01ff916c(&mUnk_270, mUnk_276 * 0x19A, 0xCD);
-    fx16 angle1  = mUnk_26C - FLOAT_TO_FX32(8.f);
-    fx16 angle2  = mUnk_26C + FLOAT_TO_FX32(4.f);
+    fx16 angle1  = mUnk_26C - FX_F32_TO_FX32(8.f);
+    fx16 angle2  = mUnk_26C + FX_F32_TO_FX32(4.f);
     u64 sin_val1 = SIN((u16) angle1);
     s64 cos_val1 = COS((u16) angle1);
     s64 sin_val2 = SIN((u16) angle2);
     s64 cos_val2 = COS((u16) angle2);
-    mVel.x       = MUL_FX32(sin_val1, FLOAT_TO_FX32(0.02f)) + MUL_FX32(sin_val2, mUnk_270); // *0.02f <=> / 50
-    mVel.z       = MUL_FX32(cos_val1, FLOAT_TO_FX32(0.02f)) + MUL_FX32(cos_val2, mUnk_270);
+    mVel.x       = FX_MUL(sin_val1, FX_F32_TO_FX32(0.02f)) + FX_MUL(sin_val2, mUnk_270); // *0.02f <=> / 50
+    mVel.z       = FX_MUL(cos_val1, FX_F32_TO_FX32(0.02f)) + FX_MUL(cos_val2, mUnk_270);
 
     if (this->func_ov063_0215a514()) {
         this->func_ov063_02158448(8);
@@ -799,12 +780,12 @@ void ActorUnkCANS::func_ov063_02159ca8(void) {
         mAngle--;
     }
 
-    mUnk_26C += -FLOAT_TO_FX32(8.f);
+    mUnk_26C += -FX_F32_TO_FX32(8.f);
 }
 
 void ActorUnkCANS::func_ov063_02159d68(void) {
     if (this->func_ov063_0215a514()) {
-        mUnk_26C += -FLOAT_TO_FX32(8.f);
+        mUnk_26C += -FX_F32_TO_FX32(8.f);
     }
 
     if (!func_01ff930c(&mAngle.angle_s, mUnk_26C, 0x71C)) {
@@ -863,7 +844,7 @@ void ActorUnkCANS::func_ov063_02159ec0(void) {
 
     mUnk_224.func_ov000_02099a0c();
 
-    VecFx32_Init(FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), FLOAT_TO_FX32(0.0f), &mUnk_200.mUnk_10);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &mUnk_200.mUnk_10);
 
     this->func_ov063_02158448(4);
 
@@ -881,19 +862,19 @@ unk32 ActorUnkCANS::func_ov063_02159f3c(unk32 param1) {
         return false;
     }
 
-    fx32 factor = FLOAT_TO_FX32(10.f);
+    fx32 factor = FX_F32_TO_FX32(10.f);
 
-    fx16 angle1  = mUnk_26C - FLOAT_TO_FX32(4.f);
-    s32 sin_val1 = MUL_FX32(SIN((u16) angle1), factor);
-    s32 cos_val1 = MUL_FX32(COS((u16) angle1), factor);
-    fx16 angle2  = mUnk_26C + FLOAT_TO_FX32(4.f);
-    s32 sin_val2 = MUL_FX32(SIN((u16) angle2), factor);
-    s32 cos_val2 = MUL_FX32(COS((u16) angle2), factor);
+    fx16 angle1  = mUnk_26C - FX_F32_TO_FX32(4.f);
+    s32 sin_val1 = FX_MUL(SIN((u16) angle1), factor);
+    s32 cos_val1 = FX_MUL(COS((u16) angle1), factor);
+    fx16 angle2  = mUnk_26C + FX_F32_TO_FX32(4.f);
+    s32 sin_val2 = FX_MUL(SIN((u16) angle2), factor);
+    s32 cos_val2 = FX_MUL(COS((u16) angle2), factor);
 
     VecFx32 vec1; // = {mPos.x, mPos.y, mPos.z};
     // VecFx32_Copy(&mPos, &vec1);
-    // VecFx32_Init(mPos.x + MUL_FX32(sin_val1, factor), mPos.y, mPos.z +
-    // MUL_FX32(cos_val1, factor), &vec1); vec1.y = mPos.y;
+    // VecFx32_Init(mPos.x + FX_MUL(sin_val1, factor), mPos.y, mPos.z +
+    // FX_MUL(cos_val1, factor), &vec1); vec1.y = mPos.y;
     vec1.y = mPos.y;
     vec1.x = mPos.x;
     vec1.z = mPos.z;
@@ -902,7 +883,7 @@ unk32 ActorUnkCANS::func_ov063_02159f3c(unk32 param1) {
 
     VecFx32 vec2; // = {*(volatile fx32 *) &mPos.x, *(volatile fx32 *) &mPos.y, *(volatile fx32 *) &mPos.z};
     // VecFx32_Copy(&mPos, &vec2);
-    // VecFx32_Init(mPos.x + MUL_FX32(sin_val2, factor), mPos.y, mPos.z + MUL_FX32(cos_val2, factor), &vec2);
+    // VecFx32_Init(mPos.x + FX_MUL(sin_val2, factor), mPos.y, mPos.z + FX_MUL(cos_val2, factor), &vec2);
     // vec2.y = mPos.y;
     vec2.x = mPos.x;
     vec2.y = mPos.y;
@@ -951,8 +932,8 @@ unk32 ActorUnkCANS::func_ov063_0215a0f0(void) {
     fx16 angle  = mUnk_26C;
     s32 sin_val = SIN((u16) angle);
     s32 cos_val = COS((u16) angle);
-    s16 sin_mul = MUL_FX32(sin_val, 0x4000);
-    s16 cos_mul = MUL_FX32(cos_val, 0x4000);
+    s16 sin_mul = FX_MUL(sin_val, 0x4000);
+    s16 cos_mul = FX_MUL(cos_val, 0x4000);
     VecFx32 vec; //= {mPos.x, mPos.y, mPos.z};
     vec.y = mPos.y;
     vec.x = mPos.x + sin_mul + sin_val;
@@ -1103,22 +1084,20 @@ void ActorUnkCANS::vfunc_10(Cylinder *param1) {
     if (this->mUnk_268 != NULL) {
         fx16 angle = this->mAngle.angle_s;
         VecFx32 pos;
-        VecFx32_Init(FLOAT_TO_FX32(0.25f), 0, 0, &pos);
+        VecFx32_Init(FX_F32_TO_FX32(0.25f), 0, 0, &pos);
         func_01ff9638(&pos, angle);
         VecFx32_Add(&param1->pos, &pos, &param1->pos);
     }
 }
 
-// non-matching
 void ActorUnkCANS::func_ov063_0215a678(ActorUnkCANS *actor, UnkStruct_func_ov063_0215a678 *param2) {
     ModelRender *modelRender = param2->mUnk_04;
-    u8 var1;
+
     if (actor->mUnk_268 == NULL) {
-        var1 = 0;
+        func_0200eab0(modelRender->mpModel, actor->mUnk_0B0.mUnk_6C, 0x00);
     } else {
-        var1 = 0x1F;
+        func_0200eab0(modelRender->mpModel, actor->mUnk_0B0.mUnk_6C, 0x1F);
     }
-    func_0200eab0(modelRender->mpModel, actor->mUnk_0B0.mUnk_6C, var1);
 
     unk32 var2 = param2->mUnk_08 & 0x10 ? param2->mUnk_AE : -1;
     if (var2 == actor->mUnk_0B0.mUnk_70) {
@@ -1132,16 +1111,15 @@ void ActorUnkCANS::func_ov063_0215a678(ActorUnkCANS *actor, UnkStruct_func_ov063
             return;
         }
 
-        Mat4x3p matx1;
-        Mat4x3p matx2;
+        MtxFx43 matx1;
+        MtxFx43 matx2;
         G3d_GetCurrentMtx(&matx1, NULL);
         func_01ffad5c(&matx1, &data_027e0964, &matx2);
 
         VecFx32 vec;
-        // VecFx32_Copy(&matx2.wColumn, &actor->mUnk_250);
-        vec.x             = matx2.wColumn.x;
-        vec.z             = matx2.wColumn.z;
-        vec.y             = matx2.wColumn.y;
+        vec.x             = matx2._30;
+        vec.z             = matx2._32;
+        vec.y             = matx2._31;
         actor->mUnk_250.x = vec.x;
         actor->mUnk_250.y = vec.y;
         actor->mUnk_250.z = vec.z;
@@ -1163,15 +1141,15 @@ void ActorUnkCANS::func_ov063_0215a678(ActorUnkCANS *actor, UnkStruct_func_ov063
             return;
         }
 
-        Mat4x3p matx3;
-        Mat4x3p matx4;
+        MtxFx43 matx3;
+        MtxFx43 matx4;
         G3d_GetCurrentMtx(&matx3, NULL);
         func_01ffad5c(&matx3, &data_027e0964, &matx4);
 
         VecFx32 vec;
-        vec.x           = matx4.wColumn.x;
-        vec.z           = matx4.wColumn.z;
-        vec.y           = matx4.wColumn.y;
+        vec.x           = matx4._30;
+        vec.z           = matx4._32;
+        vec.y           = matx4._31;
         actor->mUnk_25C = vec.x;
         actor->mUnk_260 = vec.y;
         actor->mUnk_264 = vec.z;
