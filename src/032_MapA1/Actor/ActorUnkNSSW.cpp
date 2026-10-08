@@ -44,21 +44,15 @@ struct UnkStruct_ov031_020e5d18_00 {
 
 extern fx16 data_02040964[];
 extern unk32 data_ov000_020aecf8;
-//
-// extern "C" void CopySingle288(MtxFx43 *, MtxFx33 *);
-// extern "C" void func_01ffa60c(const Mat3p *, Mat3p *, Mat3p *);
-// extern "C" void func_01ffa7a0(VecFx32 *, Mat3p *, VecFx32 *);
-// extern "C" fx32 func_01ffbbe0(fx32, fx32);
-// extern "C" void func_01ffe6c4(UnkStruct_ov031_020e5d18_00 *, ActorRef, VecFx32 *, VecFx32 *, s32, VecFx32 *,
-//                               UnkStruct_ov031_Items_00_Base *);
-// extern "C" void func_01ffedac(Vec2bCpp *, VecFx32 *);
-extern "C" void func_0200ef5c(G3d_Model *, unk32);
-// extern "C" void func_0200ef9c(G3d_Model *, unk32);
-extern "C" void func_ov000_0205f8e8(unk32 *, MtxFx33 *);
 
-// import specific for some revs
-#if IS_JP || IS_EUR1
-extern "C" bool func_ov000_02080998(VecFx32 *);
+#if IS_JP
+class ActorWithBoolAt17F : public Actor {
+public:
+    /* 000 (base) */
+    /* 094 */ PAD(0x094, 0x17F);
+    /* 17F */ bool mUnk_17F;
+    /* 180 */
+};
 #endif
 
 DECL_PROFILE(ActorProfileUnkNSSW);
@@ -109,16 +103,6 @@ bool ActorUnkNSSW::Init(unk32 param1) {
     this->func_ov032_02120894(0x0);
     return true;
 }
-
-#if IS_JP
-class ActorWithBoolAt17F : public Actor {
-public:
-    /* 000 (base) */
-    /* 094 */ PAD(0x094, 0x17F);
-    /* 17F */ bool mUnk_17F;
-    /* 180 */
-};
-#endif
 
 void ActorUnkNSSW::Update() {
     VecFx32Cpp sp10(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(1.0f));
