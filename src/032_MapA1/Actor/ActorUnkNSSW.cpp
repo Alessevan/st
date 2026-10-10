@@ -528,11 +528,19 @@ void ActorUnkNSSW_104::vfunc_10(Actor *actor) {
 }
 
 #if IS_JP
-bool ActorUnkNSSW_138::vfunc_0C(const UnkStruct_ov031_020e54d4 *param1, unk32 *param2, unk32 param3) {
+// non-matching
+bool ActorUnkNSSW_138::vfunc_0C(RefStruct ref, UnkStruct_ov031_020e54d4 *param2, const VecFx32 *param3,
+                                const VecFx32 *param4) {
 
-    Vec2bCpp vec(0, 0);
-    gpMapObjManager->func_01fff498(vec);
+    if ((s32) ref.moRef.unk_00_u16 & 0x1000) {
+        Vec2bCpp vec(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f));
+        MapObject *mapObject = gpMapObjManager->func_01fff498(vec);
 
-    this->UnkStruct_027e0ce0_38_Base::vfunc_0C(param1, param2, param3);
+        if (mapObject != NULL) {
+            this->mUnk_08->func_ov032_02122b0c(mapObject);
+        }
+    }
+
+    this->UnkStruct_027e0ce0_38_Base::vfunc_0C(ref, param2, param3, param4);
 }
 #endif

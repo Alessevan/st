@@ -1,5 +1,7 @@
 #pragma once
 
+#include "global.h"
+
 #include <nitro/math.h>
 
 // some kind of angle conversion? only used for angle values so far
