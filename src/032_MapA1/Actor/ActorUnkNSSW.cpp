@@ -36,12 +36,6 @@ public:
     UnkStruct_ov071_0215f92c();
 };
 
-struct UnkStruct_ov031_020e5d18_00 {
-    /* 00 */ Actor *mUnk_00;
-    /* 04 */ PAD(0x04, 0x18);
-    /* 18 */
-};
-
 extern fx16 data_02040964[];
 extern unk32 data_ov000_020aecf8;
 
@@ -392,7 +386,7 @@ void ActorUnkNSSW::func_ov032_02120894(unk32 param1) {
     }
 }
 
-void ActorUnkNSSW::func_ov032_02120b34(ActorRef ref) {
+void ActorUnkNSSW::func_ov032_02120b34(RefStruct ref) {
     if (this->mUnk_0BC == 0x3) {
         return;
     }
@@ -501,7 +495,7 @@ ActorUnkNSSW_0E0::ActorUnkNSSW_0E0(ActorUnkNSSW *actor) :
     this->mUnk_04 = 0x1;
 }
 
-bool ActorUnkNSSW_0E0::vfunc_00(ActorRef ref, unk32 param2) {
+bool ActorUnkNSSW_0E0::vfunc_00(RefStruct ref, unk32 param2) {
     if (param2 != 0x0) {
         ActorUnkNSSW *actor = this->GetActorPtr<ActorUnkNSSW>();
         actor->func_ov032_02120b34(ref);

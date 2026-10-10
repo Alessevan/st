@@ -55,7 +55,7 @@ public:
     /* 0C0 */ Actor_9C mUnk_0C0;
     /* 0E0 */ ActorUnkNSSW_0E0 mUnk_0E0;
     /* 104 */ ActorUnkNSSW_104 mUnk_104;
-    /* 134 */ ActorRef mUnk_134;
+    /* 134 */ RefStruct mUnk_134;
 #if IS_JP
     /* 138 */ ActorUnkNSSW_138 mUnk_138_jp;
     /* 144 */ VecFx32Cpp mUnk_138_eur;
@@ -103,7 +103,7 @@ public:
     void func_ov032_021203fc();
     void func_ov032_02120880();
     void func_ov032_02120894(unk32 param1);
-    void func_ov032_02120b34(ActorRef ref);
+    void func_ov032_02120b34(RefStruct ref);
     void func_ov032_02120b6c();
     void func_ov032_02120b7c(VecFx32 *param1);
     void func_ov032_02120bc0();
