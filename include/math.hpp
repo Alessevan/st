@@ -59,6 +59,10 @@ struct VecFx32Cpp {
     void CopyIn(VecFx32 *vec) {
         VecFx32_Copy(&this->vec, vec);
     }
+
+    bool TryNormalize() {
+        return VecFx32_TryNormalize(&this->vec);
+    }
 };
 
 // C++ wrapper for VecFx16
