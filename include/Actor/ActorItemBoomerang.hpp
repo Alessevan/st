@@ -2,7 +2,7 @@
 
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
-#include "MapObject/MapObjectRef.hpp"
+#include "RefStruct.hpp"
 #include "Render/ModelRender.hpp"
 #include "Unknown/UnkStruct_ov031_Items.hpp"
 #include "global.h"
@@ -37,7 +37,7 @@ public:
 
     /* 00 */ virtual ~ActorItemBoomerang_11C() override;
     /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) override;
-    /* 0C */ virtual bool vfunc_0C(MapObjRef ref, UnkStruct_ov031_020e54d4 *param2, const VecFx32 *param3,
+    /* 0C */ virtual bool vfunc_0C(RefStruct ref, UnkStruct_ov031_020e54d4 *param2, const VecFx32 *param3,
                                    const VecFx32 *param4) override;
 };
 
@@ -52,7 +52,7 @@ public:
 class ActorItemBoomerang_CC : public UnkStruct_ov031_Items_01 {
 public:
     /* 00 (vtable) */
-    /* 2C */ unk32 mUnk_2C;
+    /* 2C */ RefStruct mUnk_2C;
     /* 30 */ ActorItemBoomerang_Unknown mUnk_30;
     /* 40 */
 
@@ -74,8 +74,7 @@ public:
     /* 11C */ ActorItemBoomerang_11C mUnk_11C;
     /* 128 */ u32 mUnk_128;
     /* 12C */ UnkStruct_PlayerGet_ec mUnk_12C[0x3];
-    /* 138 */ u16 mUnk_138; // timer ?
-    /* 13A */ u16 mUnk_13A;
+    /* 138 */ Timer mUnk_138;
     /* 13C */ u16 mUnk_13C;
     /* 13E */ PAD(0x13E, 0x140);
     /* 140 */ UnkStruct_ov031_Items_02 mUnk_140;

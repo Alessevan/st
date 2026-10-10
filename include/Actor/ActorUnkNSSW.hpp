@@ -15,7 +15,7 @@ public:
 
     ActorUnkNSSW_0E0(ActorUnkNSSW *param1);
 
-    /* 00 */ virtual bool vfunc_00(ActorRef ref, unk32 param2) override;
+    /* 00 */ virtual bool vfunc_00(RefStruct ref, unk32 param2) override;
     /* 04 */ virtual bool vfunc_04() override;
     /* 0C */ virtual void vfunc_0C(VecFx32 *param1) override;
 };
