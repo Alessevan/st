@@ -52,6 +52,10 @@ struct VecFx32Cpp {
         VecFx32_Init(X, Y, Z, &this->vec);
     }
 
+    void Reset() {
+        VecFx32_Reset(&this->vec);
+    }
+
     void CopyIn(VecFx32Cpp *vec) {
         VecFx32_Copy(&this->vec, &vec->vec);
     }

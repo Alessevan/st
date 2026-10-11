@@ -49,47 +49,33 @@ public:
 
 class ActorUnkNSSW : public Actor_Derived2 {
 public:
-    /* 000 (base) */
-    /* 0AE */ PAD(0x0AE, 0x0B0);
-    /* 0B0 */ UnkSystem6_Derived2 mUnk_0B0;
-    /* 0BC */ unk32 mUnk_0BC;
-    /* 0C0 */ Actor_9C mUnk_0C0;
-    /* 0E0 */ ActorUnkNSSW_0E0 mUnk_0E0;
-    /* 104 */ ActorUnkNSSW_104 mUnk_104;
-    /* 134 */ RefStruct mUnk_134;
+    /* EUR - JPN */
+    /* 000 - 000 (base) */
+    /* 0AE - 0AE */ PAD(0x0AE, 0x0B0);
+    /* 0B0 - 0B0 */ UnkSystem6_Derived2 mUnk_0B0;
+    /* 0BC - 0BC */ unk32 mUnk_0BC;
+    /* 0C0 - 0C0 */ Actor_9C mUnk_0C0;
+    /* 0E0 - 0E0 */ ActorUnkNSSW_0E0 mUnk_0E0;
+    /* 104 - 104 */ ActorUnkNSSW_104 mUnk_104;
+    /* 134 - 134 */ RefStruct mUnk_134;
 #if IS_JP
-    /* 138 */ ActorUnkNSSW_138 mUnk_138_jp;
-    /* 144 */ VecFx32Cpp mUnk_138_eur;
-    /* 144 */ VecFx32Cpp mUnk_144_eur;
-    /* 150 */ MtxFx33 mUnk_150_eur;
-    /* 174 */ unk32 mUnk_174_eur;
-    /* 178 */ unk32 mUnk_178_eur;
-    /* 17C */ unk32 mUnk_17C_eur;
-    /* 180 */ unk32 mUnk_180_eur;
-    /* 190 */ MapObjectUnkSWSW *mUnk_184_eur;
-    /* 194 */ MapObjectUnkSWSW *mUnk_188_eur;
-    /* 198 */ unk16 mUnk_18C_eur;
-    /* 19C */ VecFx32Cpp mUnk_190_eur;
-    /* 1A8 */ bool mUnk_19C_eur;
-    /* 1A9 */ bool mUnk_19D_eur;
-    /* 1AC */ unk32 mUnk_1A0_eur;
-#else
-    /* 138 */ VecFx32Cpp mUnk_138_eur;
-    /* 144 */ VecFx32Cpp mUnk_144_eur;
-    /* 150 */ MtxFx33 mUnk_150_eur;
-    /* 174 */ unk32 mUnk_174_eur;
-    /* 178 */ unk32 mUnk_178_eur;
-    /* 17C */ unk32 mUnk_17C_eur;
-    /* 180 */ unk32 mUnk_180_eur;
-    /* 184 */ MapObjectUnkSWSW *mUnk_184_eur;
-    /* 188 */ MapObjectUnkSWSW *mUnk_188_eur;
-    /* 18C */ unk16 mUnk_18C_eur;
-    /* 190 */ VecFx32Cpp mUnk_190_eur;
-    /* 19C */ bool mUnk_19C_eur;
-    /* 19D */ bool mUnk_19D_eur;
-    /* 1A0 */ unk32 mUnk_1A0_eur;
+    /* 138 - 138 */ ActorUnkNSSW_138 mUnk_138_jp;
 #endif
-    /* 18C */
+    /* 138 - 144 */ VecFx32Cpp mUnk_138;
+    /* 144 - 150 */ VecFx32Cpp mUnk_144;
+    /* 150 - 15C */ MtxFx33 mUnk_150;
+    /* 174 - 180 */ unk32 mUnk_174;
+    /* 178 - 184 */ unk32 mUnk_178;
+    /* 17C - 188 */ unk32 mUnk_17C;
+    /* 180 - 18C */ unk32 mUnk_180;
+    /* 184 - 190 */ MapObjectUnkSWSW *mUnk_184;
+    /* 188 - 194 */ MapObjectUnkSWSW *mUnk_188;
+    /* 18C - 198 */ unk16 mUnk_18C;
+    /* 190 - 19C */ VecFx32Cpp mUnk_190;
+    /* 19C - 1A8 */ bool mUnk_19C;
+    /* 19D - 1A9 */ bool mUnk_19D;
+    /* 1A0 - 1AC */ unk32 mUnk_1A0;
+    /* 1A4 - 1B0 */
 
     ActorUnkNSSW();
 
