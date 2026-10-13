@@ -22,7 +22,7 @@ public:
     /* 00 */ unk32 mUnk_00;
     /* 04 */
 
-    ActorUnkRCFO_910(unk32 *param1); // func_ov000_0205b1cc
+    ActorUnkRCFO_910(Vec2s *param1, unk32 param2); // func_ov000_0205b1cc
 
     void func_ov000_0205b224(unk32 param1, unk32 param2);
 };
@@ -57,10 +57,21 @@ public:
     /* 098 */ PAD(0x098, 0x910);
     /* 910 */ ActorUnkRCFO_910 mUnk_910;
     /* 914 */ PAD(0x914, 0x91C);
-    /* 91C */ unk32 mUnk_91C;
-    /* 914 */ PAD(0x920, 0xDF4);
+    /* 91C */ Vec2s mUnk_91C[0xC8];
+    /* C3C */ unk8 mUnk_C3C[0x190];
+    /* DDC */ unk8 *mUnk_DCC;
+    /* DD0 */ unk32 mUnk_DD0;
+    /* DD4 */ unk32 mUnk_DD4;
+    /* DD8 */ unk16 mUnk_DD8;
+    /* DDA */ unk16 mUnk_DDA;
+    /* DDC */ unk32 mUnk_DDC;
+    /* DE0 */ unk32 mUnk_DE0;
+    /* DE4 */ unk32 mUnk_DE4;
+    /* DE8 */ unk32 mUnk_DE8;
+    /* DEC */ unk32 mUnk_DEC;
+    /* DF0 */ unk32 mUnk_DF0;
     /* DF4 */ unk32 mUnk_DF4;
-    /* DF8 */ PAD(0xDF8, 0xDFC);
+    /* DF8 */ unk32 mUnk_DF8;
     /* DFC */ ActorUnkRCFO_DFC mUnk_DFC;
     /* E14 */
 

@@ -13,8 +13,27 @@ ActorProfileUnkRCFO::ActorProfileUnkRCFO() :
     ActorProfile(ActorId_RCFO) {}
 
 ActorUnkRCFO::ActorUnkRCFO() :
-    mUnk_910(&this->mUnk_91C),
-    mUnk_DFC(&this->mUnk_910) {}
+    mUnk_910(this->mUnk_91C, 0xC8),
+    mUnk_DCC(this->mUnk_C3C),
+    mUnk_DD0(0x0),
+    mUnk_DD4(0x5),
+    mUnk_DD8(0x0),
+    mUnk_DDA(0x0),
+    mUnk_DDC(0x2710000),
+    mUnk_DE0(0x0),
+    mUnk_DE4(0x2710000),
+    mUnk_DE8(0x0 - 0x2710000),
+    mUnk_DEC(0x0),
+    mUnk_DF0(0x0 - 0x2710000),
+    mUnk_DF8(0x5 - 0x6),
+    mUnk_DFC(&this->mUnk_910) {
+    _MI_CpuFill(0x0, this->mUnk_C3C, ARRAY_LEN(this->mUnk_C3C));
+
+    Vec2s base_value(0, 0);
+    for (s32 i = 0; i < ARRAY_LEN(this->mUnk_91C); ++i) {
+        this->mUnk_91C[i] = base_value;
+    }
+}
 
 ActorUnkRCFO::~ActorUnkRCFO() {
     this->mUnk_094.func_ov033_021190dc();
