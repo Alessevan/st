@@ -179,7 +179,7 @@ public:
     /* 2C */ unk32 mUnk_2C; // gravity?
     /* 30 */ Cylinder *mUnk_30;
     /* 34 */ Cylinder *mUnk_34;
-    /* 38 */ Actor_38 *mUnk_38;
+    /* 38 */ Actor_38 *mUnk_38; // wrong type, points to Actor_Derived1_94
     /* 3C */ Actor_9C *mUnk_3C;
     /* 40 */ Actor_C4 *mUnk_40;
     /* 44 */ u16 mUnk_44;
@@ -207,7 +207,7 @@ public:
     /* 20 */ virtual void Update();
     /* 24 */ virtual void vfunc_24();
     /* 28 */ virtual void vfunc_28(Actor_vfunc_30 *param1);
-    /* 2C */ virtual void vfunc_2C(Actor_vfunc_30 *param1);
+    /* 2C */ virtual void vfunc_2C(unk32 param1);
     /* 30 */ virtual void vfunc_30(Actor_vfunc_30 *param1);
     /* 34 */ virtual unk32 vfunc_34();
     /* 38 */ virtual bool Grab(ActorGrabParams grabParams);
@@ -218,7 +218,7 @@ public:
     /* 4C */ virtual ~Actor();
     /* 54 */
 
-    bool func_01fff5d0(Actor_vfunc_30 *param1, unk32 param2);
+    bool func_01fff5d0(unk32 param1, unk32 param2);
 
     void ResetFlags() {
         *(u32 *) this->mFlags = 0;
@@ -226,6 +226,14 @@ public:
 
     void Kill() {
         UNSET_FLAG(this->mFlags, ActorFlag_Alive);
+    }
+
+    u16 GetDirection() {
+        return (u16) GET_DIRECTION(this->mAngle.angle_s);
+    }
+
+    u16 GetInitialDirection() {
+        return (u16) GET_DIRECTION(this->mUnk_5C.mInitialAngle);
     }
 
     // clang-format off
@@ -268,7 +276,6 @@ public:
     ActorId GetActorId();
 
     // overlay 0
-    bool func_ov000_0205cbc4(u32 param1, VecFx32 *param2);
     unk32 func_ov000_0207df88(Cylinder *param1, unk32 param2);
     unk32 func_ov000_0207e294(Cylinder *param1);
     void func_ov000_0209848c(ActorProfile *param1);
@@ -353,12 +360,8 @@ class Actor_C4 : public Actor_C4_Base {
 public:
     /* 00 (vtable) */
     /* 04 */ unk32 mUnk_04;
-    /* 08 */ unk16 mUnk_08;
-    /* 08 */ unk16 mUnk_0A;
-    /* 0C */ unk16 mUnk_0C;
-    /* 0C */ unk16 mUnk_0E;
-    /* 10 */ unk16 mUnk_10;
-    /* 10 */ unk16 mUnk_12;
+    /* 08 */ VecFx16 mUnk_08;
+    /* 0C */ VecFx16 mUnk_0E;
     /* 14 */ unk32 mUnk_14;
     /* 18 */ unk32 mUnk_18;
     /* 1C */ unk32 mUnk_1C;

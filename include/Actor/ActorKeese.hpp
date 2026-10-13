@@ -109,7 +109,7 @@ public:
 
     /* 18 */ virtual bool Init(unk32 param1) override;
     /* 20 */ virtual void Update() override;
-    /* 2C */ virtual void vfunc_2C(Actor_vfunc_30 *param1) override;
+    /* 2C */ virtual void vfunc_2C(unk32 param1) override;
 
     void func_ov032_0211e0c0();
     void func_ov032_0211e0d4(s16 param1, unk32 param2);
@@ -141,7 +141,7 @@ public:
     bool func_ov032_0211f93c(VecFx32 *param1, unk32 param2);
     bool func_ov032_0211f9c4();
     bool func_ov032_0211fa4c(unk32 param1);
-    static void func_ov032_0211faf0(void *param1, unk32 param2);
+    static void func_ov032_0211faf0(Actor *param1, G3d_RenderState *param2);
 };
 
 class ActorProfileKeese : public ActorProfile_Derived1 {

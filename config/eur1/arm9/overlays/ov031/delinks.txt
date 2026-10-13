@@ -49,6 +49,7 @@ src/031_Land/Actor/ActorItemTornado.cpp:
     .rodata     start:0x02110bb8 end:0x02110bc8
 
 src/031_Land/Actor/ActorUnkSWBM.cpp:
+    complete
     .text       start:0x020e69f8 end:0x020e7498
     .init       start:0x021112dc end:0x02111350
     .ctor       start:0x021128e0 end:0x021128e4
@@ -60,14 +61,14 @@ src/031_Land/Actor/ActorUnkROCK.cpp:
     .init       start:0x02111350 end:0x021113a0
     .ctor       start:0x021128e4 end:0x021128e8
     .data       start:0x02113504 end:0x021135a8
-    .bss        start:0x02116710 end:0x02116828
+    .bss        start:0x02116710 end:0x02116818
 
 src/031_Land/Actor/ActorRupee.cpp:
     .text       start:0x020e8dd8 end:0x020ea14c
     .init       start:0x021113a0 end:0x02111438
     .ctor       start:0x021128e8 end:0x021128ec
     .data       start:0x021135c8 end:0x02113730
-    .bss        start:0x02116828 end:0x0211686c
+    .bss        start:0x02116818 end:0x0211686c
 
 src/031_Land/Actor/ActorUnkZLSL_ZSRS.cpp:
     .text       start:0x020ea14c end:0x020ee9ec
@@ -77,6 +78,7 @@ src/031_Land/Actor/ActorUnkZLSL_ZSRS.cpp:
     .bss        start:0x0211686c end:0x02116998
 
 src/031_Land/Actor/ActorHeart.cpp:
+    complete
     .text       start:0x020eee14 end:0x020ef94c
     .init       start:0x021114cc end:0x02111538
     .ctor       start:0x021128f0 end:0x021128f4
@@ -92,6 +94,7 @@ src/031_Land/Actor/ActorUnkRMTG.cpp:
     .bss        start:0x021169e4 end:0x02116acc
 
 src/031_Land/Actor/ActorUnkSCCN.cpp:
+    complete
     .text       start:0x020efb3c end:0x020efe04
     .init       start:0x02111588 end:0x021115d8
     .ctor       start:0x021128f8 end:0x021128fc
@@ -115,13 +118,16 @@ src/031_Land/Actor/ActorItemFlower.cpp:
     .bss        start:0x02116b64 end:0x02116bb0
 
 src/031_Land/Actor/ActorShotArrow.cpp:
+    complete
     .text       start:0x020f14c0 end:0x020f3eac
     .init       start:0x02111678 end:0x021116c8
     .ctor       start:0x02112904 end:0x02112908
     .data       start:0x021143a4 end:0x021144dc
     .bss        start:0x02116bb0 end:0x02116bfc
+    .rodata     start:0x02110c30 end:0x02110c38
 
 src/031_Land/Actor/ActorUnkATTG.cpp:
+    complete
     .text       start:0x020f3eac end:0x020f41cc
     .init       start:0x021116c8 end:0x02111718
     .ctor       start:0x02112908 end:0x0211290c

@@ -109,7 +109,7 @@ bool ActorKeese_2AC::vfunc_0C(RefStruct ref, UnkStruct_ov031_020e54d4 *param2, c
 
 bool ActorKeese::Init(unk32 param1) {
     this->mUnk_0B0.func_ov000_02057c38(0x6, 0x2);
-    this->mUnk_0B0.func_ov000_0209a7b8(this, &ActorKeese::func_ov032_0211faf0);
+    this->mUnk_0B0.func_ov000_0209a7b8(this, ActorKeese::func_ov032_0211faf0);
 
     this->func_ov032_0211e0c0();
     this->func_ov032_0211e380();
@@ -312,7 +312,7 @@ void ActorKeese::Update() {
 }
 
 // non-matching
-void ActorKeese::vfunc_2C(Actor_vfunc_30 *param1) {
+void ActorKeese::vfunc_2C(unk32 param1) {
     if (!this->func_01fff5d0(param1, 0x0)) {
         this->mUnk_278.func_ov000_020a0334();
 
@@ -658,7 +658,7 @@ bool ActorKeese::func_ov032_0211fa4c(unk32 param1) {
 }
 
 // non-matching
-void ActorKeese::func_ov032_0211faf0(void *param1, unk32 param2) {}
+void ActorKeese::func_ov032_0211faf0(Actor *param1, G3d_RenderState *param2) {}
 
 UnkStruct_ov032_0212251c::UnkStruct_ov032_0212251c() :
     UnkStruct_ov000_020b34c4(MapObjectId_SKDI) {}

@@ -18,8 +18,8 @@ ActorProfileUnkEFSB::ActorProfileUnkEFSB() :
 
 ActorUnkEFSB::ActorUnkEFSB() :
     mUnk_098(G3d_GetModelPtr(GET_PROFILE(ActorProfileUnkEFSB)->mUnk_3C.mUnk_50)),
-    mUnk_0F8(&this->mUnk_0F8.mUnk_1C, &this->mUnk_098, GET_PROFILE(ActorProfileUnkEFSB)->vfunc_04()),
-    mUnk_154(&this->mUnk_154.mUnk_1C, &this->mUnk_098, GET_PROFILE(ActorProfileUnkEFSB)->vfunc_04()) {}
+    mUnk_0F8(&this->mUnk_098, GET_PROFILE(ActorProfileUnkEFSB)->vfunc_04()),
+    mUnk_154(&this->mUnk_098, GET_PROFILE(ActorProfileUnkEFSB)->vfunc_04()) {}
 
 bool ActorUnkEFSB::Init(unk32 param1) {
     this->mUnk_0F8.vfunc_1C(data_ov031_02114ed0[0], 0x1000, 0x11F, 0x0);
@@ -50,7 +50,7 @@ void ActorUnkEFSB::vfunc_54(unk32 param1) {
     this->mUnk_094 = param1;
 }
 
-void ActorUnkEFSB::vfunc_2C(Actor_vfunc_30 *param1) {
+void ActorUnkEFSB::vfunc_2C(unk32 param1) {
     VecFx32 vec;
 
     VecFx32_Init(FX_F32_TO_FX32(1.0f), FX_F32_TO_FX32(1.0f), FX_F32_TO_FX32(1.0f), &vec);

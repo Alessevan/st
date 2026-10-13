@@ -12,15 +12,17 @@
 
 class UnkSystem5;
 class UnkStruct_PlayerGet_50;
+class Actor;
 extern "C" void *func_ov000_02057750(size_t allocSize);
 
 struct ActorUnkZLSL_AnimationTag {
-    unk32 index;
-    char name[0x10];
-    u32 unknown;
+    /* 00 */ unk32 index;
+    /* 04 */ char name[16];
+    /* 14 */ u32 unknown;
+    /* 18 */
 };
 
-typedef void (*UnkSystem4_UnkCallback)(void *, unk32);
+typedef void (*UnkSystem4_UnkCallback)(Actor *, G3d_RenderState *);
 
 class ModelRenderBase {
 public:
@@ -171,18 +173,44 @@ public:
     void func_ov000_020578a4(unk32 param1, unk32 param2);
 };
 
-class UnkSystem5_Derived1 : public UnkSystem5 {
+class UnkSystem5_Derived1 {
 public:
+    /* 00 */ UnkSystem5 mUnk_00;
+
     UnkSystem5_Derived1(void *param1, G3d_Model *param2, UnkStruct_ov000_02058a84 *param3) :
-        UnkSystem5(param1, param2) {
+        mUnk_00(param1, param2) {
         bool value = false;
 
         if (!(param3->mUnk_08 & 2)) {
             value = true;
         }
 
-        this->func_ov000_020577a4(param3, 0, value);
+        this->mUnk_00.func_ov000_020577a4(param3, 0, value);
     }
+};
+
+class UnkSystem5_Derived2 {
+public:
+    /* 00 */ UnkSystem5 mUnk_00;
+    /* 20 */ unk32 mUnk_20;
+    /* 24 */ PAD(0x24, 0x40);
+    /* 40 */
+
+    UnkSystem5_Derived2(UnkStruct_ov000_02058a84 *param1, G3d_Model *param2) :
+        mUnk_00(&this->mUnk_20, param2) {
+        this->mUnk_00.func_ov000_020577a4(param1, 0, false);
+    }
+};
+
+class UnkSystem5_Derived3 {
+public:
+    /* 00 */ UnkSystem5 mUnk_00;
+    /* 20 */ unk32 mUnk_20;
+    /* 24 */ PAD(0x24, 0x60);
+    /* 60 */
+
+    UnkSystem5_Derived3(G3d_Model *param1) :
+        mUnk_00(&this->mUnk_20, param1) {}
 };
 
 class ModelRender_Derived1 : public ModelRender {
