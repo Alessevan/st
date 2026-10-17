@@ -22,10 +22,10 @@ ActorUnkRCFO::ActorUnkRCFO() :
     mUnk_DDC(0x2710000),
     mUnk_DE0(0x0),
     mUnk_DE4(0x2710000),
-    mUnk_DE8(0x0 - 0x2710000),
+    mUnk_DE8(-0x2710000),
     mUnk_DEC(0x0),
-    mUnk_DF0(0x0 - 0x2710000),
-    mUnk_DF8(0x5 - 0x6),
+    mUnk_DF0(-0x2710000),
+    mUnk_DF8(-0x1),
     mUnk_DFC(&this->mUnk_910) {
     _MI_CpuFill(0x0, this->mUnk_C3C, ARRAY_LEN(this->mUnk_C3C));
 
@@ -56,11 +56,14 @@ void ActorUnkRCFO::vfunc_24() {
     this->Update();
 }
 
-void ActorUnkRCFO::vfunc_2C(Actor_vfunc_30 *param1) {}
+void ActorUnkRCFO::vfunc_2C(unk32 param1) {}
 void ActorUnkRCFO::func_ov033_02119840(unk32 param1, unk32 param2) {}
 void ActorUnkRCFO::func_ov033_021199f4() {}
 void ActorUnkRCFO::func_ov033_02119a58() {}
-void ActorUnkRCFO::func_ov033_02119bc4() {}
+
+void ActorUnkRCFO::func_ov033_02119bc4() {
+    this->mUnk_094.func_ov033_021190f4();
+}
 
 ActorUnkRCFO_DFC::ActorUnkRCFO_DFC(ActorUnkRCFO_910 *param1) :
     mUnk_10(param1),
@@ -73,3 +76,5 @@ void ActorUnkRCFO_DFC::vfunc_00() {
     }
     this->mUnk_10->func_ov000_0205b224(0x2000, 0x7FBC);
 }
+
+ActorProfileUnkRCFO::~ActorProfileUnkRCFO() {}

@@ -15,6 +15,7 @@ public:
 
     void func_ov033_02119048(unk32 *param1);
     void func_ov033_021190dc();
+    void func_ov033_021190f4();
 };
 
 class ActorUnkRCFO_910 {
@@ -81,7 +82,7 @@ public:
     /* 1C */ virtual void Setup() override;
     /* 20 */ virtual void Update() override;
     /* 24 */ virtual void vfunc_24() override;
-    /* 2C */ virtual void vfunc_2C(Actor_vfunc_30 *param1) override;
+    /* 2C */ virtual void vfunc_2C(unk32 param1) override;
     /* 4C */ virtual ~ActorUnkRCFO() override;
 
     void func_ov033_02119840(unk32 param1, unk32 param2);
