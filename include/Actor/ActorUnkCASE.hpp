@@ -1,5 +1,3 @@
-//! TODO: This file was generated automatically and might contain errors
-
 #pragma once
 
 #include "Actor/Actor.hpp"
@@ -60,6 +58,18 @@ public:
     /* 10 */ virtual void vfunc_10(const Actor *actor) override;
 };
 
+enum ActorUnkCASEState_ {
+    ActorUnkCASEState_Held          = 0, // by a Lobarrier
+    ActorUnkCASEState_Grabbing      = 1, // with whip
+    ActorUnkCASEState_Grabbed       = 2, // with whip
+    ActorUnkCASEState_Thrown        = 3,
+    ActorUnkCASEState_Releasing     = 4,
+    ActorUnkCASEState_LyingOnGround = 5,
+    ActorUnkCASEState_Max
+};
+
+class ActorLobarrier;
+
 class ActorUnkCASE : public Actor_Derived2 {
 public:
     /* 000 (base) */
@@ -68,7 +78,7 @@ public:
     /* 120 */ unk16 mUnk_120;
     /* 122 */ PAD(0x122, 0x124);
     /* 124 */ ActorShotArrow_140 mUnk_124;
-    /* 14C */ Actor *mUnk_14C;
+    /* 14C */ ActorLobarrier *lobarrier;
     /* 150 */ ActorUnkCASE_150 mUnk_150;
     /* 174 */ ActorUnkCASE_174 mUnk_174;
     /* 1A4 */ MtxFx33 mUnk_1A4;
@@ -91,36 +101,36 @@ public:
     /* 24 */ virtual void vfunc_24() override;
     /* 2C */ virtual void vfunc_2C(unk32 param1) override;
 
-    void func_ov063_0215ab70(void);
-    void func_ov063_0215aba4(void);
-    void func_ov063_0215abd8(void);
-    void func_ov063_0215ac4c(void);
-    void func_ov063_0215ac68(void);
-    void func_ov063_0215ac8c(void);
-    void func_ov063_0215acc8(void);
+    void func_ov063_0215ab70();
+    void func_ov063_0215aba4();
+    void func_ov063_0215abd8();
+    void func_ov063_0215ac4c();
+    void func_ov063_0215ac68();
+    void func_ov063_0215ac8c();
+    void func_ov063_0215acc8();
     static void func_ov063_0215acec(RefStruct *ref1, RefStruct ref2); // copy ?
-    void func_ov063_0215ae6c(void);
-    void func_ov063_0215ae80(void);
-    void func_ov063_0215aefc(ActorState param2);
-    void func_ov063_0215af54(void);
-    void func_ov063_0215af58(void);
-    void func_ov063_0215af5c(void);
-    void func_ov063_0215af60(void);
-    void func_ov063_0215afa4(void);
-    void func_ov063_0215afb8(void);
-    void func_ov063_0215b054(void);
-    void func_ov063_0215b090(void);
-    void func_ov063_0215b1bc(void);
-    void func_ov063_0215b244(void);
-    void func_ov063_0215b2b0(void);
-    void func_ov063_0215b2c4(void);
+    void func_ov063_0215ae6c();
+    void func_ov063_0215ae80();
+    void SetState(ActorState state);
+    void func_ov063_0215af54();
+    void func_ov063_0215af58();
+    void func_ov063_0215af5c();
+    void func_ov063_0215af60();
+    void func_ov063_0215afa4();
+    void func_ov063_0215afb8();
+    void func_ov063_0215b054();
+    void func_ov063_0215b090();
+    void func_ov063_0215b1bc();
+    void func_ov063_0215b244();
+    void func_ov063_0215b2b0();
+    void func_ov063_0215b2c4();
     void func_ov063_0215b6c8(VecFx32 *param1, UnkAngleStruct angle);
-    void func_ov063_0215b724(void);
+    void func_ov063_0215b724();
     void func_ov063_0215b814(RefStruct ref);
-    void func_ov063_0215b854(void);
+    void func_ov063_0215b854();
     void func_ov063_0215b8e8(VecFx32 *param1);
     static void func_ov063_0215b99c(ActorUnkCASE *param1, UnkStruct_func_ov063_0215a678 *param2);
-    void func_ov063_0215ba64(void);
+    void func_ov063_0215ba64();
 };
 
 class ActorProfileUnkCASE : public ActorProfile_Derived1 {

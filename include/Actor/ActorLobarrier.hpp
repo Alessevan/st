@@ -122,9 +122,7 @@ public:
     /* 238 */ Timer mUnk_238;
     /* 23C */ UnkStruct_ov063_02162ea8 mUnk_23C;
     /* 250 */ VecFx32 mUnk_250;
-    /* 25C */ unk32 mUnk_25C;
-    /* 260 */ unk32 mUnk_260;
-    /* 264 */ unk32 mUnk_264;
+    /* 25C */ VecFx32 mUnk_25C;
     /* 268 */ ActorUnkCASE *shield;
     /* 26C */ fx16 mUnk_26C; // Some kind of angle, probably
     /* 26E */ PAD(0x26E, 0x270);
