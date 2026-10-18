@@ -91,6 +91,21 @@ public:
     /* 04 */ virtual unk32 vfunc_04(RefStruct param1, unk32 param2, unk32 param3, unk32 *param4) override;
 };
 
+enum ActorUnkCANSState_ {
+    ActorUnkCANSState_Idle         = 0, // left/right moves
+    ActorUnkCANSState_Chasing      = 1, // fast moves to be in front of Link
+    ActorUnkCANSState_Dying        = 2,
+    ActorUnkCANSState_LinkInRange  = 3,
+    ActorUnkCANSState_Stunned      = 4, // hit by the boomerang for instance
+    ActorUnkCANSState_RisingShield = 5, // Counter boomerang
+    ActorUnkCANSState_Hitting      = 6, // try to hit Link
+    ActorUnkCANSState_Fleeing      = 7,
+    ActorUnkCANSState_Rotating     = 8,
+    ActorUnkCANSState_LosingShield = 9,
+    ActorUnkCANSState_10           = 10,
+    ActorUnkCANSState_Max
+};
+
 class ActorUnkCANS : public Actor_Derived2 {
 public:
     /* 000 (base) */
@@ -127,7 +142,7 @@ public:
     /* 2C */ virtual void vfunc_2C(unk32 param1) override;
 
     void func_ov063_02158424(void);
-    void func_ov063_02158448(unk32 param1);
+    void SetState(ActorState state);
     void func_ov063_02158490(void);
     void func_ov063_02158b0c(void);
     void func_ov063_02158b34(void);

@@ -62,18 +62,32 @@ const Cylinder data_ov063_02162e90(0, 0x99A, 0, 0x99A);
 
 DECL_PROFILE(ActorProfileUnkCANS);
 
-static PTMF<ActorUnkCANS> data_ov063_02162f58[0xB] = {
-    &ActorUnkCANS::func_ov063_02158b34, &ActorUnkCANS::func_ov063_02158d40, &ActorUnkCANS::func_ov063_021590c8,
-    &ActorUnkCANS::func_ov063_021591f4, &ActorUnkCANS::func_ov063_02159408, &ActorUnkCANS::func_ov063_021595a4,
-    &ActorUnkCANS::func_ov063_02159714, &ActorUnkCANS::func_ov063_021598fc, &ActorUnkCANS::func_ov063_02159ca8,
-    &ActorUnkCANS::func_ov063_02159dfc, &ActorUnkCANS::func_ov063_02159e20,
+static PTMF<ActorUnkCANS> data_ov063_02162f58[ActorUnkCANSState_Max] = {
+    &ActorUnkCANS::func_ov063_02158b34, // ActorUnkCANSState_Idle
+    &ActorUnkCANS::func_ov063_02158d40, // ActorUnkCANSState_Chasing
+    &ActorUnkCANS::func_ov063_021590c8, // ActorUnkCANSState_Dying
+    &ActorUnkCANS::func_ov063_021591f4, // ActorUnkCANSState_LinkInRange
+    &ActorUnkCANS::func_ov063_02159408, // ActorUnkCANSState_Stunned
+    &ActorUnkCANS::func_ov063_021595a4, // ActorUnkCANSState_RisingShield
+    &ActorUnkCANS::func_ov063_02159714, // ActorUnkCANSState_Hitting
+    &ActorUnkCANS::func_ov063_021598fc, // ActorUnkCANSState_Fleeing
+    &ActorUnkCANS::func_ov063_02159ca8, // ActorUnkCANSState_Rotating
+    &ActorUnkCANS::func_ov063_02159dfc, // ActorUnkCANSState_LosingShield
+    &ActorUnkCANS::func_ov063_02159e20, // ActorUnkCANSState_10
 };
 
-static PTMF<ActorUnkCANS> data_ov063_02162fb0[0xB] = {
-    &ActorUnkCANS::func_ov063_02158b98, &ActorUnkCANS::func_ov063_02158db0, &ActorUnkCANS::func_ov063_02159100,
-    &ActorUnkCANS::func_ov063_02159258, &ActorUnkCANS::func_ov063_02159494, &ActorUnkCANS::func_ov063_02159618,
-    &ActorUnkCANS::func_ov063_02159784, &ActorUnkCANS::func_ov063_021599e4, &ActorUnkCANS::func_ov063_02159d68,
-    &ActorUnkCANS::func_ov063_02159e1c, &ActorUnkCANS::func_ov063_02159ec0,
+static PTMF<ActorUnkCANS> data_ov063_02162fb0[ActorUnkCANSState_Max] = {
+    &ActorUnkCANS::func_ov063_02158b98, // ActorUnkCANSState_Idle
+    &ActorUnkCANS::func_ov063_02158db0, // ActorUnkCANSState_Chasing
+    &ActorUnkCANS::func_ov063_02159100, // ActorUnkCANSState_Dying
+    &ActorUnkCANS::func_ov063_02159258, // ActorUnkCANSState_LinkInRange
+    &ActorUnkCANS::func_ov063_02159494, // ActorUnkCANSState_Stunned
+    &ActorUnkCANS::func_ov063_02159618, // ActorUnkCANSState_RisingShield
+    &ActorUnkCANS::func_ov063_02159784, // ActorUnkCANSState_Hitting
+    &ActorUnkCANS::func_ov063_021599e4, // ActorUnkCANSState_Fleeing
+    &ActorUnkCANS::func_ov063_02159d68, // ActorUnkCANSState_Rotating
+    &ActorUnkCANS::func_ov063_02159e1c, // ActorUnkCANSState_LosingShield
+    &ActorUnkCANS::func_ov063_02159ec0, // ActorUnkCANSState_10
 };
 
 Actor *ActorProfileUnkCANS::Create() {
@@ -192,7 +206,7 @@ void ActorUnkCANS::Setup(void) {
         mAngle += DEG_TO_ANG(180);
     }
 
-    this->func_ov063_02158448(0);
+    this->SetState(ActorUnkCANSState_Idle);
 }
 
 void ActorUnkCANS::func_ov063_02158424(void) {
@@ -202,16 +216,16 @@ void ActorUnkCANS::func_ov063_02158424(void) {
     }
 }
 
-void ActorUnkCANS::func_ov063_02158448(unk32 param1) {
+void ActorUnkCANS::SetState(ActorState state) {
     this->func_ov063_02158424();
-    mState = param1;
+    mState = state;
     CALL_PTMF(PTMF<ActorUnkCANS>, data_ov063_02162f58[mState]);
 }
 
 void ActorUnkCANS::func_ov063_02158490(void) {
     mUnk_48 -= mUnk_200.mUnk_1E;
     this->func_ov017_020bf050(&mUnk_200, 1);
-    this->func_ov063_02158448(2);
+    this->SetState(ActorUnkCANSState_Dying);
 }
 
 void ActorUnkCANS::vfunc_24(void) {
@@ -281,23 +295,23 @@ void ActorUnkCANS::Update(void) {
                                 ((ActorItemBoomerang *) iVar6)->func_ov031_020e49b0(0x8D70);
                             }
                             if (mState != 4) {
-                                this->func_ov063_02158448(5);
+                                this->SetState(ActorUnkCANSState_RisingShield);
                             }
                         } else {
                             this->Actor_Derived2::func_ov017_020bf178(&mUnk_200, 1);
                             mUnk_224.func_ov000_02099a0c();
-                            this->func_ov063_02158448(4);
+                            this->SetState(ActorUnkCANSState_Stunned);
                         }
                         break;
                     case 4: {
                         if (mUnk_268 == NULL) {
                             if (data_027e0d38->func_ov031_020d9c04(1, 0, 0) != 0) {
-                                this->func_ov063_02158448(10);
+                                this->SetState(ActorUnkCANSState_10);
                             }
                         } else {
                             data_027e0d38->func_ov031_020d9c44(data_ov000_020aed00);
                             if (mState != 4) {
-                                this->func_ov063_02158448(5);
+                                this->SetState(ActorUnkCANSState_RisingShield);
                             }
                         }
                         break;
@@ -321,7 +335,7 @@ void ActorUnkCANS::Update(void) {
                                 data_027e09a8->func_ov000_02071b30(0x8C98, &mPos, 0);
                             }
                             if (mState != 4) {
-                                this->func_ov063_02158448(5);
+                                this->SetState(ActorUnkCANSState_RisingShield);
                             }
                         } else {
                             this->func_ov063_02158490();
@@ -330,7 +344,7 @@ void ActorUnkCANS::Update(void) {
                     case 3:
                         if (iVar5 != 0) {
                             if (mState != 4) {
-                                this->func_ov063_02158448(5);
+                                this->SetState(ActorUnkCANSState_RisingShield);
                             }
                             break;
                         }
@@ -349,7 +363,7 @@ void ActorUnkCANS::Update(void) {
                         if (iVar5 != 0) {
                             this->func_ov017_020bfb18(&mUnk_200);
                             if (mState != 4) {
-                                this->func_ov063_02158448(5);
+                                this->SetState(ActorUnkCANSState_RisingShield);
                             }
                         } else {
                             this->func_ov063_02158490();
@@ -461,12 +475,12 @@ void ActorUnkCANS::func_ov063_02158b98(void) {
     mVel.z    = FX_MUL(COS(angle), mUnk_270);
 
     if (this->func_ov063_0215a514() != 0) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
         return;
     }
 
     if (this->func_ov063_02159f3c(0x3000) != 0) {
-        this->func_ov063_02158448(1);
+        this->SetState(ActorUnkCANSState_Chasing);
     }
 }
 
@@ -511,12 +525,12 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
     mVel.z       = FX_MUL(cos_val, mUnk_270);
 
     if (this->func_ov063_0215a514()) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
         return;
     }
 
     if (!this->func_ov063_02159f3c(0x4000)) {
-        this->func_ov063_02158448(0);
+        this->SetState(ActorUnkCANSState_Idle);
         return;
     }
 
@@ -525,11 +539,11 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
     }
 
     if (this->func_ov063_0215a474()) {
-        this->func_ov063_02158448(6);
+        this->SetState(ActorUnkCANSState_Hitting);
         return;
     }
 
-    this->func_ov063_02158448(3);
+    this->SetState(ActorUnkCANSState_LinkInRange);
 }
 
 void ActorUnkCANS::func_ov063_021590c8(void) {
@@ -554,12 +568,12 @@ void ActorUnkCANS::func_ov063_02159100(void) {
 
     u16 *tmpArr = (u16 *) &mUnk_224.mUnk_08;
     if (tmpArr[0] < tmpArr[1]) {
-        this->func_ov063_02158448(4);
+        this->SetState(ActorUnkCANSState_Stunned);
         return;
     }
 
     if (this->func_ov063_0215a514() != 0) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
         return;
     }
 
@@ -569,16 +583,16 @@ void ActorUnkCANS::func_ov063_02159100(void) {
     }
 
     if (mUnk_268 == NULL) {
-        this->func_ov063_02158448(7);
+        this->SetState(ActorUnkCANSState_Fleeing);
         return;
     }
 
     if (this->func_ov063_02159f3c(0x3000)) {
-        this->func_ov063_02158448(1);
+        this->SetState(ActorUnkCANSState_Chasing);
         return;
     }
 
-    this->func_ov063_02158448(0);
+    this->SetState(ActorUnkCANSState_Idle);
 }
 
 void ActorUnkCANS::func_ov063_021591f4(void) {
@@ -604,11 +618,11 @@ void ActorUnkCANS::func_ov063_02159258(void) {
     mVel.z       = FX_MUL(cos_val, val);
 
     if (!mUnk_270 && this->func_ov063_0215a514()) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
     } else if (!mUnk_270 && this->mUnk_238.HasReachedMaxU() && this->func_ov063_0215a474()) {
-        this->func_ov063_02158448(6);
+        this->SetState(ActorUnkCANSState_Hitting);
     } else if (!this->func_ov063_0215a2c0()) {
-        this->func_ov063_02158448(1);
+        this->SetState(ActorUnkCANSState_Chasing);
     }
 }
 
@@ -626,7 +640,7 @@ void ActorUnkCANS::func_ov063_02159494(void) {
     }
 
     if (this->func_ov063_0215a514()) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
         return;
     }
 
@@ -637,13 +651,13 @@ void ActorUnkCANS::func_ov063_02159494(void) {
     }
 
     if (mUnk_268 == NULL) {
-        this->func_ov063_02158448(7);
+        this->SetState(ActorUnkCANSState_Fleeing);
     } else {
         if (this->func_ov063_02159f3c(0x3000)) {
-            this->func_ov063_02158448(1);
+            this->SetState(ActorUnkCANSState_Chasing);
         } else {
 
-            this->func_ov063_02158448(0);
+            this->SetState(ActorUnkCANSState_Idle);
         }
     }
 }
@@ -668,11 +682,11 @@ void ActorUnkCANS::func_ov063_02159618(void) {
     }
 
     if (this->func_ov063_0215a474()) {
-        this->func_ov063_02158448(6);
+        this->SetState(ActorUnkCANSState_Hitting);
     } else if (this->func_ov063_02159f3c(0x3000)) {
-        this->func_ov063_02158448(1);
+        this->SetState(ActorUnkCANSState_Chasing);
     } else {
-        this->func_ov063_02158448(0);
+        this->SetState(ActorUnkCANSState_Idle);
     }
 }
 
@@ -714,11 +728,11 @@ void ActorUnkCANS::func_ov063_02159784(void) {
     }
 
     if (this->func_ov063_0215a514()) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
     } else if (this->func_ov063_0215a2c0()) {
-        this->func_ov063_02158448(3);
+        this->SetState(ActorUnkCANSState_LinkInRange);
     } else {
-        this->func_ov063_02158448(1);
+        this->SetState(ActorUnkCANSState_Chasing);
     }
 }
 
@@ -761,7 +775,7 @@ void ActorUnkCANS::func_ov063_021599e4(void) {
     mVel.z       = FX_MUL(cos_val1, FX_F32_TO_FX32(0.02f)) + FX_MUL(cos_val2, mUnk_270);
 
     if (this->func_ov063_0215a514()) {
-        this->func_ov063_02158448(8);
+        this->SetState(ActorUnkCANSState_Rotating);
     }
 }
 
@@ -796,12 +810,12 @@ void ActorUnkCANS::func_ov063_02159d68(void) {
 
     if (mUnk_268 != NULL) {
         if (this->func_ov063_0215a474()) {
-            this->func_ov063_02158448(3);
+            this->SetState(ActorUnkCANSState_LinkInRange);
             return;
         }
-        this->func_ov063_02158448(1);
+        this->SetState(ActorUnkCANSState_Chasing);
     } else {
-        this->func_ov063_02158448(7);
+        this->SetState(ActorUnkCANSState_Fleeing);
     }
 }
 
@@ -846,7 +860,7 @@ void ActorUnkCANS::func_ov063_02159ec0(void) {
 
     VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &mUnk_200.mUnk_10);
 
-    this->func_ov063_02158448(4);
+    this->SetState(ActorUnkCANSState_Stunned);
 
     *(s16 *) &mUnk_44 |= 0x20;
 }
@@ -993,11 +1007,11 @@ void ActorUnkCANS::func_ov063_0215a428(void) {
     // A not very clean code to access 22C and 22E matching the asm
     u16 *values = (u16 *) &mUnk_224.mUnk_08;
     if (values[0] < values[1]) {
-        this->func_ov063_02158448(4);
+        this->SetState(ActorUnkCANSState_Stunned);
     } else if (mUnk_268 == NULL) {
-        this->func_ov063_02158448(7);
+        this->SetState(ActorUnkCANSState_Fleeing);
     } else {
-        this->func_ov063_02158448(0);
+        this->SetState(ActorUnkCANSState_Idle);
     }
 }
 

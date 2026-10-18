@@ -465,7 +465,7 @@ void ActorUnkCASE::func_ov063_0215b814(RefStruct ref) {
     mUnk_1E4 = ref;
 
     if (mUnk_14C != NULL) {
-        ((ActorUnkCANS *) mUnk_14C)->func_ov063_02158448(9);
+        ((ActorUnkCANS *) mUnk_14C)->SetState(9);
     }
 
     this->func_ov063_0215aefc(1);
