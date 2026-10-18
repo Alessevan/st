@@ -3,7 +3,7 @@
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
 #include "ActorSpinut.hpp"
-#include "Map/MapObjectId.hpp"
+#include "Unknown/UnkStruct_ov000_020b3268.hpp"
 #include "Unknown/UnkStruct_ov000_020b34c4.hpp"
 #include "global.h"
 #include "types.h"
