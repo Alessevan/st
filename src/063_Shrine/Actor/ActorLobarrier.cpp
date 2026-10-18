@@ -4,7 +4,6 @@
 #include "Actor/ActorItemBoomerang.hpp"
 #include "Actor/ActorManager.hpp"
 #include "Actor/ActorShotArrow.hpp"
-#include "Actor/ActorUnkCASE.hpp"
 #include "CommonFuncs.hpp"
 #include "Map/MapObjectId.hpp"
 #include "MapObject/MapObject.hpp"
@@ -178,8 +177,8 @@ bool ActorLobarrier::Init(unk32 param1) {
     RefStruct var;
     ActorManager *actorManager = gpActorManager;
 
-    ActorUnkCASE::func_ov063_0215acec(&var, this->mRef);
-    this->shield = (ActorUnkCASE *) actorManager->func_01fff3b4(var);
+    ActorLobarrierShield::func_ov063_0215acec(&var, this->mRef);
+    this->shield = (ActorLobarrierShield *) actorManager->func_01fff3b4(var);
 
     return true;
 }
@@ -1161,12 +1160,12 @@ void ActorLobarrier::func_ov063_0215a678(ActorLobarrier *actor, UnkStruct_func_o
         func_01ffad5c(&matx3, &data_027e0964, &matx4);
 
         VecFx32 vec;
-        vec.x           = matx4._30;
-        vec.z           = matx4._32;
-        vec.y           = matx4._31;
-        actor->mUnk_25C = vec.x;
-        actor->mUnk_260 = vec.y;
-        actor->mUnk_264 = vec.z;
+        vec.x             = matx4._30;
+        vec.z             = matx4._32;
+        vec.y             = matx4._31;
+        actor->mUnk_25C.x = vec.x;
+        actor->mUnk_25C.y = vec.y;
+        actor->mUnk_25C.z = vec.z;
 
         param2->mUnk_92                              = 2;
         ((u8 *) &modelRender->mRenderObj.mUnk_1C)[1] = 2;

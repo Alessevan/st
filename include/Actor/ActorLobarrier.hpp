@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Actor/Actor.hpp"
+#include "Actor/ActorLobarrierShield.hpp"
 #include "Actor/ActorProfile.hpp"
-#include "Actor/ActorUnkCASE.hpp"
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
 #include "Actor/Actor_Derived1.hpp"
 #include "Physics/Cylinder.hpp"
@@ -123,7 +123,7 @@ public:
     /* 23C */ UnkStruct_ov063_02162ea8 mUnk_23C;
     /* 250 */ VecFx32 mUnk_250;
     /* 25C */ VecFx32 mUnk_25C;
-    /* 268 */ ActorUnkCASE *shield;
+    /* 268 */ ActorLobarrierShield *shield;
     /* 26C */ fx16 mUnk_26C; // Some kind of angle, probably
     /* 26E */ PAD(0x26E, 0x270);
     /* 270 */ unk32 mUnk_270;

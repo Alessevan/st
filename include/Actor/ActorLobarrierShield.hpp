@@ -35,42 +35,42 @@ public:
     /* AE */ u8 mUnk_AE;
 };
 
-class ActorUnkCASE_150 : public Actor_C4 {
+class ActorLobarrierShield_150 : public Actor_C4 {
 public:
     /* 00 (base) */
     /* 24 */
 
-    ActorUnkCASE_150(Actor *param1);
+    ActorLobarrierShield_150(Actor *param1);
 
     /* 00 */ virtual bool vfunc_00(RefStruct ref, unk32 param2) override;
     /* 04 */ virtual bool vfunc_04() override;
     /* 0C */ virtual void vfunc_0C(VecFx32 *param1) override;
 };
 
-class ActorUnkCASE_174 : public UnkStruct_ov031_Items_01 {
+class ActorLobarrierShield_174 : public UnkStruct_ov031_Items_01 {
 public:
     /* 00 (base) */
     /* 2C */ Actor *mUnk_2C;
     /* 30 */
 
-    ActorUnkCASE_174(Actor *param1);
+    ActorLobarrierShield_174(Actor *param1);
 
     /* 10 */ virtual void vfunc_10(const Actor *actor) override;
 };
 
-enum ActorUnkCASEState_ {
-    ActorUnkCASEState_Held          = 0, // by a Lobarrier
-    ActorUnkCASEState_Grabbing      = 1, // with whip
-    ActorUnkCASEState_Grabbed       = 2, // with whip
-    ActorUnkCASEState_Thrown        = 3,
-    ActorUnkCASEState_Releasing     = 4,
-    ActorUnkCASEState_LyingOnGround = 5,
-    ActorUnkCASEState_Max
+enum ActorLobarrierShieldState_ {
+    ActorLobarrierShieldState_Held          = 0, // by a Lobarrier
+    ActorLobarrierShieldState_Grabbing      = 1, // with whip
+    ActorLobarrierShieldState_Grabbed       = 2, // with whip
+    ActorLobarrierShieldState_Thrown        = 3,
+    ActorLobarrierShieldState_Releasing     = 4,
+    ActorLobarrierShieldState_LyingOnGround = 5,
+    ActorLobarrierShieldState_Max
 };
 
 class ActorLobarrier;
 
-class ActorUnkCASE : public Actor_Derived2 {
+class ActorLobarrierShield : public Actor_Derived2 {
 public:
     /* 000 (base) */
     /* 0AE */ unk16 mUnk_0AE;
@@ -79,8 +79,8 @@ public:
     /* 122 */ PAD(0x122, 0x124);
     /* 124 */ ActorShotArrow_140 mUnk_124;
     /* 14C */ ActorLobarrier *lobarrier;
-    /* 150 */ ActorUnkCASE_150 mUnk_150;
-    /* 174 */ ActorUnkCASE_174 mUnk_174;
+    /* 150 */ ActorLobarrierShield_150 mUnk_150;
+    /* 174 */ ActorLobarrierShield_174 mUnk_174;
     /* 1A4 */ MtxFx33 mUnk_1A4;
     /* 1C8 */ unk16 mUnk_1C8; // Angle related
     /* 1CA */ PAD(0x1CA, 0x1CC);
@@ -93,7 +93,7 @@ public:
     /* 1F4 */ u8 mUnk_1F4;
     /* 1F5 */
 
-    ActorUnkCASE();
+    ActorLobarrierShield();
 
     /* 10 */ virtual void vfunc_10(Cylinder *param1) override;
     /* 18 */ virtual bool Init(unk32 param1) override;
@@ -129,17 +129,17 @@ public:
     void func_ov063_0215b814(RefStruct ref);
     void func_ov063_0215b854();
     void func_ov063_0215b8e8(VecFx32 *param1);
-    static void func_ov063_0215b99c(ActorUnkCASE *param1, UnkStruct_func_ov063_0215a678 *param2);
+    static void func_ov063_0215b99c(ActorLobarrierShield *param1, UnkStruct_func_ov063_0215a678 *param2);
     void func_ov063_0215ba64();
 };
 
-class ActorProfileUnkCASE : public ActorProfile_Derived1 {
+class ActorProfileLobarrierShield : public ActorProfile_Derived1 {
 public:
     /* 00 (base) */
 
-    ActorProfileUnkCASE();
+    ActorProfileLobarrierShield();
 
     /* 0C */ virtual Actor *Create();
 
-    static ActorProfileUnkCASE *GetProfile();
+    static ActorProfileLobarrierShield *GetProfile();
 };
