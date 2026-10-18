@@ -368,8 +368,8 @@ unk32 func_ov004_020b697c(void *, unk32 param1);
 AdventureModeManager_160_18 *func_ov006_020b6ab0(void *, void *);
 
 // overlay 7
-void func_ov007_02102850(uint **);
-void func_ov007_021028a0(uint **);
+void func_ov007_02102850(UnkStruct_027e0ce0 **);
+void func_ov007_021028a0(UnkStruct_027e0ce0 **);
 
 // overlay 8
 GameModeManagerBase_104 *func_ov008_020b6520(void *);
