@@ -56,42 +56,42 @@ static char data_ov031_021135f8[0x4] = "\x00\x10";
 static ActorUnkZLSL_AnimationTag data_ov031_021135fc = {0, "wait"};
 
 static PTMF<ActorUnkZLSL> data_ov031_02113770[ActorUnkZLSLState_Max] = {
-    &ActorUnkZLSL::func_ov031_020eaa68, // ActorUnkZLSLState_0
+    &ActorUnkZLSL::func_ov031_020eaa68, // ActorUnkZLSLState_OpenArms
     &ActorUnkZLSL::func_ov031_020ea86c, // ActorUnkZLSLState_1
     &ActorUnkZLSL::func_ov031_020ea868, // ActorUnkZLSLState_2
     &ActorUnkZLSL::func_ov031_020ea864, // ActorUnkZLSLState_3
-    &ActorUnkZLSL::func_ov031_020eac64, // ActorUnkZLSLState_4
-    &ActorUnkZLSL::func_ov031_020ead0c, // ActorUnkZLSLState_5
-    &ActorUnkZLSL::func_ov031_020ec034, // ActorUnkZLSLState_6
-    &ActorUnkZLSL::func_ov031_020ec05c, // ActorUnkZLSLState_7
+    &ActorUnkZLSL::func_ov031_020eac64, // ActorUnkZLSLState_RotateClosedArms
+    &ActorUnkZLSL::func_ov031_020ead0c, // ActorUnkZLSLState_ClosedArms
+    &ActorUnkZLSL::func_ov031_020ec034, // ActorUnkZLSLState_FollowPath
+    &ActorUnkZLSL::func_ov031_020ec05c, // ActorUnkZLSLState_RotateOpenArms
     &ActorUnkZLSL::func_ov031_020ec0d4, // ActorUnkZLSLState_Idle
-    &ActorUnkZLSL::func_ov031_020eb5f8, // ActorUnkZLSLState_9
-    &ActorUnkZLSL::func_ov031_020ead7c, // ActorUnkZLSLState_10
-    &ActorUnkZLSL::func_ov031_020eb188, // ActorUnkZLSLState_11
+    &ActorUnkZLSL::func_ov031_020eb5f8, // ActorUnkZLSLState_TakePhantomControl
+    &ActorUnkZLSL::func_ov031_020ead7c, // ActorUnkZLSLState_TakeHumanShape
+    &ActorUnkZLSL::func_ov031_020eb188, // ActorUnkZLSLState_GoOrbShapeAndIdle
     &ActorUnkZLSL::func_ov031_020ebfd8, // ActorUnkZLSLState_12
-    &ActorUnkZLSL::func_ov031_020eafe0, // ActorUnkZLSLState_13
+    &ActorUnkZLSL::func_ov031_020eafe0, // ActorUnkZLSLState_TakeHumanShapeTrainStation
     &ActorUnkZLSL::func_ov031_020eaa8c, // ActorUnkZLSLState_FollowLink
-    &ActorUnkZLSL::func_ov031_020ec164, // ActorUnkZLSLState_15
+    &ActorUnkZLSL::func_ov031_020ec164, // ActorUnkZLSLState_DuetFinale
     &ActorUnkZLSL::func_ov031_020eba58, // ActorUnkZLSLState_16
 };
 
 static PTMF<ActorUnkZLSL> data_ov031_021137f8[ActorUnkZLSLState_Max] = {
-    &ActorUnkZLSL::func_ov031_020eaa88, // ActorUnkZLSLState_0
+    &ActorUnkZLSL::func_ov031_020eaa88, // ActorUnkZLSLState_OpenArms
     &ActorUnkZLSL::func_ov031_020ea8c8, // ActorUnkZLSLState_1
     &ActorUnkZLSL::func_ov031_020ea8c4, // ActorUnkZLSLState_2
     &ActorUnkZLSL::func_ov031_020ea8c0, // ActorUnkZLSLState_3
-    &ActorUnkZLSL::func_ov031_020eace0, // ActorUnkZLSLState_4
-    &ActorUnkZLSL::func_ov031_020ead78, // ActorUnkZLSLState_5
-    &ActorUnkZLSL::func_ov031_020ec058, // ActorUnkZLSLState_6
-    &ActorUnkZLSL::func_ov031_020ec0a8, // ActorUnkZLSLState_7
+    &ActorUnkZLSL::func_ov031_020eace0, // ActorUnkZLSLState_RotateClosedArms
+    &ActorUnkZLSL::func_ov031_020ead78, // ActorUnkZLSLState_ClosedArms
+    &ActorUnkZLSL::func_ov031_020ec058, // ActorUnkZLSLState_FollowPath
+    &ActorUnkZLSL::func_ov031_020ec0a8, // ActorUnkZLSLState_RotateOpenArms
     &ActorUnkZLSL::func_ov031_020ec12c, // ActorUnkZLSLState_Idle
-    &ActorUnkZLSL::func_ov031_020eb61c, // ActorUnkZLSLState_9
-    &ActorUnkZLSL::func_ov031_020eafb0, // ActorUnkZLSLState_10
-    &ActorUnkZLSL::func_ov031_020eb218, // ActorUnkZLSLState_11
+    &ActorUnkZLSL::func_ov031_020eb61c, // ActorUnkZLSLState_TakePhantomControl
+    &ActorUnkZLSL::func_ov031_020eafb0, // ActorUnkZLSLState_TakeHumanShape
+    &ActorUnkZLSL::func_ov031_020eb218, // ActorUnkZLSLState_GoOrbShapeAndIdle
     &ActorUnkZLSL::func_ov031_020ec028, // ActorUnkZLSLState_12
-    &ActorUnkZLSL::func_ov031_020eb158, // ActorUnkZLSLState_13
+    &ActorUnkZLSL::func_ov031_020eb158, // ActorUnkZLSLState_TakeHumanShapeTrainStation
     &ActorUnkZLSL::func_ov031_020eab0c, // ActorUnkZLSLState_FollowLink
-    &ActorUnkZLSL::func_ov031_020ec170, // ActorUnkZLSLState_15
+    &ActorUnkZLSL::func_ov031_020ec170, // ActorUnkZLSLState_DuetFinale
     &ActorUnkZLSL::func_ov031_020eba8c, // ActorUnkZLSLState_16
 };
 
@@ -363,7 +363,7 @@ void ActorUnkZLSL::Update() {
     VecFx32_Copy(&this->mPos, &this->mPrevPos);
     VecFx32_Add(&this->mPos, &this->mVel, &this->mPos);
 
-    if (this->mState != ActorUnkZLSLState_9 && this->mState != ActorUnkZLSLState_16) {
+    if (this->mState != ActorUnkZLSLState_TakePhantomControl && this->mState != ActorUnkZLSLState_16) {
         this->func_ov031_020edc80();
         this->vfunc_A4();
     }
@@ -1816,7 +1816,7 @@ void ActorUnkZLSL::func_ov031_020edd54(RefStruct ref) {
         if (data_027e0ce0->func_01fff1a4()) {
             this->vfunc_58(ActorUnkZLSLState_16);
         } else {
-            this->vfunc_58(ActorUnkZLSLState_9);
+            this->vfunc_58(ActorUnkZLSLState_TakePhantomControl);
         }
     }
 }
