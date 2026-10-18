@@ -90,7 +90,7 @@ public:
     /* 244 */ unk16 mUnk_244;
     /* 246 */ unk16 mUnk_246;
     /* 248 */ Actor_9C mUnk_248;
-    /* 268 */ UnkStruct_ActorUnkCANS_224 mUnk_268;
+    /* 268 */ UnkStruct_ActorLobarrier_224 mUnk_268;
     /* 278 */ UnkSystem7 mUnk_278;
     /* 27C */ unk32 mUnk_27C;
     /* 280 */ unk32 mUnk_280;

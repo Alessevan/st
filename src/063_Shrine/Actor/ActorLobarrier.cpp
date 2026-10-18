@@ -1,4 +1,4 @@
-#include "Actor/ActorUnkCANS.hpp"
+#include "Actor/ActorLobarrier.hpp"
 #include "Actor/Actor.hpp"
 #include "Actor/ActorId.hpp"
 #include "Actor/ActorItemBoomerang.hpp"
@@ -60,41 +60,41 @@ extern unk32 data_ov000_020aecfc[0x2]; //! INFO: Unsure about the size
 
 const Cylinder data_ov063_02162e90(0, 0x99A, 0, 0x99A);
 
-DECL_PROFILE(ActorProfileUnkCANS);
+DECL_PROFILE(ActorProfileLobarrier);
 
-static PTMF<ActorUnkCANS> data_ov063_02162f58[ActorUnkCANSState_Max] = {
-    &ActorUnkCANS::func_ov063_02158b34, // ActorUnkCANSState_Idle
-    &ActorUnkCANS::func_ov063_02158d40, // ActorUnkCANSState_Chasing
-    &ActorUnkCANS::func_ov063_021590c8, // ActorUnkCANSState_Dying
-    &ActorUnkCANS::func_ov063_021591f4, // ActorUnkCANSState_LinkInRange
-    &ActorUnkCANS::func_ov063_02159408, // ActorUnkCANSState_Stunned
-    &ActorUnkCANS::func_ov063_021595a4, // ActorUnkCANSState_RisingShield
-    &ActorUnkCANS::func_ov063_02159714, // ActorUnkCANSState_Hitting
-    &ActorUnkCANS::func_ov063_021598fc, // ActorUnkCANSState_Fleeing
-    &ActorUnkCANS::func_ov063_02159ca8, // ActorUnkCANSState_Rotating
-    &ActorUnkCANS::func_ov063_02159dfc, // ActorUnkCANSState_LosingShield
-    &ActorUnkCANS::func_ov063_02159e20, // ActorUnkCANSState_10
+static PTMF<ActorLobarrier> data_ov063_02162f58[ActorLobarrierState_Max] = {
+    &ActorLobarrier::func_ov063_02158b34, // ActorLobarrierState_Idle
+    &ActorLobarrier::func_ov063_02158d40, // ActorLobarrierState_Chasing
+    &ActorLobarrier::func_ov063_021590c8, // ActorLobarrierState_Dying
+    &ActorLobarrier::func_ov063_021591f4, // ActorLobarrierState_LinkInRange
+    &ActorLobarrier::func_ov063_02159408, // ActorLobarrierState_Stunned
+    &ActorLobarrier::func_ov063_021595a4, // ActorLobarrierState_RisingShield
+    &ActorLobarrier::func_ov063_02159714, // ActorLobarrierState_Hitting
+    &ActorLobarrier::func_ov063_021598fc, // ActorLobarrierState_Fleeing
+    &ActorLobarrier::func_ov063_02159ca8, // ActorLobarrierState_Rotating
+    &ActorLobarrier::func_ov063_02159dfc, // ActorLobarrierState_LosingShield
+    &ActorLobarrier::func_ov063_02159e20, // ActorLobarrierState_10
 };
 
-static PTMF<ActorUnkCANS> data_ov063_02162fb0[ActorUnkCANSState_Max] = {
-    &ActorUnkCANS::func_ov063_02158b98, // ActorUnkCANSState_Idle
-    &ActorUnkCANS::func_ov063_02158db0, // ActorUnkCANSState_Chasing
-    &ActorUnkCANS::func_ov063_02159100, // ActorUnkCANSState_Dying
-    &ActorUnkCANS::func_ov063_02159258, // ActorUnkCANSState_LinkInRange
-    &ActorUnkCANS::func_ov063_02159494, // ActorUnkCANSState_Stunned
-    &ActorUnkCANS::func_ov063_02159618, // ActorUnkCANSState_RisingShield
-    &ActorUnkCANS::func_ov063_02159784, // ActorUnkCANSState_Hitting
-    &ActorUnkCANS::func_ov063_021599e4, // ActorUnkCANSState_Fleeing
-    &ActorUnkCANS::func_ov063_02159d68, // ActorUnkCANSState_Rotating
-    &ActorUnkCANS::func_ov063_02159e1c, // ActorUnkCANSState_LosingShield
-    &ActorUnkCANS::func_ov063_02159ec0, // ActorUnkCANSState_10
+static PTMF<ActorLobarrier> data_ov063_02162fb0[ActorLobarrierState_Max] = {
+    &ActorLobarrier::func_ov063_02158b98, // ActorLobarrierState_Idle
+    &ActorLobarrier::func_ov063_02158db0, // ActorLobarrierState_Chasing
+    &ActorLobarrier::func_ov063_02159100, // ActorLobarrierState_Dying
+    &ActorLobarrier::func_ov063_02159258, // ActorLobarrierState_LinkInRange
+    &ActorLobarrier::func_ov063_02159494, // ActorLobarrierState_Stunned
+    &ActorLobarrier::func_ov063_02159618, // ActorLobarrierState_RisingShield
+    &ActorLobarrier::func_ov063_02159784, // ActorLobarrierState_Hitting
+    &ActorLobarrier::func_ov063_021599e4, // ActorLobarrierState_Fleeing
+    &ActorLobarrier::func_ov063_02159d68, // ActorLobarrierState_Rotating
+    &ActorLobarrier::func_ov063_02159e1c, // ActorLobarrierState_LosingShield
+    &ActorLobarrier::func_ov063_02159ec0, // ActorLobarrierState_10
 };
 
-Actor *ActorProfileUnkCANS::Create() {
-    return new(HeapIndex_2) ActorUnkCANS();
+Actor *ActorProfileLobarrier::Create() {
+    return new(HeapIndex_2) ActorLobarrier();
 }
 
-ActorProfileUnkCANS::ActorProfileUnkCANS() :
+ActorProfileLobarrier::ActorProfileLobarrier() :
     ActorProfile_Derived1(ActorId_CANS) {
     mUnk_24 = 0x43415345;
     VecFx32_Init(0, 0xCCD, 0, &mUnk_04.pos);
@@ -107,7 +107,7 @@ UnkStruct_ov063_02162ee8::UnkStruct_ov063_02162ee8(G3d_Model *pModel) :
     mUnk_70(ModelRenderBase::func_ov000_02057f18(data_ov063_02162538)),
     mUnk_74(ModelRenderBase::func_ov000_02057f18(data_ov063_02162548)) {}
 
-UnkStruct_ov063_02162e88::UnkStruct_ov063_02162e88(void *param1) :
+UnkStruct_ov063_02162e88::UnkStruct_ov063_02162e88(ActorLobarrier *param1) :
     mUnk_20(param1) {}
 
 unk32 UnkStruct_ov063_02162e88::vfunc_04(RefStruct param1, unk32 param2, unk32 param3, unk32 *param4) {
@@ -122,12 +122,12 @@ unk32 UnkStruct_ov063_02162e88::vfunc_04(RefStruct param1, unk32 param2, unk32 p
         return ret1;
     }
 
-    if (((ActorUnkCANS *) mUnk_20)->func_ov063_0215a56c((unk16) func_01ffbbe0(param4[0], param4[2])) != 0 &&
+    if (((ActorLobarrier *) mUnk_20)->func_ov063_0215a56c((unk16) func_01ffbbe0(param4[0], param4[2])) != 0 &&
         param1.common.type != 0) {
         ActorShotArrow *ret4 = (ActorShotArrow *) gpActorManager->func_01fff3b4(param1);
 
         if (ret4 != NULL && ret4->GetActorId() == ActorId_ShotArrow) {
-            u16 angle    = ((ActorUnkCANS *) mUnk_20)->mAngle.angle_s;
+            u16 angle    = ((ActorLobarrier *) mUnk_20)->mAngle.angle_s;
             fx32 sin_val = FX_MUL(SIN(angle), FX_F32_TO_FX32(1.f));
             fx32 cos_val = FX_MUL(COS(angle), FX_F32_TO_FX32(1.f));
             VecFx32 vec;
@@ -149,9 +149,9 @@ unk32 UnkStruct_ov063_02162e88::vfunc_04(RefStruct param1, unk32 param2, unk32 p
 }
 
 // non-matching
-ActorUnkCANS::ActorUnkCANS() :
-    mUnk_0B0(G3d_GetModelPtr(GET_PROFILE(ActorProfileUnkCANS)->vfunc_04()->mUnk_50)),
-    mUnk_128(&mUnk_0B0, GET_PROFILE(ActorProfileUnkCANS)->vfunc_04()),
+ActorLobarrier::ActorLobarrier() :
+    mUnk_0B0(G3d_GetModelPtr(GET_PROFILE(ActorProfileLobarrier)->vfunc_04()->mUnk_50)),
+    mUnk_128(&mUnk_0B0, GET_PROFILE(ActorProfileLobarrier)->vfunc_04()),
     mUnk_1F4(),
     mUnk_200(this),
     mUnk_224(),
@@ -171,20 +171,20 @@ ActorUnkCANS::ActorUnkCANS() :
     mUnk_270 *= mUnk_276;
 }
 
-bool ActorUnkCANS::Init(unk32 param1) {
+bool ActorLobarrier::Init(unk32 param1) {
     this->mUnk_0B0.func_ov000_02057c38(6, 2);
-    this->mUnk_0B0.func_ov000_0209a7b8(this, (UnkSystem4_UnkCallback) ActorUnkCANS::func_ov063_0215a678);
+    this->mUnk_0B0.func_ov000_0209a7b8(this, (UnkSystem4_UnkCallback) ActorLobarrier::func_ov063_0215a678);
 
     RefStruct var;
     ActorManager *actorManager = gpActorManager;
 
     ActorUnkCASE::func_ov063_0215acec(&var, this->mRef);
-    this->mUnk_268 = (ActorUnkCASE *) actorManager->func_01fff3b4(var);
+    this->shield = (ActorUnkCASE *) actorManager->func_01fff3b4(var);
 
     return true;
 }
 
-void ActorUnkCANS::Setup(void) {
+void ActorLobarrier::Setup(void) {
     mUnk_26C = mUnk_5C.mInitialAngle;
 
     s16 var;
@@ -206,36 +206,36 @@ void ActorUnkCANS::Setup(void) {
         mAngle += DEG_TO_ANG(180);
     }
 
-    this->SetState(ActorUnkCANSState_Idle);
+    this->SetState(ActorLobarrierState_Idle);
 }
 
-void ActorUnkCANS::func_ov063_02158424(void) {
+void ActorLobarrier::func_ov063_02158424(void) {
     mUnk_274 = 0;
     if (mState == 6) {
         this->mUnk_238.Set(0, 20);
     }
 }
 
-void ActorUnkCANS::SetState(ActorState state) {
+void ActorLobarrier::SetState(ActorState state) {
     this->func_ov063_02158424();
     mState = state;
-    CALL_PTMF(PTMF<ActorUnkCANS>, data_ov063_02162f58[mState]);
+    CALL_PTMF(PTMF<ActorLobarrier>, data_ov063_02162f58[mState]);
 }
 
-void ActorUnkCANS::func_ov063_02158490(void) {
+void ActorLobarrier::func_ov063_02158490(void) {
     mUnk_48 -= mUnk_200.mUnk_1E;
     this->func_ov017_020bf050(&mUnk_200, 1);
-    this->SetState(ActorUnkCANSState_Dying);
+    this->SetState(ActorLobarrierState_Dying);
 }
 
-void ActorUnkCANS::vfunc_24(void) {
+void ActorLobarrier::vfunc_24(void) {
     if (data_027e09b8->HasAdventureFlag(AdventureFlag_VisitedIslandSanctuaryFirstTime)) {
         this->Update();
     }
 }
 
 // non-matching
-void ActorUnkCANS::Update(void) {
+void ActorLobarrier::Update(void) {
     this->mUnk_238.Update();
 
     if (!this->func_ov017_020bef4c(0x4000) && mUnk_48 != 0 && mState != 4) {
@@ -243,7 +243,7 @@ void ActorUnkCANS::Update(void) {
     }
     mUnk_3C = &mUnk_200;
 
-    CALL_PTMF(PTMF<ActorUnkCANS>, data_ov063_02162fb0[mState]);
+    CALL_PTMF(PTMF<ActorLobarrier>, data_ov063_02162fb0[mState]);
 
     this->func_ov017_020bf894(&mUnk_224);
     this->func_ov000_02098838();
@@ -251,8 +251,8 @@ void ActorUnkCANS::Update(void) {
     VecFx32_Copy(&mPos, &mPrevPos);
     VecFx32_Add(&mPos, &mVel, &mPos);
 
-    if (mUnk_268 != NULL) {
-        mUnk_268->func_ov063_0215b6c8(&mUnk_250, mAngle);
+    if (this->shield != NULL) {
+        this->shield->func_ov063_0215b6c8(&this->mUnk_250, this->mAngle);
     }
 
     this->func_ov000_02098b8c(1, &mUnk_23C);
@@ -275,8 +275,8 @@ void ActorUnkCANS::Update(void) {
 
     if (mUnk_48 > 0) {
         if (!this->mUnk_234.HasExpired()) {
-            if (mUnk_268 != NULL) {
-                mUnk_268->mUnk_1F4 = 0;
+            if (this->shield != NULL) {
+                this->shield->mUnk_1F4 = 0;
             }
         } else {
 
@@ -295,23 +295,23 @@ void ActorUnkCANS::Update(void) {
                                 ((ActorItemBoomerang *) iVar6)->func_ov031_020e49b0(0x8D70);
                             }
                             if (mState != 4) {
-                                this->SetState(ActorUnkCANSState_RisingShield);
+                                this->SetState(ActorLobarrierState_RisingShield);
                             }
                         } else {
                             this->Actor_Derived2::func_ov017_020bf178(&mUnk_200, 1);
                             mUnk_224.func_ov000_02099a0c();
-                            this->SetState(ActorUnkCANSState_Stunned);
+                            this->SetState(ActorLobarrierState_Stunned);
                         }
                         break;
                     case 4: {
-                        if (mUnk_268 == NULL) {
+                        if (this->shield == NULL) {
                             if (data_027e0d38->func_ov031_020d9c04(1, 0, 0) != 0) {
-                                this->SetState(ActorUnkCANSState_10);
+                                this->SetState(ActorLobarrierState_10);
                             }
                         } else {
                             data_027e0d38->func_ov031_020d9c44(data_ov000_020aed00);
                             if (mState != 4) {
-                                this->SetState(ActorUnkCANSState_RisingShield);
+                                this->SetState(ActorLobarrierState_RisingShield);
                             }
                         }
                         break;
@@ -335,7 +335,7 @@ void ActorUnkCANS::Update(void) {
                                 data_027e09a8->func_ov000_02071b30(0x8C98, &mPos, 0);
                             }
                             if (mState != 4) {
-                                this->SetState(ActorUnkCANSState_RisingShield);
+                                this->SetState(ActorLobarrierState_RisingShield);
                             }
                         } else {
                             this->func_ov063_02158490();
@@ -344,7 +344,7 @@ void ActorUnkCANS::Update(void) {
                     case 3:
                         if (iVar5 != 0) {
                             if (mState != 4) {
-                                this->SetState(ActorUnkCANSState_RisingShield);
+                                this->SetState(ActorLobarrierState_RisingShield);
                             }
                             break;
                         }
@@ -363,7 +363,7 @@ void ActorUnkCANS::Update(void) {
                         if (iVar5 != 0) {
                             this->func_ov017_020bfb18(&mUnk_200);
                             if (mState != 4) {
-                                this->SetState(ActorUnkCANSState_RisingShield);
+                                this->SetState(ActorLobarrierState_RisingShield);
                             }
                         } else {
                             this->func_ov063_02158490();
@@ -371,8 +371,8 @@ void ActorUnkCANS::Update(void) {
                         break;
                 }
             }
-            if (mUnk_268 != NULL) {
-                mUnk_268->mUnk_1F4 = iVar5;
+            if (this->shield != NULL) {
+                this->shield->mUnk_1F4 = iVar5;
             }
         }
     }
@@ -385,7 +385,7 @@ void ActorUnkCANS::Update(void) {
 
     // unk32 puVar11[0xF];
 
-    if (mUnk_268 != NULL) {
+    if (this->shield != NULL) {
         VecFx32 a;
         UnkStruct_ov000_0207de98 b;
         VecFx32 *aPtr = &a;
@@ -422,14 +422,14 @@ void ActorUnkCANS::Update(void) {
     }
 }
 
-void ActorUnkCANS::vfunc_2C(unk32 param1) {
+void ActorLobarrier::vfunc_2C(unk32 param1) {
     if (!this->func_01fff5d0(param1, 0)) {
         return;
     }
 
     mUnk_0B0.func_01ffc6d4(mAngle, &mPos);
 
-    if (mUnk_268 != NULL) {
+    if (this->shield != NULL) {
         VecFx32 vec;
         VecFx32_Init(0x4CD, 0, 0, &vec);
 
@@ -442,19 +442,19 @@ void ActorUnkCANS::vfunc_2C(unk32 param1) {
     }
 }
 
-void ActorUnkCANS::func_ov063_02158b0c(void) {
-    mUnk_268         = NULL;
+void ActorLobarrier::func_ov063_02158b0c(void) {
+    this->shield     = NULL;
     mUnk_38->mUnk_08 = 1;
     mUnk_34          = (Cylinder *) &data_ov063_02162e90;
     mUnk_30          = (Cylinder *) &data_ov063_02162e90;
 }
 
-void ActorUnkCANS::func_ov063_02158b34(void) {
+void ActorLobarrier::func_ov063_02158b34(void) {
     mUnk_128.vfunc_1C(data_ov063_02163068, 0x1000, 0x19A, 0);
 }
 
 // non-matching
-void ActorUnkCANS::func_ov063_02158b98(void) {
+void ActorLobarrier::func_ov063_02158b98(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x1000) || mUnk_128.vfunc_28()->func_02015080(0x11000) ||
         mUnk_128.vfunc_28()->func_02015080(0x21000)) {
         data_027e09a8->func_ov000_02071b30(0x985F, &mPos, 0);
@@ -475,22 +475,22 @@ void ActorUnkCANS::func_ov063_02158b98(void) {
     mVel.z    = FX_MUL(COS(angle), mUnk_270);
 
     if (this->func_ov063_0215a514() != 0) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
         return;
     }
 
     if (this->func_ov063_02159f3c(0x3000) != 0) {
-        this->SetState(ActorUnkCANSState_Chasing);
+        this->SetState(ActorLobarrierState_Chasing);
     }
 }
 
-void ActorUnkCANS::func_ov063_02158d40(void) {
+void ActorLobarrier::func_ov063_02158d40(void) {
     this->mUnk_128.vfunc_1C(data_ov063_02163068, 0x1800, 0x19A, 0);
     this->mUnk_238.Init();
 }
 
 // non-matching
-void ActorUnkCANS::func_ov063_02158db0(void) {
+void ActorLobarrier::func_ov063_02158db0(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x1000) || mUnk_128.vfunc_28()->func_02015080(0xD000) ||
         mUnk_128.vfunc_28()->func_02015080(0x19000) || mUnk_128.vfunc_28()->func_02015080(0x25000)) {
         data_027e09a8->func_ov000_02071b30(0x985F, &mPos, 0);
@@ -525,12 +525,12 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
     mVel.z       = FX_MUL(cos_val, mUnk_270);
 
     if (this->func_ov063_0215a514()) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
         return;
     }
 
     if (!this->func_ov063_02159f3c(0x4000)) {
-        this->SetState(ActorUnkCANSState_Idle);
+        this->SetState(ActorLobarrierState_Idle);
         return;
     }
 
@@ -539,19 +539,19 @@ void ActorUnkCANS::func_ov063_02158db0(void) {
     }
 
     if (this->func_ov063_0215a474()) {
-        this->SetState(ActorUnkCANSState_Hitting);
+        this->SetState(ActorLobarrierState_Hitting);
         return;
     }
 
-    this->SetState(ActorUnkCANSState_LinkInRange);
+    this->SetState(ActorLobarrierState_LinkInRange);
 }
 
-void ActorUnkCANS::func_ov063_021590c8(void) {
+void ActorLobarrier::func_ov063_021590c8(void) {
     this->Actor::func_ov017_020bf634(&mUnk_200.mUnk_10, this->func_ov063_0215a5bc(), this->func_ov063_0215a5d8());
     mUnk_200.func_ov000_02097bec();
 }
 
-void ActorUnkCANS::func_ov063_02159100(void) {
+void ActorLobarrier::func_ov063_02159100(void) {
     this->Actor::func_ov017_020bf688();
 
     if (!GET_FLAG(this->mFlags, ActorFlag_5)) {
@@ -559,8 +559,8 @@ void ActorUnkCANS::func_ov063_02159100(void) {
     }
 
     if (mUnk_48 <= 0) {
-        if (mUnk_268 != NULL) {
-            mUnk_268->func_ov000_020984d0();
+        if (this->shield != NULL) {
+            this->shield->func_ov000_020984d0();
         }
         this->vfunc_54(0);
         return;
@@ -568,12 +568,12 @@ void ActorUnkCANS::func_ov063_02159100(void) {
 
     u16 *tmpArr = (u16 *) &mUnk_224.mUnk_08;
     if (tmpArr[0] < tmpArr[1]) {
-        this->SetState(ActorUnkCANSState_Stunned);
+        this->SetState(ActorLobarrierState_Stunned);
         return;
     }
 
     if (this->func_ov063_0215a514() != 0) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
         return;
     }
 
@@ -582,24 +582,24 @@ void ActorUnkCANS::func_ov063_02159100(void) {
         return;
     }
 
-    if (mUnk_268 == NULL) {
-        this->SetState(ActorUnkCANSState_Fleeing);
+    if (this->shield == NULL) {
+        this->SetState(ActorLobarrierState_Fleeing);
         return;
     }
 
     if (this->func_ov063_02159f3c(0x3000)) {
-        this->SetState(ActorUnkCANSState_Chasing);
+        this->SetState(ActorLobarrierState_Chasing);
         return;
     }
 
-    this->SetState(ActorUnkCANSState_Idle);
+    this->SetState(ActorLobarrierState_Idle);
 }
 
-void ActorUnkCANS::func_ov063_021591f4(void) {
+void ActorLobarrier::func_ov063_021591f4(void) {
     mUnk_128.vfunc_1C(data_ov063_02163068, 0x1000, 0x19A, 0);
 }
 
-void ActorUnkCANS::func_ov063_02159258(void) {
+void ActorLobarrier::func_ov063_02159258(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x6000) || mUnk_128.vfunc_28()->func_02015080(0xF000)) {
         data_027e09a8->func_ov000_02071b30(0x9860, &mPos, 0);
     }
@@ -618,21 +618,21 @@ void ActorUnkCANS::func_ov063_02159258(void) {
     mVel.z       = FX_MUL(cos_val, val);
 
     if (!mUnk_270 && this->func_ov063_0215a514()) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
     } else if (!mUnk_270 && this->mUnk_238.HasReachedMaxU() && this->func_ov063_0215a474()) {
-        this->SetState(ActorUnkCANSState_Hitting);
+        this->SetState(ActorLobarrierState_Hitting);
     } else if (!this->func_ov063_0215a2c0()) {
-        this->SetState(ActorUnkCANSState_Chasing);
+        this->SetState(ActorLobarrierState_Chasing);
     }
 }
 
-void ActorUnkCANS::func_ov063_02159408(void) {
+void ActorLobarrier::func_ov063_02159408(void) {
     this->func_ov000_02099450(&mUnk_224, &data_027e07d4, 0, data_ov000_020aecf0[0]);
     mUnk_128.vfunc_1C(data_ov063_02163068, 0, 0x19A, 0);
     mUnk_200.func_ov000_02097bec();
 }
 
-void ActorUnkCANS::func_ov063_02159494(void) {
+void ActorLobarrier::func_ov063_02159494(void) {
     this->func_ov000_020994a0();
 
     if (GET_FLAG(mFlags, ActorFlag_5) == 0) {
@@ -640,7 +640,7 @@ void ActorUnkCANS::func_ov063_02159494(void) {
     }
 
     if (this->func_ov063_0215a514()) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
         return;
     }
 
@@ -650,19 +650,19 @@ void ActorUnkCANS::func_ov063_02159494(void) {
         return;
     }
 
-    if (mUnk_268 == NULL) {
-        this->SetState(ActorUnkCANSState_Fleeing);
+    if (this->shield == NULL) {
+        this->SetState(ActorLobarrierState_Fleeing);
     } else {
         if (this->func_ov063_02159f3c(0x3000)) {
-            this->SetState(ActorUnkCANSState_Chasing);
+            this->SetState(ActorLobarrierState_Chasing);
         } else {
 
-            this->SetState(ActorUnkCANSState_Idle);
+            this->SetState(ActorLobarrierState_Idle);
         }
     }
 }
 
-void ActorUnkCANS::func_ov063_021595a4(void) {
+void ActorLobarrier::func_ov063_021595a4(void) {
     mVel.x   = 0;
     mVel.z   = 0;
     mUnk_270 = 0;
@@ -670,7 +670,7 @@ void ActorUnkCANS::func_ov063_021595a4(void) {
     mUnk_200.func_ov000_02097bec();
 }
 
-void ActorUnkCANS::func_ov063_02159618(void) {
+void ActorLobarrier::func_ov063_02159618(void) {
     if (!mUnk_128.vfunc_28()->func_01ff8fa8()) {
         return;
     }
@@ -682,22 +682,22 @@ void ActorUnkCANS::func_ov063_02159618(void) {
     }
 
     if (this->func_ov063_0215a474()) {
-        this->SetState(ActorUnkCANSState_Hitting);
+        this->SetState(ActorLobarrierState_Hitting);
     } else if (this->func_ov063_02159f3c(0x3000)) {
-        this->SetState(ActorUnkCANSState_Chasing);
+        this->SetState(ActorLobarrierState_Chasing);
     } else {
-        this->SetState(ActorUnkCANSState_Idle);
+        this->SetState(ActorLobarrierState_Idle);
     }
 }
 
-void ActorUnkCANS::func_ov063_02159714(void) {
+void ActorLobarrier::func_ov063_02159714(void) {
     mVel.x   = 0;
     mVel.z   = 0;
     mUnk_270 = 0;
     mUnk_128.vfunc_1C(data_ov063_02163098, 0x1000, 0x19A, 0);
 }
 
-void ActorUnkCANS::func_ov063_02159784(void) {
+void ActorLobarrier::func_ov063_02159784(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x7000)) {
         data_027e09a8->func_ov000_02071b30(0x9862, &mPos, 0);
     }
@@ -728,22 +728,22 @@ void ActorUnkCANS::func_ov063_02159784(void) {
     }
 
     if (this->func_ov063_0215a514()) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
     } else if (this->func_ov063_0215a2c0()) {
-        this->SetState(ActorUnkCANSState_LinkInRange);
+        this->SetState(ActorLobarrierState_LinkInRange);
     } else {
-        this->SetState(ActorUnkCANSState_Chasing);
+        this->SetState(ActorLobarrierState_Chasing);
     }
 }
 
-void ActorUnkCANS::func_ov063_021598fc(void) {
+void ActorLobarrier::func_ov063_021598fc(void) {
     mUnk_128.vfunc_1C(data_ov063_02163080, 0x1333, 0x19A, 0);
     this->mTimer.Set(0, gRandom.Next32(21) + 10);
     mUnk_276 = gRandom.Next32(0) & 0x80000000 ? 1 : -1;
 }
 
 // non-matching
-void ActorUnkCANS::func_ov063_021599e4(void) {
+void ActorLobarrier::func_ov063_021599e4(void) {
     if (mUnk_128.vfunc_28()->func_02015080(0x1000) || mUnk_128.vfunc_28()->func_02015080(0xA000) ||
         mUnk_128.vfunc_28()->func_02015080(0x13000) || mUnk_128.vfunc_28()->func_02015080(0x1C000)) {
         data_027e09a8->func_ov000_02071b30(0x9864, &mPos, 0);
@@ -775,11 +775,11 @@ void ActorUnkCANS::func_ov063_021599e4(void) {
     mVel.z       = FX_MUL(cos_val1, FX_F32_TO_FX32(0.02f)) + FX_MUL(cos_val2, mUnk_270);
 
     if (this->func_ov063_0215a514()) {
-        this->SetState(ActorUnkCANSState_Rotating);
+        this->SetState(ActorLobarrierState_Rotating);
     }
 }
 
-void ActorUnkCANS::func_ov063_02159ca8(void) {
+void ActorLobarrier::func_ov063_02159ca8(void) {
     mUnk_128.vfunc_1C(data_ov063_02163068, 0x1333, 0x19A, 0);
     mVel.x   = 0;
     mVel.z   = 0;
@@ -797,7 +797,7 @@ void ActorUnkCANS::func_ov063_02159ca8(void) {
     mUnk_26C += -FX_F32_TO_FX32(8.f);
 }
 
-void ActorUnkCANS::func_ov063_02159d68(void) {
+void ActorLobarrier::func_ov063_02159d68(void) {
     if (this->func_ov063_0215a514()) {
         mUnk_26C += -FX_F32_TO_FX32(8.f);
     }
@@ -808,18 +808,18 @@ void ActorUnkCANS::func_ov063_02159d68(void) {
 
     VecFx32_Init(0, 0, 0, &mUnk_23C.mUnk_08);
 
-    if (mUnk_268 != NULL) {
+    if (this->shield != NULL) {
         if (this->func_ov063_0215a474()) {
-            this->SetState(ActorUnkCANSState_LinkInRange);
+            this->SetState(ActorLobarrierState_LinkInRange);
             return;
         }
-        this->SetState(ActorUnkCANSState_Chasing);
+        this->SetState(ActorLobarrierState_Chasing);
     } else {
-        this->SetState(ActorUnkCANSState_Fleeing);
+        this->SetState(ActorLobarrierState_Fleeing);
     }
 }
 
-void ActorUnkCANS::func_ov063_02159dfc(void) {
+void ActorLobarrier::func_ov063_02159dfc(void) {
     mVel.x   = 0;
     mVel.z   = 0;
     mUnk_270 = 0;
@@ -827,9 +827,9 @@ void ActorUnkCANS::func_ov063_02159dfc(void) {
 }
 
 // Empty (matched)
-void ActorUnkCANS::func_ov063_02159e1c(void) {}
+void ActorLobarrier::func_ov063_02159e1c(void) {}
 
-void ActorUnkCANS::func_ov063_02159e20(void) {
+void ActorLobarrier::func_ov063_02159e20(void) {
     this->func_ov000_02098f34(&mUnk_200.mUnk_10);
 
     vfunc_40();
@@ -845,7 +845,7 @@ void ActorUnkCANS::func_ov063_02159e20(void) {
 }
 
 // non-matching
-void ActorUnkCANS::func_ov063_02159ec0(void) {
+void ActorLobarrier::func_ov063_02159ec0(void) {
     this->vfunc_44();
 
     if (!GET_FLAG(mFlags, ActorFlag_5)) {
@@ -860,14 +860,14 @@ void ActorUnkCANS::func_ov063_02159ec0(void) {
 
     VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), &mUnk_200.mUnk_10);
 
-    this->SetState(ActorUnkCANSState_Stunned);
+    this->SetState(ActorLobarrierState_Stunned);
 
     *(s16 *) &mUnk_44 |= 0x20;
 }
 
 // non-matching
 // return bool ?
-unk32 ActorUnkCANS::func_ov063_02159f3c(unk32 param1) {
+unk32 ActorLobarrier::func_ov063_02159f3c(unk32 param1) {
     s16 var;
     func_ov000_020986b4((s16 *) &var, this, 0);
 
@@ -910,7 +910,7 @@ unk32 ActorUnkCANS::func_ov063_02159f3c(unk32 param1) {
 
 // non-matching
 // return bool ?
-unk32 ActorUnkCANS::func_ov063_0215a0f0(void) {
+unk32 ActorLobarrier::func_ov063_0215a0f0(void) {
     s16 var1;
     func_ov000_020986b4((s16 *) &var1, this, 0);
 
@@ -957,7 +957,7 @@ unk32 ActorUnkCANS::func_ov063_0215a0f0(void) {
 }
 
 // non-matching
-unk32 ActorUnkCANS::func_ov063_0215a2c0(void) {
+unk32 ActorLobarrier::func_ov063_0215a2c0(void) {
     s16 var1;
     func_ov000_020986b4((s16 *) &var1, this, 0);
     unk32 val1 = ABS((s16) (var1 - mUnk_26C));
@@ -1003,20 +1003,20 @@ unk32 ActorUnkCANS::func_ov063_0215a2c0(void) {
     return func_01ff9a5c(otherVecPtr, &mPos, &stackVec) < 0xB33;
 }
 
-void ActorUnkCANS::func_ov063_0215a428(void) {
+void ActorLobarrier::func_ov063_0215a428(void) {
     // A not very clean code to access 22C and 22E matching the asm
     u16 *values = (u16 *) &mUnk_224.mUnk_08;
     if (values[0] < values[1]) {
-        this->SetState(ActorUnkCANSState_Stunned);
-    } else if (mUnk_268 == NULL) {
-        this->SetState(ActorUnkCANSState_Fleeing);
+        this->SetState(ActorLobarrierState_Stunned);
+    } else if (this->shield == NULL) {
+        this->SetState(ActorLobarrierState_Fleeing);
     } else {
-        this->SetState(ActorUnkCANSState_Idle);
+        this->SetState(ActorLobarrierState_Idle);
     }
 }
 
 // return bool ?
-unk32 ActorUnkCANS::func_ov063_0215a474(void) {
+unk32 ActorLobarrier::func_ov063_0215a474(void) {
     s16 var;
     VecFx32 stackVec;
 
@@ -1045,7 +1045,7 @@ unk32 ActorUnkCANS::func_ov063_0215a474(void) {
 #endif
 }
 
-unk32 ActorUnkCANS::func_ov063_0215a514(void) {
+unk32 ActorLobarrier::func_ov063_0215a514(void) {
     s16 var;
 
     func_ov000_020986b4((s16 *) &var, this, 0);
@@ -1055,8 +1055,8 @@ unk32 ActorUnkCANS::func_ov063_0215a514(void) {
 }
 
 // return bool ?
-unk32 ActorUnkCANS::func_ov063_0215a56c(unk32 param1) {
-    if (mUnk_268 == NULL) {
+unk32 ActorLobarrier::func_ov063_0215a56c(unk32 param1) {
+    if (this->shield == NULL) {
         return false;
     }
 
@@ -1064,7 +1064,7 @@ unk32 ActorUnkCANS::func_ov063_0215a56c(unk32 param1) {
 }
 
 // non-matching
-void ActorUnkCANS::func_ov063_0215a5a0(VecFx32 *param1) {
+void ActorLobarrier::func_ov063_0215a5a0(VecFx32 *param1) {
     // Does not match instruction order
     VecFx32 vec;
     vec.x     = mUnk_250.x;
@@ -1075,27 +1075,27 @@ void ActorUnkCANS::func_ov063_0215a5a0(VecFx32 *param1) {
     param1->y = vec.y;
 }
 
-unk32 ActorUnkCANS::func_ov063_0215a5bc(void) {
-    if (mUnk_268 != NULL) {
+unk32 ActorLobarrier::func_ov063_0215a5bc(void) {
+    if (this->shield != NULL) {
         return 10;
     }
     return data_ov000_020aecf4[0];
 }
 
-unk32 ActorUnkCANS::func_ov063_0215a5d8(void) {
-    if (mUnk_268 != NULL) {
+unk32 ActorLobarrier::func_ov063_0215a5d8(void) {
+    if (this->shield != NULL) {
         return 0x385;
     }
     return data_ov000_020aecfc[0];
 }
 
 // non-matching
-void ActorUnkCANS::vfunc_10(Cylinder *param1) {
+void ActorLobarrier::vfunc_10(Cylinder *param1) {
     Cylinder *cylinder = this->mUnk_34;
     *param1            = *cylinder;
     VecFx32_Add(&param1->pos, &this->mPos, &param1->pos);
 
-    if (this->mUnk_268 != NULL) {
+    if (this->shield != NULL) {
         fx16 angle = this->mAngle.angle_s;
         VecFx32 pos;
         VecFx32_Init(FX_F32_TO_FX32(0.25f), 0, 0, &pos);
@@ -1104,10 +1104,10 @@ void ActorUnkCANS::vfunc_10(Cylinder *param1) {
     }
 }
 
-void ActorUnkCANS::func_ov063_0215a678(ActorUnkCANS *actor, UnkStruct_func_ov063_0215a678 *param2) {
+void ActorLobarrier::func_ov063_0215a678(ActorLobarrier *actor, UnkStruct_func_ov063_0215a678 *param2) {
     ModelRender *modelRender = param2->mUnk_04;
 
-    if (actor->mUnk_268 == NULL) {
+    if (actor->shield == NULL) {
         func_0200eab0(modelRender->mpModel, actor->mUnk_0B0.mUnk_6C, 0x00);
     } else {
         func_0200eab0(modelRender->mpModel, actor->mUnk_0B0.mUnk_6C, 0x1F);

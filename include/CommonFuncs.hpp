@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Actor/ActorId.hpp"
+#include "Actor/ActorLobarrier.hpp"
 #include "Course/Course.hpp"
 #include "Map/MapObjectId.hpp"
 #include "Player/PlayerActorBase.hpp"
@@ -39,7 +40,7 @@ struct UnkStruct_027e0ce0_30_00;
 struct Actor_Derived2;
 struct ActorUnkCANS;
 struct UnkStruct_ov063_02162e88;
-struct UnkStruct_ActorUnkCANS_224;
+struct UnkStruct_ActorLobarrier_224;
 struct ActorUnkZLSL_AnimationTag;
 struct UnkStruct_ov063_02163784;
 struct UnkStruct_ov063_021632e4;
@@ -334,8 +335,8 @@ void func_ov000_0209807c(void *);
 void func_ov000_020980e0(void *);
 void func_ov000_02098244(VecFx32 *);
 void func_ov000_020986b4(s16 *param1, Actor *param2, unk32 param3);
-unk32 func_ov000_02098d7c(ActorUnkCANS *param1, UnkStruct_ov063_02162e88 *param2);
-void func_ov000_02099870(UnkStruct_ActorUnkCANS_224 *, VecFx32 *, u16);
+unk32 func_ov000_02098d7c(ActorLobarrier *param1, UnkStruct_ov063_02162e88 *param2);
+void func_ov000_02099870(UnkStruct_ActorLobarrier_224 *, VecFx32 *, u16);
 void func_ov000_02099e58(UnkStruct_ov063_021632e4 *param1, ActorUnkZLSL_AnimationTag param2, unk32 param8);
 void func_ov000_02099f64(UnkStruct_ov063_02163784 *param1, ActorUnkZLSL_AnimationTag param2, unk32 param3);
 bool func_ov000_020a0a90(size_t, unk32, size_t);

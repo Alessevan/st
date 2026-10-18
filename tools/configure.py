@@ -998,7 +998,7 @@ config.libs = [
     GameLib(
         "Overlay 63",
         [
-            Object("063_Shrine/Actor/ActorUnkCANS.cpp"),
+            Object("063_Shrine/Actor/ActorLobarrier.cpp"),
             Object("063_Shrine/Actor/ActorUnkCASE.cpp"),
             Object("063_Shrine/Actor/ActorUnkRBLS.cpp"),
             Object("063_Shrine/Actor/ActorUnkRMSBase.cpp"),

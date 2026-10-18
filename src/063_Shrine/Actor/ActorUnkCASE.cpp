@@ -1,9 +1,9 @@
 #include "Actor/ActorUnkCASE.hpp"
 #include "Actor/Actor.hpp"
 #include "Actor/ActorId.hpp"
+#include "Actor/ActorLobarrier.hpp"
 #include "Actor/ActorManager.hpp"
 #include "Actor/ActorShotArrow.hpp"
-#include "Actor/ActorUnkCANS.hpp"
 #include "Actor/ActorUnkITWP.hpp"
 #include "CommonFuncs.hpp"
 #include "Physics/Cylinder.hpp"
@@ -192,7 +192,7 @@ void ActorUnkCASE::func_ov063_0215af60(void) {
     }
 
     if (mUnk_14C != NULL) {
-        ((ActorUnkCANS *) mUnk_14C)->func_ov063_0215a428();
+        ((ActorLobarrier *) mUnk_14C)->func_ov063_0215a428();
     }
 
     this->func_ov063_0215aefc(0);
@@ -465,7 +465,7 @@ void ActorUnkCASE::func_ov063_0215b814(RefStruct ref) {
     mUnk_1E4 = ref;
 
     if (mUnk_14C != NULL) {
-        ((ActorUnkCANS *) mUnk_14C)->SetState(9);
+        ((ActorLobarrier *) mUnk_14C)->SetState(9);
     }
 
     this->func_ov063_0215aefc(1);
@@ -474,7 +474,7 @@ void ActorUnkCASE::func_ov063_0215b814(RefStruct ref) {
 // non-matching
 void ActorUnkCASE::func_ov063_0215b854(void) {
     if (mUnk_14C != NULL) {
-        ActorUnkCANS *actorCans = (ActorUnkCANS *) mUnk_14C;
+        ActorLobarrier *actorCans = (ActorLobarrier *) mUnk_14C;
 
         VecFx32 vec = actorCans->mPos;
         VecFx32_Copy(&vec, &mPos);
@@ -482,10 +482,10 @@ void ActorUnkCASE::func_ov063_0215b854(void) {
 
         actorCans->mUnk_234.Set(0, 20);
 
-        actorCans = (ActorUnkCANS *) mUnk_14C;
+        actorCans = (ActorLobarrier *) mUnk_14C;
         actorCans->func_ov063_02158b0c();
 
-        actorCans = (ActorUnkCANS *) mUnk_14C;
+        actorCans = (ActorLobarrier *) mUnk_14C;
         actorCans->func_ov063_0215a428();
         mUnk_124.mUnk_04 = ~0x38000;
         mUnk_14C         = NULL;
@@ -502,14 +502,14 @@ static inline bool VecFx32_IsZero(VecFx32 *vec) {
 void ActorUnkCASE::func_ov063_0215b8e8(VecFx32 *param1) {
 
     if (mUnk_14C != NULL) {
-        ((ActorUnkCANS *) mUnk_14C)->func_ov063_0215a428();
+        ((ActorLobarrier *) mUnk_14C)->func_ov063_0215a428();
 
         if (param1->x == 0 && param1->y == 0 && param1->z == 0) {
             this->func_ov063_0215aefc(0);
             return;
         }
 
-        ((ActorUnkCANS *) mUnk_14C)->func_ov063_02158b0c();
+        ((ActorLobarrier *) mUnk_14C)->func_ov063_02158b0c();
         mUnk_14C = NULL;
     }
 
