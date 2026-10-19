@@ -59,8 +59,8 @@ public:
     /* 910 */ ActorUnkRCFO_910 mUnk_910;
     /* 914 */ PAD(0x914, 0x91C);
     /* 91C */ Vec2s mUnk_91C[0xC8];
-    /* C3C */ unk8 mUnk_C3C[0x190];
-    /* DDC */ unk8 *mUnk_DCC;
+    /* C3C */ MapObject *mUnk_C3C[0x64];
+    /* DDC */ MapObject **mUnk_DCC;
     /* DD0 */ unk32 mUnk_DD0;
     /* DD4 */ unk32 mUnk_DD4;
     /* DD8 */ unk16 mUnk_DD8;

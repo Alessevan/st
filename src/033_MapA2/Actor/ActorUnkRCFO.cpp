@@ -1,4 +1,8 @@
 #include "Actor/ActorUnkRCFO.hpp"
+
+#include "MapObject/MapObject.hpp"
+#include "MapObject/MapObjectManager.hpp"
+#include "MapObject/MapObjectUnkRCFL.hpp"
 #include "System/SysNew.hpp"
 
 DECL_PROFILE(ActorProfileUnkRCFO);
@@ -12,6 +16,7 @@ Actor *ActorProfileUnkRCFO::Create() {
 ActorProfileUnkRCFO::ActorProfileUnkRCFO() :
     ActorProfile(ActorId_RCFO) {}
 
+// non-matching
 ActorUnkRCFO::ActorUnkRCFO() :
     mUnk_910(this->mUnk_91C, 0xC8),
     mUnk_DCC(this->mUnk_C3C),
@@ -42,6 +47,8 @@ ActorUnkRCFO::~ActorUnkRCFO() {
 extern unk32 data_ov033_0211dbe0;
 
 bool ActorUnkRCFO::Init(unk32 param1) {
+#pragma unused(param1)
+
     this->mUnk_DF4 = this->mUnk_5C.mParams[0];
     this->mUnk_094.func_ov033_02119048(&data_ov033_0211dbe0);
 
@@ -49,18 +56,64 @@ bool ActorUnkRCFO::Init(unk32 param1) {
     return true;
 }
 
-void ActorUnkRCFO::Setup() {}
+void ActorUnkRCFO::Setup() {
+    this->mUnk_DCC = this->mUnk_C3C;
+
+    for (MapObject **mapObjectPtr = gpMapObjManager->mMapObjTable; mapObjectPtr != gpMapObjManager->mUnk_08; ++mapObjectPtr) {
+        MapObjectUnkRCFL *mapObject = (MapObjectUnkRCFL *) *mapObjectPtr;
+
+        if (mapObject == NULL || mapObject->GetMapObjectId() != MapObjectId_RCFL) {
+            continue;
+        }
+
+        fx32 delta = mapObject->func_ov033_0211bcf4();
+
+        unk32 limit = mapObject->mPos.x - delta;
+        if (limit < this->mUnk_DDC) {
+            this->mUnk_DDC = limit;
+        }
+
+        limit = mapObject->mPos.x + delta;
+        if (limit > this->mUnk_DE8) {
+            this->mUnk_DE8 = limit;
+        }
+
+        limit = mapObject->mPos.z - delta;
+        if (limit < this->mUnk_DE4) {
+            this->mUnk_DE4 = limit;
+        }
+
+        limit = mapObject->mPos.z + delta;
+        if (limit > this->mUnk_DF0) {
+            this->mUnk_DF0 = limit;
+        }
+
+        if (this->mUnk_DCC != NULL) {
+            *mUnk_DCC = mapObject;
+        }
+
+        ++this->mUnk_DCC;
+    }
+}
+
+// non-matching
 void ActorUnkRCFO::Update() {}
 
 void ActorUnkRCFO::vfunc_24() {
     this->Update();
 }
 
-void ActorUnkRCFO::vfunc_2C(unk32 param1) {}
+void ActorUnkRCFO::vfunc_2C(unk32 param1) {
+#pragma unused(param1)
+}
+// non-matching
 void ActorUnkRCFO::func_ov033_02119840(unk32 param1, unk32 param2) {}
+// non-matching
 void ActorUnkRCFO::func_ov033_021199f4() {}
+// non-matching
 void ActorUnkRCFO::func_ov033_02119a58() {}
 
+// non-matching
 void ActorUnkRCFO::func_ov033_02119bc4() {
     this->mUnk_094.func_ov033_021190f4();
 }

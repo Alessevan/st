@@ -21,7 +21,7 @@ void MapObjectUnkRCFL::func_ov033_0211bc34(void) {}
 void MapObjectUnkRCFL::func_ov033_0211bcac(void) {}
 void MapObjectUnkRCFL::func_ov033_0211bcc4(void) {}
 void MapObjectUnkRCFL::func_ov033_0211bcdc(void) {}
-void MapObjectUnkRCFL::func_ov033_0211bcf4(void) {}
+fx32 MapObjectUnkRCFL::func_ov033_0211bcf4() {}
 void MapObjectUnkRCFL::func_ov033_0211bcfc(void) {}
 void MapObjectUnkRCFL::func_ov033_0211bdac(void) {}
 

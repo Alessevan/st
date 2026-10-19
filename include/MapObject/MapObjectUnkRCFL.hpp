@@ -23,7 +23,7 @@ public:
     void func_ov033_0211bcac(void);
     void func_ov033_0211bcc4(void);
     void func_ov033_0211bcdc(void);
-    void func_ov033_0211bcf4(void);
+    fx32 func_ov033_0211bcf4();
     void func_ov033_0211bcfc(void);
     void func_ov033_0211bdac(void);
 };
