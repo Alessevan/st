@@ -89,7 +89,7 @@ ActorItemTornado::ActorItemTornado() :
     mUnk_1D4(0x02),
     mUnk_1D6(0x04),
     mUnk_1D8(0x00),
-    mUnk_1DC(0x00) {
+    mUnk_1DC(FX_F32_TO_FX32(0.0f)) {
     this->mUnk_94.func_ov000_02057c98(&this->mUnk_F4.mUnk_00);
     this->mUnk_94.func_ov000_02057c98(&this->mUnk_134.mUnk_00);
 
@@ -118,7 +118,7 @@ bool ActorItemTornado::Init(unk32 param1) {
 void ActorItemTornado::SetState(ActorState state) {
     switch (state) {
         case ActorItemTornadoState_Moving:
-            this->mUnk_1DC = 0x1000;
+            this->mUnk_1DC = FX_F32_TO_FX32(1.0f);
             data_027e0cec->func_ov000_020a00d4(this->mUnk_1E0, 0x8FD, 0x8FB, 0x8FC, &this->mPos, 0x2);
             break;
         case ActorItemTornadoState_Ending:
@@ -213,7 +213,7 @@ void ActorItemTornado::func_ov031_020e5d18(unk32 param1) {
 
                 this->mUnk_1DC -= func_01ffb66c(0x1000, this->mUnk_1D6);
 
-                if (this->mUnk_1DC <= 0) {
+                if (this->mUnk_1DC <= FX_F32_TO_FX32(0.0f)) {
                     this->Kill();
                 }
             }
@@ -284,7 +284,7 @@ void ActorItemTornado::vfunc_24() {
 }
 
 void ActorItemTornado::vfunc_2C(unk32 param1) {
-    if (this->mUnk_1DC <= 0x0) {
+    if (this->mUnk_1DC <= FX_F32_TO_FX32(0.0f)) {
         return;
     }
 
@@ -292,7 +292,7 @@ void ActorItemTornado::vfunc_2C(unk32 param1) {
         return;
     }
 
-    unk32 var_r1 = this->mUnk_1DC == 0x1000 ? 0x1F : CLAMP(MUL_FXUNK2(this->mUnk_1DC, 0x1F), 0, 0x1F);
+    unk32 var_r1 = this->mUnk_1DC == FX_F32_TO_FX32(1.0f) ? 0x1F : CLAMP(MUL_FXUNK2(this->mUnk_1DC, 0x1F), 0, 0x1F);
 
     if (var_r1 <= 0) {
         return;
