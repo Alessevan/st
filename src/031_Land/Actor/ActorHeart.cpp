@@ -11,15 +11,6 @@ extern unk32 data_ov000_020aecf8;
 
 const Cylinder data_ov031_02113d64(0x800);
 
-static PTMF<ActorHeart> data_ov031_02113d74[ActorHeartState_Max] = {
-    &ActorHeart::func_ov031_020ef2f8, // ActorHeartState_InitFallDown
-    &ActorHeart::func_ov031_020ef334, // ActorHeartState_FallingDown
-    &ActorHeart::func_ov031_020ef3a0, // ActorHeartState_LyingOnGround
-    &ActorHeart::func_ov031_020ef3d0, // ActorHeartState_GrabbedByBoomerang
-    &ActorHeart::func_ov031_020ef444, // ActorHeartState_Sliding
-    &ActorHeart::func_ov031_020ef458, // ActorHeartState_GrabbedByWhip
-};
-
 static PTMF<ActorHeart> data_ov031_02113da4[ActorHeartState_Max] = {
     &ActorHeart::func_ov031_020ef2ec, // ActorHeartState_InitFallDown
     &ActorHeart::func_ov031_020ef320, // ActorHeartState_FallingDown
@@ -27,6 +18,15 @@ static PTMF<ActorHeart> data_ov031_02113da4[ActorHeartState_Max] = {
     &ActorHeart::func_ov031_020ef3b8, // ActorHeartState_GrabbedByBoomerang
     &ActorHeart::func_ov031_020ef430, // ActorHeartState_Sliding
     &ActorHeart::func_ov031_020ef448, // ActorHeartState_GrabbedByWhip
+};
+
+static PTMF<ActorHeart> data_ov031_02113d74[ActorHeartState_Max] = {
+    &ActorHeart::func_ov031_020ef2f8, // ActorHeartState_InitFallDown
+    &ActorHeart::func_ov031_020ef334, // ActorHeartState_FallingDown
+    &ActorHeart::func_ov031_020ef3a0, // ActorHeartState_LyingOnGround
+    &ActorHeart::func_ov031_020ef3d0, // ActorHeartState_GrabbedByBoomerang
+    &ActorHeart::func_ov031_020ef444, // ActorHeartState_Sliding
+    &ActorHeart::func_ov031_020ef458, // ActorHeartState_GrabbedByWhip
 };
 
 DECL_PROFILE(ActorProfileHeart);
