@@ -10,7 +10,11 @@
 class MapObjectUnkRCFL : public MapObject {
 public:
     /* 00 (base) */
-    /* 40 */
+    /* 40 */ unk32 mUnk_40;
+    /* 44 */ PAD(0x44, 0x60);
+    /* 60 */ unk32 mUnk_60;
+    /* 64 */ PAD(0x64, 0x68);
+    /* 68 */
 
     MapObjectUnkRCFL();
 

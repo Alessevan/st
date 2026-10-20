@@ -6,7 +6,7 @@
 DECL_PROFILE(MapObjectProfileUnkRCFL);
 
 MapObject *MapObjectProfileUnkRCFL::Create() {
-    return new(HeapIndex_2) MapObjectUnkRCFL();
+    return new(HeapIndex_ITCM) MapObjectUnkRCFL();
 }
 
 MapObjectProfileUnkRCFL::MapObjectProfileUnkRCFL() :
