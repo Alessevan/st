@@ -275,7 +275,48 @@ void ActorUnkRCFO::func_ov033_021199f4() {
 void ActorUnkRCFO::func_ov033_02119a58() {
     VecFx32 *vec = data_027e0ce0->func_01fff148(0x1);
 
-    func_01ffb428(vec->x - this->mUnk_DDC.vec.x, this->mUnk_DE8.vec.x - this->mUnk_DDC.vec.x);
+    Vec2s sp;
+    sp.x = (func_01ffb428(vec->x - this->mUnk_DDC.vec.x, this->mUnk_DE8.vec.x - this->mUnk_DDC.vec.x) << 8) >> 0xC;
+    sp.y = (func_01ffb428(vec->z - this->mUnk_DDC.vec.z, this->mUnk_DE8.vec.z - this->mUnk_DDC.vec.z) * 0xC0) >> 0xC;
+
+    if (sp.x < 0) {
+        sp.x = 0;
+    }
+    if (sp.x > 0xFF) {
+        sp.x = 0xFF;
+    }
+    if (sp.y < 0) {
+        sp.y = 0;
+    }
+    if (sp.y > 0xBF) {
+        sp.y = 0xBF;
+    }
+
+    unk32 val   = this->mUnk_910.mUnk_00;
+    unk32 delta = this->mUnk_910.mUnk_04 - val;
+    if ((u32) ((s32) (delta + ((u32) (delta >> 1) >> 0x1E)) >> 2) == 0x0) {
+        this->mUnk_910.func_ov000_0205b1d8(&sp);
+        return;
+    }
+
+    Vec2s *newVal = (Vec2s *) (this->mUnk_910.mUnk_00 + delta * 4);
+    bool cond     = false;
+
+    // strange vec2s access
+    if (newVal->x == sp.x && newVal->y == sp.y) {
+        cond = true;
+    }
+
+    if (cond) {
+        return;
+    }
+
+    fx16 deltaX = ABS(sp.x - newVal->x);
+    fx16 deltaY = ABS(sp.y - newVal->y);
+
+    if (deltaX > 2 && deltaY > 2) {
+        this->mUnk_910.func_ov000_0205b1d8(&sp);
+    }
 }
 
 // non-matching

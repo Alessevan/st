@@ -27,6 +27,7 @@ public:
 
     ActorUnkRCFO_910(Vec2s *param1, unk32 param2); // func_ov000_0205b1cc
 
+    void func_ov000_0205b1d8(Vec2s *param1);
     void func_ov000_0205b224(unk32 param1, unk32 param2);
 };
 
