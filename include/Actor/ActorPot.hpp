@@ -43,7 +43,8 @@ public:
     /* 0EC */ u16 mUnk_EC;
     /* 0EE */ PAD(0x0EE, 0xF0);
     /* 0F0 */ UnkStruct_ov031_02113fb8 mUnk_F0;
-    /* 0F4 */ PAD(0xF4, 0x110);
+    /* 0F4 */ PAD(0xF4, 0x10C);
+    /* 10C */ unk32 mUnk_10C;
     /* 110 */
 
     Actor_ov031_02113fd4();
