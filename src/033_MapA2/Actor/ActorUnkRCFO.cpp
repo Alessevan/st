@@ -272,7 +272,11 @@ void ActorUnkRCFO::func_ov033_021199f4() {
 }
 
 // non-matching
-void ActorUnkRCFO::func_ov033_02119a58() {}
+void ActorUnkRCFO::func_ov033_02119a58() {
+    VecFx32 *vec = data_027e0ce0->func_01fff148(0x1);
+
+    func_01ffb428(vec->x - this->mUnk_DDC.vec.x, this->mUnk_DE8.vec.x - this->mUnk_DDC.vec.x);
+}
 
 // non-matching
 bool ActorUnkRCFO::func_ov033_02119bc4() {
