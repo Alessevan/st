@@ -32,6 +32,7 @@ public:
     /* 58 */ virtual unk32 vfunc_58() override;
     /* 5C */ virtual void vfunc_5C(ActorState state) override;
 
+    void func_ov058_02142abc();
     void func_ov058_02142bac();
     void func_ov058_02142bb8();
     void func_ov058_02142bc4();

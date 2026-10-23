@@ -40,6 +40,9 @@ ActorProfileUnkNSTN::ActorProfileUnkNSTN() :
 ActorUnkNSTN::ActorUnkNSTN() :
     mUnk_110(G3d_GetModelPtr(data_ov000_020b5d34.GetProfileFromId(MapObjectId_STNE)->vfunc_04()->mUnk_50), 0x1) {}
 
+// non-matching seems like the dtor of the modelrender
+void ActorUnkNSTN::func_ov058_02142abc() {}
+
 bool ActorUnkNSTN::Init(unk32 param1) {
     this->Actor_ov031_02113fd4::Init(param1);
     this->mUnk_10C = 0x1;
