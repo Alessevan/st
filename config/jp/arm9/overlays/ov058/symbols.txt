@@ -758,7 +758,7 @@ data_ov058_02155f68 kind:data(any) addr:0x02155f68
 data_ov058_02155f94 kind:data(any) addr:0x02155f94
 data_ov058_02155fd0 kind:data(any) addr:0x02155fd0 ambiguous
 data_ov058_02155fdc kind:data(any) addr:0x02155fdc
-_ZN15ProfileInstanceI19ActorProfileUnkNSTNE8sProfileE kind:data(any) addr:0x02156020
+data_ov058_02156020 kind:data(any) addr:0x02156020
 data_ov058_0215602c kind:data(any) addr:0x0215602c ambiguous
 data_ov058_02156038 kind:data(any) addr:0x02156038
 data_ov058_02156050 kind:data(any) addr:0x02156050
