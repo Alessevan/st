@@ -6,6 +6,18 @@
 #include "global.h"
 #include "types.h"
 
+enum ActorUnkNSTNState_ {
+    ActorUnkNSTNState_0 = 0,
+    ActorUnkNSTNState_1 = 1,
+    ActorUnkNSTNState_2 = 2,
+    ActorUnkNSTNState_3 = 3,
+    ActorUnkNSTNState_4 = 4,
+    ActorUnkNSTNState_5 = 5,
+    ActorUnkNSTNState_6 = 6,
+    ActorUnkNSTNState_7 = 7,
+    ActorUnkNSTNState_Max
+};
+
 class ActorUnkNSTN : public Actor_ov031_02113fd4 {
 public:
     /* 000 (base) */
@@ -13,15 +25,13 @@ public:
 
     ActorUnkNSTN();
 
+    /* 18 */ virtual bool Init(unk32 param1) override;
+    /* 20 */ virtual void Update() override;
+    /* 2C */ virtual void vfunc_2C(unk32 param1) override;
     /* 4C */ virtual ~ActorUnkNSTN() override;
+    /* 58 */ virtual unk32 vfunc_58() override;
     /* 5C */ virtual void vfunc_5C(ActorState state) override;
 
-    void func_ov058_02142abc();
-    void func_ov058_02142ad0(unk32 param1);
-    void func_ov058_02142ae8();
-    void func_ov058_02142af0();
-    void func_ov058_02142b44();
-    void func_ov058_02142b7c();
     void func_ov058_02142bac();
     void func_ov058_02142bb8();
     void func_ov058_02142bc4();

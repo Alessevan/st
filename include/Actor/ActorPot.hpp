@@ -58,7 +58,7 @@ public:
     /* 40 */ virtual void vfunc_40() override;
     /* 44 */ virtual void vfunc_44() override;
     /* 54 */ virtual void vfunc_54();
-    /* 58 */ virtual void vfunc_58();
+    /* 58 */ virtual unk32 vfunc_58();
     /* 5C */ virtual void vfunc_5C(ActorState state) = 0;
     /* 60 */ virtual void vfunc_60();
     /* 64 */ virtual void vfunc_64();
