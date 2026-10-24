@@ -2,39 +2,77 @@
 
 #include "Actor_Derived1.hpp"
 
+class Actor_Character;
+
+class Actor_Character_12C : public UnkStruct_ov031_Items_00 {
+public:
+    /* 00 (base) */
+    /* 04 */ PAD(0x04, 0x08);
+    /* 08 */ Actor_Character *mUnk_08;
+    /* 0C */ unk16 mUnk_0C;
+    /* 0E */ unk16 mUnk_0E;
+    /* 10 */ unk16 mUnk_10;
+    /* 12 */
+
+    Actor_Character_12C(Actor_Character *param1);
+
+    /* 00 */ virtual ~Actor_Character_12C() override;
+
+    /* 08 */ virtual bool vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) override;
+    /* 0C */ virtual bool vfunc_0C(RefStruct ref, UnkStruct_ov031_020e54d4 *param2, const VecFx32 *param3,
+                                   const VecFx32 *param4) override;
+};
+
 class Actor_Character : public Actor_Derived1 {
 public:
     /* 000 (base) */
-    /* 120 */
+    /* 120 */ unk16 mUnk_120;
+    /* 120 */ unk16 mUnk_122;
+    /* 120 */ unk16 mUnk_124;
+    /* 120 */ unk16 mUnk_126;
+    /* 128 */ unk32 mUnk_128;
+    /* 12C */ Actor_Character_12C mUnk_12C;
+    /* 140 */ unk32 mUnk_140;
+    /* 14C */ unk32 mUnk_144;
+    /* 148 */ unk32 mUnk_148;
+    /* 14C */ unk32 mUnk_14C;
+    /* 150 */ unk32 mUnk_150;
+    /* 154 */ unk32 mUnk_154;
+    /* 158 */ unk8 mUnk_158;
+    /* 15C */ unk32 mUnk_15C;
+    /* 160 */
 
-    Actor_Character();
+    Actor_Character(ModelRender *param1, ActorUnkZSRS_120 *param2);
 
     // _ZTV19data_ov031_021132a8
-    /* 020 */ virtual void Setup() override; // func_ov031_020e8530
+    /* 020 */ virtual void Update() override;
     /* 04C */ virtual ~Actor_Character() override;
-    /* 054 */ virtual void vfunc_54(unk32 param1) override;      // func_ov031_020e7680
-    /* 058 */ virtual void vfunc_58(ActorState param1) override; // func_ov031_020e84d8
-    /* 0AC */ virtual void vfunc_AC() override;                  // func_ov031_020e75fc
-    /* 0BC */ virtual void vfunc_0BC();                          // func_ov031_020e7788
-    /* 0C0 */ virtual void vfunc_0C0();                          // func_ov031_020e77b8
-    /* 0C4 */ virtual void vfunc_0C4();                          // func_ov031_020e7b04
-    /* 0C8 */ virtual void vfunc_0C8();                          // func_ov031_020e7e64
-    /* 0CC */ virtual void vfunc_0CC();                          // func_ov031_020e81d4
-    /* 0D0 */ virtual void vfunc_0D0();                          // func_ov031_020e82a8
-    /* 0D4 */ virtual void vfunc_0D4();                          // func_ov031_020e82dc
-    /* 0D8 */ virtual void vfunc_0D8();                          // func_ov031_020e8388
-    /* 0DC */ virtual void vfunc_0DC();                          // func_ov031_020e8458
-    /* 0E0 */ virtual void vfunc_0E0();                          // func_ov031_020e77b4
-    /* 0E4 */ virtual void vfunc_0E4();                          // func_ov031_020e784c
-    /* 0E8 */ virtual void vfunc_0E8();                          // func_ov031_020e7b9c
-    /* 0EC */ virtual void vfunc_0EC();                          // func_ov031_020e7f50
-    /* 0F0 */ virtual void vfunc_0F0();                          // func_ov031_020e8254
-    /* 0F4 */ virtual void vfunc_0F4();                          // func_ov031_020e82d8
-    /* 0F8 */ virtual void vfunc_0F8();                          // func_ov031_020e836c
-    /* 0FC */ virtual void vfunc_0FC();                          // func_ov031_020e8414
-    /* 100 */ virtual void vfunc_100();                          // func_ov031_020e848c
-    /* 104 */ virtual void vfunc_104();                          // func_ov031_020e84b4
-    /* 108 */ virtual void vfunc_108();                          // func_ov031_020e873c
-    /* 10C */ virtual void vfunc_10C();                          // func_ov031_020e8630
-    /* 110 */ virtual void vfunc_110();                          // func_ov031_020e8748
+    /* 054 */ virtual void vfunc_54(unk32 param1) override;
+    /* 058 */ virtual void vfunc_58(ActorState param1) override;
+    /* 0AC */ virtual void vfunc_AC() override;
+    /* 0BC */ virtual void vfunc_0BC();
+    /* 0C0 */ virtual void vfunc_0C0();
+    /* 0C4 */ virtual void vfunc_0C4();
+    /* 0C8 */ virtual void vfunc_0C8();
+    /* 0CC */ virtual void vfunc_0CC();
+    /* 0D0 */ virtual void vfunc_0D0();
+    /* 0D4 */ virtual void vfunc_0D4();
+    /* 0D8 */ virtual void vfunc_0D8();
+    /* 0DC */ virtual void vfunc_0DC();
+    /* 0E0 */ virtual void vfunc_0E0();
+    /* 0E4 */ virtual void vfunc_0E4();
+    /* 0E8 */ virtual void vfunc_0E8();
+    /* 0EC */ virtual void vfunc_0EC();
+    /* 0F0 */ virtual void vfunc_0F0();
+    /* 0F4 */ virtual void vfunc_0F4();
+    /* 0F8 */ virtual void vfunc_0F8();
+    /* 0FC */ virtual void vfunc_0FC();
+    /* 100 */ virtual void vfunc_100();
+    /* 104 */ virtual void vfunc_104();
+    /* 108 */ virtual void vfunc_108();
+    /* 10C */ virtual void vfunc_10C();
+    /* 110 */ virtual void vfunc_110();
+
+    void func_ov031_020e79bc();
+    void func_ov031_020e812c();
 };

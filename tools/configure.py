@@ -559,6 +559,7 @@ config.libs = [
         "Overlay 31",
         [
             Object("031_Land/UnkStruct_027e0d34.cpp"),
+            Object("031_Land/Actor/Actor_Character.cpp"),
             Object("031_Land/Actor/ActorRupee.cpp"),
             Object("031_Land/Actor/ActorShotArrow.cpp"),
             Object("031_Land/Actor/ActorUnkATTG.cpp"),

@@ -16,7 +16,8 @@ ActorProfileUnkCRFT::ActorProfileUnkCRFT() :
     this->mUnk_1E |= 0x1;
 }
 
-ActorUnkCRFT::ActorUnkCRFT() {}
+ActorUnkCRFT::ActorUnkCRFT() :
+    Actor_Character(NULL, NULL) {}
 
 bool ActorUnkCRFT::Init(unk32 param1) {}
 void ActorUnkCRFT::vfunc_58(ActorState param1) {}

@@ -9,7 +9,7 @@
 class ActorUnkCRFT : public Actor_Character {
 public:
     /* 000 (base) */
-    /* 120 */ PAD(0x120, 0x358);
+    /* 160 */ PAD(0x160, 0x358);
     /* 358 */
 
     ActorUnkCRFT();
