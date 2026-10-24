@@ -95,7 +95,8 @@ bool ActorLobarrierShield_150::vfunc_00(RefStruct ref, unk32 param2) {
     ActorLobarrierShield *actor = (ActorLobarrierShield *) mUnk_20;
     if (actor->mUnk_1F4 == 0) {
         bool cond = true;
-        if ((u32) actor->mState != 5 && actor->mState != 4) {
+        if ((u32) actor->mState != ActorLobarrierShieldState_LyingOnGround &&
+            actor->mState != ActorLobarrierShieldState_Releasing) {
             cond = false;
         }
         if (!cond) {
@@ -158,13 +159,14 @@ ActorLobarrierShield::ActorLobarrierShield() :
     mUnk_40          = &mUnk_150;
     mUnk_124.mUnk_04 = 0;
     SET_FLAG2(mUnk_124.mUnk_04, ActorFlag_13);
-    mUnk_124.mUnk_24 = 1;
+    mUnk_124.mUnk_24 = true;
     mUnk_38          = (Actor_38 *) &mUnk_1E8;
     mUnk_38->mUnk_08 = 4;
     mUnk_A8          = (Actor_Derived2_A8_PTR *) &data_ov063_02162558;
 }
 
 bool ActorLobarrierShield::Init(unk32 param1) {
+#pragma unused(param1)
     this->lobarrier = (ActorLobarrier *) gpActorManager->func_01fff3b4(mUnk_5C.mUnk_28);
 
     mUnk_0B0.func_ov000_02057c38(6, 2);
@@ -186,15 +188,15 @@ void ActorLobarrierShield::SetState(ActorState state) {
 }
 
 // Matched
-void ActorLobarrierShield::func_ov063_0215af54(void) {}
+void ActorLobarrierShield::func_ov063_0215af54() {}
 
 // Matched
-void ActorLobarrierShield::func_ov063_0215af58(void) {}
+void ActorLobarrierShield::func_ov063_0215af58() {}
 
 // Matched
-void ActorLobarrierShield::func_ov063_0215af5c(void) {}
+void ActorLobarrierShield::func_ov063_0215af5c() {}
 
-void ActorLobarrierShield::func_ov063_0215af60(void) {
+void ActorLobarrierShield::func_ov063_0215af60() {
     if (gpActorManager->func_01fff3b4(mUnk_1E4)) {
         return;
     }
@@ -206,13 +208,13 @@ void ActorLobarrierShield::func_ov063_0215af60(void) {
     this->SetState(ActorLobarrierShieldState_Held);
 }
 
-void ActorLobarrierShield::func_ov063_0215afa4(void) {
+void ActorLobarrierShield::func_ov063_0215afa4() {
     mUnk_2C = 0;
     mVel.x  = 0;
     mVel.z  = 0;
 }
 
-void ActorLobarrierShield::func_ov063_0215afb8(void) {
+void ActorLobarrierShield::func_ov063_0215afb8() {
     ActorUnkITWP *otherActor = (ActorUnkITWP *) gpActorManager->func_01fff3b4(mUnk_1E4);
     if (otherActor == NULL) {
         this->SetState(ActorLobarrierShieldState_Releasing);
@@ -234,15 +236,15 @@ void ActorLobarrierShield::func_ov063_0215afb8(void) {
     mPrevPos.z  = vec.z;
 }
 
-void ActorLobarrierShield::func_ov063_0215b054(void) {
+void ActorLobarrierShield::func_ov063_0215b054() {
     mVel.x = mUnk_1D8;
-    mVel.y = 0;
+    mVel.y = FX_F32_TO_FX32(0.0f);
     mVel.z = mUnk_1E0;
     UNSET_FLAG2(*(s16 *) &mUnk_44, ActorFlag_5);
     this->mTimer.Reset();
 }
 
-void ActorLobarrierShield::func_ov063_0215b090(void) {
+void ActorLobarrierShield::func_ov063_0215b090() {
     if (this->mTimer.value < 4) {
         this->func_ov063_0215afb8();
         this->mTimer.Update();
@@ -255,7 +257,7 @@ void ActorLobarrierShield::func_ov063_0215b090(void) {
     VecFx32_Copy(&mPos, &mPrevPos);
     VecFx32_Add(&mPos, &mVel, &mPos);
 
-    if (mVel.x == 0 && mVel.z == 0) {
+    if (mVel.x == FX_F32_TO_FX32(0.0f) && mVel.z == FX_F32_TO_FX32(0.0f)) {
         mVel.y -= mUnk_2C;
     }
 
@@ -269,19 +271,19 @@ void ActorLobarrierShield::func_ov063_0215b090(void) {
     }
 }
 
-void ActorLobarrierShield::func_ov063_0215b1bc(void) {
-    mVel.x = 0;
-    mVel.z = 0;
+void ActorLobarrierShield::func_ov063_0215b1bc() {
+    mVel.x = FX_F32_TO_FX32(0.0f);
+    mVel.z = FX_F32_TO_FX32(0.0f);
 
     VecFx32 vec;
-    VecFx32_Init(0, 0, FX_F32_TO_FX32(1.0f), &vec);
+    VecFx32_Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(1.0f), &vec);
     func_01ffa7a0(&vec, &mUnk_1A4, &vec);
 
     s16 angle = func_01ffbbe0(vec.x, vec.z);
     MtxFx33_InitYRotation(&mUnk_1A4, SIN((u16) angle), COS((u16) angle));
 }
 
-void ActorLobarrierShield::func_ov063_0215b244(void) {
+void ActorLobarrierShield::func_ov063_0215b244() {
     mVel.y -= mUnk_2C;
     VecFx32_Copy(&mPos, &mPrevPos);
     VecFx32_Add(&mPos, &mVel, &mPos);
@@ -293,17 +295,17 @@ void ActorLobarrierShield::func_ov063_0215b244(void) {
     }
 }
 
-void ActorLobarrierShield::func_ov063_0215b2b0(void) {
-    mVel.x  = 0;
-    mVel.z  = 0;
+void ActorLobarrierShield::func_ov063_0215b2b0() {
+    mVel.x  = FX_F32_TO_FX32(0.0f);
+    mVel.z  = FX_F32_TO_FX32(0.0f);
     mUnk_2C = 0;
 }
 
 // Matched
-void ActorLobarrierShield::func_ov063_0215b2c4(void) {}
+void ActorLobarrierShield::func_ov063_0215b2c4() {}
 
 void ActorLobarrierShield::vfunc_24() {
-    if (mState != 1 && mState != 2) {
+    if (mState != ActorLobarrierShieldState_Grabbing && mState != ActorLobarrierShieldState_Grabbed) {
         return;
     }
     this->Update();
@@ -314,16 +316,16 @@ void ActorLobarrierShield::Update() {
     mUnk_150.mUnk_1C = 1;
 
     if (!this->func_ov017_020bef4c(0x4000) && mUnk_48 != 0) {
-        bool cond = true;
-        if (mState != 1 && mState != 2) {
-            cond = false;
+        bool grabbedByWhip = true;
+        if (this->mState != ActorLobarrierShieldState_Grabbing && this->mState != ActorLobarrierShieldState_Grabbed) {
+            grabbedByWhip = false;
         }
 
-        if (!cond) {
+        if (!grabbedByWhip) {
             return;
         }
 
-        if (mState == 3) {
+        if (this->mState == ActorLobarrierShieldState_Thrown) {
             this->func_ov063_0215b724();
             return;
         }
@@ -358,7 +360,7 @@ void ActorLobarrierShield::Update() {
         z_pos    = vec_base->z;
         x_pos    = vec_base->x;
         x_neg    = vec2->x;
-    } else if (mState == 5) {
+    } else if (mState == ActorLobarrierShieldState_LyingOnGround) {
         VecFx32 vec1;
         vec1 = mUnk_1CC.vec;
         func_01ffb714(&vec1, &mPos, &vec1);
@@ -396,7 +398,8 @@ void ActorLobarrierShield::Update() {
 post:
     this->func_ov000_020989e0();
 
-    if (((u32) mState == 5 || mState == 4) && (mUnk_124.mUnk_08 & 0x3FFFF) != 0) {
+    if (((u32) mState == ActorLobarrierShieldState_LyingOnGround || mState == ActorLobarrierShieldState_Releasing) &&
+        (mUnk_124.mUnk_08 & 0x3FFFF) != 0) {
         switch (mUnk_124.mUnk_1C) {
             case 4:
                 data_027e0d38->func_ov031_020d9c44(data_ov000_020aed00);
@@ -415,7 +418,7 @@ post:
     }
 
     if (GET_FLAG(mFlags, ActorFlag_Alive)) {
-        if (mState == 5) {
+        if (mState == ActorLobarrierShieldState_LyingOnGround) {
             UnkStruct_ov000_0207de98 param2;
             VecFx32_Copy(&mPos, &param2.vec);
             param2.param1 = 0x548;
