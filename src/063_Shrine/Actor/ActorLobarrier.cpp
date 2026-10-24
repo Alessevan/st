@@ -661,7 +661,7 @@ void ActorLobarrier::func_ov063_02159494() {
     }
 }
 
-void ActorUnkCANS::func_ov063_021595a4() {
+void ActorLobarrier::func_ov063_021595a4() {
     mVel.x   = FX_F32_TO_FX32(0.0f);
     mVel.z   = FX_F32_TO_FX32(0.0f);
     mUnk_270 = FX_F32_TO_FX32(0.0f);
@@ -689,7 +689,7 @@ void ActorLobarrier::func_ov063_02159618() {
     }
 }
 
-void ActorUnkCANS::func_ov063_02159714() {
+void ActorLobarrier::func_ov063_02159714() {
     mVel.x   = FX_F32_TO_FX32(0.0f);
     mVel.z   = FX_F32_TO_FX32(0.0f);
     mUnk_270 = FX_F32_TO_FX32(0.0f);
@@ -818,7 +818,7 @@ void ActorLobarrier::func_ov063_02159d68() {
     }
 }
 
-void ActorUnkCANS::func_ov063_02159dfc() {
+void ActorLobarrier::func_ov063_02159dfc() {
     mVel.x   = FX_F32_TO_FX32(0.0f);
     mVel.z   = FX_F32_TO_FX32(0.0f);
     mUnk_270 = FX_F32_TO_FX32(0.0f);
