@@ -30,7 +30,7 @@ ActorUnkRCFO::ActorUnkRCFO() :
     mUnk_DE8(-0x2710000, FX_F32_TO_FX32(0.0f), -0x2710000),
     mUnk_DF8(-0x1),
     mUnk_DFC(&this->mUnk_910) {
-    _MI_CpuFill(0x0, this->mUnk_C3C, ARRAY_LEN(this->mUnk_C3C));
+    MI_CpuClearFast(this->mUnk_C3C, ARRAY_LEN(this->mUnk_C3C));
 
     Vec2s base_value(0, 0);
     for (s32 i = 0; i < ARRAY_LEN(this->mUnk_91C); ++i) {
