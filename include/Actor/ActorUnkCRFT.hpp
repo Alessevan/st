@@ -6,7 +6,16 @@
 #include "global.h"
 #include "types.h"
 
-class ActorUnkCRFT : public Actor_Character {
+class ActorUnkCRFT_Base : public Actor_Character {
+public:
+    /* 000 (base) */
+    /* 160 */
+
+    ActorUnkCRFT_Base(ModelRender *param1, ActorUnkZSRS_120 *param2) :
+        Actor_Character(param1, param2) {}
+};
+
+class ActorUnkCRFT : public ActorUnkCRFT_Base {
 public:
     /* 000 (base) */
     /* 160 */ PAD(0x160, 0x358);
