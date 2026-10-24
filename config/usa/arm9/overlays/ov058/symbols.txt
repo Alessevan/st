@@ -978,12 +978,9 @@ data_ov058_02156cd8 kind:bss addr:0x02156cd8 ambiguous
 data_ov058_02156ce0 kind:bss addr:0x02156ce0 ambiguous
 data_ov058_02156cf8 kind:bss addr:0x02156cf8
 data_ov058_02156dd0 kind:bss addr:0x02156dd0
-data_ov058_02156ea8 kind:bss addr:0x02156ea8
-data_ov058_02156eac kind:bss addr:0x02156eac
-data_ov058_02156eb8 kind:bss addr:0x02156eb8
-data_ov058_02156f18 kind:bss addr:0x02156f18 ambiguous
-data_ov058_02156f5c kind:bss addr:0x02156f5c ambiguous
-data_ov058_02156f88 kind:bss addr:0x02156f88 ambiguous
+_ZGVN15ProfileInstanceI19ActorProfileUnkCRFTE8sProfileE kind:bss addr:0x02156ea8
+@5073 kind:bss addr:0x02156eac
+_ZN15ProfileInstanceI19ActorProfileUnkCRFTE8sProfileE kind:bss addr:0x02156eb8
 data_ov058_02156f90 kind:bss addr:0x02156f90
 data_ov058_02156f98 kind:bss addr:0x02156f98
 data_ov058_02156f9c kind:bss addr:0x02156f9c ambiguous
