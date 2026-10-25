@@ -39,5 +39,6 @@ public:
         Actor_Character(param1, &mUnk_160),
         mUnk_160(param1, param2) {}
 
+    // should be inlined
     /* 4C */ virtual ~ActorUnkCRFT_Base() override;
 };

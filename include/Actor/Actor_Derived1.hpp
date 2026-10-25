@@ -169,7 +169,7 @@ public:
     /* 90 */ virtual unk32 vfunc_90();
     /* 94 */ virtual void vfunc_94();
     /* 98 */ virtual void vfunc_98(u32 param1);
-    /* 9C */ virtual void vfunc_9C();
+    /* 9C */ virtual bool vfunc_9C();
     /* A0 */ virtual unk32 vfunc_A0();
     /* A4 */ virtual void vfunc_A4();
     /* A8 */ virtual unk32 vfunc_A8();

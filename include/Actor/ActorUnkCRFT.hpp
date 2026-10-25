@@ -31,7 +31,7 @@ public:
     /* 2AC */ PAD(0x2AC, 0x2BC);
     /* 2BC */ ModelRender_ov000_020b1a1c mUnk_2BC;
     /* 31C */ unk32 mUnk_31C;
-    /* 320 */ unk8 mUnk_320[0x30];
+    /* 320 */ MtxFx43 mUnk_320;
     /* 350 */ unk16 mUnk_350;
     /* 352 */ unk16 mUnk_352;
     /* 354 */ unk16 mUnk_354;
@@ -50,7 +50,7 @@ public:
     /* 05C */ virtual void vfunc_5C() override;
     /* 07C */ virtual unk32 vfunc_7C(unk32 param1) override;
     /* 080 */ virtual unk32 vfunc_80(unk32 param1, unk32 param2) override;
-    /* 09C */ virtual void vfunc_9C() override;
+    /* 09C */ virtual bool vfunc_9C() override;
     /* 0A0 */ virtual unk32 vfunc_A0() override;
     /* 0A4 */ virtual void vfunc_A4() override;
     /* 0BC */ virtual void vfunc_0BC() override;
@@ -64,9 +64,9 @@ public:
     /* 128 */ virtual void vfunc_128();
 
     bool func_ov058_02148710();
-    void func_ov058_021487c8();
-    void func_ov058_0214885c();
-    void func_ov058_021488d8();
+    void func_ov058_021487c8(unk32 param1, VecFx32 *param2);
+    bool func_ov058_0214885c();
+    s16 func_ov058_021488d8();
     static void func_ov058_02148b04(Actor *param1, G3d_RenderState *param2);
 };
 

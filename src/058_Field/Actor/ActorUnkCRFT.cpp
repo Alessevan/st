@@ -1,7 +1,10 @@
 #include "Actor/ActorUnkCRFT.hpp"
 
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
+#include "CommonFuncs.hpp"
 #include "System/SysNew.hpp"
+#include "Unknown/UnkStruct_027e09a8.hpp"
+#include "Unknown/UnkStruct_027e09b8.hpp"
 #include "mem.h"
 
 struct UnkStruct_ov058_0215330 {
@@ -75,7 +78,7 @@ ActorUnkCRFT::ActorUnkCRFT() :
         this->mUnk_31C               = this->mUnk_24C.func_ov000_02057f18(&data);
     }
 
-    memset(&this->mUnk_320, 0, ARRAY_LEN(this->mUnk_320));
+    memset(&this->mUnk_320, 0, sizeof(this->mUnk_320));
 }
 
 bool ActorUnkCRFT::Init(unk32 param1) {
@@ -95,10 +98,56 @@ void ActorUnkCRFT::SetState(ActorState state) {
     CALL_PTMF(PTMF<ActorUnkCRFT>, data_ov058_02154ee0[this->mState]);
 }
 
-// non-matching
-void ActorUnkCRFT::vfunc_54(unk32 param1) {}
-// non-matching
-void ActorUnkCRFT::Setup() {}
+void ActorUnkCRFT::vfunc_54(unk32 param1) {
+    this->Actor_Character::vfunc_54(param1);
+
+    bool val = false;
+    if (this->func_ov058_0214885c()) {
+        val = true;
+    }
+    if (!val) {
+        return;
+    }
+
+    if (this->mUnk_5C.mParams[2] != 0x3) {
+        return;
+    }
+
+    ActorUnk_vfunc_B0 stack = ActorUnk_vfunc_B0();
+    stack.mpActor           = this;
+
+    stack.mUnk_0C = this->mUnk_5C.mUnk_20;
+    stack.mUnk_14 = 0x0;
+    stack.mUnk_18 = -0x1;
+    stack.mUnk_1C = -0x1;
+    stack.mUnk_20 = false;
+    stack.mUnk_21 = false;
+    stack.mUnk_32 = 0x1;
+
+    this->GetOffsetPos(&stack.mUnk_34);
+
+    data_027e09b8->func_ov000_02073470(&stack, 0x0);
+}
+
+void ActorUnkCRFT::Setup() {
+    if (!GET_FLAG(this->mFlags, ActorFlag_Alive)) {
+        return;
+    }
+
+    if (data_027e09b8->mAdventureFlags[0xF] & 0x10) {
+        if (this->Actor_Derived1::func_ov000_020a8db0()) {
+            if (this->mUnk_5C.mUnk_18[0] == 0x3 && this->mUnk_5C.mUnk_1A[0] == 0x1E4) {
+                if (!this->func_ov058_0214885c()) {
+                    func_ov040_0212bab4(0x1E4);
+
+                    UNSET_FLAG(this->mFlags, ActorFlag_Alive);
+                }
+            }
+        }
+    }
+
+    this->Actor_Derived1::Setup();
+}
 
 // non-matching (regalloc)
 void ActorUnkCRFT::Update() {
@@ -131,12 +180,28 @@ void ActorUnkCRFT::Update() {
 
 // non-matching
 void ActorUnkCRFT::vfunc_5C() {}
-// non-matching
-void ActorUnkCRFT::vfunc_0BC() {}
+
+void ActorUnkCRFT::vfunc_0BC() {
+    if (this->func_ov058_02148710()) {
+        this->SetState(ActorUnkCRFTState_9);
+        return;
+    }
+
+    this->Actor_Character::vfunc_0BC();
+}
 // non-matching
 void ActorUnkCRFT::vfunc_0CC() {}
-// non-matching
-void ActorUnkCRFT::vfunc_0D0() {}
+
+void ActorUnkCRFT::vfunc_0D0() {
+    this->Actor_Character::vfunc_0D0();
+
+    if (!this->func_ov058_02148710()) {
+        return;
+    }
+
+    this->vfunc_98(0x4);
+}
+
 // non-matching
 void ActorUnkCRFT::vfunc_114() {}
 // non-matching
@@ -145,34 +210,140 @@ void ActorUnkCRFT::vfunc_118() {}
 void ActorUnkCRFT::vfunc_11C() {}
 // non-matching
 void ActorUnkCRFT::vfunc_120() {}
-// non-matching
-bool ActorUnkCRFT::func_ov058_02148710() {}
+
+bool ActorUnkCRFT::func_ov058_02148710() {
+    return this->mUnk_5C.mParams[1] == 0x1;
+}
+
 // non-matching
 void ActorUnkCRFT::vfunc_124() {}
 // non-matching
 void ActorUnkCRFT::vfunc_128() {}
-// non-matching
-void ActorUnkCRFT::func_ov058_021487c8() {}
-// non-matching
-unk32 ActorUnkCRFT::vfunc_7C(unk32 param1) {}
-// non-matching
-void ActorUnkCRFT::vfunc_9C() {}
-// non-matching
-unk32 ActorUnkCRFT::vfunc_A0() {}
-// non-matching
-void ActorUnkCRFT::func_ov058_0214885c() {}
-// non-matching
-void ActorUnkCRFT::func_ov058_021488d8() {}
+
+void ActorUnkCRFT::func_ov058_021487c8(unk32 param1, VecFx32 *param2) {
+    data_027e09a8->func_ov000_02071b30(param1, param2, 0x0);
+}
+
+unk32 ActorUnkCRFT::vfunc_7C(unk32 param1) {
+#pragma unused(param1)
+    return 0x1;
+}
+
+bool ActorUnkCRFT::vfunc_9C() {
+    PassengerManager *instance = gpPassengerManager;
+
+    instance->TryBoardTrain(this->GetActorId(), SceneIndex_f_bridge2, 0xFF);
+
+    return true;
+}
+
+unk32 ActorUnkCRFT::vfunc_A0() {
+    if (this->func_ov058_0214885c()) {
+        PassengerManager *instance = gpPassengerManager;
+
+        this->mUnk_354 = this->func_ov058_021488d8();
+
+        instance->TryResetAtDestination();
+    }
+
+    return 0x1;
+}
+
+bool ActorUnkCRFT::func_ov058_0214885c() {
+    PassengerManager *instance = gpPassengerManager;
+
+    if (instance->CanCompleteTrip()) {
+        instance = instance->GetInstance();
+
+        ActorId passagerId = instance->mPassenger.mActorId;
+        if (passagerId == this->GetActorId() || passagerId == ActorId_CRFP) {
+            if (data_027e09a4->mUnk_00.sceneIndex == instance->mPassenger.mSceneIndex) {
+                return true;
+            }
+        }
+    }
+
+    return false;
+}
+
+s16 ActorUnkCRFT::func_ov058_021488d8() {
+    s16 var = 5 - gpPassengerManager->GetHappinessCond();
+
+    if (var >= 0x5) {
+        return 0x4;
+    }
+
+    return var;
+}
+
 // non-matching
 unk32 ActorUnkCRFT::vfunc_80(unk32 param1, unk32 param2) {}
 // non-matching
 bool ActorUnkCRFT::vfunc_48(unk32 param1) {}
-// non-matching
-void ActorUnkCRFT::vfunc_A4() {}
-// non-matching
-void ActorUnkCRFT::vfunc_2C(unk32 param1) {}
-// non-matching
-void ActorUnkCRFT::func_ov058_02148b04(Actor *param1, G3d_RenderState *param2) {}
+
+void ActorUnkCRFT::vfunc_A4() {
+    this->Actor_Derived1::vfunc_A4();
+
+    if (!(this->mUnk_0B0 & 0x10)) {
+        return;
+    }
+
+    func_01ff930c(&this->mUnk_0DA, 0x0, 0x16C);
+}
+
+void ActorUnkCRFT::vfunc_2C(unk32 param1) {
+    if (!this->Actor::func_01fff5d0(param1, 0x0)) {
+        return;
+    }
+
+    if (!GET_FLAG(this->mFlags, ActorFlag_Visible)) {
+        return;
+    }
+
+    this->vfunc_B8();
+    this->mUnk_24C.func_01ffc6d4(this->mAngle, &this->mPos);
+
+    if (this->mUnk_31C < 0x0) {
+        return;
+    }
+
+    this->mUnk_2BC.func_ov000_02058038(&this->mUnk_320);
+}
+
+void ActorUnkCRFT::func_ov058_02148b04(Actor *param1, G3d_RenderState *param2) {
+    ActorUnkCRFT *thiz = (ActorUnkCRFT *) param1;
+
+    if (thiz->mUnk_31C < 0) {
+        return;
+    }
+
+    G3d_RenderObject *renderObj = param2->renderObj;
+
+    unk32 val;
+    if (param2->flag & 0x10) {
+        val = param2->currentBoneMtxId;
+    } else {
+        val = -1;
+    }
+    if (val != thiz->mUnk_31C) {
+        return;
+    }
+
+    if (renderObj->mUnk_25 == 0x2) {
+        param2->callbackSegment[6] = 0x3;
+        renderObj->mUnk_25         = 0x3;
+        return;
+    }
+
+    if (renderObj->mUnk_25 != 0x3) {
+        return;
+    }
+
+    G3d_GetCurrentMtx(&thiz->mUnk_320, NULL);
+
+    param2->callbackSegment[6] = 0x2;
+    renderObj->mUnk_25         = 0x2;
+}
 
 ActorUnkCRFT::~ActorUnkCRFT() {}
 ActorProfileUnkCRFT::~ActorProfileUnkCRFT() {}
