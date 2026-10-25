@@ -885,6 +885,7 @@ config.libs = [
     GameLib(
         "Overlay 58",
         [
+            Object("058_Field/Actor/Actor_ov058.cpp"),
             Object("058_Field/Actor/ActorUnkBSTG.cpp"),
             Object("058_Field/Actor/ActorUnkCRFT.cpp"),
             Object("058_Field/Actor/ActorUnkFBRD.cpp"),

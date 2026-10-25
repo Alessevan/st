@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Actor_Character.hpp"
+#include "Actor/ActorUnkZLSL_ZSRS.hpp"
+#include "Actor/Actor_Character.hpp"
 
 class ActorUnkCRFT_160 : public UnkStruct_ov000_020b31f0 {
 public:
@@ -23,6 +24,10 @@ public:
             this->mUnk_2C.mpModel = this->mUnk_10;
         }
     }
+
+    /* 00 */ virtual ~ActorUnkCRFT_160() override;
+    /* 38 */ virtual void vfunc_38(unk32 param1, unk32 param2) override; // ActorUnkKOKO::func_ov058_02141d30
+    /* 3C */ virtual void vfunc_3C() override;                           // ActorUnkKOKO::func_ov058_02141d0c
 };
 
 class ActorUnkCRFT_Base : public Actor_Character {
@@ -33,4 +38,6 @@ public:
     ActorUnkCRFT_Base(ModelRender *param1, UnkActorFileSystem2 *param2) :
         Actor_Character(param1, &mUnk_160),
         mUnk_160(param1, param2) {}
+
+    /* 4C */ virtual ~ActorUnkCRFT_Base() override;
 };

@@ -17,20 +17,6 @@ static ActorUnkZLSL_AnimationTag data_ov058_02154f90[] = {
     {0x0, "wait"}, {0x1, "walk"}, {0x2, "talk"}, {0x3, "action"}, {0x4, "action_wait"},
 };
 
-static PTMF<ActorUnkCRFT> data_ov058_02154ee0[ActorUnkCRFTState_Max] = {
-    &ActorUnkCRFT::vfunc_0BC, // ActorUnkCRFTState_0
-    &ActorUnkCRFT::vfunc_0C0, // ActorUnkCRFTState_1
-    &ActorUnkCRFT::vfunc_0C4, // ActorUnkCRFTState_2
-    &ActorUnkCRFT::vfunc_0C8, // ActorUnkCRFTState_3
-    &ActorUnkCRFT::vfunc_0CC, // ActorUnkCRFTState_4
-    &ActorUnkCRFT::vfunc_0D0, // ActorUnkCRFTState_5
-    &ActorUnkCRFT::vfunc_0D4, // ActorUnkCRFTState_6
-    &ActorUnkCRFT::vfunc_0D8, // ActorUnkCRFTState_7
-    &ActorUnkCRFT::vfunc_0DC, // ActorUnkCRFTState_8
-    &ActorUnkCRFT::vfunc_114, // ActorUnkCRFTState_9
-    &ActorUnkCRFT::vfunc_118, // ActorUnkCRFTState_10
-};
-
 static PTMF<ActorUnkCRFT> data_ov058_02154f38[ActorUnkCRFTState_Max] = {
     &ActorUnkCRFT::vfunc_0E0, // ActorUnkCRFTState_0
     &ActorUnkCRFT::vfunc_0E4, // ActorUnkCRFTState_1
@@ -43,6 +29,20 @@ static PTMF<ActorUnkCRFT> data_ov058_02154f38[ActorUnkCRFTState_Max] = {
     &ActorUnkCRFT::vfunc_100, // ActorUnkCRFTState_8
     &ActorUnkCRFT::vfunc_11C, // ActorUnkCRFTState_9
     &ActorUnkCRFT::vfunc_120, // ActorUnkCRFTState_10
+};
+
+static PTMF<ActorUnkCRFT> data_ov058_02154ee0[ActorUnkCRFTState_Max] = {
+    &ActorUnkCRFT::vfunc_0BC, // ActorUnkCRFTState_0
+    &ActorUnkCRFT::vfunc_0C0, // ActorUnkCRFTState_1
+    &ActorUnkCRFT::vfunc_0C4, // ActorUnkCRFTState_2
+    &ActorUnkCRFT::vfunc_0C8, // ActorUnkCRFTState_3
+    &ActorUnkCRFT::vfunc_0CC, // ActorUnkCRFTState_4
+    &ActorUnkCRFT::vfunc_0D0, // ActorUnkCRFTState_5
+    &ActorUnkCRFT::vfunc_0D4, // ActorUnkCRFTState_6
+    &ActorUnkCRFT::vfunc_0D8, // ActorUnkCRFTState_7
+    &ActorUnkCRFT::vfunc_0DC, // ActorUnkCRFTState_8
+    &ActorUnkCRFT::vfunc_114, // ActorUnkCRFTState_9
+    &ActorUnkCRFT::vfunc_118, // ActorUnkCRFTState_10
 };
 
 DECL_PROFILE(ActorProfileUnkCRFT);
