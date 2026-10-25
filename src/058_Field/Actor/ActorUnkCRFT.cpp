@@ -12,10 +12,12 @@ struct UnkStruct_ov058_0215330 {
     /* 00 */ unk32 mUnk_00[0x4];
 };
 
+extern unk32 data_ov000_020aed08;
+
 extern unk32 data_ov058_02153300[];
-extern char data_ov058_02153308[] /* = "crft" */;
-extern char data_ov058_02153318[] /* = "hammer" */;
-extern Vec2p data_ov058_02153328;
+extern char data_ov058_02153308[]; // = "crft"
+extern char data_ov058_02153318[]; // = "hammer"
+extern Vec2p data_ov058_02153328;  // this is not a Vec2p
 extern UnkStruct_ov058_0215330 data_ov058_02153330;
 
 static ActorUnkZLSL_AnimationTag data_ov058_02154f90[] = {
@@ -135,7 +137,7 @@ void ActorUnkCRFT::Setup() {
         return;
     }
 
-    if (data_027e09b8->mAdventureFlags[0xF] & 0x10) {
+    if (GET_FLAG(data_027e09b8->mAdventureFlags, AdventureFlag_KenzoBoardsTrainToBuildFence)) {
         if (this->Actor_Derived1::func_ov000_020a8db0()) {
             if (this->mUnk_5C.mUnk_18[0] == 0x3 && this->mUnk_5C.mUnk_1A[0] == 0x1E4) {
                 if (!this->func_ov058_0214885c()) {
@@ -179,8 +181,18 @@ void ActorUnkCRFT::Update() {
     this->vfunc_10C();
 }
 
-// non-matching
-void ActorUnkCRFT::vfunc_5C() {}
+bool ActorUnkCRFT::vfunc_5C() {
+    bool retValue = this->Actor_Derived1::vfunc_5C();
+
+    if (retValue) {
+        u16 mParam2 = this->mUnk_5C.mParams[2];
+        if (mParam2 == 0x1 || (mParam2 == 0x0 && this->Actor_Derived1::func_ov000_020a8dd0())) {
+            UNSET_FLAG(this->mFlags, ActorFlag_Alive);
+        }
+    }
+
+    return retValue;
+}
 
 void ActorUnkCRFT::vfunc_0BC() {
     if (this->func_ov058_02148710()) {
@@ -258,15 +270,25 @@ bool ActorUnkCRFT::func_ov058_02148710() {
     return this->mUnk_5C.mParams[1] == 0x1;
 }
 
-// non-matching
 void ActorUnkCRFT::vfunc_124() {
     Vec2p data = data_ov058_02153328;
 
     this->vfunc_128(&data, 0x1);
 }
 
-// non-matching
-void ActorUnkCRFT::vfunc_128(Vec2p *param1, unk32 param2) {}
+// non-matching first parameter is not a Vec2p
+void ActorUnkCRFT::vfunc_128(Vec2p *param1, unk32 param2) {
+    if (param1 == NULL) {
+        return;
+    }
+
+    for (unk32 index = 0; index < param2; index++) {
+        if (this->mUnk_094.mUnk_0C->vfunc_28()->func_02015080(param1->coords[index]) != 0) {
+            this->func_ov058_021487c8(param1->coords[index], &this->mPos);
+            break;
+        }
+    }
+}
 
 void ActorUnkCRFT::func_ov058_021487c8(unk32 param1, VecFx32 *param2) {
     data_027e09a8->func_ov000_02071b30(param1, param2, 0x0);
@@ -325,9 +347,56 @@ s16 ActorUnkCRFT::func_ov058_021488d8() {
 }
 
 // non-matching
-unk32 ActorUnkCRFT::vfunc_80(unk32 param1, unk32 param2) {}
-// non-matching
-bool ActorUnkCRFT::vfunc_48(unk32 param1) {}
+unk32 ActorUnkCRFT::vfunc_80(unk32 param1, unk32 param2) {
+    unk32 params = (u8) (param1 + 1) | (param2 << 8);
+    if (params != 0x301) {
+        if (params == 0x502) {
+            if (this->mUnk_354 == 6) {
+                this->mUnk_354 = this->func_ov058_021488d8();
+            }
+            return this->mUnk_354;
+        }
+
+    } else {
+        PassengerManager *instance = gpPassengerManager;
+        if (instance->CanCompleteTrip()) {
+            return 0x1;
+        }
+
+        unk32 retVal;
+        if (instance->IsCaughtByPirates()) {
+            retVal = 2;
+        } else {
+            retVal = 0;
+        }
+        return retVal;
+    }
+    return 0x0;
+}
+
+bool ActorUnkCRFT::vfunc_48(unk32 param1) {
+    bool val = true;
+    if (this->func_ov058_02148710() && data_027e09a4->mUnk_00.sceneIndex == SceneIndex_f_bridge2) {
+        val = false;
+    }
+
+    if (val) {
+        return this->Actor::vfunc_48(param1);
+    }
+
+    VecFx32 vec = *this->Actor::func_ov000_0209853c(param1);
+    func_01ffb714(&vec, &this->mPos, &vec);
+
+    fx32 y = vec.y;
+    if (y < FX_F32_TO_FX32(0.0f)) {
+        y = -y;
+    }
+    if (y < data_ov000_020aed08 && func_01ff9258(vec.x, vec.z) < 0x299A) {
+        return true;
+    }
+
+    return false;
+}
 
 void ActorUnkCRFT::vfunc_A4() {
     this->Actor_Derived1::vfunc_A4();

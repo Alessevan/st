@@ -3,6 +3,7 @@
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
 #include "Actor/Actor_Character.hpp"
 
+// TODO: check if it has to be moved to KOKO
 class ActorUnkCRFT_160 : public UnkStruct_ov000_020b31f0 {
 public:
     /* 000 (base) */
@@ -30,6 +31,7 @@ public:
     /* 3C */ virtual void vfunc_3C() override;                           // ActorUnkKOKO::func_ov058_02141d0c
 };
 
+// TODO: to be moved to lokomos' file
 class ActorUnkCRFT_Base : public Actor_Character {
 public:
     /* 000 (base) */

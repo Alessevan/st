@@ -153,7 +153,7 @@ public:
     /* 4C */ virtual ~Actor_Derived1();
     /* 54 */ virtual void vfunc_54(unk32 param1);
     /* 58 */ virtual void SetState(ActorState param1) = 0;
-    /* 5C */ virtual void vfunc_5C();
+    /* 5C */ virtual bool vfunc_5C();
     /* 60 */ virtual void vfunc_60();
     /* 64 */ virtual bool vfunc_64();
     /* 68 */ virtual void vfunc_68();
