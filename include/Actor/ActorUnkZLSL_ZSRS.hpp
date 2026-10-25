@@ -216,17 +216,8 @@ public:
 
 class ActorUnkZSRS_120 : public ActorUnkZSRS_120_Base {
 public:
-    /* 00 (vtable) */
-    /* 04 */ UnkSystem5 *mUnk_04;
-    /* 08 */ ModelRender *mUnk_08;
-    /* 0C */ unk32 mUnk_0C;
-    /* 10 */ G3d_Model *mUnk_10;
-    /* 14 */ unk32 mUnk_14;
-    /* 18 */ unk32 mUnk_18;
-    /* 1C */ UnkSystem5 *mUnk_1C;
-    /* 14 */ PAD(0x20, 0x24);
-    /* 24 */ unk32 mUnk_24;
-    /* 28 */ PAD(0x28, 0x1440);
+    /* 0000 (base) */
+    /* 002C */ PAD(0x002C, 0x1440);
     /* 1440 */ UnkSystem5_Derived3 mUnk_1440;
     /* 14A0 */ UnkSystem5_Derived3 mUnk_14A0;
     /* 1500 */
