@@ -461,6 +461,3 @@ void ActorUnkCRFT::func_ov058_02148b04(Actor *param1, G3d_RenderState *param2) {
     param2->callbackSegment[6] = 0x2;
     renderObj->mUnk_25         = 0x2;
 }
-
-ActorUnkCRFT::~ActorUnkCRFT() {}
-ActorProfileUnkCRFT::~ActorProfileUnkCRFT() {}

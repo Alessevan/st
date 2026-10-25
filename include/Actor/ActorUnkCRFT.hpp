@@ -43,7 +43,6 @@ public:
     /* 020 */ virtual void Update() override;
     /* 02C */ virtual void vfunc_2C(unk32 param1) override;
     /* 048 */ virtual bool vfunc_48(unk32 param1) override;
-    /* 04C */ virtual ~ActorUnkCRFT() override;
     /* 054 */ virtual void vfunc_54(unk32 param1) override;
     /* 058 */ virtual void SetState(ActorState state) override;
     /* 05C */ virtual bool vfunc_5C() override;
@@ -74,7 +73,6 @@ public:
     /* 00 (base) */
 
     ActorProfileUnkCRFT();
-    ~ActorProfileUnkCRFT();
 
     /* 0C */ virtual Actor *Create();
 
