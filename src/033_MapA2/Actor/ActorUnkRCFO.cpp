@@ -139,7 +139,7 @@ void ActorUnkRCFO::Update() {
             this->func_ov033_02119a58();
 
             unk32 delta = this->mUnk_910.mUnk_04 - this->mUnk_910.mUnk_00;
-            if ((u32) ((s32) (delta + ((u32) (delta >> 1) >> 0x1E)) >> 2) >= 200) {
+            if ((u32) (delta / 4) >= 200) {
                 this->func_ov033_02119840(0x0, 0x0);
                 break;
             }
@@ -279,12 +279,12 @@ void ActorUnkRCFO::func_ov033_02119a58() {
 
     unk32 val   = this->mUnk_910.mUnk_00;
     unk32 delta = this->mUnk_910.mUnk_04 - val;
-    if ((u32) ((s32) (delta + ((u32) (delta >> 1) >> 0x1E)) >> 2) == 0x0) {
+    if ((u32) (delta / 4) == 0x0) {
         this->mUnk_910.func_ov000_0205b1d8(&sp);
         return;
     }
 
-    Vec2s *newVal = (Vec2s *) (this->mUnk_910.mUnk_00 + delta * 4);
+    Vec2s *newVal = (Vec2s *) (val + delta * 2);
     bool cond     = false;
 
     // strange vec2s access
