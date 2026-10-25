@@ -56,7 +56,7 @@ public:
     /* 020 */ virtual void Update() override;
     /* 04C */ virtual ~Actor_Character() override;
     /* 054 */ virtual void vfunc_54(unk32 param1) override;
-    /* 058 */ virtual void SetState(ActorState param1) override;
+    /* 058 */ virtual void SetState(ActorState state) override;
     /* 0AC */ virtual void vfunc_AC() override;
     /* 0BC */ virtual void vfunc_0BC();
     /* 0C0 */ virtual void vfunc_0C0();
