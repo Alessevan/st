@@ -1,4 +1,4 @@
-#include "Actor/ActorUnkCRFT.hpp"
+#include "Actor/ActorKenzo.hpp"
 
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
 #include "CommonFuncs.hpp"
@@ -24,41 +24,41 @@ static ActorUnkZLSL_AnimationTag data_ov058_02154f90[] = {
     {0x0, "wait"}, {0x1, "walk"}, {0x2, "talk"}, {0x3, "action"}, {0x4, "action_wait"},
 };
 
-static PTMF<ActorUnkCRFT> data_ov058_02154f38[ActorUnkCRFTState_Max] = {
-    &ActorUnkCRFT::vfunc_0E0, // ActorUnkCRFTState_0
-    &ActorUnkCRFT::vfunc_0E4, // ActorUnkCRFTState_1
-    &ActorUnkCRFT::vfunc_0E8, // ActorUnkCRFTState_2
-    &ActorUnkCRFT::vfunc_0EC, // ActorUnkCRFTState_3
-    &ActorUnkCRFT::vfunc_0F0, // ActorUnkCRFTState_4
-    &ActorUnkCRFT::vfunc_0F4, // ActorUnkCRFTState_5
-    &ActorUnkCRFT::vfunc_0F8, // ActorUnkCRFTState_6
-    &ActorUnkCRFT::vfunc_0FC, // ActorUnkCRFTState_7
-    &ActorUnkCRFT::vfunc_100, // ActorUnkCRFTState_8
-    &ActorUnkCRFT::vfunc_11C, // ActorUnkCRFTState_9
-    &ActorUnkCRFT::vfunc_120, // ActorUnkCRFTState_10
+static PTMF<ActorKenzo> data_ov058_02154f38[ActorKenzoState_Max] = {
+    &ActorKenzo::vfunc_0E0, // ActorKenzoState_0
+    &ActorKenzo::vfunc_0E4, // ActorKenzoState_1
+    &ActorKenzo::vfunc_0E8, // ActorKenzoState_2
+    &ActorKenzo::vfunc_0EC, // ActorKenzoState_3
+    &ActorKenzo::vfunc_0F0, // ActorKenzoState_4
+    &ActorKenzo::vfunc_0F4, // ActorKenzoState_5
+    &ActorKenzo::vfunc_0F8, // ActorKenzoState_6
+    &ActorKenzo::vfunc_0FC, // ActorKenzoState_7
+    &ActorKenzo::vfunc_100, // ActorKenzoState_8
+    &ActorKenzo::vfunc_11C, // ActorKenzoState_9
+    &ActorKenzo::vfunc_120, // ActorKenzoState_10
 };
 
-static PTMF<ActorUnkCRFT> data_ov058_02154ee0[ActorUnkCRFTState_Max] = {
-    &ActorUnkCRFT::vfunc_0BC, // ActorUnkCRFTState_0
-    &ActorUnkCRFT::vfunc_0C0, // ActorUnkCRFTState_1
-    &ActorUnkCRFT::vfunc_0C4, // ActorUnkCRFTState_2
-    &ActorUnkCRFT::vfunc_0C8, // ActorUnkCRFTState_3
-    &ActorUnkCRFT::vfunc_0CC, // ActorUnkCRFTState_4
-    &ActorUnkCRFT::vfunc_0D0, // ActorUnkCRFTState_5
-    &ActorUnkCRFT::vfunc_0D4, // ActorUnkCRFTState_6
-    &ActorUnkCRFT::vfunc_0D8, // ActorUnkCRFTState_7
-    &ActorUnkCRFT::vfunc_0DC, // ActorUnkCRFTState_8
-    &ActorUnkCRFT::vfunc_114, // ActorUnkCRFTState_9
-    &ActorUnkCRFT::vfunc_118, // ActorUnkCRFTState_10
+static PTMF<ActorKenzo> data_ov058_02154ee0[ActorKenzoState_Max] = {
+    &ActorKenzo::vfunc_0BC, // ActorKenzoState_0
+    &ActorKenzo::vfunc_0C0, // ActorKenzoState_1
+    &ActorKenzo::vfunc_0C4, // ActorKenzoState_2
+    &ActorKenzo::vfunc_0C8, // ActorKenzoState_3
+    &ActorKenzo::vfunc_0CC, // ActorKenzoState_4
+    &ActorKenzo::vfunc_0D0, // ActorKenzoState_5
+    &ActorKenzo::vfunc_0D4, // ActorKenzoState_6
+    &ActorKenzo::vfunc_0D8, // ActorKenzoState_7
+    &ActorKenzo::vfunc_0DC, // ActorKenzoState_8
+    &ActorKenzo::vfunc_114, // ActorKenzoState_9
+    &ActorKenzo::vfunc_118, // ActorKenzoState_10
 };
 
-DECL_PROFILE(ActorProfileUnkCRFT);
+DECL_PROFILE(ActorProfileKenzo);
 
-Actor *ActorProfileUnkCRFT::Create() {
-    return new(HeapIndex_2) ActorUnkCRFT();
+Actor *ActorProfileKenzo::Create() {
+    return new(HeapIndex_2) ActorKenzo();
 }
 
-ActorProfileUnkCRFT::ActorProfileUnkCRFT() :
+ActorProfileKenzo::ActorProfileKenzo() :
     ActorProfile_Derived1(ActorId_CRFT) {
     this->mUnk_04.Init(FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.7101f), FX_F32_TO_FX32(0.0f), FX_F32_TO_FX32(0.6101f));
     this->mUnk_1C = 0x1400;
@@ -67,8 +67,8 @@ ActorProfileUnkCRFT::ActorProfileUnkCRFT() :
     this->mUnk_1E |= 0x1;
 }
 
-ActorUnkCRFT::ActorUnkCRFT() :
-    ActorUnkCRFT_Base(&mUnk_24C, data_ov000_020b539c_eur.mUnk_30->vfunc_04()),
+ActorKenzo::ActorKenzo() :
+    ActorKenzo_Base(&mUnk_24C, data_ov000_020b539c_eur.mUnk_30->vfunc_04()),
     mUnk_24C(G3d_GetUnkPtr(data_ov000_020b539c_eur.mUnk_30->vfunc_04()->mUnk_50, data_ov058_02153308)),
     mUnk_2BC(G3d_GetUnkPtr(data_ov000_020b539c_eur.mUnk_30->vfunc_04()->mUnk_50, data_ov058_02153318)),
     mUnk_31C(-0x1),
@@ -84,24 +84,24 @@ ActorUnkCRFT::ActorUnkCRFT() :
     memset(&this->mUnk_320, 0, sizeof(this->mUnk_320));
 }
 
-bool ActorUnkCRFT::Init(unk32 param1) {
+bool ActorKenzo::Init(unk32 param1) {
     this->Actor_Derived1::Init(param1);
 
-    this->mUnk_0E4 = &ActorUnkCRFT::func_ov058_02148b04;
+    this->mUnk_0E4 = &ActorKenzo::func_ov058_02148b04;
     this->mUnk_15C = data_ov058_02153300;
     this->mUnk_0DC = 0x4000;
 }
 
-void ActorUnkCRFT::SetState(ActorState state) {
+void ActorKenzo::SetState(ActorState state) {
     this->mUnk_4A[0] = 0x5;
     this->mState     = state;
 
     this->vfunc_104();
 
-    CALL_PTMF(PTMF<ActorUnkCRFT>, data_ov058_02154ee0[this->mState]);
+    CALL_PTMF(PTMF<ActorKenzo>, data_ov058_02154ee0[this->mState]);
 }
 
-void ActorUnkCRFT::vfunc_54(unk32 param1) {
+void ActorKenzo::vfunc_54(unk32 param1) {
     this->Actor_Character::vfunc_54(param1);
 
     bool val = false;
@@ -132,7 +132,7 @@ void ActorUnkCRFT::vfunc_54(unk32 param1) {
     data_027e09b8->func_ov000_02073470(&stack, 0x0);
 }
 
-void ActorUnkCRFT::Setup() {
+void ActorKenzo::Setup() {
     if (!GET_FLAG(this->mFlags, ActorFlag_Alive)) {
         return;
     }
@@ -153,7 +153,7 @@ void ActorUnkCRFT::Setup() {
 }
 
 // non-matching (regalloc)
-void ActorUnkCRFT::Update() {
+void ActorKenzo::Update() {
     if (!this->vfunc_108(0x6800)) {
         return;
     }
@@ -166,7 +166,7 @@ void ActorUnkCRFT::Update() {
 
     this->vfunc_60();
 
-    CALL_PTMF(PTMF<ActorUnkCRFT>, data_ov058_02154f38[this->mState]);
+    CALL_PTMF(PTMF<ActorKenzo>, data_ov058_02154f38[this->mState]);
     if (!GET_FLAG(this->mFlags, ActorFlag_Visible)) {
         return;
     }
@@ -181,7 +181,7 @@ void ActorUnkCRFT::Update() {
     this->vfunc_10C();
 }
 
-bool ActorUnkCRFT::vfunc_5C() {
+bool ActorKenzo::vfunc_5C() {
     bool retValue = this->Actor_Derived1::vfunc_5C();
 
     if (retValue) {
@@ -194,9 +194,9 @@ bool ActorUnkCRFT::vfunc_5C() {
     return retValue;
 }
 
-void ActorUnkCRFT::vfunc_0BC() {
+void ActorKenzo::vfunc_0BC() {
     if (this->func_ov058_02148710()) {
-        this->SetState(ActorUnkCRFTState_9);
+        this->SetState(ActorKenzoState_9);
         return;
     }
 
@@ -204,12 +204,12 @@ void ActorUnkCRFT::vfunc_0BC() {
 }
 
 // non-matching (str order for 0b0 and 350)
-void ActorUnkCRFT::vfunc_0CC() {
+void ActorKenzo::vfunc_0CC() {
     if (this->func_ov058_02148710()) {
         this->mVel.x = FX_F32_TO_FX32(0.0f);
         this->mVel.z = FX_F32_TO_FX32(0.0f);
 
-        this->SetState(ActorUnkCRFTState_10);
+        this->SetState(ActorKenzoState_10);
 
         this->mUnk_0B0 &= ~0x10;
         this->mUnk_350.SetAlt(0, 0);
@@ -219,7 +219,7 @@ void ActorUnkCRFT::vfunc_0CC() {
     this->Actor_Character::vfunc_0CC();
 }
 
-void ActorUnkCRFT::vfunc_0D0() {
+void ActorKenzo::vfunc_0D0() {
     this->Actor_Character::vfunc_0D0();
 
     if (!this->func_ov058_02148710()) {
@@ -229,55 +229,55 @@ void ActorUnkCRFT::vfunc_0D0() {
     this->vfunc_98(0x4);
 }
 
-void ActorUnkCRFT::vfunc_114() {
+void ActorKenzo::vfunc_114() {
     this->mUnk_0B0 |= 0x10;
     this->vfunc_98(0x3);
 
     this->mUnk_350.Set(0, gRandom.Next32(0x4) + 0x3);
 }
 
-void ActorUnkCRFT::vfunc_118() {
+void ActorKenzo::vfunc_118() {
     this->mUnk_0B0 &= ~0x10;
     this->vfunc_98(0x4);
 
     this->mUnk_350.Set(0, gRandom.Next32(0x3) + 0x1);
 }
 
-void ActorUnkCRFT::vfunc_11C() {
+void ActorKenzo::vfunc_11C() {
     this->mUnk_0B0 |= 0x10;
     if (this->mUnk_094.mUnk_0C->vfunc_28()->func_02015244()) {
         this->mUnk_350.Update();
 
         if (this->mUnk_350.GetMax() != 0x0 && this->mUnk_350.value >= this->mUnk_350.max) {
-            this->SetState(ActorUnkCRFTState_10);
+            this->SetState(ActorKenzoState_10);
         }
     }
 
     this->vfunc_124();
 }
 
-void ActorUnkCRFT::vfunc_120() {
+void ActorKenzo::vfunc_120() {
     if (this->mUnk_094.mUnk_0C->vfunc_28()->func_02015244()) {
         this->mUnk_350.Update();
 
         if (this->mUnk_350.GetMax() != 0x0 && this->mUnk_350.value >= this->mUnk_350.max) {
-            this->SetState(ActorUnkCRFTState_9);
+            this->SetState(ActorKenzoState_9);
         }
     }
 }
 
-bool ActorUnkCRFT::func_ov058_02148710() {
+bool ActorKenzo::func_ov058_02148710() {
     return this->mUnk_5C.mParams[1] == 0x1;
 }
 
-void ActorUnkCRFT::vfunc_124() {
+void ActorKenzo::vfunc_124() {
     Vec2p data = data_ov058_02153328;
 
     this->vfunc_128(&data, 0x1);
 }
 
 // non-matching first parameter is not a Vec2p
-void ActorUnkCRFT::vfunc_128(Vec2p *param1, unk32 param2) {
+void ActorKenzo::vfunc_128(Vec2p *param1, unk32 param2) {
     if (param1 == NULL) {
         return;
     }
@@ -290,16 +290,16 @@ void ActorUnkCRFT::vfunc_128(Vec2p *param1, unk32 param2) {
     }
 }
 
-void ActorUnkCRFT::func_ov058_021487c8(unk32 param1, VecFx32 *param2) {
+void ActorKenzo::func_ov058_021487c8(unk32 param1, VecFx32 *param2) {
     data_027e09a8->func_ov000_02071b30(param1, param2, 0x0);
 }
 
-unk32 ActorUnkCRFT::vfunc_7C(unk32 param1) {
+unk32 ActorKenzo::vfunc_7C(unk32 param1) {
 #pragma unused(param1)
     return 0x1;
 }
 
-bool ActorUnkCRFT::vfunc_9C() {
+bool ActorKenzo::vfunc_9C() {
     PassengerManager *instance = gpPassengerManager;
 
     instance->TryBoardTrain(this->GetActorId(), SceneIndex_f_bridge2, 0xFF);
@@ -307,7 +307,7 @@ bool ActorUnkCRFT::vfunc_9C() {
     return true;
 }
 
-unk32 ActorUnkCRFT::vfunc_A0() {
+unk32 ActorKenzo::vfunc_A0() {
     if (this->func_ov058_0214885c()) {
         PassengerManager *instance = gpPassengerManager;
 
@@ -319,7 +319,7 @@ unk32 ActorUnkCRFT::vfunc_A0() {
     return 0x1;
 }
 
-bool ActorUnkCRFT::func_ov058_0214885c() {
+bool ActorKenzo::func_ov058_0214885c() {
     PassengerManager *instance = gpPassengerManager;
 
     if (instance->CanCompleteTrip()) {
@@ -336,7 +336,7 @@ bool ActorUnkCRFT::func_ov058_0214885c() {
     return false;
 }
 
-s16 ActorUnkCRFT::func_ov058_021488d8() {
+s16 ActorKenzo::func_ov058_021488d8() {
     s16 var = 5 - gpPassengerManager->GetHappinessCond();
 
     if (var >= 0x5) {
@@ -347,7 +347,7 @@ s16 ActorUnkCRFT::func_ov058_021488d8() {
 }
 
 // non-matching
-unk32 ActorUnkCRFT::vfunc_80(unk32 param1, unk32 param2) {
+unk32 ActorKenzo::vfunc_80(unk32 param1, unk32 param2) {
     unk32 params = (u8) (param1 + 1) | (param2 << 8);
     if (params != 0x301) {
         if (params == 0x502) {
@@ -374,7 +374,7 @@ unk32 ActorUnkCRFT::vfunc_80(unk32 param1, unk32 param2) {
     return 0x0;
 }
 
-bool ActorUnkCRFT::vfunc_48(unk32 param1) {
+bool ActorKenzo::vfunc_48(unk32 param1) {
     bool val = true;
     if (this->func_ov058_02148710() && data_027e09a4->mUnk_00.sceneIndex == SceneIndex_f_bridge2) {
         val = false;
@@ -398,7 +398,7 @@ bool ActorUnkCRFT::vfunc_48(unk32 param1) {
     return false;
 }
 
-void ActorUnkCRFT::vfunc_A4() {
+void ActorKenzo::vfunc_A4() {
     this->Actor_Derived1::vfunc_A4();
 
     if (!(this->mUnk_0B0 & 0x10)) {
@@ -408,7 +408,7 @@ void ActorUnkCRFT::vfunc_A4() {
     func_01ff930c(&this->mUnk_0DA, 0x0, 0x16C);
 }
 
-void ActorUnkCRFT::vfunc_2C(unk32 param1) {
+void ActorKenzo::vfunc_2C(unk32 param1) {
     if (!this->Actor::func_01fff5d0(param1, 0x0)) {
         return;
     }
@@ -427,8 +427,8 @@ void ActorUnkCRFT::vfunc_2C(unk32 param1) {
     this->mUnk_2BC.func_ov000_02058038(&this->mUnk_320);
 }
 
-void ActorUnkCRFT::func_ov058_02148b04(Actor *param1, G3d_RenderState *param2) {
-    ActorUnkCRFT *thiz = (ActorUnkCRFT *) param1;
+void ActorKenzo::func_ov058_02148b04(Actor *param1, G3d_RenderState *param2) {
+    ActorKenzo *thiz = (ActorKenzo *) param1;
 
     if (thiz->mUnk_31C < 0) {
         return;

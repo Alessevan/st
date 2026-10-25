@@ -1,4 +1,4 @@
 #include "Actor/Actor_ov058.hpp"
 
-ActorUnkCRFT_160::~ActorUnkCRFT_160() {}
-ActorUnkCRFT_Base::~ActorUnkCRFT_Base() {}
+ActorKenzo_Base_160::~ActorKenzo_Base_160() {}
+ActorKenzo_Base::~ActorKenzo_Base() {}

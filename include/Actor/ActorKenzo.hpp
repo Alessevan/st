@@ -9,22 +9,22 @@
 #include "global.h"
 #include "types.h"
 
-enum ActorUnkCRFTState_ {
-    ActorUnkCRFTState_0  = 0,
-    ActorUnkCRFTState_1  = 1,
-    ActorUnkCRFTState_2  = 2,
-    ActorUnkCRFTState_3  = 3,
-    ActorUnkCRFTState_4  = 4,
-    ActorUnkCRFTState_5  = 5,
-    ActorUnkCRFTState_6  = 6,
-    ActorUnkCRFTState_7  = 7,
-    ActorUnkCRFTState_8  = 8,
-    ActorUnkCRFTState_9  = 9,
-    ActorUnkCRFTState_10 = 10,
-    ActorUnkCRFTState_Max
+enum ActorKenzoState_ {
+    ActorKenzoState_0  = 0,
+    ActorKenzoState_1  = 1,
+    ActorKenzoState_2  = 2,
+    ActorKenzoState_3  = 3,
+    ActorKenzoState_4  = 4,
+    ActorKenzoState_5  = 5,
+    ActorKenzoState_6  = 6,
+    ActorKenzoState_7  = 7,
+    ActorKenzoState_8  = 8,
+    ActorKenzoState_9  = 9,
+    ActorKenzoState_10 = 10,
+    ActorKenzoState_Max
 };
 
-class ActorUnkCRFT : public ActorUnkCRFT_Base {
+class ActorKenzo : public ActorKenzo_Base {
 public:
     /* 000 (base) */
     /* 24C */ ModelRender_ov000_020b4d64 mUnk_24C;
@@ -36,7 +36,7 @@ public:
     /* 354 */ unk16 mUnk_354;
     /* 358 */
 
-    ActorUnkCRFT();
+    ActorKenzo();
 
     /* 018 */ virtual bool Init(unk32 param1) override;
     /* 01C */ virtual void Setup() override;
@@ -68,13 +68,13 @@ public:
     static void func_ov058_02148b04(Actor *param1, G3d_RenderState *param2);
 };
 
-class ActorProfileUnkCRFT : public ActorProfile_Derived1 {
+class ActorProfileKenzo : public ActorProfile_Derived1 {
 public:
     /* 00 (base) */
 
-    ActorProfileUnkCRFT();
+    ActorProfileKenzo();
 
     /* 0C */ virtual Actor *Create();
 
-    static ActorProfileUnkCRFT *GetProfile();
+    static ActorProfileKenzo *GetProfile();
 };
