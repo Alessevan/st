@@ -193,7 +193,6 @@ void ActorUnkRCFO::vfunc_2C(unk32 param1) {
 #pragma unused(param1)
 }
 
-// non-matching
 void ActorUnkRCFO::func_ov033_02119840(unk32 param1, unk32 param2) {
     this->mUnk_DD4 = param1;
     this->mUnk_DD8.Set(0x0, 0xFFFF);
@@ -220,24 +219,10 @@ void ActorUnkRCFO::func_ov033_02119840(unk32 param1, unk32 param2) {
             sp0C.mUnk_00 = 0x80;
             sp0C.mUnk_3A = 0x7;
 
-            UnkStackStruct2 *src   = func_ov000_02077590(0x1);
-            sp0C.mUnk_18.s.mUnk_00 = src->s.mUnk_00;
-            sp0C.mUnk_18.s.mUnk_02 = src->s.mUnk_02;
-            sp0C.mUnk_18.s.mUnk_04 = src->s.mUnk_04;
-            sp0C.mUnk_18.s.mUnk_06 = src->s.mUnk_06;
-            sp0C.mUnk_18.s.mUnk_08 = src->s.mUnk_08;
-
-            sp0C.mUnk_18.s.mUnk_0C = src->s.mUnk_0C;
-
-            u16 sp44 = sp0C.mUnk_38 | 0x80;
-
-            sp0C.mUnk_18.s.mUnk_18 = src->s.mUnk_18;
-            sp0C.mUnk_18.s.mUnk_1A = src->s.mUnk_1A;
-            sp0C.mUnk_18.s.mUnk_1C = src->s.mUnk_1C;
-            sp0C.mUnk_18.s.mUnk_1E = src->s.mUnk_1E;
+            sp0C.mUnk_18.Copy(0x1);
 
             sp0C.mUnk_18.s.mUnk_08 += 0x10000;
-            sp0C.mUnk_38 = sp44;
+            sp0C.mUnk_38 |= 0x80;
 
             VecFx32Cpp vec(this->mUnk_DE8.vec.x + this->mUnk_DDC.vec.x, this->mUnk_DE8.vec.y + this->mUnk_DDC.vec.y,
                            this->mUnk_DE8.vec.z + this->mUnk_DDC.vec.z);
