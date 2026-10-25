@@ -895,7 +895,7 @@ data_ov020_020e85d4 kind:bss addr:0x020e85d4 ambiguous
 data_ov020_020e85d8 kind:bss addr:0x020e85d8
 data_ov020_020e85f8 kind:bss addr:0x020e85f8 ambiguous
 data_ov020_020e8618 kind:bss addr:0x020e8618
-_ZN15Actor_Character6UpdateEv kind:bss addr:0x020e8650 ambiguous
+data_ov020_020e8650 kind:bss addr:0x020e8650 ambiguous
 data_ov020_020e8658 kind:bss addr:0x020e8658
 data_ov020_020e8698 kind:bss addr:0x020e8698
 data_ov020_020e869c kind:bss addr:0x020e869c
