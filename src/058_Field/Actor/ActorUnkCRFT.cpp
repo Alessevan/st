@@ -60,7 +60,6 @@ ActorProfileUnkCRFT::ActorProfileUnkCRFT() :
     this->mUnk_1E |= 0x1;
 }
 
-// non-matching
 ActorUnkCRFT::ActorUnkCRFT() :
     ActorUnkCRFT_Base(&mUnk_24C, data_ov000_020b539c_eur.mUnk_30->vfunc_04()),
     mUnk_24C(G3d_GetUnkPtr(data_ov000_020b539c_eur.mUnk_30->vfunc_04()->mUnk_50, data_ov058_02153308)),
