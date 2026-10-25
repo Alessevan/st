@@ -1,17 +1,29 @@
 #pragma once
 
 #include "Actor_Derived1.hpp"
+#include "Unknown/UnkStruct_027e09c0.hpp"
 
 class Actor_Character;
+
+enum Actor_CharacterState_ {
+    Actor_CharacterState_0 = 0,
+    Actor_CharacterState_1 = 1,
+    Actor_CharacterState_2 = 2,
+    Actor_CharacterState_3 = 3,
+    Actor_CharacterState_4 = 4,
+    Actor_CharacterState_5 = 5,
+    Actor_CharacterState_6 = 6,
+    Actor_CharacterState_7 = 7,
+    Actor_CharacterState_8 = 8,
+    Actor_CharacterState_Max
+};
 
 class Actor_Character_12C : public UnkStruct_ov031_Items_00 {
 public:
     /* 00 (base) */
     /* 04 */ PAD(0x04, 0x08);
     /* 08 */ Actor_Character *mUnk_08;
-    /* 0C */ unk16 mUnk_0C;
-    /* 0E */ unk16 mUnk_0E;
-    /* 10 */ unk16 mUnk_10;
+    /* 0C */ VecFx16Cpp mUnk_0C;
     /* 12 */
 
     Actor_Character_12C(Actor_Character *param1);
@@ -33,13 +45,9 @@ public:
     /* 128 */ unk32 mUnk_128;
     /* 12C */ Actor_Character_12C mUnk_12C;
     /* 140 */ unk32 mUnk_140;
-    /* 14C */ unk32 mUnk_144;
-    /* 148 */ unk32 mUnk_148;
-    /* 14C */ unk32 mUnk_14C;
-    /* 150 */ unk32 mUnk_150;
-    /* 154 */ unk32 mUnk_154;
-    /* 158 */ unk8 mUnk_158;
-    /* 15C */ unk32 mUnk_15C;
+    /* 14C */ UnkStruct_ov000_0207de98 mUnk_144;
+    /* 158 */ u8 mUnk_158;
+    /* 15C */ unk32 *mUnk_15C;
     /* 160 */
 
     Actor_Character(ModelRender *param1, ActorUnkZSRS_120 *param2);
@@ -48,7 +56,7 @@ public:
     /* 020 */ virtual void Update() override;
     /* 04C */ virtual ~Actor_Character() override;
     /* 054 */ virtual void vfunc_54(unk32 param1) override;
-    /* 058 */ virtual void vfunc_58(ActorState param1) override;
+    /* 058 */ virtual void SetState(ActorState param1) override;
     /* 0AC */ virtual void vfunc_AC() override;
     /* 0BC */ virtual void vfunc_0BC();
     /* 0C0 */ virtual void vfunc_0C0();
@@ -69,10 +77,10 @@ public:
     /* 0FC */ virtual void vfunc_0FC();
     /* 100 */ virtual void vfunc_100();
     /* 104 */ virtual void vfunc_104();
-    /* 108 */ virtual void vfunc_108();
+    /* 108 */ virtual bool vfunc_108(unk32 param1);
     /* 10C */ virtual void vfunc_10C();
     /* 110 */ virtual void vfunc_110();
 
     void func_ov031_020e79bc();
-    void func_ov031_020e812c();
+    bool func_ov031_020e812c();
 };

@@ -120,7 +120,7 @@ public:
     /* 000 (base) */
     /* 094 */ Actor_Derived1_94_Derived1 mUnk_094;
     /* 0A4 */ Actor_Derived1_a4 mUnk_0A4;
-    /* 0B0 */ u16 mUnk_0B0;
+    /* 0B0 */ volatile u16 mUnk_0B0;
     /* 0B4 */ unk32 mUnk_0B4;
     /* 0B8 */ ActorUnkZLSL_AnimationTag *mUnk_0B8;
     /* 0BC */ RefStruct mUnk_0BC;
@@ -140,7 +140,7 @@ public:
     /* 0EC */ Actor_Derived1_EC mUnk_0EC;
     /* 104 */ Cylinder mUnk_104;
     /* 114 */ unk32 mUnk_114;
-    /* 118 */ unk32 mUnk_118;
+    /* 118 */ fx32 mUnk_118;
     /* 11C */ unk32 mUnk_11C;
     /* 120 */
 
@@ -152,7 +152,7 @@ public:
     /* 2C */ virtual void vfunc_2C(unk32 param1) override;
     /* 4C */ virtual ~Actor_Derived1();
     /* 54 */ virtual void vfunc_54(unk32 param1);
-    /* 58 */ virtual void vfunc_58(ActorState param1) = 0;
+    /* 58 */ virtual void SetState(ActorState param1) = 0;
     /* 5C */ virtual void vfunc_5C();
     /* 60 */ virtual void vfunc_60();
     /* 64 */ virtual bool vfunc_64();

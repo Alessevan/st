@@ -20,7 +20,7 @@ ActorUnkCRFT::ActorUnkCRFT() :
     ActorUnkCRFT_Base(NULL, NULL) {}
 
 bool ActorUnkCRFT::Init(unk32 param1) {}
-void ActorUnkCRFT::vfunc_58(ActorState param1) {}
+void ActorUnkCRFT::SetState(ActorState param1) {}
 void ActorUnkCRFT::vfunc_54(unk32 param1) {}
 void ActorUnkCRFT::Setup() {}
 void ActorUnkCRFT::Update() {}

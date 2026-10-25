@@ -94,7 +94,7 @@ void Actor_Derived1::func_ov000_020a8df0(RefStruct param1, unk32 param2) {
 }
 
 void Actor_Derived1::vfunc_B4() {
-    this->vfunc_58(0);
+    this->SetState(0);
 }
 
 // non-matching
@@ -147,7 +147,7 @@ void Actor_Derived1::vfunc_60() {
         if (this->vfunc_64()) {
             this->vfunc_B0();
             this->func_ov000_020a9200();
-            this->vfunc_58(4);
+            this->SetState(4);
         }
     }
 }
@@ -189,14 +189,14 @@ void Actor_Derived1::func_ov000_020a91b8(VecFx32 *param1, unk32 param2) {
         this->mUnk_0B0 &= ~0x20;
     }
 
-    this->vfunc_58(7);
+    this->SetState(7);
 }
 
 void Actor_Derived1::func_ov000_020a9200() {}
 
 void Actor_Derived1::vfunc_70() {
     if (this->mState != 5) {
-        this->vfunc_58(4);
+        this->SetState(4);
     }
 }
 
