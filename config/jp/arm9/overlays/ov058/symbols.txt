@@ -67,8 +67,8 @@ _ZN12ActorUnkKOKO19func_ov058_02141c24Ev kind:function(arm,size=0xac) addr:0x021
 _ZN12ActorUnkKOKO19func_ov058_02141cd0Ev kind:function(arm,size=0x24) addr:0x021438b0
 _ZN12ActorUnkKOKO19func_ov058_02141cf4Ev kind:function(arm,size=0x10) addr:0x021438d4
 _ZN12ActorUnkKOKO19func_ov058_02141d04Ev kind:function(arm,size=0x8) addr:0x021438e4
-_ZN12ActorUnkKOKO19func_ov058_02141d0cEv kind:function(arm,size=0x24) addr:0x021438ec
-_ZN12ActorUnkKOKO19func_ov058_02141d30Ev kind:function(arm,size=0x2c) addr:0x02143910
+_ZN16ActorUnkCRFT_1608vfunc_3CEv kind:function(arm,size=0x24) addr:0x021438ec
+_ZN16ActorUnkCRFT_1608vfunc_38Eii kind:function(arm,size=0x2c) addr:0x02143910
 _ZN12ActorUnkKOKO19func_ov058_02141d5cEv kind:function(arm,size=0x14) addr:0x0214393c
 _ZN12ActorUnkKOKO19func_ov058_02141d70Ev kind:function(arm,size=0x1c) addr:0x02143950
 _ZN12ActorUnkKOKO19func_ov058_02141d8cEv kind:function(arm,size=0x1c) addr:0x0214396c
@@ -678,12 +678,12 @@ data_ov058_02154e8f kind:data(any) addr:0x02154e8f
 data_ov058_02154ec0 kind:data(any) addr:0x02154ec0 ambiguous
 data_ov058_02154f28 kind:data(any) addr:0x02154f28 ambiguous
 data_ov058_02154f88 kind:data(any) addr:0x02154f88 ambiguous
-data_ov058_0215503c kind:data(any) addr:0x0215503c
-data_ov058_02155044 kind:data(any) addr:0x02155044
-data_ov058_02155054 kind:data(any) addr:0x02155054
+data_ov058_02153300 kind:data(any) addr:0x0215503c
+data_ov058_02153308 kind:data(any) addr:0x02155044
+data_ov058_02153318 kind:data(any) addr:0x02155054
 data_ov058_02155058 kind:data(any) addr:0x02155058 ambiguous
-data_ov058_02155064 kind:data(any) addr:0x02155064
-data_ov058_0215506c kind:data(any) addr:0x0215506c
+data_ov058_02153328 kind:data(any) addr:0x02155064
+data_ov058_02153330 kind:data(any) addr:0x0215506c
 data_ov058_02155070 kind:data(any) addr:0x02155070 ambiguous
 data_ov058_02155088 kind:data(any) addr:0x02155088
 data_ov058_02155090 kind:data(any) addr:0x02155090
@@ -801,11 +801,11 @@ _ZTV19data_ov058_02156614 kind:data(any) addr:0x02156614
 _ZTV19data_ov058_02156638 kind:data(any) addr:0x02156638
 data_ov058_0215665c kind:data(any) addr:0x0215665c
 data_ov058_02156674 kind:data(any) addr:0x02156674
-data_ov058_021566ac kind:data(any) addr:0x021566ac
+_ZTV16ActorUnkCRFT_160 kind:data(any) addr:0x021566a4
 data_ov058_021566f0 kind:data(any) addr:0x021566f0
 data_ov058_02156758 kind:data(any) addr:0x02156758
 data_ov058_02156798 kind:data(any) addr:0x02156798 ambiguous
-_ZTV19data_ov058_021567c0 kind:data(any) addr:0x021567c0
+_ZTV17ActorUnkCRFT_Base kind:data(any) addr:0x021567c0
 _ZTV19data_ov058_021567f8 kind:data(any) addr:0x021567f8 ambiguous
 _ZTV19data_ov058_021568dc kind:data(any) addr:0x021568dc
 _ZTV19data_ov058_02156964 kind:data(any) addr:0x02156964 ambiguous

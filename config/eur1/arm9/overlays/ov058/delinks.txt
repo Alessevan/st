@@ -36,6 +36,9 @@ src/058_Field/Actor/ActorUnkSYDE_SYDL_SYDS_SYFI_SYFO_SYIL_SYIS_SYOL_SYOS_SYSL_SY
     .ctor       start:0x02154250 end:0x02154254
     .bss        start:0x0215619c end:0x02156fe8
 
+src/058_Field/Actor/Actor_ov058.cpp:
+    .data       start:0x02154a84 end:0x02154cbc
+
 src/058_Field/Actor/ActorUnkCRFT.cpp:
     .text       start:0x02148010 end:0x02148d0c
     .init       start:0x02153ac8 end:0x02153b18

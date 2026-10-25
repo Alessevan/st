@@ -67,8 +67,8 @@ _ZN12ActorUnkKOKO19func_ov058_02141c24Ev kind:function(arm,size=0xac) addr:0x021
 _ZN12ActorUnkKOKO19func_ov058_02141cd0Ev kind:function(arm,size=0x24) addr:0x02141df0
 _ZN12ActorUnkKOKO19func_ov058_02141cf4Ev kind:function(arm,size=0x10) addr:0x02141e14
 _ZN12ActorUnkKOKO19func_ov058_02141d04Ev kind:function(arm,size=0x8) addr:0x02141e24
-_ZN12ActorUnkKOKO19func_ov058_02141d0cEv kind:function(arm,size=0x24) addr:0x02141e2c
-_ZN12ActorUnkKOKO19func_ov058_02141d30Ev kind:function(arm,size=0x2c) addr:0x02141e50
+_ZN16ActorUnkCRFT_1608vfunc_3CEv kind:function(arm,size=0x24) addr:0x02141e2c
+_ZN16ActorUnkCRFT_1608vfunc_38Eii kind:function(arm,size=0x2c) addr:0x02141e50
 _ZN12ActorUnkKOKO19func_ov058_02141d5cEv kind:function(arm,size=0x14) addr:0x02141e7c
 _ZN12ActorUnkKOKO19func_ov058_02141d70Ev kind:function(arm,size=0x1c) addr:0x02141e90
 _ZN12ActorUnkKOKO19func_ov058_02141d8cEv kind:function(arm,size=0x1c) addr:0x02141eac
@@ -186,7 +186,7 @@ _ZN19ActorProfileUnkSYDE6CreateEv kind:function(arm,size=0x28) addr:0x02143490
 _ZN19ActorProfileUnkSYDEC1Ev kind:function(arm,size=0xa0) addr:0x021434b8
 func_ov058_02143438 kind:function(arm,size=0x1a8) addr:0x02143558
 func_ov058_021435e0 kind:function(arm,size=0xf6c) addr:0x02143700
-func_ov058_0214454c kind:function(arm,size=0x14) addr:0x0214466c
+_ZN16ActorUnkCRFT_160D1Ev kind:function(arm,size=0x14) addr:0x0214466c
 _ZN19func_ov058_02144560D1Ev kind:function(arm,size=0xa8) addr:0x02144680
 _ZN19func_ov058_02144608D0Ev kind:function(arm,size=0xb0) addr:0x02144728
 func_ov058_021446b8 kind:function(arm,size=0x4e8) addr:0x021447d8
@@ -258,7 +258,7 @@ func_ov058_02147ca8 kind:function(arm,size=0x3c) addr:0x02147dc8
 func_ov058_02147ce4 kind:function(arm,size=0x3c) addr:0x02147e04
 func_ov058_02147d20 kind:function(arm,size=0x3c) addr:0x02147e40
 func_ov058_02147d5c kind:function(arm,size=0x4) addr:0x02147e7c
-_ZN19func_ov058_02147d60D0Ev kind:function(arm,size=0x1c) addr:0x02147e80
+_ZN16ActorUnkCRFT_160D0Ev kind:function(arm,size=0x1c) addr:0x02147e80
 _ZN17ActorUnkCRFT_BaseD0Ev kind:function(arm,size=0x28) addr:0x02147e9c
 _ZN17ActorUnkCRFT_BaseD1Ev kind:function(arm,size=0x20) addr:0x02147ec4
 _ZN19ActorProfileUnkSYOSD1Ev kind:function(arm,size=0x14) addr:0x02147ee4
@@ -681,10 +681,10 @@ data_ov058_02153272 kind:data(any) addr:0x02153272
 data_ov058_02153273 kind:data(any) addr:0x02153273
 data_ov058_02153334 kind:data(any) addr:0x02153334 ambiguous
 data_ov058_02153420 kind:data(any) addr:0x02153420
-data_ov058_02153428 kind:data(any) addr:0x02153428
-data_ov058_02153438 kind:data(any) addr:0x02153438
-data_ov058_02153448 kind:data(any) addr:0x02153448
-data_ov058_02153450 kind:data(any) addr:0x02153450
+data_ov058_02153308 kind:data(any) addr:0x02153428
+data_ov058_02153318 kind:data(any) addr:0x02153438
+data_ov058_02153328 kind:data(any) addr:0x02153448
+data_ov058_02153330 kind:data(any) addr:0x02153450
 data_ov058_02153468 kind:data(any) addr:0x02153468
 data_ov058_02153470 kind:data(any) addr:0x02153470
 data_ov058_0215347c kind:data(any) addr:0x0215347c
@@ -801,15 +801,11 @@ data_ov058_02154a10 kind:data(any) addr:0x02154a10 ambiguous
 data_ov058_02154a20 kind:data(any) addr:0x02154a20
 data_ov058_02154a3c kind:data(any) addr:0x02154a3c
 data_ov058_02154a54 kind:data(any) addr:0x02154a54
-data_ov058_02154a8c kind:data(any) addr:0x02154a8c
-data_ov058_02154ac8 kind:data(any) addr:0x02154ac8 ambiguous
+_ZTV16ActorUnkCRFT_160 kind:data(any) addr:0x02154a84
 data_ov058_02154ad0 kind:data(any) addr:0x02154ad0
 data_ov058_02154b38 kind:data(any) addr:0x02154b38
-data_ov058_02154b5c kind:data(any) addr:0x02154b5c ambiguous
-data_ov058_02154ba8 kind:data(any) addr:0x02154ba8
-data_ov058_02154c20 kind:data(any) addr:0x02154c20 ambiguous
-data_ov058_02154c3c kind:data(any) addr:0x02154c3c ambiguous
-data_ov058_02154cc4 kind:data(any) addr:0x02154cc4
+_ZTV17ActorUnkCRFT_Base kind:data(any) addr:0x02154ba0
+_ZTV19data_ov058_02154cc4 kind:data(any) addr:0x02154cbc
 data_ov058_02154cec kind:data(any) addr:0x02154cec ambiguous
 data_ov058_02154dfc kind:data(any) addr:0x02154dfc
 data_ov058_02154f7c kind:data(any) addr:0x02154f7c
