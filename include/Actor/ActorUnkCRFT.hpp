@@ -32,8 +32,7 @@ public:
     /* 2BC */ ModelRender_ov000_020b1a1c mUnk_2BC;
     /* 31C */ unk32 mUnk_31C;
     /* 320 */ MtxFx43 mUnk_320;
-    /* 350 */ unk16 mUnk_350;
-    /* 352 */ unk16 mUnk_352;
+    /* 350 */ Timer mUnk_350;
     /* 354 */ unk16 mUnk_354;
     /* 358 */
 
@@ -61,7 +60,7 @@ public:
     /* 11C */ virtual void vfunc_11C();
     /* 120 */ virtual void vfunc_120();
     /* 124 */ virtual void vfunc_124();
-    /* 128 */ virtual void vfunc_128();
+    /* 128 */ virtual void vfunc_128(Vec2p *param1, unk32 param2);
 
     bool func_ov058_02148710();
     void func_ov058_021487c8(unk32 param1, VecFx32 *param2);

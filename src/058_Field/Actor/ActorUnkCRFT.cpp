@@ -2,6 +2,7 @@
 
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
 #include "CommonFuncs.hpp"
+#include "System/Random.hpp"
 #include "System/SysNew.hpp"
 #include "Unknown/UnkStruct_027e09a8.hpp"
 #include "Unknown/UnkStruct_027e09b8.hpp"
@@ -14,6 +15,7 @@ struct UnkStruct_ov058_0215330 {
 extern unk32 data_ov058_02153300[];
 extern char data_ov058_02153308[] /* = "crft" */;
 extern char data_ov058_02153318[] /* = "hammer" */;
+extern Vec2p data_ov058_02153328;
 extern UnkStruct_ov058_0215330 data_ov058_02153330;
 
 static ActorUnkZLSL_AnimationTag data_ov058_02154f90[] = {
@@ -68,8 +70,7 @@ ActorUnkCRFT::ActorUnkCRFT() :
     mUnk_24C(G3d_GetUnkPtr(data_ov000_020b539c_eur.mUnk_30->vfunc_04()->mUnk_50, data_ov058_02153308)),
     mUnk_2BC(G3d_GetUnkPtr(data_ov000_020b539c_eur.mUnk_30->vfunc_04()->mUnk_50, data_ov058_02153318)),
     mUnk_31C(-0x1),
-    mUnk_350(0x0),
-    mUnk_352(0x0),
+    mUnk_350(0, 0),
     mUnk_354(0x6) {
     this->mUnk_0B8 = &data_ov058_02154f90[0];
 
@@ -189,8 +190,22 @@ void ActorUnkCRFT::vfunc_0BC() {
 
     this->Actor_Character::vfunc_0BC();
 }
-// non-matching
-void ActorUnkCRFT::vfunc_0CC() {}
+
+// non-matching (str order for 0b0 and 350)
+void ActorUnkCRFT::vfunc_0CC() {
+    if (this->func_ov058_02148710()) {
+        this->mVel.x = FX_F32_TO_FX32(0.0f);
+        this->mVel.z = FX_F32_TO_FX32(0.0f);
+
+        this->SetState(ActorUnkCRFTState_10);
+
+        this->mUnk_0B0 &= ~0x10;
+        this->mUnk_350.SetAlt(0, 0);
+        return;
+    }
+
+    this->Actor_Character::vfunc_0CC();
+}
 
 void ActorUnkCRFT::vfunc_0D0() {
     this->Actor_Character::vfunc_0D0();
@@ -202,23 +217,56 @@ void ActorUnkCRFT::vfunc_0D0() {
     this->vfunc_98(0x4);
 }
 
-// non-matching
-void ActorUnkCRFT::vfunc_114() {}
-// non-matching
-void ActorUnkCRFT::vfunc_118() {}
-// non-matching
-void ActorUnkCRFT::vfunc_11C() {}
-// non-matching
-void ActorUnkCRFT::vfunc_120() {}
+void ActorUnkCRFT::vfunc_114() {
+    this->mUnk_0B0 |= 0x10;
+    this->vfunc_98(0x3);
+
+    this->mUnk_350.Set(0, gRandom.Next32(0x4) + 0x3);
+}
+
+void ActorUnkCRFT::vfunc_118() {
+    this->mUnk_0B0 &= ~0x10;
+    this->vfunc_98(0x4);
+
+    this->mUnk_350.Set(0, gRandom.Next32(0x3) + 0x1);
+}
+
+void ActorUnkCRFT::vfunc_11C() {
+    this->mUnk_0B0 |= 0x10;
+    if (this->mUnk_094.mUnk_0C->vfunc_28()->func_02015244()) {
+        this->mUnk_350.Update();
+
+        if (this->mUnk_350.GetMax() != 0x0 && this->mUnk_350.value >= this->mUnk_350.max) {
+            this->SetState(ActorUnkCRFTState_10);
+        }
+    }
+
+    this->vfunc_124();
+}
+
+void ActorUnkCRFT::vfunc_120() {
+    if (this->mUnk_094.mUnk_0C->vfunc_28()->func_02015244()) {
+        this->mUnk_350.Update();
+
+        if (this->mUnk_350.GetMax() != 0x0 && this->mUnk_350.value >= this->mUnk_350.max) {
+            this->SetState(ActorUnkCRFTState_9);
+        }
+    }
+}
 
 bool ActorUnkCRFT::func_ov058_02148710() {
     return this->mUnk_5C.mParams[1] == 0x1;
 }
 
 // non-matching
-void ActorUnkCRFT::vfunc_124() {}
+void ActorUnkCRFT::vfunc_124() {
+    Vec2p data = data_ov058_02153328;
+
+    this->vfunc_128(&data, 0x1);
+}
+
 // non-matching
-void ActorUnkCRFT::vfunc_128() {}
+void ActorUnkCRFT::vfunc_128(Vec2p *param1, unk32 param2) {}
 
 void ActorUnkCRFT::func_ov058_021487c8(unk32 param1, VecFx32 *param2) {
     data_027e09a8->func_ov000_02071b30(param1, param2, 0x0);

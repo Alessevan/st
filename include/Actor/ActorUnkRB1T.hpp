@@ -5,6 +5,7 @@
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
 #include "Actor/Actor_Derived1.hpp"
+#include "ActorUnkZLSL_ZSRS.hpp"
 #include "global.h"
 #include "nns/g3d/sbc.h"
 #include "types.h"
