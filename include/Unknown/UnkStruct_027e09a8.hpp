@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Actor/ActorId.hpp"
+
 #include "math.hpp"
 #include "types.h"
 
