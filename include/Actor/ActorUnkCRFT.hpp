@@ -2,8 +2,10 @@
 
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
+#include "ActorSpinut.hpp"
 #include "ActorUnkZLSL_ZSRS.hpp"
 #include "Actor_Character.hpp"
+#include "Actor_ov058.hpp"
 #include "global.h"
 #include "types.h"
 
@@ -22,20 +24,17 @@ enum ActorUnkCRFTState_ {
     ActorUnkCRFTState_Max
 };
 
-class ActorUnkCRFT_Base : public Actor_Character {
-public:
-    /* 000 (base) */
-    /* 160 */
-
-    ActorUnkCRFT_Base(ModelRender *param1, ActorUnkZSRS_120 *param2) :
-        Actor_Character(param1, param2) {}
-};
-
 class ActorUnkCRFT : public ActorUnkCRFT_Base {
 public:
     /* 000 (base) */
-    /* 160 */ UnkStruct_ov000_020b31f0 mUnk_160;
-    /* 18C */ PAD(0x18C, 0x358);
+    /* 24C */ ModelRender_ov000_020b4d64 mUnk_24C;
+    /* 2AC */ PAD(0x2AC, 0x2BC);
+    /* 2BC */ ModelRender_ov000_020b1a1c mUnk_2BC;
+    /* 31C */ unk32 mUnk_31C;
+    /* 320 */ unk8 mUnk_320[0x30];
+    /* 350 */ unk16 mUnk_350;
+    /* 352 */ unk16 mUnk_352;
+    /* 354 */ unk16 mUnk_354;
     /* 358 */
 
     ActorUnkCRFT();
@@ -64,7 +63,7 @@ public:
     /* 124 */ virtual void vfunc_124();
     /* 128 */ virtual void vfunc_128();
 
-    void func_ov058_02148710();
+    bool func_ov058_02148710();
     void func_ov058_021487c8();
     void func_ov058_0214885c();
     void func_ov058_021488d8();

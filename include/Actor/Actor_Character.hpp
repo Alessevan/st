@@ -50,7 +50,7 @@ public:
     /* 15C */ unk32 *mUnk_15C;
     /* 160 */
 
-    Actor_Character(ModelRender *param1, ActorUnkZSRS_120 *param2);
+    Actor_Character(ModelRender *param1, UnkStruct_ov000_020b31f0 *param2);
 
     // _ZTV19data_ov031_021132a8
     /* 020 */ virtual void Update() override;

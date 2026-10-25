@@ -192,7 +192,7 @@ public:
     void func_ov031_020eece8();
 };
 
-class ActorUnkZSRS_120_Base {
+class ActorUnkZSRS_120_Base : public UnkStruct_ov000_020b31f0 {
 public:
     ActorUnkZSRS_120_Base(UnkSystem5 *param1, UnkSystem5 *param2, ModelRender *param3, UnkActorFileSystem2 *ptr, G3d_Model *,
                           unk32 param4);

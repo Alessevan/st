@@ -30,7 +30,7 @@ static PTMF<Actor_Character> data_ov031_02113218[Actor_CharacterState_Max] = {
     &Actor_Character::vfunc_0DC, // Actor_CharacterState_8
 };
 
-Actor_Character::Actor_Character(ModelRender *param1, ActorUnkZSRS_120 *param2) :
+Actor_Character::Actor_Character(ModelRender *param1, UnkStruct_ov000_020b31f0 *param2) :
     Actor_Derived1(param1, param2),
     mUnk_120(0x64),
     mUnk_122(0xC8),
