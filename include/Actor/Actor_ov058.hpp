@@ -2,8 +2,8 @@
 
 // TODO : remove this file
 
+#include "Actor/ActorCharacter.hpp"
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
-#include "Actor/Actor_Character.hpp"
 
 // TODO: check if it has to be moved to KOKO
 class ActorKenzo_Base_160 : public UnkStruct_ov000_020b31f0 {
@@ -34,14 +34,14 @@ public:
 };
 
 // TODO: to be moved to lokomos' file
-class ActorKenzo_Base : public Actor_Character {
+class ActorKenzo_Base : public ActorCharacter {
 public:
     /* 000 (base) */
     /* 160 */ ActorKenzo_Base_160 mUnk_160;
     /* 24C */
 
     ActorKenzo_Base(ModelRender *param1, UnkActorFileSystem2 *param2) :
-        Actor_Character(param1, &mUnk_160),
+        ActorCharacter(param1, &mUnk_160),
         mUnk_160(param1, param2) {}
 
     // should be inlined

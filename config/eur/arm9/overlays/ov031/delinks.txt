@@ -57,7 +57,7 @@ src/031_Land/Actor/ActorUnkSWBM.cpp:
     .data       start:0x02113108 end:0x021131dc
     .bss        start:0x02116580 end:0x021165cc
 
-src/031_Land/Actor/Actor_Character.cpp:
+src/031_Land/Actor/ActorCharacter.cpp:
     .text       start:0x020e7378 end:0x020e8824
     .data       start:0x021131dc end:0x021133c4
 

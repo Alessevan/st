@@ -1,4 +1,4 @@
-#include "Actor/Actor_Character.hpp"
+#include "Actor/ActorCharacter.hpp"
 
 #include "Actor/ActorUnkZLSL_ZSRS.hpp"
 #include "CommonFuncs.hpp"
@@ -6,31 +6,31 @@
 #include "Unknown/UnkStruct_027e09c0.hpp"
 #include "Unknown/UnkStruct_027e0cd8.hpp"
 
-static PTMF<Actor_Character> data_ov031_02113260[Actor_CharacterState_Max] = {
-    &Actor_Character::vfunc_0E0, // Actor_CharacterState_0
-    &Actor_Character::vfunc_0E4, // Actor_CharacterState_1
-    &Actor_Character::vfunc_0E8, // Actor_CharacterState_2
-    &Actor_Character::vfunc_0EC, // Actor_CharacterState_3
-    &Actor_Character::vfunc_0F0, // Actor_CharacterState_4
-    &Actor_Character::vfunc_0F4, // Actor_CharacterState_5
-    &Actor_Character::vfunc_0F8, // Actor_CharacterState_6
-    &Actor_Character::vfunc_0FC, // Actor_CharacterState_7
-    &Actor_Character::vfunc_100, // Actor_CharacterState_8
+static PTMF<ActorCharacter> data_ov031_02113260[ActorCharacterState_Max] = {
+    &ActorCharacter::vfunc_0E0, // ActorCharacterState_0
+    &ActorCharacter::vfunc_0E4, // ActorCharacterState_1
+    &ActorCharacter::vfunc_0E8, // ActorCharacterState_2
+    &ActorCharacter::vfunc_0EC, // ActorCharacterState_3
+    &ActorCharacter::vfunc_0F0, // ActorCharacterState_4
+    &ActorCharacter::vfunc_0F4, // ActorCharacterState_5
+    &ActorCharacter::vfunc_0F8, // ActorCharacterState_6
+    &ActorCharacter::vfunc_0FC, // ActorCharacterState_7
+    &ActorCharacter::vfunc_100, // ActorCharacterState_8
 };
 
-static PTMF<Actor_Character> data_ov031_02113218[Actor_CharacterState_Max] = {
-    &Actor_Character::vfunc_0BC, // Actor_CharacterState_0
-    &Actor_Character::vfunc_0C0, // Actor_CharacterState_1
-    &Actor_Character::vfunc_0C4, // Actor_CharacterState_2
-    &Actor_Character::vfunc_0C8, // Actor_CharacterState_3
-    &Actor_Character::vfunc_0CC, // Actor_CharacterState_4
-    &Actor_Character::vfunc_0D0, // Actor_CharacterState_5
-    &Actor_Character::vfunc_0D4, // Actor_CharacterState_6
-    &Actor_Character::vfunc_0D8, // Actor_CharacterState_7
-    &Actor_Character::vfunc_0DC, // Actor_CharacterState_8
+static PTMF<ActorCharacter> data_ov031_02113218[ActorCharacterState_Max] = {
+    &ActorCharacter::vfunc_0BC, // ActorCharacterState_0
+    &ActorCharacter::vfunc_0C0, // ActorCharacterState_1
+    &ActorCharacter::vfunc_0C4, // ActorCharacterState_2
+    &ActorCharacter::vfunc_0C8, // ActorCharacterState_3
+    &ActorCharacter::vfunc_0CC, // ActorCharacterState_4
+    &ActorCharacter::vfunc_0D0, // ActorCharacterState_5
+    &ActorCharacter::vfunc_0D4, // ActorCharacterState_6
+    &ActorCharacter::vfunc_0D8, // ActorCharacterState_7
+    &ActorCharacter::vfunc_0DC, // ActorCharacterState_8
 };
 
-Actor_Character::Actor_Character(ModelRender *param1, UnkStruct_ov000_020b31f0 *param2) :
+ActorCharacter::ActorCharacter(ModelRender *param1, UnkStruct_ov000_020b31f0 *param2) :
     Actor_Derived1(param1, param2),
     mUnk_120(0x64),
     mUnk_122(0xC8),
@@ -47,18 +47,18 @@ Actor_Character::Actor_Character(ModelRender *param1, UnkStruct_ov000_020b31f0 *
     this->mUnk_144.param2 = 0x0;
 }
 
-Actor_Character::~Actor_Character() {}
+ActorCharacter::~ActorCharacter() {}
 
-Actor_Character_12C::Actor_Character_12C(Actor_Character *param1) :
+ActorCharacter_12C::ActorCharacter_12C(ActorCharacter *param1) :
     mUnk_08(param1),
     mUnk_0C(0, 0, 0) {}
 
-Actor_Character_12C::~Actor_Character_12C() {
+ActorCharacter_12C::~ActorCharacter_12C() {
     this->mUnk_08 = NULL;
 }
 
 // non-matching
-bool Actor_Character_12C::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
+bool ActorCharacter_12C::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32 param2) {
 #pragma unused(param2)
     if (param1->mUnk_08.y > FX_F32_TO_FX32(0.0f)) {
         return true;
@@ -71,40 +71,40 @@ bool Actor_Character_12C::vfunc_08(const UnkStruct_ov031_020f3310 *param1, unk32
 
     VecFx16_Copy(&param1->mUnk_08, &this->mUnk_0C.vec);
     this->mUnk_08->func_ov031_020e79bc();
-    this->mUnk_08->SetState(Actor_CharacterState_2);
+    this->mUnk_08->SetState(ActorCharacterState_2);
 
     return true;
 }
 // non-matching
-bool Actor_Character_12C::vfunc_0C(RefStruct ref, UnkStruct_ov031_020e54d4 *param2, const VecFx32 *param3,
-                                   const VecFx32 *param4) {}
+bool ActorCharacter_12C::vfunc_0C(RefStruct ref, UnkStruct_ov031_020e54d4 *param2, const VecFx32 *param3,
+                                  const VecFx32 *param4) {}
 
-void Actor_Character::vfunc_AC() {
+void ActorCharacter::vfunc_AC() {
     this->mUnk_4A[0] = 0x5;
 
     switch (this->mUnk_5C.mParams[0]) {
         case 0x0:
-            this->SetState(Actor_CharacterState_0);
+            this->SetState(ActorCharacterState_0);
             break;
 
         case 0x1:
             this->mUnk_44 = 0xFF;
-            this->SetState(Actor_CharacterState_2);
+            this->SetState(ActorCharacterState_2);
             break;
 
         case 0x2:
-            this->SetState(Actor_CharacterState_1);
+            this->SetState(ActorCharacterState_1);
             break;
 
         default:
-            this->SetState(Actor_CharacterState_0);
+            this->SetState(ActorCharacterState_0);
             break;
     }
 }
 // non-matching
-void Actor_Character::vfunc_54(unk32 param1) {}
+void ActorCharacter::vfunc_54(unk32 param1) {}
 
-void Actor_Character::vfunc_0BC() {
+void ActorCharacter::vfunc_0BC() {
     this->mVel.x = FX_F32_TO_FX32(0.0f);
     this->mVel.z = FX_F32_TO_FX32(0.0f);
 
@@ -115,9 +115,9 @@ void Actor_Character::vfunc_0BC() {
     this->vfunc_98(0x0);
 }
 
-void Actor_Character::vfunc_0E0() {}
+void ActorCharacter::vfunc_0E0() {}
 
-void Actor_Character::vfunc_0C0() {
+void ActorCharacter::vfunc_0C0() {
     unk32 old114 = this->mUnk_114;
     fx32 old118  = this->mUnk_118;
     unk32 old11C = this->mUnk_11C;
@@ -139,28 +139,28 @@ void Actor_Character::vfunc_0C0() {
 }
 
 // non-matching
-void Actor_Character::vfunc_0E4() {}
+void ActorCharacter::vfunc_0E4() {}
 // non-matching
-void Actor_Character::func_ov031_020e79bc() {}
+void ActorCharacter::func_ov031_020e79bc() {}
 // non-matching
-void Actor_Character::vfunc_0C4() {}
+void ActorCharacter::vfunc_0C4() {}
 // non-matching
-void Actor_Character::vfunc_0E8() {}
+void ActorCharacter::vfunc_0E8() {}
 // non-matching
-void Actor_Character::vfunc_0C8() {}
+void ActorCharacter::vfunc_0C8() {}
 // non-matching
-void Actor_Character::vfunc_0EC() {}
+void ActorCharacter::vfunc_0EC() {}
 // non-matching
-bool Actor_Character::func_ov031_020e812c() {}
+bool ActorCharacter::func_ov031_020e812c() {}
 
-void Actor_Character::vfunc_0CC() {
+void ActorCharacter::vfunc_0CC() {
     u16 new0B0     = this->mUnk_0B0 | 0x1;
     this->mVel.x   = FX_F32_TO_FX32(0.0f);
     this->mUnk_0B0 = new0B0;
     this->mVel.z   = FX_F32_TO_FX32(0.0f);
 
     if ((new0B0 & 0x2) && this->Actor_Derived1::func_ov000_020a9248(0x2000)) {
-        this->SetState(Actor_CharacterState_5);
+        this->SetState(ActorCharacterState_5);
         return;
     }
 
@@ -172,19 +172,19 @@ void Actor_Character::vfunc_0CC() {
     this->vfunc_98(0x1);
 }
 
-void Actor_Character::vfunc_0F0() {
+void ActorCharacter::vfunc_0F0() {
     if (this->mUnk_0B0 & 0x100) {
         this->mUnk_0B0 |= 0x200;
     }
 
     if (this->func_ov031_020e812c()) {
-        this->SetState(Actor_CharacterState_5);
+        this->SetState(ActorCharacterState_5);
     }
 
     this->vfunc_110();
 }
 
-void Actor_Character::vfunc_0D0() {
+void ActorCharacter::vfunc_0D0() {
     this->mVel.x = FX_F32_TO_FX32(0.0f);
     this->mVel.z = FX_F32_TO_FX32(0.0f);
 
@@ -195,9 +195,9 @@ void Actor_Character::vfunc_0D0() {
     this->vfunc_98(0x2);
 }
 
-void Actor_Character::vfunc_0F4() {}
+void ActorCharacter::vfunc_0F4() {}
 
-void Actor_Character::vfunc_0D4() {
+void ActorCharacter::vfunc_0D4() {
     this->mVel.x = FX_F32_TO_FX32(0.0f);
     this->mVel.z = FX_F32_TO_FX32(0.0f);
 
@@ -220,12 +220,12 @@ void Actor_Character::vfunc_0D4() {
     this->mUnk_094.mUnk_0C->mUnk_24 = old11C;
 }
 
-void Actor_Character::vfunc_0F8() {
+void ActorCharacter::vfunc_0F8() {
     this->mUnk_158 = 0x1;
     this->vfunc_110();
 }
 
-void Actor_Character::vfunc_0D8() {
+void ActorCharacter::vfunc_0D8() {
     this->mVel.x = FX_F32_TO_FX32(0.0f);
     this->mVel.z = FX_F32_TO_FX32(0.0f);
 
@@ -241,10 +241,10 @@ void Actor_Character::vfunc_0D8() {
         return;
     }
 
-    this->SetState(Actor_CharacterState_0);
+    this->SetState(ActorCharacterState_0);
 }
 
-void Actor_Character::vfunc_0FC() {
+void ActorCharacter::vfunc_0FC() {
     if (this->mUnk_0B0 & 0x100) {
         this->mUnk_0B0 |= 0x200;
     }
@@ -256,7 +256,7 @@ void Actor_Character::vfunc_0FC() {
     this->SetState(0x0);
 }
 
-void Actor_Character::vfunc_0DC() {
+void ActorCharacter::vfunc_0DC() {
     this->mUnk_4A[0] = 0x0;
     UNSET_FLAG(this->mFlags, ActorFlag_Visible);
 
@@ -267,7 +267,7 @@ void Actor_Character::vfunc_0DC() {
     this->vfunc_98(0x0);
 }
 
-void Actor_Character::vfunc_100() {
+void ActorCharacter::vfunc_100() {
     if (!this->Actor_Derived1::func_ov000_020a8db0()) {
         return;
     }
@@ -275,21 +275,21 @@ void Actor_Character::vfunc_100() {
     this->vfunc_AC();
 }
 
-void Actor_Character::vfunc_104() {
+void ActorCharacter::vfunc_104() {
     this->mUnk_0B0 &= 0xFFFB;
     SET_FLAG(this->mFlags, ActorFlag_Visible);
 }
 
-void Actor_Character::SetState(ActorState state) {
+void ActorCharacter::SetState(ActorState state) {
     this->mUnk_126 = 0x0;
     this->mState   = state;
 
     this->vfunc_104();
 
-    CALL_PTMF(PTMF<Actor_Character>, data_ov031_02113218[this->mState]);
+    CALL_PTMF(PTMF<ActorCharacter>, data_ov031_02113218[this->mState]);
 }
 
-void Actor_Character::Update() {
+void ActorCharacter::Update() {
     if (!this->vfunc_108(0x5000)) {
         return;
     }
@@ -304,7 +304,7 @@ void Actor_Character::Update() {
 
     this->vfunc_60();
 
-    CALL_PTMF(PTMF<Actor_Character>, data_ov031_02113260[this->mState]);
+    CALL_PTMF(PTMF<ActorCharacter>, data_ov031_02113260[this->mState]);
     if (!GET_FLAG(this->mFlags, ActorFlag_Visible)) {
         return;
     }
@@ -324,18 +324,18 @@ void Actor_Character::Update() {
 }
 
 // non-matching
-void Actor_Character::vfunc_10C() {
+void ActorCharacter::vfunc_10C() {
     if (this->mUnk_158 != 0x0) {
         switch (this->mState) {
-            case Actor_CharacterState_2:
+            case ActorCharacterState_2:
                 this->Actor::func_ov000_02098910(&this->mUnk_12C, 0x10);
                 break;
 
-            case Actor_CharacterState_1:
+            case ActorCharacterState_1:
                 this->Actor::func_ov000_02098910(NULL, 0x10);
                 break;
 
-            case Actor_CharacterState_6: {
+            case ActorCharacterState_6: {
                 VecFx32 sp00 = this->mPos;
                 sp00.y += 0x100;
 
@@ -365,12 +365,12 @@ void Actor_Character::vfunc_10C() {
     data_027e09c0->func_ov000_0207de98(this->mRef, &this->mUnk_144, this->mUnk_38);
 }
 
-bool Actor_Character::vfunc_108(unk32 param1) {
+bool ActorCharacter::vfunc_108(unk32 param1) {
     return this->Actor::func_ov017_020beeec(param1);
 }
 
 // non-matching
-void Actor_Character::vfunc_110() {
+void ActorCharacter::vfunc_110() {
     if (this->mUnk_15C == NULL) {
         return;
     }

@@ -102,7 +102,7 @@ void ActorKenzo::SetState(ActorState state) {
 }
 
 void ActorKenzo::vfunc_54(unk32 param1) {
-    this->Actor_Character::vfunc_54(param1);
+    this->ActorCharacter::vfunc_54(param1);
 
     bool val = false;
     if (this->func_ov058_0214885c()) {
@@ -200,7 +200,7 @@ void ActorKenzo::vfunc_0BC() {
         return;
     }
 
-    this->Actor_Character::vfunc_0BC();
+    this->ActorCharacter::vfunc_0BC();
 }
 
 // non-matching (str order for 0b0 and 350)
@@ -216,11 +216,11 @@ void ActorKenzo::vfunc_0CC() {
         return;
     }
 
-    this->Actor_Character::vfunc_0CC();
+    this->ActorCharacter::vfunc_0CC();
 }
 
 void ActorKenzo::vfunc_0D0() {
-    this->Actor_Character::vfunc_0D0();
+    this->ActorCharacter::vfunc_0D0();
 
     if (!this->func_ov058_02148710()) {
         return;

@@ -2,9 +2,9 @@
 
 #include "Actor/Actor.hpp"
 #include "Actor/ActorProfile.hpp"
+#include "ActorCharacter.hpp"
 #include "ActorSpinut.hpp"
 #include "ActorUnkZLSL_ZSRS.hpp"
-#include "Actor_Character.hpp"
 #include "Actor_ov058.hpp"
 #include "global.h"
 #include "types.h"
