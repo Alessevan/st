@@ -120,7 +120,7 @@ public:
     /* 000 (base) */
     /* 094 */ Actor_Derived1_94_Derived1 mUnk_094;
     /* 0A4 */ Actor_Derived1_a4 mUnk_0A4;
-    /* 0B0 */ volatile u16 mUnk_0B0;
+    /* 0B0 */ u16 mUnk_0B0;
     /* 0B4 */ unk32 mUnk_0B4;
     /* 0B8 */ ActorUnkZLSL_AnimationTag *mUnk_0B8;
     /* 0BC */ RefStruct mUnk_0BC;
@@ -180,6 +180,10 @@ public:
     /* BC */
 
     Actor_Derived1(ModelRender *param1, UnkStruct_ov000_020b31f0 *param2);
+
+    const u16 GetUnk0B0() const {
+        return this->mUnk_0B0;
+    }
 
     // overlay 0
     void func_ov000_020a8ae0(fx32 param1);

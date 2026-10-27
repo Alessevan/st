@@ -466,13 +466,12 @@ void ActorUnkZLSL::func_ov031_020eab40(unk32 param1) {
 void ActorUnkZLSL::func_ov031_020eac64() {
     this->mUnk_2884 = 0x0;
     this->mUnk_2888 = this->mPos.y;
-    u16 new0B0      = this->mUnk_0B0 | 0x1;
     this->mVel.x    = FX_F32_TO_FX32(0.0f);
     this->mVel.y    = FX_F32_TO_FX32(0.0f);
     this->mVel.z    = FX_F32_TO_FX32(0.0f);
-    this->mUnk_0B0  = new0B0;
+    this->mUnk_0B0 |= 0x1;
 
-    if ((new0B0 & 0x2) != 0x0) {
+    if ((this->mUnk_0B0 & 0x2) != 0x0) {
         if (this->func_ov000_020a9248(0x2000)) {
             this->SetState(ActorUnkZLSLState_ClosedArms);
             return;

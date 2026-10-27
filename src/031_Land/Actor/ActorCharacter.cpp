@@ -154,17 +154,16 @@ void ActorCharacter::vfunc_0EC() {}
 bool ActorCharacter::func_ov031_020e812c() {}
 
 void ActorCharacter::vfunc_0CC() {
-    u16 new0B0     = this->mUnk_0B0 | 0x1;
-    this->mVel.x   = FX_F32_TO_FX32(0.0f);
-    this->mUnk_0B0 = new0B0;
-    this->mVel.z   = FX_F32_TO_FX32(0.0f);
+    this->mUnk_0B0 |= 0x1;
+    this->mVel.x = FX_F32_TO_FX32(0.0f);
+    this->mVel.z = FX_F32_TO_FX32(0.0f);
 
-    if ((new0B0 & 0x2) && this->Actor_Derived1::func_ov000_020a9248(0x2000)) {
+    if (this->GetUnk0B0() & 0x2 && this->Actor_Derived1::func_ov000_020a9248(0x2000)) {
         this->SetState(ActorCharacterState_5);
         return;
     }
 
-    if (this->mUnk_0B0 & 0x100) {
+    if (this->GetUnk0B0() & 0x100) {
         this->mUnk_0B0 |= 0x200;
         return;
     }

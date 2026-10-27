@@ -137,15 +137,12 @@ void ActorKenzo::Setup() {
         return;
     }
 
-    if (GET_FLAG(data_027e09b8->mAdventureFlags, AdventureFlag_KenzoBoardsTrainToBuildFence)) {
-        if (this->Actor_Derived1::func_ov000_020a8db0()) {
-            if (this->mUnk_5C.mUnk_18[0] == 0x3 && this->mUnk_5C.mUnk_1A[0] == 0x1E4) {
-                if (!this->func_ov058_0214885c()) {
-                    func_ov040_0212bab4(0x1E4);
+    if (GET_FLAG(data_027e09b8->mAdventureFlags, AdventureFlag_KenzoBoardsTrainToBuildFence) &&
+        this->Actor_Derived1::func_ov000_020a8db0()) {
+        if (this->mUnk_5C.mUnk_18[0] == 0x3 && this->mUnk_5C.mUnk_1A[0] == 0x1E4 && !this->func_ov058_0214885c()) {
+            func_ov040_0212bab4(0x1E4);
 
-                    UNSET_FLAG(this->mFlags, ActorFlag_Alive);
-                }
-            }
+            UNSET_FLAG(this->mFlags, ActorFlag_Alive);
         }
     }
 
@@ -158,10 +155,8 @@ void ActorKenzo::Update() {
         return;
     }
 
-    if ((u16) (this->mUnk_5C.mParams[2] + 0xFFFF) <= 0x2) {
-        if (this->Actor_Derived1::func_ov000_020a8dd0()) {
-            UNSET_FLAG(this->mFlags, ActorFlag_Alive);
-        }
+    if ((u16) (this->mUnk_5C.mParams[2] + 0xFFFF) <= 0x2 && this->Actor_Derived1::func_ov000_020a8dd0()) {
+        UNSET_FLAG(this->mFlags, ActorFlag_Alive);
     }
 
     this->vfunc_60();
@@ -184,11 +179,9 @@ void ActorKenzo::Update() {
 bool ActorKenzo::vfunc_5C() {
     bool retValue = this->Actor_Derived1::vfunc_5C();
 
-    if (retValue) {
-        u16 mParam2 = this->mUnk_5C.mParams[2];
-        if (mParam2 == 0x1 || (mParam2 == 0x0 && this->Actor_Derived1::func_ov000_020a8dd0())) {
-            UNSET_FLAG(this->mFlags, ActorFlag_Alive);
-        }
+    if (retValue && (this->mUnk_5C.mParams[2] == 0x1 ||
+                     (this->mUnk_5C.mParams[2] == 0x0 && this->Actor_Derived1::func_ov000_020a8dd0()))) {
+        UNSET_FLAG(this->mFlags, ActorFlag_Alive);
     }
 
     return retValue;
@@ -203,7 +196,7 @@ void ActorKenzo::vfunc_0BC() {
     this->ActorCharacter::vfunc_0BC();
 }
 
-// non-matching (str order for 0b0 and 350)
+// non-matching (str order for 350 and 352)
 void ActorKenzo::vfunc_0CC() {
     if (this->func_ov058_02148710()) {
         this->mVel.x = FX_F32_TO_FX32(0.0f);
@@ -211,8 +204,8 @@ void ActorKenzo::vfunc_0CC() {
 
         this->SetState(ActorKenzoState_10);
 
-        this->mUnk_0B0 &= ~0x10;
         this->mUnk_350.SetAlt(0, 0);
+        this->mUnk_0B0 = this->GetUnk0B0() & 0xFFEF;
         return;
     }
 
@@ -233,14 +226,14 @@ void ActorKenzo::vfunc_114() {
     this->mUnk_0B0 |= 0x10;
     this->vfunc_98(0x3);
 
-    this->mUnk_350.Set(0, gRandom.Next32(0x4) + 0x3);
+    this->mUnk_350.Set(0, gRandom.Next32(4) + 3);
 }
 
 void ActorKenzo::vfunc_118() {
     this->mUnk_0B0 &= ~0x10;
     this->vfunc_98(0x4);
 
-    this->mUnk_350.Set(0, gRandom.Next32(0x3) + 0x1);
+    this->mUnk_350.Set(0, gRandom.Next32(3) + 1);
 }
 
 void ActorKenzo::vfunc_11C() {
@@ -301,9 +294,7 @@ unk32 ActorKenzo::vfunc_7C(unk32 param1) {
 
 bool ActorKenzo::vfunc_9C() {
     PassengerManager *instance = gpPassengerManager;
-
     instance->TryBoardTrain(this->GetActorId(), SceneIndex_f_bridge2, 0xFF);
-
     return true;
 }
 
@@ -436,12 +427,7 @@ void ActorKenzo::func_ov058_02148b04(Actor *param1, G3d_RenderState *param2) {
 
     G3d_RenderObject *renderObj = param2->renderObj;
 
-    unk32 val;
-    if (param2->flag & 0x10) {
-        val = param2->currentBoneMtxId;
-    } else {
-        val = -1;
-    }
+    s32 val = param2->flag & 0x10 ? param2->currentBoneMtxId : -1;
     if (val != thiz->mUnk_31C) {
         return;
     }
