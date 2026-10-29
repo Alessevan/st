@@ -1,4 +1,4 @@
-#include "Actor/ActorUnkSYDE_SYDL_SYDS_SYFI_SYFO_SYIL_SYIS_SYOL_SYOS_SYSL_SYSN_SYSS_SYWA_SYWL_SYWS.hpp"
+#include "Actor/ActorLokomos.hpp"
 #include "System/SysNew.hpp"
 
 // --- Actor SYOS ---
