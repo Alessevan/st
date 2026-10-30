@@ -24,8 +24,8 @@ MapObjectProfileUnkSTAT::MapObjectProfileUnkSTAT() :
     MapObjectProfileUnkSTAT_Base(MapObjectId_STAT, MapObjectId_STAT) {
     mUnk_D4.mUnk_08 = 0x7007;
     VecFx32_Init(0, 0, 0, &mUnk_D4.mUnk_0C);
-    mUnk_D4.mUnk_18.x = 0x800;
-    mUnk_D4.mUnk_18.y = 0x1000;
+    mUnk_D4.mUnk_18.x = FX_F32_TO_FX32(0.5f);
+    mUnk_D4.mUnk_18.y = FX_F32_TO_FX32(1.f);
 
     mUnk_06 = -1;
     UNSET_FLAG2(mUnk_1E, 0);
@@ -127,9 +127,9 @@ void MapObjectUnkSTAT::func_ov063_0215f7ac(void) {
             // if (((s32) gRandom.mRandomValue[0]) >= 0) {
             // bls on gRandomVal (u32)
             if (gRandomVal >= 0) {
-                z = func_0203ab58(0x3F000000, func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.f);
+                z = func_0203ab58(0x3F000000, func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.0f);
             } else {
-                z = func_0203ad88(func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.f, 0x3F000000);
+                z = func_0203ad88(func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.0f, 0x3F000000);
             }
 
             func_02039d60(func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f, 0);
@@ -137,9 +137,9 @@ void MapObjectUnkSTAT::func_ov063_0215f7ac(void) {
 
             fx32 x;
             if (gRandomVal >= 0) {
-                x = func_0203ab58(0x3F000000, func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.f);
+                x = func_0203ab58(0x3F000000, func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.0f);
             } else {
-                x = func_0203ad88(func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.f, 0x3F000000);
+                x = func_0203ad88(func_02039f04(gRandom.Next32(0x15) - 10) * 0.004f * 4096.0f, 0x3F000000);
             }
 
             VecFx32_Init(x, 0, z, (VecFx32 *) &mUnk_60);
