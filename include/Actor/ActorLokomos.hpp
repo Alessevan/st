@@ -3,6 +3,8 @@
 #include "Actor/Actor.hpp"
 #include "Actor/ActorCharacter.hpp"
 #include "Actor/ActorProfile.hpp"
+#include "ActorSpinut.hpp"
+#include "ActorUnkTLKT.hpp"
 #include "ActorUnkZLSL_ZSRS.hpp"
 #include "global.h"
 #include "types.h"
@@ -319,6 +321,32 @@ public:
 
 // --- GENERAL ---
 
+enum ActorLokomoState_ {
+    ActorLokomoState_0  = 0,
+    ActorLokomoState_1  = 1,
+    ActorLokomoState_2  = 2,
+    ActorLokomoState_3  = 3,
+    ActorLokomoState_4  = 4,
+    ActorLokomoState_5  = 5,
+    ActorLokomoState_6  = 6,
+    ActorLokomoState_7  = 7,
+    ActorLokomoState_8  = 8,
+    ActorLokomoState_9  = 9,
+    ActorLokomoState_10 = 10,
+    ActorLokomoState_11 = 11,
+    ActorLokomoState_12 = 12,
+    ActorLokomoState_Max
+};
+
+class ActorLokomo_MapObject_Unk : public ActorUnkTLKT_9C_Base {
+public:
+    /* 00 (base) */
+    /* 08 */
+
+    /* 00 */ virtual void vfunc2_00() override;
+    /* 04 */ virtual void vfunc2_04() override;
+};
+
 class ActorKenzo_Base_160 : public UnkStruct_ov000_020b31f0 {
 public:
     /* 00 (base) */
@@ -363,9 +391,28 @@ public:
 class ActorLokomo : public ActorKenzo_Base {
 public:
     /* 000 (base) */
-    /* 24C */ PAD(0x24C, 0x4C4);
+    /* 24C */ ModelRender_ov000_020b4d64 mUnk_24C;
+    /* 2AC */ PAD(0x2AC, 0x2BC);
+    /* 2BC */ // ModelRender TBD
+    /* 2BC */ PAD(0x2BC, 0x328);
+    /* 328 */ ModelRender_ov000_020b1a1c mUnk_328;
+    /* 388 */ PAD(0x388, 0x38C);
+    /* 38C */ // ModelRender TBD
+    /* 38C */ PAD(0x38C, 0x3F0);
+    /* 3F0 */ // ModelRender TBD
+    /* 3F0 */ PAD(0x3F0, 0x458);
+    /* 458 */ UnkStruct_ov000_020b31f0 mUnk_458;
+    /* 484 */ PAD(0x484, 0x4C4);
     /* 4C4 */ UnkStruct_ov000_020b31f0 mUnk_4C4;
-    /* 4F0 */ PAD(0x4F0, 0x901);
+    /* 4F0 */ PAD(0x4F0, 0x5B0);
+    /* 5B0 */ UnkStruct_ov000_020b31f0 mUnk_5B0;
+    /* 5DC */ PAD(0x5DC, 0x69C);
+    /* 69C */ UnkStruct_ov000_020b31f0 mUnk_69C;
+    /* 6C8 */ PAD(0x6C8, 0x788);
+    /* 788 */ UnkStruct_ov000_020b31f0 mUnk_788;
+    /* 7B4 */ PAD(0x7B4, 0x888);
+    /* 888 */ UnkSystem7 mUnk_888;
+    /* 88C */ PAD(0x88C, 0x901);
     /* 901 */ bool mUnk_901;
     /* 902 */ PAD(0x902, 0x904);
     /* 904 */ bool mUnk_904;
@@ -433,7 +480,6 @@ public:
     void func_ov058_021470d8();
     void func_ov058_02147148();
     void func_ov058_021471f4();
-    void func_ov058_02147740();
     void func_ov058_02147760();
     void func_ov058_02147860();
     bool func_ov058_02147aec();
@@ -446,5 +492,4 @@ public:
     void func_ov058_02147ca8();
     void func_ov058_02147ce4(unk32 param1);
     void func_ov058_02147d20();
-    void func_ov058_02147d5c();
 };

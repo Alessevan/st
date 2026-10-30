@@ -249,11 +249,55 @@ ActorProfileUnkSYDE::ActorProfileUnkSYDE() :
     this->mUnk_24 = id;
 }
 
+// --- GENERAL ---
+
+static ActorUnkZLSL_AnimationTag data_ov058_021546e8               = {0, "car_move", 0};
+static ActorUnkZLSL_AnimationTag data_ov058_0215491c[]             = {{0, "blink", 0}, {1, "close", 1}, {2, "turn", 1}};
+static PTMF<ActorLokomo> data_ov058_021549b0[ActorLokomoState_Max] = {
+    &ActorLokomo::vfunc_0BC, // ActorLokomoState_0
+    &ActorLokomo::vfunc_0C0, // ActorLokomoState_1
+    &ActorLokomo::vfunc_0C4, // ActorLokomoState_2
+    &ActorLokomo::vfunc_0C8, // ActorLokomoState_3
+    &ActorLokomo::vfunc_0CC, // ActorLokomoState_4
+    &ActorLokomo::vfunc_0D0, // ActorLokomoState_5
+    &ActorLokomo::vfunc_0D4, // ActorLokomoState_6
+    &ActorLokomo::vfunc_0D8, // ActorLokomoState_7
+    &ActorLokomo::vfunc_0DC, // ActorLokomoState_8
+    &ActorLokomo::vfunc_114, // ActorLokomoState_9
+    &ActorLokomo::vfunc_118, // ActorLokomoState_10
+    &ActorLokomo::vfunc_11C, // ActorLokomoState_11
+    &ActorLokomo::vfunc_120, // ActorLokomoState_12
+};
+static PTMF<ActorLokomo> data_ov058_02154a18[ActorLokomoState_Max] = {
+    &ActorLokomo::vfunc_0E0, // ActorLokomoState_0
+    &ActorLokomo::vfunc_0E4, // ActorLokomoState_1
+    &ActorLokomo::vfunc_0E8, // ActorLokomoState_2
+    &ActorLokomo::vfunc_0EC, // ActorLokomoState_3
+    &ActorLokomo::vfunc_0F0, // ActorLokomoState_4
+    &ActorLokomo::vfunc_0F4, // ActorLokomoState_5
+    &ActorLokomo::vfunc_0F8, // ActorLokomoState_6
+    &ActorLokomo::vfunc_0FC, // ActorLokomoState_7
+    &ActorLokomo::vfunc_100, // ActorLokomoState_8
+    &ActorLokomo::vfunc_124, // ActorLokomoState_9
+    &ActorLokomo::vfunc_128, // ActorLokomoState_10
+    &ActorLokomo::vfunc_12C, // ActorLokomoState_11
+    &ActorLokomo::vfunc_130, // ActorLokomoState_12
+};
+
 void ActorLokomo::func_ov058_02143438(unk32 param1) {}
 
 ActorLokomo::ActorLokomo() :
     ActorKenzo_Base(NULL, NULL),
-    mUnk_4C4(NULL, NULL, NULL, NULL) {}
+    mUnk_24C(NULL),
+    mUnk_328(NULL),
+    mUnk_458(NULL, NULL, NULL, NULL),
+    mUnk_4C4(NULL, NULL, NULL, NULL),
+    mUnk_5B0(NULL, NULL, NULL, NULL),
+    mUnk_69C(NULL, NULL, NULL, NULL),
+    mUnk_788(NULL, NULL, NULL, NULL),
+    mUnk_888(NULL) {
+    this->mUnk_4C4.vfunc_1C(data_ov058_021546e8, 0x1000, 0x19A, 0x0);
+}
 
 ActorLokomo::~ActorLokomo() {}
 
@@ -297,12 +341,22 @@ unk32 ActorLokomo::func_ov058_021456d8() {
 bool ActorLokomo::Init(unk32 param1) {}
 // non-matching
 void ActorLokomo::vfunc_54(unk32 param1) {}
-// non-matching
-void ActorLokomo::SetState(ActorState state) {}
+
+void ActorLokomo::SetState(ActorState state) {
+    this->mUnk_4A[0] = 0x5;
+    this->mState     = state;
+
+    this->vfunc_104();
+
+    CALL_PTMF(data_ov058_021549b0[this->mState]);
+}
+
 // non-matching
 void ActorLokomo::func_ov058_021459b8() {}
 // non-matching
-void ActorLokomo::Update() {}
+void ActorLokomo::Update() {
+    CALL_PTMF(data_ov058_02154a18[this->mState]);
+}
 // non-matching
 void ActorLokomo::func_ov058_02145bd4() {}
 // non-matching
@@ -391,7 +445,9 @@ void ActorLokomo::func_ov058_02146d30() {}
 // non-matching
 void ActorLokomo::func_ov058_02146d74() {}
 // non-matching
-void ActorLokomo::func_ov058_021470d8() {}
+void ActorLokomo::func_ov058_021470d8() {
+    this->mUnk_458.func_ov000_02099ddc(data_ov058_0215491c[0], 0x1000, 0x0);
+}
 // non-matching
 void ActorLokomo::func_ov058_02147148() {}
 // non-matching
@@ -399,7 +455,7 @@ void ActorLokomo::vfunc_A4() {}
 // non-matching
 void ActorLokomo::func_ov058_021471f4() {}
 // non-matching
-void ActorLokomo::func_ov058_02147740() {}
+void ActorLokomo_MapObject_Unk::vfunc2_00() {}
 // non-matching
 void ActorLokomo::func_ov058_02147760() {}
 // non-matching
@@ -537,9 +593,9 @@ void ActorLokomo::func_ov058_02147d20() {
     this->vfunc_98(0x13);
 }
 
-void ActorLokomo::func_ov058_02147d5c() {}
+void ActorLokomo_MapObject_Unk::vfunc2_04() {}
 
-inline ActorKenzo_Base_160::~ActorKenzo_Base_160() {}
+ActorKenzo_Base_160::~ActorKenzo_Base_160() {}
 inline ActorKenzo_Base::~ActorKenzo_Base() {}
 ActorProfileUnkSYOS::~ActorProfileUnkSYOS() {}
 ActorProfileUnkSYSS::~ActorProfileUnkSYSS() {}
