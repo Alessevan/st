@@ -96,7 +96,7 @@ MapObjectUnkWLMS::MapObjectUnkWLMS() :
 #if IS_JP || IS_EUR1
     mUnk_31F(false),
 #endif
-    mUnk_320(this) {
+    mUnk_320((Actor *) this) {
     mUnk_10         = GET_PROFILE_D4(MapObjectProfileUnkWLMS);
     mUnk_D0.mUnk_1C = 0x2000;
     mUnk_316        = -1;
