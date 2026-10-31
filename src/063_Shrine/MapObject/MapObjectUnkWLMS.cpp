@@ -64,8 +64,8 @@ MapObjectProfileUnkWLMS::MapObjectProfileUnkWLMS() :
     SET_FLAG2(mUnk_1E, 0);
 }
 
-UnkStruct_ov063_02163910::UnkStruct_ov063_02163910(void *param1) {
-    mUnk_04 = (uintptr_t) param1;
+UnkStruct_ov063_02163910::UnkStruct_ov063_02163910(Actor *param1) {
+    mUnk_04 = param1;
 }
 
 struct UnkStruct_ov063_02163910_04 {

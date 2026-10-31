@@ -17,7 +17,7 @@ ActorProfileUnkTLKT::ActorProfileUnkTLKT() :
     ActorProfile(ActorId_TLKT) {}
 
 ActorUnkTLKT::ActorUnkTLKT() {
-    this->mUnk_04 = 0xFFFFFFFF;
+    this->mUnk_04 = (Actor *) 0xFFFFFFFF;
 }
 
 ActorUnkTLKT::~ActorUnkTLKT() {
@@ -43,7 +43,7 @@ void ActorUnkTLKT::vfunc_24() {
 }
 
 void ActorUnkTLKT::vfunc_58() {
-    if (!data_027e09b8->func_ov000_020732ec(this->mUnk_04)) {
+    if (!data_027e09b8->func_ov000_020732ec((unk32) this->mUnk_04)) {
         return;
     }
     this->vfunc_60(ActorUnkTLKTState_2);
@@ -53,7 +53,7 @@ void ActorUnkTLKT::func_ov031_020e4274() {
     if (data_027e0d34->func_ov031_020d9758()) {
         return;
     }
-    data_027e09b8->func_ov000_020732fc(this->mUnk_04);
+    data_027e09b8->func_ov000_020732fc((unk32) this->mUnk_04);
 }
 
 void ActorUnkTLKT::vfunc_64() {
@@ -129,7 +129,7 @@ void ActorUnkTLKT::vfunc_60(ActorState state) {
             actorUnkSp40.mpActor = actor;
             actorUnkSp40.mUnk_2C = this;
             actorUnkSp40.mUnk_30 = func_ov031_020e3dd0(this);
-            this->mUnk_04        = data_027e09b8->func_ov000_02073470(&actorUnkSp40, 0x0);
+            this->mUnk_04        = (Actor *) data_027e09b8->func_ov000_02073470(&actorUnkSp40, 0x0);
             break;
         }
         case ActorUnkTLKTState_3:
@@ -139,7 +139,7 @@ void ActorUnkTLKT::vfunc_60(ActorState state) {
 
             unkSp00.mUnk_3A = 0x0;
             unkSp00.mUnk_3B = 0x0;
-            this->mUnk_04   = data_027e09b8->func_ov000_02073388(&unkSp00, 0x0);
+            this->mUnk_04   = (Actor *) data_027e09b8->func_ov000_02073388(&unkSp00, 0x0);
             break;
         case ActorUnkTLKTState_4:
             data_027e0d34->func_ov031_020d9854(&this->mPos, FX_F32_TO_FX32(0.5f));
