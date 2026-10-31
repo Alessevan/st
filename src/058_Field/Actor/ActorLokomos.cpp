@@ -1013,10 +1013,10 @@ void ActorLokomo::vfunc_A4() {
 // non-matching
 void ActorLokomo::func_ov058_021471f4() {}
 
-extern Actor *data_ov063_021641d0[];
+extern unk32 data_ov063_021641d0[];
 
 void ActorLokomo_874::vfunc2_00() {
-    data_ov063_021641d0[((ActorLokomo *) this->mUnk_04)->func_ov058_021456d8()] = this->mUnk_04;
+    data_ov063_021641d0[((ActorLokomo *) this->mUnk_04)->func_ov058_021456d8()] = (unk32) this->mUnk_04;
 }
 
 // non-matching
