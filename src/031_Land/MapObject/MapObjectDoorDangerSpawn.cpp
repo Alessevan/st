@@ -673,7 +673,7 @@ unk32 MapObjectDoorDangerSpawn::vfunc_8C(void) {
     return 0;
 }
 
-void MapObjectDoorDangerSpawn::vfunc_84(unk32 param1, VecFx32 *param2, unk16 *param3) {
+void MapObjectDoorDangerSpawn::vfunc_84(unk32 param1, VecFx32 *param2, UnkAngleStruct *param3) {
     s16 iVar1;
 
     if (!this->mUnk_58) {

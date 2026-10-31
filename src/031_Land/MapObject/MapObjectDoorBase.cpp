@@ -339,7 +339,7 @@ void MapObjectDoorBase::vfunc_5C(MapObjState state, unk32 param2) {
                     this->mUnk_48 = -1;
                 } else {
                     this->mUnk_48 = 0;
-                    this->vfunc_84(1, &this->mUnk_4C, &this->mUnk_4A.angle_s);
+                    this->vfunc_84(1, &this->mUnk_4C, &this->mUnk_4A);
                 }
 
                 if (this->mUnk_90) {
@@ -398,7 +398,7 @@ void MapObjectDoorBase::vfunc_5C(MapObjState state, unk32 param2) {
 
                     if (this->mUnk_8D) {
                         this->mUnk_48 = 0x19;
-                        this->vfunc_84(0, &this->mUnk_4C, &this->mUnk_4A.angle_s);
+                        this->vfunc_84(0, &this->mUnk_4C, &this->mUnk_4A);
                     } else {
                         this->mUnk_48 = -1;
                     }
@@ -596,7 +596,7 @@ void MapObjectDoorBase::vfunc_44() {}
 
 void MapObjectDoorBase::vfunc_4C() {}
 
-void MapObjectDoorBase::vfunc_84(unk32 param1, VecFx32 *param2, unk16 *param3) {
+void MapObjectDoorBase::vfunc_84(unk32 param1, VecFx32 *param2, UnkAngleStruct *param3) {
     VecFx32 local_20;
     *param3 = this->mAngle.angle_s;
 
