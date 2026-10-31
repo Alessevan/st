@@ -339,7 +339,7 @@ void MapObjectDoorBase::vfunc_5C(MapObjState state, unk32 param2) {
                     this->mUnk_48 = -1;
                 } else {
                     this->mUnk_48 = 0;
-                    this->vfunc_84(1, &this->mUnk_4C, &this->mUnk_4A);
+                    this->vfunc_84(1, &this->mUnk_4C, &this->mUnk_4A.angle_s);
                 }
 
                 if (this->mUnk_90) {
@@ -398,7 +398,7 @@ void MapObjectDoorBase::vfunc_5C(MapObjState state, unk32 param2) {
 
                     if (this->mUnk_8D) {
                         this->mUnk_48 = 0x19;
-                        this->vfunc_84(0, &this->mUnk_4C, &this->mUnk_4A);
+                        this->vfunc_84(0, &this->mUnk_4C, &this->mUnk_4A.angle_s);
                     } else {
                         this->mUnk_48 = -1;
                     }
@@ -655,17 +655,15 @@ void MapObjectDoorBase::vfunc2_08() {
     }
 
     bool result = data_027e0ce0->func_01fff1a4();
-    temp_r0     = this->mPos.x;
-    temp_r1     = this->mPos.y;
     temp_r2     = this->mPos.z - FX_F32_TO_FX32(3.0f);
+    temp_r1     = this->mPos.y;
+    temp_r0     = this->mPos.x;
 
     if (!result) {
         this->mUnk_4C.x = temp_r0;
         this->mUnk_4C.y = temp_r1;
         this->mUnk_4C.z = temp_r2;
 
-        // temp_r3     = sp - 4;
-        // *temp_r3    = this->mUnk_4A;
         data_027e0ce0->func_ov000_0208bbd4(this->mUnk_04, &this->mUnk_4C, this->mUnk_4A);
         return;
     }
@@ -674,17 +672,13 @@ void MapObjectDoorBase::vfunc2_08() {
     this->mUnk_4C.y = temp_r1;
     this->mUnk_4C.z = temp_r2;
 
-    // temp_r3_2   = sp - 4;
-    // *temp_r3_2  = this->mUnk_4A;
     data_027e0ce0->func_ov000_0208bbd4(this->mUnk_04, &this->mUnk_4C, this->mUnk_4A);
 
-    this->mUnk_5C.x = this->mPos.x + FX_F32_TO_FX32(1.0f);
-    this->mUnk_5C.y = this->mPos.y;
-    this->mUnk_5C.z = this->mPos.z - FX_F32_TO_FX32(3.0f);
-    this->mUnk_5A   = this->mUnk_4A;
+    this->mUnk_5C.z       = this->mPos.z - FX_F32_TO_FX32(3.0f);
+    this->mUnk_5C.y       = this->mPos.y;
+    this->mUnk_5C.x       = this->mPos.x + FX_F32_TO_FX32(1.0f);
+    this->mUnk_5A.angle_s = this->mUnk_4A.angle_s;
 
-    // temp_r2_2   = sp - 4;
-    // *temp_r2_2  = this->mUnk_5A;
     data_027e0ce0->func_ov000_0208bbd4(1, &this->mUnk_5C, this->mUnk_5A);
 }
 

@@ -338,7 +338,7 @@ enum ActorLokomoState_ {
     ActorLokomoState_Max
 };
 
-class ActorLokomo_MapObject_Unk : public ActorUnkTLKT_9C_Base {
+class ActorLokomo_874 : public ActorUnkTLKT_9C_Base {
 public:
     /* 00 (base) */
     /* 08 */
@@ -388,21 +388,34 @@ public:
     /* 4C */ virtual ~ActorKenzo_Base() override;
 };
 
+// TODO: move in ov000
+class ActorLokomo_2BC : public ModelRender_ov000_020b4d64 {
+public:
+    /* 00 (base) */
+    /* 60 */
+
+    ActorLokomo_2BC(G3d_Model *param1); // func_ov000_0209a780
+
+    // data_ov000_020b3268
+};
+
 class ActorLokomo : public ActorKenzo_Base {
 public:
     /* 000 (base) */
     /* 24C */ ModelRender_ov000_020b4d64 mUnk_24C;
     /* 2AC */ PAD(0x2AC, 0x2BC);
-    /* 2BC */ // ModelRender TBD
-    /* 2BC */ PAD(0x2BC, 0x328);
+    /* 2BC */ ActorLokomo_2BC mUnk_2BC;
+    /* 31C */ PAD(0x31C, 0x328);
     /* 328 */ ModelRender_ov000_020b1a1c mUnk_328;
     /* 388 */ PAD(0x388, 0x38C);
-    /* 38C */ // ModelRender TBD
-    /* 38C */ PAD(0x38C, 0x3F0);
-    /* 3F0 */ // ModelRender TBD
-    /* 3F0 */ PAD(0x3F0, 0x458);
-    /* 458 */ UnkStruct_ov000_020b31f0 mUnk_458;
-    /* 484 */ PAD(0x484, 0x4C4);
+    /* 38C */ ModelRender_ov000_020b1a1c mUnk_38C;
+    /* 3EC */ PAD(0x3EC, 0x3F0);
+    /* 3F0 */ ModelRender_ov000_020b1a1c mUnk_3F0;
+    /* 450 */ PAD(0x450, 0x454);
+    /* 454 */ bool mUnk_454;
+    /* 455 */ PAD(0x455, 0x458);
+    /* 458 */ UnkStruct_ov000_020b31a8 mUnk_458;
+    /* 474 */ PAD(0x474, 0x4C4);
     /* 4C4 */ UnkStruct_ov000_020b31f0 mUnk_4C4;
     /* 4F0 */ PAD(0x4F0, 0x5B0);
     /* 5B0 */ UnkStruct_ov000_020b31f0 mUnk_5B0;
@@ -410,13 +423,47 @@ public:
     /* 69C */ UnkStruct_ov000_020b31f0 mUnk_69C;
     /* 6C8 */ PAD(0x6C8, 0x788);
     /* 788 */ UnkStruct_ov000_020b31f0 mUnk_788;
-    /* 7B4 */ PAD(0x7B4, 0x888);
+    /* 7B4 */ PAD(0x7B4, 0x874);
+    /* 874 */ ActorLokomo_874 mUnk_874;
+    /* 87C */ PAD(0x87C, 0x880);
+    /* 880 */ bool mUnk_880;
+    /* 881 */ PAD(0x881, 0x884);
+    /* 884 */ unk32 mUnk_884;
     /* 888 */ UnkSystem7 mUnk_888;
-    /* 88C */ PAD(0x88C, 0x901);
+    /* 88C */ PAD(0x88C, 0x8D0);
+    /* 8D0 */ unk32 mUnk_8D0;
+    /* 8D4 */ unk32 mUnk_8D4;
+    /* 8D8 */ unk32 mUnk_8D8;
+    /* 8DC */ unk32 mUnk_8DC;
+    /* 8E0 */ unk32 mUnk_8E0;
+    /* 8E4 */ unk32 mUnk_8E4;
+    /* 8E8 */ unk32 mUnk_8E8;
+    /* 8EC */ unk32 mUnk_8EC;
+    /* 8F0 */ bool mUnk_8F0;
+    /* 8F1 */ bool mUnk_8F1;
+    /* 8F4 */ unk32 mUnk_8F4;
+    /* 8F8 */ unk32 mUnk_8F8;
+    /* 8FC */ PAD(0x8FC, 0x8FE);
+    /* 8FE */ unk16 mUnk_8FE;
+    /* 900 */ bool mUnk_900;
     /* 901 */ bool mUnk_901;
-    /* 902 */ PAD(0x902, 0x904);
+    /* 902 */ bool mUnk_902;
+    /* 903 */ bool mUnk_903;
     /* 904 */ bool mUnk_904;
-    /* 905 */ PAD(0x905, 0x9C4);
+    /* 908 */ u32 mUnk_908;
+    /* 90C */ u32 mUnk_90C;
+    /* 910 */ u32 mUnk_910;
+    /* 914 */ MtxFx43 mUnk_914;
+    /* 944 */ MtxFx43 mUnk_944;
+    /* 974 */ MtxFx43 mUnk_974;
+    /* 9A4 */ unk32 mUnk_9A4;
+    /* 9A8 */ unk32 mUnk_9A8;
+    /* 9AC */ unk32 mUnk_9AC;
+    /* 9B0 */ unk32 mUnk_9B0;
+    /* 9B4 */ unk32 mUnk_9B4;
+    /* 9B8 */ unk32 mUnk_9B8;
+    /* 9BC */ unk32 mUnk_9BC;
+    /* 9C0 */ unk32 mUnk_9C0;
     /* 9C4 */
 
     ActorLokomo();
@@ -455,10 +502,10 @@ public:
     /* 128 */ virtual void vfunc_128();
     /* 12C */ virtual void vfunc_12C();
     /* 130 */ virtual void vfunc_130();
-    /* 134 */ virtual void vfunc_134();
+    /* 134 */ virtual void vfunc_134(unk32 param1);
 
     // bold guess
-    void func_ov058_02143438(unk32 param1);
+    unk32 func_ov058_02143438(unk32 param1);
     void func_ov058_021446b8();
     void func_ov058_02144ba0();
     void func_ov058_02145120();
@@ -466,22 +513,22 @@ public:
     unk32 func_ov058_021456d8();
     void func_ov058_021459b8();
     void func_ov058_02145bd4();
-    void func_ov058_02145e94();
+    void func_ov058_02145e94(bool param1);
     void func_ov058_02145ef0();
     void func_ov058_02146070();
     void func_ov058_02146848();
     void func_ov058_021468d8();
-    void func_ov058_02146984();
+    void func_ov058_02146984(unk32 param1, unk32 param2);
     void func_ov058_02146c6c();
-    void func_ov058_02146ccc();
-    void func_ov058_02146cec();
-    void func_ov058_02146d30();
-    void func_ov058_02146d74();
+    unk32 func_ov058_02146ccc();
+    unk32 func_ov058_02146cec(unk32 param1);
+    unk32 func_ov058_02146d30(unk32 param1);
+    void func_ov058_02146d74(unk32 param1);
     void func_ov058_021470d8();
     void func_ov058_02147148();
     void func_ov058_021471f4();
-    void func_ov058_02147760();
-    void func_ov058_02147860();
+    static void func_ov058_02147760(Actor *param0, G3d_RenderState_ *param1);
+    static void func_ov058_02147860(Actor *param0, G3d_RenderState_ *param1);
     bool func_ov058_02147aec();
     void func_ov058_02147b6c();
     void func_ov058_02147b98();
